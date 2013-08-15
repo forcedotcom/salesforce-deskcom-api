@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: delete
+    uri: https://devel.desk.com/api/v2/topics/556401
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - desk.com Ruby Gem v0.1.0
+  response:
+    status:
+      code: 204
+      message: 
+    headers:
+      Accept-Ranges:
+      - bytes
+      Cache-Control:
+      - no-cache
+      Date:
+      - Thu, 15 Aug 2013 21:25:38 GMT
+      Status:
+      - 204 No Content
+      Vary:
+      - X-AppVersion
+      X-AppVersion:
+      - '7.9'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Rate-Limit-Limit:
+      - '60'
+      X-Rate-Limit-Remaining:
+      - '59'
+      X-Rate-Limit-Reset:
+      - '22'
+      X-Request-Id:
+      - 207b551751f30fa3c1f74de6c8439d47
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Thu, 15 Aug 2013 21:25:38 GMT
+recorded_with: VCR 2.5.0

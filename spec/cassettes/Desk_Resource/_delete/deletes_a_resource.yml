@@ -1,0 +1,164 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://devel.desk.com/api/v2/topics
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - desk.com Ruby Gem v0.1.0
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      Accept-Ranges:
+      - bytes
+      Cache-Control:
+      - must-revalidate, private, max-age=0
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Thu, 15 Aug 2013 21:20:32 GMT
+      ETag:
+      - '"a1ddc5668e24e3aa51b6105fea14b800"'
+      Status:
+      - 200 OK
+      Vary:
+      - X-AppVersion
+      X-AppVersion:
+      - '7.9'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Rate-Limit-Limit:
+      - '60'
+      X-Rate-Limit-Remaining:
+      - '53'
+      X-Rate-Limit-Reset:
+      - '28'
+      X-Request-Id:
+      - 36272152bf18814c7de5b83507045674
+      Content-Length:
+      - '1917'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"total_entries":4,"_links":{"self":{"href":"/api/v2/topics?page=1&per_page=50","class":"page"},"first":{"href":"/api/v2/topics?page=1&per_page=50","class":"page"},"last":{"href":"/api/v2/topics?page=1&per_page=50","class":"page"},"previous":null,"next":null},"_embedded":{"entries":[{"name":"Testing
+        English","description":"Some new description","position":1,"allow_questions":true,"in_support_center":true,"created_at":"2013-04-22T23:46:42Z","updated_at":"2013-08-14T20:01:55Z","_links":{"self":{"href":"/api/v2/topics/498301","class":"topic"},"articles":{"href":"/api/v2/topics/498301/articles","class":"article"},"translations":{"href":"/api/v2/topics/498301/translations","class":"topic_translation"}}},{"name":"My
+        new topic","description":null,"position":2,"allow_questions":true,"in_support_center":null,"created_at":"2013-08-14T19:34:34Z","updated_at":"2013-08-14T19:34:34Z","_links":{"self":{"href":"/api/v2/topics/556401","class":"topic"},"articles":{"href":"/api/v2/topics/556401/articles","class":"article"},"translations":{"href":"/api/v2/topics/556401/translations","class":"topic_translation"}}},{"name":"My
+        new topic","description":null,"position":3,"allow_questions":true,"in_support_center":null,"created_at":"2013-08-14T19:37:08Z","updated_at":"2013-08-14T19:37:08Z","_links":{"self":{"href":"/api/v2/topics/556402","class":"topic"},"articles":{"href":"/api/v2/topics/556402/articles","class":"article"},"translations":{"href":"/api/v2/topics/556402/translations","class":"topic_translation"}}},{"name":"Test
+        Topic","description":null,"position":4,"allow_questions":true,"in_support_center":null,"created_at":"2013-08-15T21:20:31Z","updated_at":"2013-08-15T21:20:31Z","_links":{"self":{"href":"/api/v2/topics/556907","class":"topic"},"articles":{"href":"/api/v2/topics/556907/articles","class":"article"},"translations":{"href":"/api/v2/topics/556907/translations","class":"topic_translation"}}}]}}'
+    http_version: 
+  recorded_at: Thu, 15 Aug 2013 21:20:32 GMT
+- request:
+    method: post
+    uri: https://devel.desk.com/api/v2/articles
+    body:
+      encoding: UTF-8
+      string: '{"subject":"My subject","body":"Some text for this new article","_links":{"topic":{"href":"/api/v2/topics/498301","class":"topic"}}}'
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - desk.com Ruby Gem v0.1.0
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: 
+    headers:
+      Accept-Ranges:
+      - bytes
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Thu, 15 Aug 2013 21:20:32 GMT
+      ETag:
+      - '"204e28aa0d48c5e219e968b6d0a609b8"'
+      Location:
+      - https://devel.desk.com/api/v2/articles/1264832
+      Status:
+      - 201 Created
+      Vary:
+      - X-AppVersion
+      X-AppVersion:
+      - '7.9'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Rate-Limit-Limit:
+      - '60'
+      X-Rate-Limit-Remaining:
+      - '52'
+      X-Rate-Limit-Reset:
+      - '28'
+      X-Request-Id:
+      - 8faa5ca98745f2d3d62f9b94432f7259
+      Content-Length:
+      - '971'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"subject":"My subject","body":"Some text for this new article","body_email":"Some
+        text for this new article","body_email_auto":true,"body_chat":"Some text for
+        this new article","body_chat_auto":true,"body_web_callback":"Some text for
+        this new article","body_web_callback_auto":true,"body_twitter":"Some text
+        for this new article","body_twitter_auto":true,"body_qna":"Some text for this
+        new article","body_qna_auto":true,"body_phone":"Some text for this new article","body_phone_auto":true,"body_facebook":"Some
+        text for this new article","body_facebook_auto":true,"keywords":null,"position":2,"quickcode":null,"in_support_center":null,"internal_notes":null,"publish_at":null,"created_at":"2013-08-15T21:20:32Z","updated_at":"2013-08-15T21:20:32Z","_links":{"self":{"href":"/api/v2/articles/1264832","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/1264832/translations","class":"article_translation"}}}'
+    http_version: 
+  recorded_at: Thu, 15 Aug 2013 21:20:32 GMT
+- request:
+    method: delete
+    uri: https://devel.desk.com/api/v2/articles/1264832
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - desk.com Ruby Gem v0.1.0
+  response:
+    status:
+      code: 204
+      message: 
+    headers:
+      Accept-Ranges:
+      - bytes
+      Cache-Control:
+      - no-cache
+      Date:
+      - Thu, 15 Aug 2013 21:20:32 GMT
+      Status:
+      - 204 No Content
+      Vary:
+      - X-AppVersion
+      X-AppVersion:
+      - '7.9'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Rate-Limit-Limit:
+      - '60'
+      X-Rate-Limit-Remaining:
+      - '51'
+      X-Rate-Limit-Reset:
+      - '28'
+      X-Request-Id:
+      - 7a5beaec97c3e3e94a8b3cb27e5c7a61
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Thu, 15 Aug 2013 21:20:32 GMT
+recorded_with: VCR 2.5.0

@@ -1,0 +1,76 @@
+{
+  "_links": {
+    "articles": {
+      "href": "/api/v2/articles",
+      "class": "page"
+    },
+    "cases": {
+      "href": "/api/v2/cases",
+      "class": "page"
+    },
+    "companies": {
+      "href": "/api/v2/companies",
+      "class": "page"
+    },
+    "custom_fields": {
+      "href": "/api/v2/custom_fields",
+      "class": "page"
+    },
+    "customers": {
+      "href": "/api/v2/customers",
+      "class": "page"
+    },
+    "filters": {
+      "href": "/api/v2/filters",
+      "class": "page"
+    },
+    "groups": {
+      "href": "/api/v2/groups",
+      "class": "page"
+    },
+    "inbound_mailboxes": {
+      "href": "/api/v2/inbound_mailboxes",
+      "class": "page"
+    },
+    "integration_urls": {
+      "href": "/api/v2/integration_urls",
+      "class": "page"
+    },
+    "jobs": {
+      "href": "/api/v2/jobs",
+      "class": "page"
+    },
+    "labels": {
+      "href": "/api/v2/labels",
+      "class": "page"
+    },
+    "macros": {
+      "href": "/api/v2/macros",
+      "class": "page"
+    },
+    "rules": {
+      "href": "/api/v2/rules",
+      "class": "page"
+    },
+    "site_settings": {
+      "href": "/api/v2/site_settings",
+      "class": "page"
+    },
+    "system_message": {
+      "href": "/api/v2/system_message",
+      "class": "system_message"
+    },
+    "topics": {
+      "href": "/api/v2/topics",
+      "class": "page"
+    },
+    "twitter_accounts": {
+      "href": "/api/v2/twitter_accounts",
+      "class": "page"
+    },
+    "users": {
+      "href": "/api/v2/users",
+      "class": "page"
+    }
+  }
+}

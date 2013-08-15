@@ -1,0 +1,55 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://devel.desk.com/api/v2/cases/3014
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - desk.com Ruby Gem v0.1.0
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      Accept-Ranges:
+      - bytes
+      Cache-Control:
+      - must-revalidate, private, max-age=0
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Thu, 15 Aug 2013 21:20:31 GMT
+      ETag:
+      - '"31cb249bf0be971be83b891b995e19f4"'
+      Status:
+      - 200 OK
+      Vary:
+      - X-AppVersion
+      X-AppVersion:
+      - '7.9'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Rate-Limit-Limit:
+      - '60'
+      X-Rate-Limit-Remaining:
+      - '58'
+      X-Rate-Limit-Reset:
+      - '29'
+      X-Request-Id:
+      - 8b43d4f91183871f761bee73f9bca5a7
+      Content-Length:
+      - '942'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"external_id":"","subject":"Testing Quick Case","priority":8,"locked_until":null,"description":"Some
+        additional Description regarding this email.","status":"resolved","type":"email","labels":[],"language":"de","active_at":"2013-05-10T19:08:27Z","created_at":"2013-05-10T19:08:10Z","updated_at":"2013-05-10T19:08:10Z","received_at":null,"custom_fields":{"my_new_custom_field":null,"my_new_number_field":null,"my_new_date_field":null,"my_new_boolean_field":null,"my_new_list_field":null},"_links":{"self":{"href":"/api/v2/cases/3014","class":"case"},"message":{"href":"/api/v2/cases/3014/message","class":"email"},"customer":{"href":"/api/v2/customers/37823480","class":"customer"},"assigned_user":null,"assigned_group":null,"locked_by":null,"replies":{"href":"/api/v2/cases/3014/replies","class":"reply"},"notes":{"href":"/api/v2/cases/3014/notes","class":"note"},"attachments":{"href":"/api/v2/cases/3014/attachments","class":"attachment"}}}'
+    http_version: 
+  recorded_at: Thu, 15 Aug 2013 21:20:31 GMT
+recorded_with: VCR 2.5.0
