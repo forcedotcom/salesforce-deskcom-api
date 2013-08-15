@@ -30,8 +30,8 @@ VCR.configure do |config|
   config.hook_into :typhoeus, :faraday
   config.cassette_library_dir = 'spec/cassettes'
   config.configure_rspec_metadata!
-  # config.default_cassette_options = { :record => :new_episodes }
   config.before_record { |i| i.request.headers.delete('Authorization') }
+  config.ignore_request { |request| URI(request.uri).host == 'localhost' }
 end
 
 RSpec.configure do |config|

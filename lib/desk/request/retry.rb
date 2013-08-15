@@ -1,20 +1,29 @@
 module Desk
   module Request
     class Retry < Faraday::Request::Retry
+      def initialize(app, options = {})
+        @max = options[:max] || 3
+        @interval = options[:interval] || 10
+        super(app)
+      end
+
       def call(env)
-        retries = @retries
+        retries   = @retries
+        interval  = @interval
+        
         begin
           @app.call(env)
         rescue Desk::Error::TooManyRequests => e
           if retries > 0 and e.rate_limit.reset_in
-            retries -= 1
+            retries = 0
             sleep e.rate_limit.reset_in
+            retry
           end
           raise
         rescue exception_matcher
           if retries > 0
             retries -= 1
-            sleep 10
+            sleep @interval
             retry
           end
           raise
