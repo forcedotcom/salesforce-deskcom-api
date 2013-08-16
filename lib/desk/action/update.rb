@@ -1,7 +1,7 @@
 module Desk
   module Action
     module Update
-      def update(params)
+      def update(params = {})
         params.each_pair do |key, value|
           send("#{key}=", value) if respond_to?("#{key}=")
         end

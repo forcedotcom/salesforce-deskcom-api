@@ -23,7 +23,7 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Thu, 15 Aug 2013 21:20:33 GMT
+      - Fri, 16 Aug 2013 17:15:34 GMT
       ETag:
       - '"1376586898"'
       Status:
@@ -37,11 +37,11 @@ http_interactions:
       X-Rate-Limit-Limit:
       - '60'
       X-Rate-Limit-Remaining:
-      - '42'
+      - '57'
       X-Rate-Limit-Reset:
-      - '27'
+      - '26'
       X-Request-Id:
-      - 474bebf1200446a5e7b7d24721b12a89
+      - dc2fbcd750a2cd38b1237ed62f31098d
       Content-Length:
       - '1868'
       Connection:
@@ -52,5 +52,5 @@ http_interactions:
         Stachl","public_name":"Thomas Stachl","email":"tstachl@salesforce.com","level":"siteadmin_billing","_links":{"self":{"href":"/api/v2/users/16096734","class":"user"},"preferences":{"href":"/api/v2/users/16096734/preferences","class":"user_preference"},"searches":{"href":"/api/v2/users/16096734/searches","class":"search"}}},{"name":"Dan
         Stern","public_name":"Dan","email":"dan@desk.com","level":"siteadmin","_links":{"self":{"href":"/api/v2/users/16107036","class":"user"},"preferences":{"href":"/api/v2/users/16107036/preferences","class":"user_preference"},"searches":{"href":"/api/v2/users/16107036/searches","class":"search"}}},{"name":"Mark","public_name":"Mark","email":"mchasse_old@desk.com","level":"siteadmin_billing","_links":{"self":{"href":"/api/v2/users/17069383","class":"user"},"preferences":{"href":"/api/v2/users/17069383/preferences","class":"user_preference"},"searches":{"href":"/api/v2/users/17069383/searches","class":"search"}}},{"name":"Mich","public_name":"Mich","email":"mich@desk.com","level":"siteadmin_billing","_links":{"self":{"href":"/api/v2/users/17069397","class":"user"},"preferences":{"href":"/api/v2/users/17069397/preferences","class":"user_preference"},"searches":{"href":"/api/v2/users/17069397/searches","class":"search"}}},{"name":"Keith","public_name":"Keith","email":"keith@desk.com","level":"agent","_links":{"self":{"href":"/api/v2/users/17250751","class":"user"},"preferences":{"href":"/api/v2/users/17250751/preferences","class":"user_preference"},"searches":{"href":"/api/v2/users/17250751/searches","class":"search"}}}]}}'
     http_version: 
-  recorded_at: Thu, 15 Aug 2013 21:20:33 GMT
+  recorded_at: Fri, 16 Aug 2013 17:15:35 GMT
 recorded_with: VCR 2.5.0

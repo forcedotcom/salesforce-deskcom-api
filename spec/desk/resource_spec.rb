@@ -98,6 +98,13 @@ describe Desk::Resource do
       user = subject.users.first
       lambda { user.update(name: 'Some User') }.should raise_error(Desk::Error::MethodNotSupported)
     end
+
+    it 'can update without a hash', :vcr do
+      topic = subject.topics.first
+      topic.description = 'Another description update.'
+      topic.update
+      subject.topics.first.description.should eq('Another description update.')
+    end
   end
 
   context '#delete' do
