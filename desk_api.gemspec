@@ -6,7 +6,7 @@ Gem::Specification.new do |gem|
   gem.name              = 'desk_api'
   gem.summary           = 'A lightweight, flexible wrapper for the desk.com REST API.'
   gem.description       = 'This is a lightweight, flexible ruby gem to interact with the desk.com REST API. It allows to create, read and delete resources available through the API endpoints. It can be used either with OAuth or HTTP Basic Authentication.'
-  gem.homepage          = 'http://github.com/tstachl/desk.rb'
+  gem.homepage          = 'http://github.com/tstachl/desk'
   gem.version           = Desk::VERSION
 
   gem.authors           = ['Thomas Stachl']
