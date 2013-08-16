@@ -6,7 +6,16 @@ desk.com has released v2 of their REST API a few months ago and provides a lot m
 This example shows you how to create a new client and establish a connection to the API. It shows the four request methods supported by the desk.com API (`GET`, `POST`, `PATCH` and `DELETE`).
 
 ```ruby
+# Basic Auth
 client = Desk::Client.new username: 'thomas@example.com', password: 'somepassword', subdomain: 'devel'
+# OAuth
+client = Desk::Client.new({
+  token: 'TOKEN',
+  token_secret: 'TOKEN_SECRET',
+  consumer_key: 'CONSUMER_KEY',
+  consumer_secret: 'CONSUMER_SECRET',
+  subdomain: 'devel'
+})
 
 response = client.get '/api/v2/topics'
 response = client.post '/api/v2/topics', name: 'My new Topic', allow_questions: true
