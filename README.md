@@ -1,4 +1,4 @@
-# desk.com APIv2 [![Build Status](https://secure.travis-ci.org/tstachl/desk.png)](http://travis-ci.org/tstachl/desk) [![Coverage Status](https://coveralls.io/repos/tstachl/desk_api/badge.png)](https://coveralls.io/r/tstachl/desk) [![Dependency Status](https://gemnasium.com/tstachl/desk.png)](https://gemnasium.com/tstachl/desk)
+# desk.com APIv2 [![Build Status](https://secure.travis-ci.org/tstachl/desk.png)](http://travis-ci.org/tstachl/desk) [![Coverage Status](https://coveralls.io/repos/tstachl/desk/badge.png?branch=develop)](https://coveralls.io/r/tstachl/desk?branch=develop) [![Dependency Status](https://gemnasium.com/tstachl/desk.png)](https://gemnasium.com/tstachl/desk)
 
 desk.com has released v2 of their REST API a few months ago and provides a lot more functionality. You should read up on the current progress of the [API](http://dev.desk.com/API/changelog). This library wraps all of it into an easy to use ruby module. We'll try to keep up with the changes of the API but things might still break unexpectedly.
 
