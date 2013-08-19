@@ -17,7 +17,7 @@ require 'desk'
 begin
   require_relative '../config'
 rescue LoadError
-  module Desk
+  module DeskApi
     CONFIG = {
       username: 'devel@example.com',
       password: '1234password',

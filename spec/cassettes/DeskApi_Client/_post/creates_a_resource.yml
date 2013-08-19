@@ -1,0 +1,58 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://devel.desk.com/api/v2/topics
+    body:
+      encoding: UTF-8
+      string: '{"name":"Test Topic"}'
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - desk.com Ruby Gem v0.1.0
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: 
+    headers:
+      Accept-Ranges:
+      - bytes
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 19 Aug 2013 23:51:35 GMT
+      ETag:
+      - '"d2a4b62bd50a12b48e02ab932b328c01"'
+      Location:
+      - https://devel.desk.com/api/v2/topics/558245
+      Status:
+      - 201 Created
+      Vary:
+      - X-AppVersion
+      X-AppVersion:
+      - '7.9'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Rate-Limit-Limit:
+      - '60'
+      X-Rate-Limit-Remaining:
+      - '38'
+      X-Rate-Limit-Reset:
+      - '25'
+      X-Request-Id:
+      - 54760404a640fbfe0a3bff1656fee0a0
+      Content-Length:
+      - '400'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"name":"Test Topic","description":null,"position":5,"allow_questions":true,"in_support_center":null,"created_at":"2013-08-19T23:51:35Z","updated_at":"2013-08-19T23:51:35Z","_links":{"self":{"href":"/api/v2/topics/558245","class":"topic"},"articles":{"href":"/api/v2/topics/558245/articles","class":"article"},"translations":{"href":"/api/v2/topics/558245/translations","class":"topic_translation"}}}'
+    http_version: 
+  recorded_at: Mon, 19 Aug 2013 23:51:35 GMT
+recorded_with: VCR 2.5.0

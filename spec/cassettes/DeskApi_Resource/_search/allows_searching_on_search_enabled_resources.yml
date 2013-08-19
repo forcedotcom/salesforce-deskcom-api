@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://devel.desk.com/api/v2/articles/search?text=Lorem+Ipsum
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - desk.com Ruby Gem v0.1.0
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      Accept-Ranges:
+      - bytes
+      Cache-Control:
+      - must-revalidate, private, max-age=0
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 19 Aug 2013 23:51:35 GMT
+      ETag:
+      - '"498b2a1a02496207b3b2c1f524be8349"'
+      Status:
+      - 200 OK
+      Vary:
+      - X-AppVersion
+      X-AppVersion:
+      - '7.9'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Rate-Limit-Limit:
+      - '60'
+      X-Rate-Limit-Remaining:
+      - '40'
+      X-Rate-Limit-Reset:
+      - '26'
+      X-Request-Id:
+      - 4ac709e6eda2d0d8d2d3ca3dd154e5b4
+      Content-Length:
+      - '293'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"total_entries":0,"_links":{"self":{"href":"/api/v2/articles?page=1&per_page=30","class":"page"},"first":{"href":"/api/v2/articles?page=1&per_page=30","class":"page"},"last":{"href":"/api/v2/articles?page=1&per_page=30","class":"page"},"previous":null,"next":null},"_embedded":{"entries":[]}}'
+    http_version: 
+  recorded_at: Mon, 19 Aug 2013 23:51:35 GMT
+recorded_with: VCR 2.5.0

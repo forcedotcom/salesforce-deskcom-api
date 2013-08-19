@@ -1,4 +1,4 @@
-# desk.com APIv2 [![Build Status](https://secure.travis-ci.org/tstachl/desk.png)](http://travis-ci.org/tstachl/desk) [![Coverage Status](https://coveralls.io/repos/tstachl/desk/badge.png)](https://coveralls.io/r/tstachl/desk) [![Dependency Status](https://gemnasium.com/tstachl/desk.png)](https://gemnasium.com/tstachl/desk)
+# desk.com APIv2 [![Build Status](https://secure.travis-ci.org/tstachl/desk.png)](http://travis-ci.org/tstachl/desk) [![Coverage Status](https://coveralls.io/repos/tstachl/desk_api/badge.png)](https://coveralls.io/r/tstachl/desk) [![Dependency Status](https://gemnasium.com/tstachl/desk.png)](https://gemnasium.com/tstachl/desk)
 
 desk.com has released v2 of their REST API a few months ago and provides a lot more functionality. You should read up on the current progress of the [API](http://dev.desk.com/API/changelog). This library wraps all of it into an easy to use ruby module. We'll try to keep up with the changes of the API but things might still break unexpectedly.
 
@@ -13,9 +13,9 @@ This example shows you how to create a new client and establish a connection to 
 
 ```ruby
 # Basic Auth
-client = Desk::Client.new username: 'thomas@example.com', password: 'somepassword', subdomain: 'devel'
+client = DeskApi::Client.new username: 'thomas@example.com', password: 'somepassword', subdomain: 'devel'
 # OAuth
-client = Desk::Client.new({
+client = DeskApi::Client.new({
   token: 'TOKEN',
   token_secret: 'TOKEN_SECRET',
   consumer_key: 'CONSUMER_KEY',
@@ -32,16 +32,16 @@ response = client.delete '/api/v2/topics/1'
 For ease of use and if you only create one connection to the desk.com API you can use `Desk` directly:
 
 ```ruby
-Desk.configure do |config|
+DeskApi.configure do |config|
   config.username = 'thomas@example.com'
   config.password = 'somepassword'
   config.subdomain = 'devel'
 end
 
-Desk.get '/api/v2/topics'
-Desk.post '/api/v2/topics', name: 'My new Topic', allow_questions: true
-Desk.patch '/api/v2/topics/1', name: 'Changed the Topic Name'
-Desk.delete '/api/v2/topics/1'
+DeskApi.get '/api/v2/topics'
+DeskApi.post '/api/v2/topics', name: 'My new Topic', allow_questions: true
+DeskApi.patch '/api/v2/topics/1', name: 'Changed the Topic Name'
+DeskApi.delete '/api/v2/topics/1'
 ```
 
 ## Working with Resources and Collections
@@ -51,10 +51,10 @@ The API supports RESTful resources and so does this wrapper. Those resources are
 ### Finders
 ```ruby
 # get the first user and find a case by url.
-found_case = Desk.users.first.by_url '/api/v2/cases/1'
+found_case = DeskApi.users.first.by_url '/api/v2/cases/1'
 
 # find a case by case number
-found_case = Desk.cases.by_id 1
+found_case = DeskApi.cases.by_id 1
 ```
 
 ### Pagination
@@ -62,7 +62,7 @@ found_case = Desk.cases.by_id 1
 As mentioned above you can also navigate between resources and mainly pages of collections.
 
 ```ruby
-cases = Desk.cases
+cases = DeskApi.cases
 cases.each do |my_case|
   # do something with the case
 end
@@ -85,9 +85,9 @@ Pagination is pretty obvious but the cool part about pagination or rather resour
 
 ```ruby
 # get the customer of the first case of the first page
-customer = Desk.cases.first.customer
+customer = DeskApi.cases.first.customer
 # who sent the first outbound reply of the first email
-user_name = Desk.cases.select{ |my_case| 
+user_name = DeskApi.cases.select{ |my_case| 
               my_case.type == 'email'
             }.first.replies.select{ |reply|
               reply.direction == 'out'
@@ -96,29 +96,29 @@ user_name = Desk.cases.select{ |my_case|
 
 ### Lazy loading
 
-Collections and resources in general are lazily loaded, meaning if you request the cases `Desk.cases` no actual request will be set off until you actually request data. This makes sure only necessary requests are fired and which keeps the overall requests low and spares the [desk.com rate limit](http://dev.desk.com/API/using-the-api/#rate-limits).
+Collections and resources in general are lazily loaded, meaning if you request the cases `DeskApi.cases` no actual request will be set off until you actually request data. This makes sure only necessary requests are fired and which keeps the overall requests low and spares the [desk.com rate limit](http://dev.desk.com/API/using-the-api/#rate-limits).
 
 ```ruby
-Desk.cases.page(10).per_page(50).each do |my_case|
+DeskApi.cases.page(10).per_page(50).each do |my_case|
   # in this method chain `.each' is the first method that acutally sends a request
 end
 
 # however if you request the current page numer and the resource is not loaded
 # it'll send a request
-Desk.cases.page == 1
+DeskApi.cases.page == 1
 ```
 
 ### Create, Update and Delete
 
-Of course we support creating, updating and deleting resources but not all resources can be deleted or updated or created, if that's the case for the resource you're trying to update, it'll throw a `Desk::Error::MethodNotSupported` error. The specific method won't be defined on the resource either `Desk.cases.first.respond_to?(:delete) == false`.
+Of course we support creating, updating and deleting resources but not all resources can be deleted or updated or created, if that's the case for the resource you're trying to update, it'll throw a `DeskApi::Error::MethodNotSupported` error. The specific method won't be defined on the resource either `DeskApi.cases.first.respond_to?(:delete) == false`.
 
 ```ruby
 # let's create an article
-new_article = Desk.articles.create({
+new_article = DeskApi.articles.create({
                 subject: 'Some Subject',
                 body: 'Some Body',
                 _links: {
-                  topic: Desk.topics.first.get_self
+                  topic: DeskApi.topics.first.get_self
                 }
               })
 
@@ -135,8 +135,8 @@ end
 
 # ATTENTION: Cases can not be deleted!
 begin
-  Desk.cases.first.delete
-rescue Desk::Error::MethodNotSupported => e
+  DeskApi.cases.first.delete
+rescue DeskApi::Error::MethodNotSupported => e
   # too bad
 end
 ```
@@ -146,7 +146,7 @@ end
 As you have seen in prior examples for each field on the resource we create a getter and setter. Be careful if a resource is not updatable it won't have a setter specified.
 
 ```ruby
-customer = Desk.customers.by_id(1)
+customer = DeskApi.customers.by_id(1)
 
 puts customer.first_name
 puts customer.last_name
@@ -161,28 +161,28 @@ updated_customer = customer.update title: 'Master of the Universe'
 
 # users are not updatable
 begin
-  user = Desk.users.first
+  user = DeskApi.users.first
   user.name = 'Not updateable'
-rescue Desk::Error::MethodNotSupported
+rescue DeskApi::Error::MethodNotSupported
   # too bad
 end
 ```
 
 ### API Errors
 
-Sometimes the API is going to return errors, eg. Validation Error. In these cases we wrap the API error into a `Desk::Error`. Here are the common errors:
+Sometimes the API is going to return errors, eg. Validation Error. In these cases we wrap the API error into a `DeskApi::Error`. Here are the common errors:
 
 ```ruby
-Desk::Error::BadRequest             #=> 400 Status
-Desk::Error::Unauthorized           #=> 401 Status
-Desk::Error::Forbidden              #=> 403 Status
-Desk::Error::NotFound               #=> 404 Status
-Desk::Error::MethodNotAllowed       #=> 405 Status
-Desk::Error::NotAcceptable          #=> 406 Status
-Desk::Error::Conflict               #=> 409 Status
-Desk::Error::UnsupportedMediaType   #=> 415 Status
-Desk::Error::UnprocessableEntity    #=> 422 Status
-Desk::Error::TooManyRequests        #=> 429 Status
+DeskApi::Error::BadRequest             #=> 400 Status
+DeskApi::Error::Unauthorized           #=> 401 Status
+DeskApi::Error::Forbidden              #=> 403 Status
+DeskApi::Error::NotFound               #=> 404 Status
+DeskApi::Error::MethodNotAllowed       #=> 405 Status
+DeskApi::Error::NotAcceptable          #=> 406 Status
+DeskApi::Error::Conflict               #=> 409 Status
+DeskApi::Error::UnsupportedMediaType   #=> 415 Status
+DeskApi::Error::UnprocessableEntity    #=> 422 Status
+DeskApi::Error::TooManyRequests        #=> 429 Status
 ```
 
 Please also have a look at all [desk.com API errors](http://dev.desk.com/API/using-the-api/#status-codes) and their respective meanings.
