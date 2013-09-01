@@ -1,7 +1,7 @@
 module DeskApi
   module Action
     module Embedded
-    protected
+    private
       def setup_embedded(entries)
         @records = entries.map do |record|
           resource(record._links.self['class']).new(client, record, true)

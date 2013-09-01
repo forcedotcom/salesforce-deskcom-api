@@ -1,7 +1,7 @@
 module DeskApi
   module Action
     module Resource
-    protected
+    private
       def resource(name)
         require "desk_api/resource/#{name}"
         "DeskApi::Resource::#{name.classify}".constantize

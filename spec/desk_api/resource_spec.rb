@@ -49,6 +49,21 @@ describe DeskApi::Resource do
     end
   end
 
+  context '#get_self' do
+    it 'returns the hash for self' do
+      subject.articles.get_self.should eq({
+        "href" => "/api/v2/articles",
+        "class" => "page"
+      })
+    end
+  end
+
+  context '#get_href' do
+    it 'returns the href for self' do
+      subject.articles.get_href.should eq('/api/v2/articles')
+    end
+  end
+
   context '#resource', :vcr do
     it 'requires the specified resource' do
       subject.send(:resource, 'article').should equal(DeskApi::Resource::Article)

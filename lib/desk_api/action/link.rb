@@ -1,7 +1,7 @@
 module DeskApi
   module Action
     module Link
-    protected
+    private
       attr_accessor :_links
       # Handles the _links part of the HAL response and sets up the associations.
       # It is used by the client to setup the initial resources like `users`, `cases` and
@@ -18,7 +18,7 @@ module DeskApi
             # this is a really ugly hack but necessary for sub resources which aren't declared consistently
             definition['class'] = 'page' if method.pluralize == method
             # get the client
-            client = self.instance_of?(DeskApi::Client) ? self : self.client
+            client = self.instance_of?(DeskApi::Client) ? self : @client
             # create the new resource
             @_links[method]['resource'] = resource(definition['class']).new client, Hashie::Mash.new({ _links: { self: definition } })
           end

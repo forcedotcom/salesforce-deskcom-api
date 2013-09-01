@@ -1,7 +1,7 @@
 module DeskApi
   module Action
     module Field
-    protected
+    private
       # Handles the _links part of the HAL response and sets up the associations.
       # It is used by the client to setup the initial resources like `users`, `cases` and
       # so on, as well as by the resource object itself for sub resources (`cases.replies`).

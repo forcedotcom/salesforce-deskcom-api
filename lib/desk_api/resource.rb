@@ -29,7 +29,20 @@ module DeskApi
       @_links.self
     end
 
+    def get_href
+      get_self['href']
+    end
+
   protected
+
+    def exec!(reload = false)
+      return self if loaded and !reload
+      definition, @loaded = client.get(@_links.self.href).body, true
+      setup(definition)
+    end
+
+  private
+    
     attr_accessor :client, :loaded, :_changed
 
     def setup(definition)
@@ -38,16 +51,11 @@ module DeskApi
       self
     end
 
-    def exec!(reload = false)
-      return self if loaded and !reload
-      definition, @loaded = client.get(@_links.self.href).body, true
-      setup(definition)
-    end
-
     def method_missing(method, *args, &block)
       self.exec! if !loaded
       raise DeskApi::Error::MethodNotSupported unless self.respond_to?(method.to_sym)
       self.send(method, *args, &block) 
     end
+
   end
 end
