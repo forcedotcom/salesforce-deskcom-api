@@ -41,9 +41,9 @@ module DeskApi
 
     def middleware
       @middleware ||= Proc.new do |builder|
+        builder.request :json
         builder.request :basic_auth, @username, @password if basic_auth.values.all?
         builder.request :oauth, oauth if oauth.values.all?
-        builder.request :json
         builder.request :retry
 
         builder.response :mashify

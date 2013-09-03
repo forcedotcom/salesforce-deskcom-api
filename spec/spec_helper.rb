@@ -23,6 +23,14 @@ rescue LoadError
       password: '1234password',
       subdomain: 'devel'
     }
+
+    OAUTH_CONFIG = {
+      consumer_key: 'my_consumer_key',
+      consumer_secret: 'my_consumer_secret',
+      token: 'my_token',
+      token_secret: 'my_token_secret',
+      subdomain: 'devel'
+    }
   end
 end
 

@@ -82,29 +82,65 @@ describe DeskApi::Client do
     end
   end
 
-  describe '#get', :vcr do
-    it 'fetches resources' do
-      response = subject.get('/api/v2/cases/3014')
-      response.body.subject.should eq('Testing Quick Case')
+  context 'using Basic Authentication' do
+    describe '#get', :vcr do
+      it 'fetches resources' do
+        response = subject.get('/api/v2/cases/3014')
+        response.body.subject.should eq('Testing Quick Case')
+      end
+    end
+
+    describe '#post', :vcr do
+      it 'creates a resource' do
+        response = subject.post('/api/v2/topics', @topic_create_data)
+        response.body.name.should eq(@topic_create_data[:name])
+      end
+    end
+
+    describe '#patch', :vcr do
+      it 'updates a resource' do
+        subject.patch('/api/v2/topics/556402', @topic_update_data).body.name.should eq(@topic_update_data[:name])
+      end
+    end
+
+    describe '#delete', :vcr do
+      it 'deletes a resource' do
+        subject.delete('/api/v2/topics/558245').status.should eq(204)
+      end
     end
   end
 
-  describe '#post', :vcr do
-    it 'creates a resource' do
-      response = subject.post('/api/v2/topics', @topic_create_data)
-      response.body.name.should eq(@topic_create_data[:name])
+  context 'using OAuth' do
+    before do
+      @client = DeskApi::Client.new DeskApi::OAUTH_CONFIG
+      @article_create_data = { subject: 'Testing OAuth', body: 'OAuth testing', _links: { topic: { href: '/api/v2/topics/498301' } } }
+      @article_update_data = { subject: 'Testing Updated OAuth' }
     end
-  end
 
-  describe '#patch', :vcr do
-    it 'updates a resource' do
-      subject.patch('/api/v2/topics/556402', @topic_update_data).body.name.should eq(@topic_update_data[:name])
+    describe '#get', :vcr do
+      it 'fetches resources' do
+        response = @client.get('/api/v2/articles/1213277')
+        response.body.subject.should eq('asdf')
+      end
     end
-  end
 
-  describe '#delete', :vcr do
-    it 'deletes a resource' do
-      subject.delete('/api/v2/topics/558245').status.should eq(204)
+    describe '#post', :vcr do
+      it 'creates a resource' do
+        response = @client.post('/api/v2/articles', @article_create_data)
+        response.body.subject.should eq(@article_create_data[:subject])
+      end
+    end
+
+    describe '#patch', :vcr do
+      it 'updates a resource' do
+        @client.patch('/api/v2/articles/1285134', @article_update_data).body.subject.should eq(@article_update_data[:subject])
+      end
+    end
+
+    describe '#delete', :vcr do
+      it 'deletes a resource' do
+        @client.delete('/api/v2/articles/1285134').status.should eq(204)
+      end
     end
   end
 
