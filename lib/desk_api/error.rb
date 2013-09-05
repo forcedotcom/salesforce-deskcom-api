@@ -11,10 +11,11 @@ module DeskApi
     # @param response_headers [Hash]
     # @param code [Integer]
     # @return [DeskApi::Error]
-    def initialize(exception=$!, response_headers={}, code = nil)
+    def initialize(exception=$!, response_headers={}, code = nil, errors = nil)
       @rate_limit = DeskApi::RateLimit.new(response_headers)
       @wrapped_exception = exception
       @code = code
+      @errors = errors
       exception.respond_to?(:backtrace) ? super(exception.message) : super(exception.to_s)
     end
 
@@ -28,8 +29,8 @@ module DeskApi
       # @param response [Hash]
       # @return [DeskApi::Error]
       def from_response(response = {})
-        error, code = parse_error(response[:body]), response[:status]
-        new(error, response[:response_headers], code)
+        error, errors, code = parse_error(response[:body]), parse_errors(response[:body]), response[:status]
+        new(error, response[:response_headers], code, errors)
       end
 
       # @return [Hash]
@@ -50,6 +51,12 @@ module DeskApi
       end
 
     private
+
+      def parse_errors(body)
+        if body['errors']
+          body['errors']
+        end
+      end
 
       def parse_error(body)
         if body['message']
