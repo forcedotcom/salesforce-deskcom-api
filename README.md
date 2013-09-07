@@ -54,6 +54,8 @@ The API supports RESTful resources and so does this wrapper. Those resources are
 found_case = DeskApi.users.first.by_url '/api/v2/cases/1'
 
 # find a case by case number
+found_case = DeskApi.cases.find 1
+# the old #by_id still works
 found_case = DeskApi.cases.by_id 1
 ```
 
@@ -106,6 +108,27 @@ end
 # however if you request the current page numer and the resource is not loaded
 # it'll send a request
 DeskApi.cases.page == 1
+```
+
+### Side loading
+
+APIv2 has a lot of great new features but the one I'm most excited about is side loading or embedding resources. You basically request one resource and tell the API to embed sub resources, eg. you need cases but also want to have the `assigned_user` - instead of requesting all cases and the `assigned_user` for each of those cases (30 cases = 31 API requests) you can now embed `assigned_user` into your cases list view (1 API REQUEST!!!!).
+
+Of course we had to bring this awesomeness into the API wrapper as soon as possible, so here you go:
+
+```ruby
+# fetch cases with their respective customers
+cases = DeskApi.cases.embed(:customer)
+customer = cases.first.customer
+
+# you can use this feature in finders too
+my_case = DeskApi.cases.find(1, embed: :customer)
+# OR
+my_case = DeskApi.cases.find(1, embed: [:customer, :assigned_user, :assigned_group])
+
+customer = my_case.customer
+assigned_user = my_case.assigned_user
+assigned_group = my_case.assigned_group
 ```
 
 ### Create, Update and Delete
@@ -191,7 +214,7 @@ Please also have a look at all [desk.com API errors](http://dev.desk.com/API/usi
 
 (The MIT License)
 
-Copyright (c) 2013 Thomas Stachl &lt;tom@desk.com&gt;
+Copyright (c) 2013 Thomas Stachl &lt;thomas@desk.com&gt;
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

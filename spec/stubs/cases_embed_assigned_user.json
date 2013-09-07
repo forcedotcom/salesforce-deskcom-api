@@ -1,0 +1,105 @@
+{
+    "total_entries": 329,
+    "_links": {
+        "self": {
+            "href": "/api/v2/cases?page=1&per_page=1",
+            "class": "page"
+        },
+        "first": {
+            "href": "/api/v2/cases?page=1&per_page=1",
+            "class": "page"
+        },
+        "last": {
+            "href": "/api/v2/cases?page=329&per_page=1",
+            "class": "page"
+        },
+        "previous": null,
+        "next": {
+            "href": "/api/v2/cases?page=2&per_page=1",
+            "class": "page"
+        }
+    },
+    "_embedded": {
+        "entries": [
+            {
+                "external_id": null,
+                "subject": "",
+                "priority": 9,
+                "locked_until": null,
+                "description": "",
+                "status": "open",
+                "type": "phone",
+                "labels": [],
+                "language": "en",
+                "active_at": "2013-09-07T19:38:58Z",
+                "created_at": "2013-05-09T17:02:16Z",
+                "updated_at": "2013-09-07T19:39:07Z",
+                "received_at": "2013-05-09T17:02:16Z",
+                "custom_fields": {
+                    "my_new_custom_field": "",
+                    "my_new_number_field": "0",
+                    "my_new_date_field": "",
+                    "my_new_boolean_field": "0",
+                    "my_new_list_field": "Option 1"
+                },
+                "_links": {
+                    "self": {
+                        "href": "/api/v2/cases/3011",
+                        "class": "case"
+                    },
+                    "message": {
+                        "href": "/api/v2/cases/3011/message",
+                        "class": "phone"
+                    },
+                    "customer": {
+                        "href": "/api/v2/customers/37823480",
+                        "class": "customer"
+                    },
+                    "assigned_user": {
+                        "href": "/api/v2/users/16096734",
+                        "class": "user"
+                    },
+                    "assigned_group": {
+                        "href": "/api/v2/groups/171213",
+                        "class": "group"
+                    },
+                    "locked_by": null,
+                    "replies": {
+                        "href": "/api/v2/cases/3011/replies",
+                        "class": "reply"
+                    },
+                    "notes": {
+                        "href": "/api/v2/cases/3011/notes",
+                        "class": "note"
+                    },
+                    "attachments": {
+                        "href": "/api/v2/cases/3011/attachments",
+                        "class": "attachment"
+                    }
+                },
+                "_embedded": {
+                    "assigned_user": {
+                        "name": "Thomas Stachl",
+                        "public_name": "Thomas Stachl",
+                        "email": "tstachl@salesforce.com",
+                        "level": "siteadmin_billing",
+                        "_links": {
+                            "self": {
+                                "href": "/api/v2/users/16096734",
+                                "class": "user"
+                            },
+                            "preferences": {
+                                "href": "/api/v2/users/16096734/preferences",
+                                "class": "user_preference"
+                            },
+                            "searches": {
+                                "href": "/api/v2/users/16096734/searches",
+                                "class": "search"
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}

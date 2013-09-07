@@ -2,7 +2,6 @@ module DeskApi
   class Resource
     class Page < DeskApi::Resource
       include Enumerable
-      include DeskApi::Action::Embedded
 
       [
         :all?, :any?,
@@ -31,43 +30,27 @@ module DeskApi
       [:page, :per_page].each do |method|
         define_method(method) do |value = nil|
           if not value
-            self.exec! if self.query_params(method.to_s) == nil
-            return self.query_params(method.to_s).to_i
+            self.exec! if self.query_params_include?(method.to_s) == nil
+            return self.query_params_include?(method.to_s).to_i
           end
           self.query_params = Hash[method.to_s, value.to_s]
           self
         end
       end
 
-      def by_id(id)
-        by_url("#{clean_base_url}/#{id}")
+      def find(id, options = {})
+        res = base_class.new(client, Hashie::Mash.new({ _links: { self: { href: "#{clean_base_url}/#{id}" }}}))
+        if options[:embed]
+          options[:embed] = [options[:embed]] unless options[:embed].kind_of?(Array)
+          res.embed(*options[:embed])
+        end
+        res.exec!
       end
+      alias_method :by_id, :find
 
     protected
     
       attr_reader :records
-
-      def setup(definition)
-        setup_embedded(definition._embedded['entries']) if definition._embedded?
-        super(definition)
-      end
-
-      def query_params(param)
-        params = Addressable::URI.parse(@_links.self.href).query_values || {}
-        params.include?(param) ? params[param] : nil
-      end
-
-      def query_params=(params = {})
-        return @_links.self.href if params.empty?
-
-        uri = Addressable::URI.parse(@_links.self.href)
-        params = (uri.query_values || {}).merge(params)
-
-        @loaded = false unless params == uri.query_values
-
-        uri.query_values = params
-        @_links.self.href = uri.to_s
-      end
 
       def clean_base_url
         Addressable::URI.parse(@_links.self.href).path.gsub(/\/search$/, '') 

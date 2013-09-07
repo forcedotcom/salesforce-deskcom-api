@@ -3,6 +3,8 @@ require 'desk_api/request/retry'
 
 describe DeskApi::Request::Retry do
   before do
+    VCR.turn_off!
+
     @stubs = Faraday::Adapter::Test::Stubs.new
     @conn = Faraday.new do |builder|
       builder.request :retry, { interval: 0 }
@@ -10,7 +12,11 @@ describe DeskApi::Request::Retry do
     end
   end
 
-  it 'retries three times', vcr: { record: :none } do
+  after do
+    VCR.turn_on!
+  end
+
+  it 'retries three times' do
     times_called = 0
 
     @stubs.post('/echo') do
@@ -22,7 +28,7 @@ describe DeskApi::Request::Retry do
     times_called.should eq(3)
   end
 
-  it 'retries once if we have too many requests', vcr: { record: :none } do
+  it 'retries once if we have too many requests' do
     times_called = 0
 
     @stubs.post('/echo') do
@@ -34,7 +40,7 @@ describe DeskApi::Request::Retry do
           'status' => 429,
           'x-rate-limit-limit' => '60',
           'x-rate-limit-remaining' => '0',
-          'x-rate-limit-reset' => '1',
+          'x-rate-limit-reset' => '0',
           'content-length' => '31'
         }
       })
