@@ -29,7 +29,7 @@ response = client.patch '/api/v2/topics/1', name: 'Changed the Topic Name'
 response = client.delete '/api/v2/topics/1' 
 ```
 
-For ease of use and if you only create one connection to the desk.com API you can use `Desk` directly:
+For ease of use and if you only create one connection to the desk.com API you can use `DeskApi` directly:
 
 ```ruby
 DeskApi.configure do |config|
@@ -112,7 +112,7 @@ DeskApi.cases.page == 1
 
 ### Side loading
 
-APIv2 has a lot of great new features but the one I'm most excited about is side loading or embedding resources. You basically request one resource and tell the API to embed sub resources, eg. you need cases but also want to have the `assigned_user` - instead of requesting all cases and the `assigned_user` for each of those cases (30 cases = 31 API requests) you can now embed `assigned_user` into your cases list view (1 API REQUEST!!!!).
+APIv2 has a lot of great new features but the one I'm most excited about is side loading or embedding resources. You basically request one resource and tell the API to embed sub resources, eg. you need cases but also want to have the `assigned_user` - instead of requesting all cases and the `assigned_user` for each of those cases (30 cases = 31 API requests) you can now embed `assigned_user` into your cases list view (1 API request).
 
 Of course we had to bring this awesomeness into the API wrapper as soon as possible, so here you go:
 
