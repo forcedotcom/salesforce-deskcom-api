@@ -46,14 +46,14 @@ DeskApi.delete '/api/v2/topics/1'
 
 ## Working with Resources and Collections
 
-The API supports RESTful resources and so does this wrapper. Those resources are automatically discovered, meaning you can navigate around without having to worry about anything. We also support two finder methods `by_url` and `by_id`, the former works with any resource, the latter needs a collection.
+The API supports RESTful resources and so does this wrapper. These resources are automatically discovered, meaning you can navigate around without having to worry about anything. We also support two finder methods `by_url` and `find`, the former works with any resource, the latter needs a collection.
 
 ### Finders
 ```ruby
-# get the first user and find a case by url.
+# #by_url doesn't care where it is called.
 found_case = DeskApi.users.first.by_url '/api/v2/cases/1'
 
-# find a case by case number
+# #find needs to be called on a collection
 found_case = DeskApi.cases.find 1
 # the old #by_id still works
 found_case = DeskApi.cases.by_id 1
