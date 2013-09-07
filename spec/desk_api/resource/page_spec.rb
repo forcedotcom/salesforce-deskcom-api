@@ -14,12 +14,12 @@ describe DeskApi::Resource::Page do
     end
 
     it 'allows to get query params from the current resource' do
-      @page.send(:query_params, 'page').should eq('2')
-      @page.send(:query_params, 'per_page').should eq('50')
+      @page.send(:query_params_include?, 'page').should eq('2')
+      @page.send(:query_params_include?, 'per_page').should eq('50')
     end
 
     it 'returns nil if param not found' do
-      @page.send(:query_params, 'blup').should be_nil
+      @page.send(:query_params_include?, 'blup').should be_nil
     end
   end
 
@@ -56,9 +56,13 @@ describe DeskApi::Resource::Page do
     end
   end
 
-  context '#by_id' do
+  context '#find' do
     it 'loads the requested resource', :vcr do
-      subject.cases.by_id(3065).subject.should eq('Testing the Tank again')
+      subject.cases.find(3065).subject.should eq('Testing the Tank again')
+    end
+
+    it 'has an alias by_id', :vcr do
+      subject.cases.find(3065).subject.should eq('Testing the Tank again')
     end
   end
 end

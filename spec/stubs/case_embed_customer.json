@@ -1,0 +1,115 @@
+{
+    "external_id": null,
+    "subject": "",
+    "priority": 9,
+    "locked_until": null,
+    "description": "",
+    "status": "open",
+    "type": "phone",
+    "labels": [],
+    "language": "en",
+    "active_at": "2013-09-07T19:38:58Z",
+    "created_at": "2013-05-09T17:02:16Z",
+    "updated_at": "2013-09-07T19:39:07Z",
+    "received_at": "2013-05-09T17:02:16Z",
+    "custom_fields": {
+        "my_new_custom_field": "",
+        "my_new_number_field": "0",
+        "my_new_date_field": "",
+        "my_new_boolean_field": "0",
+        "my_new_list_field": "Option 1"
+    },
+    "_links": {
+        "self": {
+            "href": "/api/v2/cases/3011",
+            "class": "case"
+        },
+        "message": {
+            "href": "/api/v2/cases/3011/message",
+            "class": "phone"
+        },
+        "customer": {
+            "href": "/api/v2/customers/37823480",
+            "class": "customer"
+        },
+        "assigned_user": {
+            "href": "/api/v2/users/16096734",
+            "class": "user"
+        },
+        "assigned_group": {
+            "href": "/api/v2/groups/171213",
+            "class": "group"
+        },
+        "locked_by": null,
+        "replies": {
+            "href": "/api/v2/cases/3011/replies",
+            "class": "reply"
+        },
+        "notes": {
+            "href": "/api/v2/cases/3011/notes",
+            "class": "note"
+        },
+        "attachments": {
+            "href": "/api/v2/cases/3011/attachments",
+            "class": "attachment"
+        }
+    },
+    "_embedded": {
+        "customer": {
+            "first_name": "Thomas",
+            "last_name": "Stachl",
+            "company": "stachl.me",
+            "title": "Master of Script Artistry",
+            "external_id": null,
+            "background": "Some Background information.",
+            "language": "de",
+            "locked_until": null,
+            "created_at": "2012-07-04T14:33:39Z",
+            "updated_at": "2013-07-15T18:10:21Z",
+            "custom_fields": {
+                "my_custom_field": "",
+                "my_number_field": "0",
+                "my_boolean_field": "0",
+                "my_date_field": "",
+                "my_list_field": "Option 1"
+            },
+            "emails": [
+                {
+                    "type": "home",
+                    "value": "thomas@stachl.me"
+                },
+                {
+                    "type": "home",
+                    "value": "tstachl@salesforce.com"
+                }
+            ],
+            "phone_numbers": [
+                {
+                    "type": "mobile",
+                    "value": "4156060761"
+                }
+            ],
+            "addresses": [
+                {
+                    "type": "home",
+                    "value": "600 William Street #526\nOakland, CA 94612"
+                }
+            ],
+            "_links": {
+                "self": {
+                    "href": "/api/v2/customers/37823480",
+                    "class": "customer"
+                },
+                "locked_by": null,
+                "company": {
+                    "href": "/api/v2/companies/373760",
+                    "class": "company"
+                },
+                "cases": {
+                    "href": "/api/v2/customers/37823480/cases",
+                    "class": "case"
+                }
+            }
+        }
+    }
+}

@@ -138,4 +138,72 @@ describe DeskApi::Resource do
       lambda { user.delete }.should raise_error(DeskApi::Error::MethodNotSupported)
     end
   end
+
+  describe 'embeddable' do
+    it 'has resources defined' do
+      DeskApi::Resource::Case.embeddable?(:assigned_user).should be_true
+      DeskApi::Resource::Case.embeddable?(:message).should be_false
+    end
+
+    it 'allows to declare embedds' do
+      lambda { subject.cases.embed(:assigned_user) }.should_not raise_error
+      lambda { subject.cases.embed(:message) }.should raise_error(DeskApi::Error::NotEmbeddable)
+    end
+
+    it 'changes the url' do
+      subject.cases.embed(:assigned_user).get_href.should eq('/api/v2/cases?embed=assigned_user')
+    end
+
+    context 'if you use embed' do
+      before do
+        VCR.turn_off! ignore_cassettes: true
+
+        @stubs  ||= Faraday::Adapter::Test::Stubs.new
+        @client ||= DeskApi::Client.new(DeskApi::CONFIG).tap do |client|
+          client.middleware = Proc.new do |builder|
+            builder.response :mashify
+            builder.response :dates
+            builder.response :json, content_type: /application\/json/
+            builder.adapter :test, @stubs
+          end
+        end
+      end
+
+      after do
+        VCR.turn_on!
+      end
+
+      it 'does not load the resource again' do
+        times_called = 0
+        @stubs.get('/api/v2/cases?embed=assigned_user') do
+          times_called += 1
+          [
+            200,
+            { 'content-type' => 'application/json' },
+            File.open(File.join(RSpec.configuration.root_path, 'stubs', 'cases_embed_assigned_user.json')).read
+          ]
+        end
+
+        first_case = @client.cases.embed(:assigned_user).first
+        first_case.assigned_user.name.should eq('Thomas Stachl')
+        first_case.assigned_user.instance_variable_get(:@loaded).should be_true
+        times_called.should eq(1)
+      end
+
+      it 'can be used in finder' do
+        @stubs.get('/api/v2/cases/3011?embed=customer') do
+          [
+            200,
+            { 'content-type' => 'application/json' },
+            File.open(File.join(RSpec.configuration.root_path, 'stubs', 'case_embed_customer.json')).read
+          ]
+        end
+
+        customer = @client.cases.find(3011, embed: :customer).customer
+        customer.first_name.should eq('Thomas')
+        customer = @client.cases.find(3011, embed: [:customer]).customer
+        customer.first_name.should eq('Thomas')
+      end
+    end
+  end
 end
