@@ -1,5 +1,9 @@
 {
   "_links": {
+    "account": {
+      "href": "/api/v2/account",
+      "class": "user"
+    },
     "articles": {
       "href": "/api/v2/articles",
       "class": "page"
