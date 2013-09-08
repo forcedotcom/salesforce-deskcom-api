@@ -17,6 +17,7 @@ module DeskApi
 
       def search(params)
         raise DeskApi::Error::MethodNotSupported unless base_class.respond_to?(:search)
+        params = { q: params } if params.kind_of?(String)
         url = Addressable::URI.parse(clean_base_url + '/search')
         url.query_values = params
         base_class.search(client, url.to_s).exec!
