@@ -35,7 +35,7 @@ rescue LoadError
 end
 
 VCR.configure do |config|
-  config.hook_into :typhoeus, :faraday
+  config.hook_into :faraday
   config.cassette_library_dir = 'spec/cassettes'
   config.configure_rspec_metadata!
   config.before_record { |i| i.request.headers.delete('Authorization') }
