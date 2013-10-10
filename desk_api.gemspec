@@ -24,7 +24,6 @@ Gem::Specification.new do |gem|
   gem.add_runtime_dependency('faraday')
   gem.add_runtime_dependency('faraday_middleware')
   gem.add_runtime_dependency('simple_oauth')
-  gem.add_runtime_dependency('typhoeus')
   gem.add_runtime_dependency('addressable')
   gem.add_runtime_dependency('activesupport')
   gem.add_runtime_dependency('hashie')
