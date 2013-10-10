@@ -8,6 +8,10 @@
       "href": "/api/v2/articles",
       "class": "page"
     },
+    "brands": {
+      "href": "/api/v2/brands",
+      "class": "brand"
+    },
     "cases": {
       "href": "/api/v2/cases",
       "class": "page"
