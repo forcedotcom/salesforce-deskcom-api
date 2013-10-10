@@ -1,9 +1,6 @@
 require 'faraday'
 require 'faraday_middleware'
 
-require 'typhoeus'
-require 'typhoeus/adapters/faraday'
-
 require 'desk_api/default'
 require 'desk_api/request/retry'
 require 'desk_api/response/raise_error'
@@ -52,7 +49,7 @@ module DeskApi
         builder.response :raise_error, DeskApi::Error::ServerError
         builder.response :json, content_type: /application\/json/
 
-        builder.adapter :typhoeus
+        builder.adapter Faraday.default_adapter
       end
     end
 
