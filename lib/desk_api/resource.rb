@@ -34,6 +34,10 @@ module DeskApi
       get_self['href']
     end
 
+    def type
+      get_self['class']
+    end
+
   protected
 
     def exec!(reload = false)

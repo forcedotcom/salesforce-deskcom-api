@@ -7,6 +7,26 @@ describe DeskApi::Resource::Case do
     @client ||= DeskApi::Client.new DeskApi::CONFIG
   end
 
+  it 'is listable', :vcr do
+    subject.cases.should be_instance_of DeskApi::Resource::Page
+  end
+
+  it 'is viewable', :vcr do
+    subject.cases.first.should be_instance_of DeskApi::Resource::Case
+  end
+
+  it 'is creatable', :vcr do
+    subject.cases.first.should be_kind_of DeskApi::Action::Create
+  end
+
+  it 'is updatable', :vcr do
+    subject.cases.first.should be_kind_of DeskApi::Action::Update
+  end
+
+  it 'is searchable', :vcr do
+    subject.cases.first.should be_kind_of DeskApi::Action::Search
+  end
+
   context 'once closed', :vcr do
     before do
       @kase = subject.customers.first.cases.create({
