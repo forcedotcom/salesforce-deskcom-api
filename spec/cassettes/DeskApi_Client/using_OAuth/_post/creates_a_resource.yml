@@ -10,7 +10,7 @@ http_interactions:
       Accept:
       - application/json
       User-Agent:
-      - desk.com Ruby Gem v0.1.1
+      - desk.com Ruby Gem v0.1.3
       Content-Type:
       - application/json
   response:
@@ -18,45 +18,45 @@ http_interactions:
       code: 201
       message: 
     headers:
-      Accept-Ranges:
+      accept-ranges:
       - bytes
-      Cache-Control:
+      cache-control:
       - max-age=0, private, must-revalidate
-      Content-Type:
+      content-type:
       - application/json; charset=utf-8
-      Date:
-      - Tue, 03 Sep 2013 02:21:47 GMT
-      ETag:
-      - '"2559b1e5a8ab953a72d4927d7cb2a272"'
-      Location:
-      - https://devel.desk.com/api/v2/articles/1285155
-      Status:
+      date:
+      - Thu, 12 Dec 2013 02:55:05 GMT
+      etag:
+      - '"aa367323d958696d4588ca265bd79359"'
+      location:
+      - https://devel.desk.com/api/v2/articles/1391017
+      status:
       - 201 Created
-      Vary:
+      vary:
       - X-AppVersion
-      X-AppVersion:
-      - '9.3'
-      X-Frame-Options:
+      x-appversion:
+      - '15.4'
+      x-frame-options:
       - SAMEORIGIN
-      X-Rate-Limit-Limit:
+      x-rate-limit-limit:
       - '60'
-      X-Rate-Limit-Remaining:
-      - '58'
-      X-Rate-Limit-Reset:
-      - '13'
-      X-Request-Id:
-      - 0032dd903f22cd59f6183911e4a0e425
-      Content-Length:
-      - '838'
-      Connection:
-      - keep-alive
+      x-rate-limit-remaining:
+      - '54'
+      x-rate-limit-reset:
+      - '55'
+      x-request-id:
+      - 4d67b377839b367e3165bd121eba3ddb
+      content-length:
+      - '1007'
+      connection:
+      - Close
     body:
       encoding: UTF-8
       string: '{"subject":"Testing OAuth","body":"OAuth testing","body_email":"OAuth
         testing","body_email_auto":true,"body_chat":"OAuth testing","body_chat_auto":true,"body_web_callback":"OAuth
         testing","body_web_callback_auto":true,"body_twitter":"OAuth testing","body_twitter_auto":true,"body_qna":"OAuth
         testing","body_qna_auto":true,"body_phone":"OAuth testing","body_phone_auto":true,"body_facebook":"OAuth
-        testing","body_facebook_auto":true,"keywords":null,"position":2,"quickcode":null,"in_support_center":null,"internal_notes":null,"publish_at":null,"created_at":"2013-09-03T02:21:47Z","updated_at":"2013-09-03T02:21:47Z","_links":{"self":{"href":"/api/v2/articles/1285155","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/1285155/translations","class":"article_translation"}}}'
+        testing","body_facebook_auto":true,"rating":0,"rating_count":0,"rating_score":0,"keywords":null,"position":4,"quickcode":null,"in_support_center":null,"internal_notes":null,"publish_at":null,"created_at":"2013-12-12T02:55:05Z","updated_at":"2013-12-12T02:55:05Z","_links":{"self":{"href":"/api/v2/articles/1391017","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/1391017/translations","class":"article_translation"},"created_by":{"href":"/api/v2/users/16096734","class":"user"},"updated_by":{"href":"/api/v2/users/16096734","class":"user"}}}'
     http_version: 
-  recorded_at: Tue, 03 Sep 2013 02:21:47 GMT
+  recorded_at: Thu, 12 Dec 2013 02:55:05 GMT
 recorded_with: VCR 2.5.0

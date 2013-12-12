@@ -1,33 +1,37 @@
 ---
 http_interactions:
 - request:
-    method: delete
-    uri: https://devel.desk.com/api/v2/topics/601117
+    method: post
+    uri: https://devel.desk.com/api/v2/users
     body:
-      encoding: US-ASCII
-      string: ''
+      encoding: UTF-8
+      string: '{"name":"Some User"}'
     headers:
       Accept:
       - application/json
       User-Agent:
       - desk.com Ruby Gem v0.1.3
+      Content-Type:
+      - application/json
   response:
     status:
-      code: 204
+      code: 405
       message: 
     headers:
       accept-ranges:
       - bytes
       cache-control:
       - no-cache
+      content-type:
+      - application/json; charset=utf-8
       date:
-      - Thu, 12 Dec 2013 02:58:58 GMT
+      - Thu, 12 Dec 2013 19:45:25 GMT
       status:
-      - 204 No Content
+      - 405 Method Not Allowed
       vary:
       - X-AppVersion
       x-appversion:
-      - '15.4'
+      - '15.6'
       x-frame-options:
       - SAMEORIGIN
       x-rate-limit-limit:
@@ -35,14 +39,16 @@ http_interactions:
       x-rate-limit-remaining:
       - '58'
       x-rate-limit-reset:
-      - '2'
+      - '35'
       x-request-id:
-      - a19af1baeafd23847d774bd067faa976
+      - b5628738bab98ffa6426bc55e68bbda3
+      content-length:
+      - '32'
       connection:
       - Close
     body:
-      encoding: US-ASCII
-      string: ''
+      encoding: UTF-8
+      string: '{"message":"Method Not Allowed"}'
     http_version: 
-  recorded_at: Thu, 12 Dec 2013 02:58:58 GMT
+  recorded_at: Thu, 12 Dec 2013 19:45:25 GMT
 recorded_with: VCR 2.5.0

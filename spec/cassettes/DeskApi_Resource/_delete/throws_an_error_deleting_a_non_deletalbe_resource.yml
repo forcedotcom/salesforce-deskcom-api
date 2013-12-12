@@ -10,47 +10,97 @@ http_interactions:
       Accept:
       - application/json
       User-Agent:
-      - desk.com Ruby Gem v0.1.0
+      - desk.com Ruby Gem v0.1.3
   response:
     status:
       code: 200
       message: 
     headers:
-      Accept-Ranges:
+      accept-ranges:
       - bytes
-      Cache-Control:
+      cache-control:
       - no-cache, private
-      Content-Type:
+      content-type:
       - application/json; charset=utf-8
-      Date:
-      - Mon, 19 Aug 2013 23:51:33 GMT
-      ETag:
-      - '"1376931810"'
-      Status:
+      date:
+      - Thu, 12 Dec 2013 19:49:46 GMT
+      etag:
+      - '"1386874620"'
+      status:
       - 200 OK
-      Vary:
+      vary:
       - X-AppVersion
-      X-AppVersion:
-      - '7.9'
-      X-Frame-Options:
+      x-appversion:
+      - '15.6'
+      x-frame-options:
       - SAMEORIGIN
-      X-Rate-Limit-Limit:
+      x-rate-limit-limit:
       - '60'
-      X-Rate-Limit-Remaining:
-      - '52'
-      X-Rate-Limit-Reset:
-      - '27'
-      X-Request-Id:
-      - 1f999a0dc997cbfa1b0e24bf81c8cb7f
-      Content-Length:
-      - '1868'
-      Connection:
-      - keep-alive
+      x-rate-limit-remaining:
+      - '57'
+      x-rate-limit-reset:
+      - '14'
+      x-request-id:
+      - 5f31d5781a30f18e9c80bc0f19b34e76
+      content-length:
+      - '4293'
+      connection:
+      - Close
     body:
       encoding: UTF-8
-      string: '{"total_entries":5,"_links":{"self":{"href":"/api/v2/users?page=1&per_page=50","class":"page"},"first":{"href":"/api/v2/users?page=1&per_page=50","class":"page"},"last":{"href":"/api/v2/users?page=1&per_page=50","class":"page"},"previous":null,"next":null},"_embedded":{"entries":[{"name":"Thomas
-        Stachl","public_name":"Thomas Stachl","email":"tstachl@salesforce.com","level":"siteadmin_billing","_links":{"self":{"href":"/api/v2/users/16096734","class":"user"},"preferences":{"href":"/api/v2/users/16096734/preferences","class":"user_preference"},"searches":{"href":"/api/v2/users/16096734/searches","class":"search"}}},{"name":"Dan
-        Stern","public_name":"Dan","email":"dan@desk.com","level":"siteadmin","_links":{"self":{"href":"/api/v2/users/16107036","class":"user"},"preferences":{"href":"/api/v2/users/16107036/preferences","class":"user_preference"},"searches":{"href":"/api/v2/users/16107036/searches","class":"search"}}},{"name":"Mark","public_name":"Mark","email":"mchasse_old@desk.com","level":"siteadmin_billing","_links":{"self":{"href":"/api/v2/users/17069383","class":"user"},"preferences":{"href":"/api/v2/users/17069383/preferences","class":"user_preference"},"searches":{"href":"/api/v2/users/17069383/searches","class":"search"}}},{"name":"Mich","public_name":"Mich","email":"mich@desk.com","level":"siteadmin_billing","_links":{"self":{"href":"/api/v2/users/17069397","class":"user"},"preferences":{"href":"/api/v2/users/17069397/preferences","class":"user_preference"},"searches":{"href":"/api/v2/users/17069397/searches","class":"search"}}},{"name":"Keith","public_name":"Keith","email":"keith@desk.com","level":"agent","_links":{"self":{"href":"/api/v2/users/17250751","class":"user"},"preferences":{"href":"/api/v2/users/17250751/preferences","class":"user_preference"},"searches":{"href":"/api/v2/users/17250751/searches","class":"search"}}}]}}'
+      string: '{"total_entries":6,"_links":{"self":{"href":"/api/v2/users?page=1&per_page=50","class":"page"},"first":{"href":"/api/v2/users?page=1&per_page=50","class":"page"},"last":{"href":"/api/v2/users?page=1&per_page=50","class":"page"},"previous":null,"next":null},"_embedded":{"entries":[{"name":"Thomas
+        Stachl","public_name":"Thomas Stachl","email":"tstachl@salesforce.com","level":"siteadmin_billing","avatar":"http://www.gravatar.com/avatar/9d1a9e1a385960d1ba80fb873128cf73?rating=PG&size=50&default=https%3A%2F%2Fd218iqt4mo6adh.cloudfront.net%2Fassets%2Funknown_user_50-521aae04e00222d7dd814e72d7d869d0.png","created_at":"2012-06-06T14:51:21Z","updated_at":"2013-12-11T18:08:41Z","current_login_at":"2013-12-11T18:08:41Z","last_login_at":"2013-12-11T00:50:06Z","_links":{"self":{"href":"/api/v2/users/16096734","class":"user"},"preferences":{"href":"/api/v2/users/16096734/preferences","class":"user_preference"},"searches":{"href":"/api/v2/users/16096734/searches","class":"search"}}},{"name":"Dan
+        Stern","public_name":"Dan","email":"dan@desk.com","level":"siteadmin","avatar":"http://www.gravatar.com/avatar/5f56818e857c5776e02779aa2a4f8ea4?rating=PG&size=50&default=https%3A%2F%2Fd218iqt4mo6adh.cloudfront.net%2Fassets%2Funknown_user_50-521aae04e00222d7dd814e72d7d869d0.png","created_at":"2012-06-06T18:24:08Z","updated_at":"2013-08-05T22:33:48Z","current_login_at":"2013-08-05T22:33:48Z","last_login_at":"2013-08-05T22:32:16Z","_links":{"self":{"href":"/api/v2/users/16107036","class":"user"},"preferences":{"href":"/api/v2/users/16107036/preferences","class":"user_preference"},"searches":{"href":"/api/v2/users/16107036/searches","class":"search"}}},{"name":"Mark","public_name":"Mark","email":"mchasse_old@desk.com","level":"siteadmin_billing","avatar":"http://www.gravatar.com/avatar/f2d79817f28bbe7b89081b59b9a370d0?rating=PG&size=50&default=https%3A%2F%2Fd218iqt4mo6adh.cloudfront.net%2Fassets%2Funknown_user_50-521aae04e00222d7dd814e72d7d869d0.png","created_at":"2012-06-22T21:52:55Z","updated_at":"2013-05-16T01:30:48Z","current_login_at":"2013-05-16T01:30:34Z","last_login_at":"2012-07-17T19:24:54Z","_links":{"self":{"href":"/api/v2/users/17069383","class":"user"},"preferences":{"href":"/api/v2/users/17069383/preferences","class":"user_preference"},"searches":{"href":"/api/v2/users/17069383/searches","class":"search"}}},{"name":"Mich","public_name":"Mich","email":"mich@desk.com","level":"siteadmin_billing","avatar":"http://www.gravatar.com/avatar/73a4ddb25d4f0ce32eddb64add48a730?rating=PG&size=50&default=https%3A%2F%2Fd218iqt4mo6adh.cloudfront.net%2Fassets%2Funknown_user_50-521aae04e00222d7dd814e72d7d869d0.png","created_at":"2012-06-22T21:53:12Z","updated_at":"2012-06-22T21:55:12Z","current_login_at":"2012-06-22T21:55:08Z","last_login_at":null,"_links":{"self":{"href":"/api/v2/users/17069397","class":"user"},"preferences":{"href":"/api/v2/users/17069397/preferences","class":"user_preference"},"searches":{"href":"/api/v2/users/17069397/searches","class":"search"}}},{"name":"Keith","public_name":"Keith","email":"keith@desk.com","level":"agent","avatar":"http://www.gravatar.com/avatar/c492d3f749ce562f187fb738ef6adaa7?rating=PG&size=50&default=https%3A%2F%2Fd218iqt4mo6adh.cloudfront.net%2Fassets%2Funknown_user_50-521aae04e00222d7dd814e72d7d869d0.png","created_at":"2012-06-26T00:11:48Z","updated_at":"2012-06-26T19:02:52Z","current_login_at":"2012-06-26T19:02:51Z","last_login_at":null,"_links":{"self":{"href":"/api/v2/users/17250751","class":"user"},"preferences":{"href":"/api/v2/users/17250751/preferences","class":"user_preference"},"searches":{"href":"/api/v2/users/17250751/searches","class":"search"}}},{"name":"Thomas
+        Stachl","public_name":"Thomas Stachl","email":"thomas@desk.com","level":"flexagent","avatar":"http://www.gravatar.com/avatar/9385d65da0b8577fef3fc472dd8b5e1b?rating=PG&size=50&default=https%3A%2F%2Fd218iqt4mo6adh.cloudfront.net%2Fassets%2Funknown_user_50-521aae04e00222d7dd814e72d7d869d0.png","created_at":"2013-09-11T20:24:06Z","updated_at":"2013-09-11T20:24:23Z","current_login_at":null,"last_login_at":null,"_links":{"self":{"href":"/api/v2/users/21410327","class":"user"},"preferences":{"href":"/api/v2/users/21410327/preferences","class":"user_preference"},"searches":{"href":"/api/v2/users/21410327/searches","class":"search"}}}]}}'
     http_version: 
-  recorded_at: Mon, 19 Aug 2013 23:51:33 GMT
+  recorded_at: Thu, 12 Dec 2013 19:49:46 GMT
+- request:
+    method: delete
+    uri: https://devel.desk.com/api/v2/users/16096734
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - desk.com Ruby Gem v0.1.3
+  response:
+    status:
+      code: 405
+      message: 
+    headers:
+      accept-ranges:
+      - bytes
+      cache-control:
+      - no-cache
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Thu, 12 Dec 2013 19:49:46 GMT
+      status:
+      - 405 Method Not Allowed
+      vary:
+      - X-AppVersion
+      x-appversion:
+      - '15.6'
+      x-frame-options:
+      - SAMEORIGIN
+      x-rate-limit-limit:
+      - '60'
+      x-rate-limit-remaining:
+      - '56'
+      x-rate-limit-reset:
+      - '14'
+      x-request-id:
+      - 8d04b98369d41b35c6c66ea3c29fd4f7
+      content-length:
+      - '32'
+      connection:
+      - Close
+    body:
+      encoding: UTF-8
+      string: '{"message":"Method Not Allowed"}'
+    http_version: 
+  recorded_at: Thu, 12 Dec 2013 19:49:46 GMT
 recorded_with: VCR 2.5.0

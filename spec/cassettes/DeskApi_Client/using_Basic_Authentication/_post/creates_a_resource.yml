@@ -10,7 +10,7 @@ http_interactions:
       Accept:
       - application/json
       User-Agent:
-      - desk.com Ruby Gem v0.1.1
+      - desk.com Ruby Gem v0.1.3
       Content-Type:
       - application/json
   response:
@@ -18,41 +18,41 @@ http_interactions:
       code: 201
       message: 
     headers:
-      Accept-Ranges:
+      accept-ranges:
       - bytes
-      Cache-Control:
+      cache-control:
       - max-age=0, private, must-revalidate
-      Content-Type:
+      content-type:
       - application/json; charset=utf-8
-      Date:
-      - Tue, 03 Sep 2013 02:04:32 GMT
-      ETag:
-      - '"94aa10fb0bdaf6f3b7f7d3fe3d8eecb6"'
-      Location:
-      - https://devel.desk.com/api/v2/topics/563658
-      Status:
+      date:
+      - Thu, 12 Dec 2013 02:55:04 GMT
+      etag:
+      - '"c6eef667a6ffdaf9b6735ce798958e01"'
+      location:
+      - https://devel.desk.com/api/v2/topics/601117
+      status:
       - 201 Created
-      Vary:
+      vary:
       - X-AppVersion
-      X-AppVersion:
-      - '9.3'
-      X-Frame-Options:
+      x-appversion:
+      - '15.4'
+      x-frame-options:
       - SAMEORIGIN
-      X-Rate-Limit-Limit:
+      x-rate-limit-limit:
       - '60'
-      X-Rate-Limit-Remaining:
-      - '57'
-      X-Rate-Limit-Reset:
-      - '28'
-      X-Request-Id:
-      - 3cefaedc8bdab8fa49b4d7e717c6d2f7
-      Content-Length:
+      x-rate-limit-remaining:
+      - '58'
+      x-rate-limit-reset:
+      - '56'
+      x-request-id:
+      - 50d0f0c5c433dc6a8be48d26a54aa881
+      content-length:
       - '400'
-      Connection:
-      - keep-alive
+      connection:
+      - Close
     body:
       encoding: UTF-8
-      string: '{"name":"Test Topic","description":null,"position":5,"allow_questions":true,"in_support_center":null,"created_at":"2013-09-03T02:04:32Z","updated_at":"2013-09-03T02:04:32Z","_links":{"self":{"href":"/api/v2/topics/563658","class":"topic"},"articles":{"href":"/api/v2/topics/563658/articles","class":"article"},"translations":{"href":"/api/v2/topics/563658/translations","class":"topic_translation"}}}'
+      string: '{"name":"Test Topic","description":null,"position":7,"allow_questions":true,"in_support_center":null,"created_at":"2013-12-12T02:55:04Z","updated_at":"2013-12-12T02:55:04Z","_links":{"self":{"href":"/api/v2/topics/601117","class":"topic"},"articles":{"href":"/api/v2/topics/601117/articles","class":"article"},"translations":{"href":"/api/v2/topics/601117/translations","class":"topic_translation"}}}'
     http_version: 
-  recorded_at: Tue, 03 Sep 2013 02:04:32 GMT
+  recorded_at: Thu, 12 Dec 2013 02:55:04 GMT
 recorded_with: VCR 2.5.0

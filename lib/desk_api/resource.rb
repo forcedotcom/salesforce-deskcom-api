@@ -1,90 +1,163 @@
-require 'desk_api/action/create'
-require 'desk_api/action/delete'
-require 'desk_api/action/embeddable'
-require 'desk_api/action/field'
-require 'desk_api/action/link'
-require 'desk_api/action/resource'
-require 'desk_api/action/search'
-require 'desk_api/action/update'
-
-require 'desk_api/error/method_not_supported'
-
-module DeskApi
-  class Resource
-    include DeskApi::Action::Resource
-    include DeskApi::Action::Link
-    include DeskApi::Action::Field
-    include DeskApi::Action::Embeddable
-
-    def initialize(client, definition = {}, loaded = false)
-      @client, @loaded, @_changed = client, loaded, {}
-      setup(definition)
+class DeskApi::Resource
+  class << self
+    def build_self_link(link)
+      link = {'href'=>link} if link.kind_of?(String)
+      {'_links'=>{'self'=>link}}
     end
+  end
 
-    def by_url(url)
-      definition = client.get(url).body
-      resource(definition._links.self['class']).new(client, definition, true)
+  def initialize(client, definition = {}, loaded = false)
+    @_client, @_definition, @_loaded, @_changed = client, definition, loaded, {}
+  end
+
+  def create(params = {})
+    self.class.new(@_client, @_client.post(clean_base_url, params).body, true)
+  end
+
+  def update(params = {})
+    params.each_pair{ |key, value| send("#{key}=", value) }
+    changes       = @_changed.clone
+    @_changed     = {}
+    @_definition  = @_client.patch(href, changes).body
+  end
+
+  def delete
+    @_client.delete(href).status === 204
+  end
+
+  def search(params = {})
+    params = { q: params } if params.kind_of?(String)
+    url = Addressable::URI.parse(clean_base_url + '/search')
+    url.query_values = params
+    self.class.new(@_client, @_client.get(url.to_s).body, true)
+  end
+
+  def find(id, options = {})
+    res = self.class.new(@_client, self.class.build_self_link("#{clean_base_url}/#{id}"))
+    res.embed(*(options[:embed].kind_of?(Array) ? options[:embed] : [options[:embed]])) if options[:embed]
+    res.exec!
+  end
+  alias_method :by_id, :find
+
+  def embed(*embedds)
+    # make sure we don't try to embed anything that's not defined
+    # add it to the query
+    self.tap{ |res| res.query_params = { embed: embedds.join(',') } }
+  end
+
+  def by_url(url)
+    self.class.new(@_client, @_client.get(url).body, true)
+  end
+
+  def get_self
+    @_definition['_links']['self']
+  end
+
+  def href
+    get_self['href']
+  end
+  alias_method :get_href, :href
+
+  def href=(value)
+    @_definition['_links']['self']['href'] = value
+  end
+
+  def type
+    get_self['class']
+  end
+
+  [:page, :per_page].each do |method|
+    define_method(method) do |value = nil|
+      unless value
+        self.exec! if self.query_params_include?(method.to_s) == nil
+        return self.query_params_include?(method.to_s).to_i
+      end
+      self.tap{ |res| res.query_params = Hash[method.to_s, value.to_s] }
     end
+  end
 
-    def get_self
-      @_links.self
+protected
+
+  def clean_base_url
+    Addressable::URI.parse(href).path.gsub(/\/(search|\d+)$/, '') 
+  end
+
+  def exec!(reload = false)
+    return self if @_loaded and !reload
+    @_definition, @_loaded = @_client.get(href).body, true
+    self
+  end
+
+  def query_params
+    Addressable::URI.parse(href).query_values || {}
+  end
+
+  def query_params_include?(param)
+    query_params.include?(param) ? query_params[param] : nil
+  end
+
+  def query_params=(params = {})
+    return href if params.empty?
+
+    uri = Addressable::URI.parse(href)
+    params = (uri.query_values || {}).merge(params)
+
+    @_loaded = false unless params == uri.query_values
+
+    uri.query_values = params
+    self.href = uri.to_s
+  end
+
+private
+  attr_accessor :_client, :_loaded, :_changed, :_definition
+
+  def is_field?(method)
+    @_definition.key?(method)
+  end
+
+  def is_link?(method)
+    @_definition.key?('_links') and @_definition['_links'].key?(method)
+  end
+
+  def is_embedded?(method)
+    @_definition.key?('_embedded') and @_definition['_embedded'].key?(method)
+  end
+
+  def get_field_value(method)
+    @_changed.key?(method) ? @_changed[method] : @_definition[method]
+  end
+
+  def get_embedded_resource(method)
+    embedds = @_definition['_embedded']
+
+    if embedds[method].kind_of?(Array) and not embedds[method].first.kind_of?(self.class)
+      embedds[method].map!{ |definition| self.class.new(@_client, definition, true) }
+    elsif not embedds[method].kind_of?(self.class)
+      embedds[method] = self.class.new(@_client, embedds[method], true)
+    else
+      embedds[method]
     end
+  end
 
-    def get_href
-      get_self['href']
-    end
+  def get_linked_resource(method)
+    links = @_definition['_links']
 
-    def type
-      get_self['class']
-    end
-
-  protected
-
-    def exec!(reload = false)
-      return self if loaded and !reload
-      definition, @loaded = client.get(get_href).body, true
-      setup(definition)
-    end
-
-    def query_params
-      Addressable::URI.parse(@_links.self.href).query_values || {}
-    end
-
-    def query_params_include?(param)
-      query_params.include?(param) ? query_params[param] : nil
-    end
-
-    def query_params=(params = {})
-      return @_links.self.href if params.empty?
-
-      uri = Addressable::URI.parse(@_links.self.href)
-      params = (uri.query_values || {}).merge(params)
-
-      @loaded = false unless params == uri.query_values
-
-      uri.query_values = params
-      @_links.self.href = uri.to_s
-    end
-
-    def base_class
-      self.class
-    end
-
-  private
+    return nil if links[method].nil?
+    return links[method] if links[method].kind_of?(self.class)
     
-    attr_accessor :client, :loaded, :_changed
+    links[method] = self.class.new(@_client, self.class.build_self_link(links[method]))
+  end
 
-    def setup(definition)
-      setup_links(definition._links) if definition._links?
-      setup_embedded(definition._embedded) if definition._embedded?
-      setup_fields(definition)
-      self
-    end
+  def method_missing(method, *args, &block)
+    self.exec! unless @_loaded
 
-    def method_missing(method, *args, &block)
-      self.exec! if !loaded
-      raise DeskApi::Error::MethodNotSupported unless self.respond_to?(method.to_sym)
-      self.send(method, *args, &block) 
-    end
+    meth = method.to_s
+
+    return @_changed[meth[0...-1]] = args.first if meth.end_with?('=') and is_field?(meth[0...-1])
+    return get_field_value(meth) if is_field?(meth)
+    return get_embedded_resource(meth) if is_embedded?(meth)
+    return get_linked_resource(meth) if is_link?(meth)
+
+    super(method, *args, &block)
   end
 end

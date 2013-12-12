@@ -10,46 +10,46 @@ http_interactions:
       Accept:
       - application/json
       User-Agent:
-      - desk.com Ruby Gem v0.1.1
+      - desk.com Ruby Gem v0.1.3
   response:
     status:
       code: 200
       message: 
     headers:
-      Accept-Ranges:
+      accept-ranges:
       - bytes
-      Cache-Control:
+      cache-control:
       - must-revalidate, private, max-age=0
-      Content-Type:
+      content-type:
       - application/json; charset=utf-8
-      Date:
-      - Tue, 03 Sep 2013 02:04:32 GMT
-      ETag:
-      - '"31cb249bf0be971be83b891b995e19f4"'
-      Status:
+      date:
+      - Thu, 12 Dec 2013 02:55:04 GMT
+      etag:
+      - '"395a414452c959227f314140cc36e470"'
+      status:
       - 200 OK
-      Vary:
+      vary:
       - X-AppVersion
-      X-AppVersion:
-      - '9.3'
-      X-Frame-Options:
+      x-appversion:
+      - '15.4'
+      x-frame-options:
       - SAMEORIGIN
-      X-Rate-Limit-Limit:
+      x-rate-limit-limit:
       - '60'
-      X-Rate-Limit-Remaining:
-      - '58'
-      X-Rate-Limit-Reset:
-      - '28'
-      X-Request-Id:
-      - ce49e111e53586ae4d813d378210d171
-      Content-Length:
-      - '942'
-      Connection:
-      - keep-alive
+      x-rate-limit-remaining:
+      - '59'
+      x-rate-limit-reset:
+      - '56'
+      x-request-id:
+      - 0a8b539721cd725fe77fa439da122db5
+      content-length:
+      - '1096'
+      connection:
+      - Close
     body:
       encoding: UTF-8
       string: '{"external_id":"","subject":"Testing Quick Case","priority":8,"locked_until":null,"description":"Some
-        additional Description regarding this email.","status":"resolved","type":"email","labels":[],"language":"de","active_at":"2013-05-10T19:08:27Z","created_at":"2013-05-10T19:08:10Z","updated_at":"2013-05-10T19:08:10Z","received_at":null,"custom_fields":{"my_new_custom_field":null,"my_new_number_field":null,"my_new_date_field":null,"my_new_boolean_field":null,"my_new_list_field":null},"_links":{"self":{"href":"/api/v2/cases/3014","class":"case"},"message":{"href":"/api/v2/cases/3014/message","class":"email"},"customer":{"href":"/api/v2/customers/37823480","class":"customer"},"assigned_user":null,"assigned_group":null,"locked_by":null,"replies":{"href":"/api/v2/cases/3014/replies","class":"reply"},"notes":{"href":"/api/v2/cases/3014/notes","class":"note"},"attachments":{"href":"/api/v2/cases/3014/attachments","class":"attachment"}}}'
+        additional Description regarding this email.","status":"resolved","type":"email","labels":[],"language":"de","active_at":"2013-05-10T19:08:27Z","created_at":"2013-05-10T19:08:10Z","updated_at":"2013-09-10T21:34:34Z","received_at":null,"first_opened_at":null,"opened_at":null,"first_resolved_at":"2013-05-10T19:08:10Z","resolved_at":"2013-05-10T19:08:10Z","custom_fields":{"my_new_custom_field":null,"my_new_number_field":null,"my_new_date_field":null,"my_new_boolean_field":null,"my_new_list_field":null,"follow_up":null,"dependent":null},"_links":{"self":{"href":"/api/v2/cases/3014","class":"case"},"message":{"href":"/api/v2/cases/3014/message","class":"email"},"customer":{"href":"/api/v2/customers/37823480","class":"customer"},"assigned_user":null,"assigned_group":null,"locked_by":null,"replies":{"href":"/api/v2/cases/3014/replies","class":"reply"},"notes":{"href":"/api/v2/cases/3014/notes","class":"note"},"attachments":{"href":"/api/v2/cases/3014/attachments","class":"attachment"}}}'
     http_version: 
-  recorded_at: Tue, 03 Sep 2013 02:04:32 GMT
+  recorded_at: Thu, 12 Dec 2013 02:55:04 GMT
 recorded_with: VCR 2.5.0

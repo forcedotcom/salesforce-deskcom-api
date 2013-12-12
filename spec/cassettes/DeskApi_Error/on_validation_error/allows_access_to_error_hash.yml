@@ -10,7 +10,7 @@ http_interactions:
       Accept:
       - application/json
       User-Agent:
-      - desk.com Ruby Gem v0.1.2
+      - desk.com Ruby Gem v0.1.3
       Content-Type:
       - application/json
   response:
@@ -18,37 +18,37 @@ http_interactions:
       code: 422
       message: 
     headers:
-      Accept-Ranges:
+      accept-ranges:
       - bytes
-      Cache-Control:
+      cache-control:
       - no-cache
-      Content-Type:
+      content-type:
       - application/json; charset=utf-8
-      Date:
-      - Wed, 04 Sep 2013 23:57:05 GMT
-      Status:
+      date:
+      - Thu, 12 Dec 2013 19:21:53 GMT
+      status:
       - 422 Unprocessable Entity
-      Vary:
+      vary:
       - X-AppVersion
-      X-AppVersion:
-      - '9.7'
-      X-Frame-Options:
+      x-appversion:
+      - '15.6'
+      x-frame-options:
       - SAMEORIGIN
-      X-Rate-Limit-Limit:
+      x-rate-limit-limit:
       - '60'
-      X-Rate-Limit-Remaining:
-      - '59'
-      X-Rate-Limit-Reset:
-      - '55'
-      X-Request-Id:
-      - a902613e4a179503f1a94b35421449ec
-      Content-Length:
+      x-rate-limit-remaining:
+      - '58'
+      x-rate-limit-reset:
+      - '7'
+      x-request-id:
+      - bf5edc9c549849bad994ce6b4084c908
+      content-length:
       - '71'
-      Connection:
-      - keep-alive
+      connection:
+      - Close
     body:
       encoding: UTF-8
       string: '{"message":"Validation Failed","errors":{"_links":{"topic":["blank"]}}}'
     http_version: 
-  recorded_at: Wed, 04 Sep 2013 23:57:05 GMT
+  recorded_at: Thu, 12 Dec 2013 19:21:53 GMT
 recorded_with: VCR 2.5.0

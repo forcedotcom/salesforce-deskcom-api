@@ -3,14 +3,11 @@ require 'json'
 require 'forwardable'
 require 'addressable/uri'
 
-require 'hashie/mash'
-require 'active_support/inflector'
-
-require 'desk_api/configuration'
-require 'desk_api/client'
-require 'desk_api/version'
-
 module DeskApi
+  require 'desk_api/version'
+  require 'desk_api/configuration'
+  require 'desk_api/client'
+
   class << self
     include DeskApi::Configuration
 
@@ -31,5 +28,6 @@ module DeskApi
       client.respond_to?(method_name, include_private)
     end
   end
+
   setup
 end
