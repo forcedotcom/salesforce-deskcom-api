@@ -46,46 +46,20 @@ DeskApi.delete '/api/v2/topics/1'
 
 ## Working with Resources and Collections
 
-The API supports RESTful resources and so does this wrapper. These resources are automatically discovered, meaning you can navigate around without having to worry about anything. We also support two finder methods `by_url` and `find`, the former works with any resource, the latter needs a collection.
+The API supports RESTful resources and so does this wrapper. These resources are automatically discovered, meaning you can navigate around without having to worry about anything. We also support two finder methods `by_url` and `find`.
 
 ### Finders
 
-The method `by_url` can be called on all `DeskApi::Resource` instances and will return a lazy loaded instance of the resource. Since the update to v0.5 of the API wrapper the `find` method can now be called on all `DeskApi::Resource` instances too. _Gotcha:_ It will rebuild the base path based on the resource/collection it is called on. So if you call it on the cases collection "`DeskApi.cases.find 1`" the path will look like this: `/api/v2/cases/:id`.
+The method `by_url` can be called on all `DeskApi::Resource` instances and will return a lazy loaded instance of the resource. Since the update to v0.5 of the API wrapper the `find` method can now be called on all `DeskApi::Resource` instances too. _Gotcha:_ It will rebuild the base path based on the resource/collection it is called on. So if you call it on the cases collection `DeskApi.cases.find 1` the path will look like this: `/api/v2/cases/:id`.
 
-<table>
-  <thead>
-    <tr>
-      <th>Method</th>
-      <th>Path</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>`DeskApi.cases.find(1)`</td>
-      <td>`/api/v2/cases/1</td>
-    </tr>
-    <tr>
-      <td>`DeskApi.cases.entries.first.find(1)`</td>
-      <td>`/api/v2/cases/1</td>
-    </tr>
-    <tr>
-      <td>`DeskApi.cases.search.find(1)`</td>
-      <td>`/api/v2/cases/1</td>
-    </tr>
-    <tr>
-      <td>`DeskApi.cases.search.entries.first.find(1)`</td>
-      <td>`/api/v2/cases/1</td>
-    </tr>
-    <tr>
-      <td>`DeskApi.cases.entries.first.replies.find(1)`</td>
-      <td>`/api/v2/cases/1/replies/1</td>
-    </tr>
-    <tr>
-      <td>`DeskApi.cases.entries.first.replies.entries.first.find(1)`</td>
-      <td>`/api/v2/cases/1/replies/1</td>
-    </tr>
-  </tbody>
-</table>
+| Method                                                      | Path                        |
+| ----------------------------------------------------------- | --------------------------- |
+| `DeskApi.cases.find(1)`                                     | `/api/v2/cases/1`           |
+| `DeskApi.cases.entries.find(1)`                             | `/api/v2/cases/1`           |
+| `DeskApi.cases.search(subject: 'Test').find(1)`             | `/api/v2/cases/1`           |
+| `DeskApi.cases.search(subject: 'Test').entries.find(1)`     | `/api/v2/cases/1`           |
+| `DeskApi.cases.entries.first.replies.find(1)`               | `/api/v2/cases/1/replies/1` |
+| `DeskApi.cases.entries.first.replies.entries.first.find(1)` | `/api/v2/cases/1/replies/1` |
 
 ### Pagination
 

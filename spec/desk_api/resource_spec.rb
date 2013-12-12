@@ -87,10 +87,6 @@ describe DeskApi::Resource do
     it 'allows searching on search enabled resources', :vcr do
       subject.articles.search(text: 'Lorem Ipsum').total_entries.should eq(0)
     end
-
-    it 'throws an error if search is not enabled', :vcr do
-      lambda { subject.users.search(test: 'something') }.should raise_error(DeskApi::Error::NotFound)
-    end
   end
 
   context '#create' do

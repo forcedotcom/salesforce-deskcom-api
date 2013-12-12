@@ -29,7 +29,7 @@ class DeskApi::Resource
     params = { q: params } if params.kind_of?(String)
     url = Addressable::URI.parse(clean_base_url + '/search')
     url.query_values = params
-    self.class.new(@_client, @_client.get(url.to_s).body, true)
+    self.class.new(@_client, self.class.build_self_link(url.to_s))
   end
 
   def find(id, options = {})

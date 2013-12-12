@@ -10,7 +10,7 @@ Gem::Specification.new do |gem|
   gem.version           = DeskApi::VERSION
 
   gem.authors           = ['Thomas Stachl']
-  gem.email             = 'tom@desk.com'
+  gem.email             = 'thomas@desk.com'
 
   gem.require_paths     = ['lib']
   gem.files             = `git ls-files`.split("\n")
@@ -20,12 +20,10 @@ Gem::Specification.new do |gem|
   gem.extra_rdoc_files  = ['README.md']
   gem.rdoc_options      = ['--line-numbers', '--inline--source', '--title', 'desk.rb']
 
-  gem.add_runtime_dependency('multi_json')
   gem.add_runtime_dependency('faraday')
   gem.add_runtime_dependency('faraday_middleware')
   gem.add_runtime_dependency('simple_oauth')
   gem.add_runtime_dependency('addressable')
-  gem.add_runtime_dependency('activesupport')
   gem.add_runtime_dependency('hashie')
 
   gem.add_development_dependency('rspec')
