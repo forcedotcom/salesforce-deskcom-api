@@ -46,7 +46,7 @@ class DeskApi::Resource
   end
 
   def by_url(url)
-    self.class.new(@_client, @_client.get(url).body, true)
+    self.class.new(@_client, self.class.build_self_link(url))
   end
 
   def get_self

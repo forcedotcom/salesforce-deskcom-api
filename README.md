@@ -49,36 +49,68 @@ DeskApi.delete '/api/v2/topics/1'
 The API supports RESTful resources and so does this wrapper. These resources are automatically discovered, meaning you can navigate around without having to worry about anything. We also support two finder methods `by_url` and `find`, the former works with any resource, the latter needs a collection.
 
 ### Finders
-```ruby
-# #by_url doesn't care where it is called.
-found_case = DeskApi.users.first.by_url '/api/v2/cases/1'
 
-# #find needs to be called on a collection
-found_case = DeskApi.cases.find 1
-# the old #by_id still works
-found_case = DeskApi.cases.by_id 1
-```
+The method `by_url` can be called on all `DeskApi::Resource` instances and will return a lazy loaded instance of the resource. Since the update to v0.5 of the API wrapper the `find` method can now be called on all `DeskApi::Resource` instances too. _Gotcha:_ It will rebuild the base path based on the resource/collection it is called on. So if you call it on the cases collection "`DeskApi.cases.find 1`" the path will look like this: `/api/v2/cases/:id`.
+
+<table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Path</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`DeskApi.cases.find(1)`</td>
+      <td>`/api/v2/cases/1</td>
+    </tr>
+    <tr>
+      <td>`DeskApi.cases.entries.first.find(1)`</td>
+      <td>`/api/v2/cases/1</td>
+    </tr>
+    <tr>
+      <td>`DeskApi.cases.search.find(1)`</td>
+      <td>`/api/v2/cases/1</td>
+    </tr>
+    <tr>
+      <td>`DeskApi.cases.search.entries.first.find(1)`</td>
+      <td>`/api/v2/cases/1</td>
+    </tr>
+    <tr>
+      <td>`DeskApi.cases.entries.first.replies.find(1)`</td>
+      <td>`/api/v2/cases/1/replies/1</td>
+    </tr>
+    <tr>
+      <td>`DeskApi.cases.entries.first.replies.entries.first.find(1)`</td>
+      <td>`/api/v2/cases/1/replies/1</td>
+    </tr>
+  </tbody>
+</table>
 
 ### Pagination
 
-As mentioned above you can also navigate between resources and mainly pages of collections.
+As mentioned above you can also navigate between resources and pages of collections. _Please Notice:_ `DeskApi.cases` doesn't behave like an `Array` any longer, it's just a `DeskApi::Resource` so links like `next`, `previous`, `first` and `last` can be called directly. However you'll have to request the `entries` before you can loop through all the records on the page.
 
 ```ruby
 cases = DeskApi.cases
-cases.each do |my_case|
+cases.entries.each do |my_case|
   # do something with the case
 end
+
 # now move on to the next page
-next_page = cases.next_page
-next_page.each do |my_case|
+next_page = cases.next
+next_page.entries.each do |my_case|
   # do something with the case
 end
+
 # go back to the previous page
-previous_page = next_page.previous_page
+previous_page = next_page.previous
+
 # or go to the last page
-last_page = previous_page.last_page
+last_page = previous_page.last
+
 # or go to the first page
-first_page = last_page.first_page
+first_page = last_page.first
 ```
 
 ### Links
@@ -87,22 +119,23 @@ Pagination is pretty obvious but the cool part about pagination or rather resour
 
 ```ruby
 # get the customer of the first case of the first page
-customer = DeskApi.cases.first.customer
+customer = DeskApi.cases.entries.first.customer
+
 # who sent the first outbound reply of the first email
-user_name = DeskApi.cases.select{ |my_case| 
+user_name = DeskApi.cases.entries.select{ |my_case| 
               my_case.type == 'email'
-            }.first.replies.select{ |reply|
+            }.first.replies.entries.select{ |reply|
               reply.direction == 'out'
             }.first.sent_by.name
 ```
 
 ### Lazy loading
 
-Collections and resources in general are lazily loaded, meaning if you request the cases `DeskApi.cases` no actual request will be set off until you actually request data. This makes sure only necessary requests are fired and which keeps the overall requests low and spares the [desk.com rate limit](http://dev.desk.com/API/using-the-api/#rate-limits).
+Collections and resources in general are lazily loaded, meaning if you request the cases `DeskApi.cases` no actual request will be set off until you actually request data. Meaning only necessary requests are sent which will keep the request count low - [desk.com rate limit](http://dev.desk.com/API/using-the-api/#rate-limits).
 
 ```ruby
-DeskApi.cases.page(10).per_page(50).each do |my_case|
-  # in this method chain `.each' is the first method that acutally sends a request
+DeskApi.cases.page(10).per_page(50).entries.each do |my_case|
+  # in this method chain `.entries' is the first method that acutally sends a request
 end
 
 # however if you request the current page numer and the resource is not loaded
@@ -124,7 +157,7 @@ customer = cases.first.customer
 # you can use this feature in finders too
 my_case = DeskApi.cases.find(1, embed: :customer)
 # OR
-my_case = DeskApi.cases.find(1, embed: [:customer, :assigned_user, :assigned_group])
+my_case = DeskApi.cases.find(1, embed: [:customer, :assigned_user, :assigned_group, :message])
 
 customer = my_case.customer
 assigned_user = my_case.assigned_user
@@ -133,7 +166,7 @@ assigned_group = my_case.assigned_group
 
 ### Create, Update and Delete
 
-Of course we support creating, updating and deleting resources but not all resources can be deleted or updated or created, if that's the case for the resource you're trying to update, it'll throw a `DeskApi::Error::MethodNotSupported` error. The specific method won't be defined on the resource either `DeskApi.cases.first.respond_to?(:delete) == false`.
+Of course we support creating, updating and deleting resources but not all resources can be deleted or updated or created, if that's the case for the resource you're trying to update, it'll throw a `DeskApi::Error::MethodNotAllowed` error. For ease of use and because we wanted to build as less business logic into the wrapper as possible, all of the methods are defined on each `DeskApi::Resource` and will be sent to desk.com. However the API might respond with an error if you do things that aren't supported.
 
 ```ruby
 # let's create an article
@@ -159,17 +192,17 @@ end
 # ATTENTION: Cases can not be deleted!
 begin
   DeskApi.cases.first.delete
-rescue DeskApi::Error::MethodNotSupported => e
+rescue DeskApi::Error::MethodNotAllowed => e
   # too bad
 end
 ```
 
 ### Getters & Setters
 
-As you have seen in prior examples for each field on the resource we create a getter and setter. Be careful if a resource is not updatable it won't have a setter specified.
+As you have seen in prior examples for each field on the resource we create a getter and setter.
 
 ```ruby
-customer = DeskApi.customers.by_id(1)
+customer = DeskApi.customers.find(1)
 
 puts customer.first_name
 puts customer.last_name
@@ -185,8 +218,8 @@ updated_customer = customer.update title: 'Master of the Universe'
 # users are not updatable
 begin
   user = DeskApi.users.first
-  user.name = 'Not updateable'
-rescue DeskApi::Error::MethodNotSupported
+  user.update name: 'Not updateable'
+rescue DeskApi::Error::MethodNotAllowed
   # too bad
 end
 ```
