@@ -2,18 +2,12 @@ require 'spec_helper'
 
 describe DeskApi do
   describe '.method_missing' do
-    it 'delegates to DeskApi::Client' do
+    it 'delegates config to DeskApi::Client' do
       DeskApi.method_missing(:endpoint).should be_a(String)
     end
-  end
 
-  describe '.respond_to_missing?' do
-    it 'delegates to DeskApi::Client' do
-      DeskApi.respond_to_missing?(:endpoint).should be_true
-    end
-
-    it 'takes an optional argument' do
-      DeskApi.respond_to_missing?(:endpoint, true).should be_true
+    it 'delegates resource request to DeskApi::Client' do
+      DeskApi.method_missing(:cases).should be_a(DeskApi::Resource)
     end
   end
 
