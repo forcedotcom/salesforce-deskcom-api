@@ -9,14 +9,14 @@ module DeskApi
 
       def call(env)
         retries   = @retries
-        interval  = @interval
-        
+        env_clone = env.clone
         begin
           @app.call(env)
         rescue DeskApi::Error::TooManyRequests => e
           if retries > 0 and e.rate_limit.reset_in
             retries = 0
             sleep e.rate_limit.reset_in
+            env = env_clone
             retry
           end
           raise
@@ -24,6 +24,7 @@ module DeskApi
           if retries > 0
             retries -= 1
             sleep @interval
+            env = env_clone
             retry
           end
           raise
