@@ -153,10 +153,10 @@ private
 
     meth = method.to_s
 
-    return @_changed[meth[0...-1]] = args.first if meth.end_with?('=') and is_field?(meth[0...-1])
-    return get_field_value(meth) if is_field?(meth)
     return get_embedded_resource(meth) if is_embedded?(meth)
     return get_linked_resource(meth) if is_link?(meth)
+    return @_changed[meth[0...-1]] = args.first if meth.end_with?('=') and is_field?(meth[0...-1])
+    return get_field_value(meth) if is_field?(meth)
 
     super(method, *args, &block)
   end

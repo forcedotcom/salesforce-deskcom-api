@@ -281,4 +281,18 @@ describe DeskApi::Resource do
       subject.cases.find(3065).subject.should eq('Testing the Tank again')
     end
   end
+
+  describe 'prioritize links and embeds' do
+    before do
+      @company = subject.customers.entries.first.company
+    end
+
+    it 'returns a desk resource', :vcr do
+      @company.should be_an_instance_of(DeskApi::Resource)
+    end
+
+    it 'loads the resource and returns the name', :vcr do
+      @company.name.should eq('Desk.com')
+    end
+  end
 end
