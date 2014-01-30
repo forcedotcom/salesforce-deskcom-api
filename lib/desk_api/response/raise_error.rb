@@ -29,6 +29,6 @@ module DeskApi
       end
     end
 
-    Faraday.register_middleware :response, raise_error: lambda { RaiseError}
+    Faraday.register_middleware :response, :raise_desk_error => lambda { RaiseError}
   end
 end

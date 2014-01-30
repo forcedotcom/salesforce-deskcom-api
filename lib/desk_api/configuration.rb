@@ -43,8 +43,8 @@ module DeskApi::Configuration
       builder.request :retry
 
       builder.response :dates
-      builder.response :raise_error, DeskApi::Error::ClientError
-      builder.response :raise_error, DeskApi::Error::ServerError
+      builder.response :raise_desk_error, DeskApi::Error::ClientError
+      builder.response :raise_desk_error, DeskApi::Error::ServerError
       builder.response :json, content_type: /application\/json/
 
       builder.adapter Faraday.default_adapter
