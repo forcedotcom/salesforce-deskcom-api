@@ -1,6 +1,6 @@
 class DeskApi::Resource
   class << self
-    def build_self_link(link)
+    def build_self_link(link, params = {})
       link = {'href'=>link} if link.kind_of?(String)
       {'_links'=>{'self'=>link}}
     end
@@ -76,18 +76,6 @@ class DeskApi::Resource
     end
   end
 
-protected
-
-  def clean_base_url
-    Addressable::URI.parse(href).path.gsub(/\/(search|\d+)$/, '') 
-  end
-
-  def exec!(reload = false)
-    return self if @_loaded and !reload
-    @_definition, @_loaded = @_client.get(href).body, true
-    self
-  end
-
   def query_params
     Addressable::URI.parse(href).query_values || {}
   end
@@ -99,6 +87,8 @@ protected
   def query_params=(params = {})
     return href if params.empty?
 
+    params.keys.each{ |key| params[key] = params[key].join(',') if params[key].is_a?(Array) }
+
     uri = Addressable::URI.parse(href)
     params = (uri.query_values || {}).merge(params)
 
@@ -106,6 +96,18 @@ protected
 
     uri.query_values = params
     self.href = uri.to_s
+  end
+
+protected
+
+  def clean_base_url
+    Addressable::URI.parse(href).path.gsub(/\/(search|\d+)$/, '') 
+  end
+
+  def exec!(reload = false)
+    return self if @_loaded and !reload
+    @_definition, @_loaded = @_client.get(href).body, true
+    self
   end
 
 private

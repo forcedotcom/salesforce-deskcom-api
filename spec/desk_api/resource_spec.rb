@@ -17,6 +17,28 @@ describe DeskApi::Resource do
     it 'sets up the link to self' do
       subject.articles.href.should_not be_nil
     end
+
+    context 'additional options' do
+      it 'allows for sorting options' do
+        cases = subject.cases(sort_field: :updated_at, sort_direction: :asc)
+        cases.href.should eq('/api/v2/cases?sort_direction=asc&sort_field=updated_at')
+      end
+
+      it 'allows to specify arbitrary params' do
+        subject.cases(company_id: 1).href.should eq('/api/v2/cases?company_id=1')
+        subject.cases(customer_id: 1).href.should eq('/api/v2/cases?customer_id=1')
+        subject.cases(filter_id: 1).href.should eq('/api/v2/cases?filter_id=1')
+      end
+
+      it 'allows to specify embeddables' do
+        subject.cases(embed: :customer).href.should eq('/api/v2/cases?embed=customer')
+        subject.cases(embed: [:customer, :assigned_user]).href.should eq('/api/v2/cases?embed=customer%2Cassigned_user')
+      end
+
+      it 'does not automatically load the resource' do
+        subject.cases(company_id: 1).instance_variable_get(:@_loaded).should be_false
+      end
+    end
   end
 
   context '#exec!', :vcr do

@@ -36,8 +36,10 @@ class DeskApi::Client
 
 private
   # If the method is missing create a resource
-  def method_missing(method, *args, &block)
-    DeskApi::Resource.new(self, DeskApi::Resource.build_self_link("/api/v2/#{method}"))
+  def method_missing(method, params = {}, &block)
+    DeskApi::Resource.new(self, DeskApi::Resource.build_self_link("/api/v2/#{method}")).tap do |res|
+      res.query_params = params
+    end
   end
 
   def request(method, path, params = {})
