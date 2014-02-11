@@ -160,9 +160,13 @@ describe DeskApi::Resource do
         @stubs  ||= Faraday::Adapter::Test::Stubs.new
         @client ||= DeskApi::Client.new(DeskApi::CONFIG).tap do |client|
           client.middleware = Proc.new do |builder|
-            builder.response :mashify
-            builder.response :dates
-            builder.response :json, content_type: /application\/json/
+            if Gem::Version.new(FaradayMiddleware::VERSION) >= Gem::Version.new('0.9.0')
+              builder.response :dates
+              builder.response :json, content_type: /application\/json/
+            else
+              builder.use FaradayMiddleware::ParseDates
+              builder.use FaradayMiddleware::ParseJson, content_type: /application\/json/
+            end
             builder.adapter :test, @stubs
           end
         end

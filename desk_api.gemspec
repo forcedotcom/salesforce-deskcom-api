@@ -20,15 +20,13 @@ Gem::Specification.new do |gem|
   gem.extra_rdoc_files  = ['README.md']
   gem.rdoc_options      = ['--line-numbers', '--inline--source', '--title', 'desk.rb']
 
-  gem.add_runtime_dependency('faraday')
-  gem.add_runtime_dependency('faraday_middleware')
-  gem.add_runtime_dependency('simple_oauth')
-  gem.add_runtime_dependency('addressable')
-  gem.add_runtime_dependency('hashie')
+  gem.add_runtime_dependency('faraday_middleware', '~> 0.8.0')
+  gem.add_runtime_dependency('simple_oauth', '~> 0.1')
+  gem.add_runtime_dependency('addressable', '~> 2.3')
 
-  gem.add_development_dependency('rspec')
-  gem.add_development_dependency('rake')
-  gem.add_development_dependency('vcr')
-  gem.add_development_dependency('simplecov')
-  gem.add_development_dependency('coveralls')
+  gem.add_development_dependency('rake', '~> 0.9')
+  gem.add_development_dependency('rspec', '~> 2.6')
+  gem.add_development_dependency('vcr', '~> 2.0')
+  gem.add_development_dependency('simplecov', '~> 0.7')
+  gem.add_development_dependency('coveralls', '~> 0.6')
 end
