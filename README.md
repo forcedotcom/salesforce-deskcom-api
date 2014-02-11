@@ -87,6 +87,30 @@ last_page = previous_page.last
 first_page = last_page.first
 ```
 
+### List params
+
+Some lists allow for additional params like [cases](http://dev.desk.com/API/cases/#list). This allows you to filter the cases endpoint by using a `company_id`, `customer_id` or `filter_id` list param.
+
+```ruby
+# fetch cases for the company with id 1
+companys_cases = DeskApi.cases(company_id: 1)
+
+# fetch cases for the customer with id 1
+customers_cases = DeskApi.cases(customer_id: 1)
+
+# fetch cases for the filter with id 1
+filters_cases = DeskApi.cases(filter_id: 1)
+```
+
+### Sorting
+
+A recent update on APIv2 now imposes a maximum page limit. This is why sorting got very important and now you can even sort the list endpoints like [cases](http://dev.desk.com/API/cases/#list).
+
+```ruby
+# fetch cases sorted by updated_at direction desc
+sorted_cases = DeskApi.cases(sort_field: :updated_at, sort_direction: :desc)
+```
+
 ### Links
 
 Pagination is pretty obvious but the cool part about pagination or rather resources is the auto-linking. As soon as the resource has a link defined, it'll be navigatable:
@@ -96,11 +120,11 @@ Pagination is pretty obvious but the cool part about pagination or rather resour
 customer = DeskApi.cases.entries.first.customer
 
 # who sent the first outbound reply of the first email
-user_name = DeskApi.cases.entries.select{ |my_case| 
-              my_case.type == 'email'
-            }.first.replies.entries.select{ |reply|
-              reply.direction == 'out'
-            }.first.sent_by.name
+user_name = DeskApi.cases.entries.select do |my_case| 
+  my_case.type == 'email'
+end.first.replies.entries.select do |reply|
+  reply.direction == 'out'
+end.first.sent_by.name
 ```
 
 ### Lazy loading
