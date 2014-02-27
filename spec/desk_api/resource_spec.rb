@@ -66,6 +66,29 @@ describe DeskApi::Resource do
     end
   end
 
+  context '#respond_to', :vcr do
+    before do
+      @company = DeskApi::Resource.new(subject, {
+        '_links' => {'self'=>{'href'=>'/api/v2/cases','class'=>'page'}},
+        'name'   => 'foo'
+      }, true)
+    end
+
+    it 'loads the resource to find a suitable method' do
+      @company.instance_variable_set(:@_loaded, false)
+      @company.should_receive(:exec!)
+      @company.respond_to?(:name)
+    end
+
+    it 'returns true if method found in definition' do
+      @company.respond_to?(:name).should be_true
+    end
+
+    it 'returns false if method does not exist' do
+      @company.respond_to?(:no_method_here).should be_false
+    end
+  end
+
   context '#by_url', :vcr do
     it 'finds resources by url' do
       subject.articles.by_url('/api/v2/articles/1295677').should be_an_instance_of(DeskApi::Resource)

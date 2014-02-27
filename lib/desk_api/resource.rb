@@ -101,7 +101,7 @@ class DeskApi::Resource
 protected
 
   def clean_base_url
-    Addressable::URI.parse(href).path.gsub(/\/(search|\d+)$/, '') 
+    Addressable::URI.parse(href).path.gsub(/\/(search|\d+)$/, '')
   end
 
   def exec!(reload = false)
@@ -146,7 +146,7 @@ private
 
     return nil if links[method].nil?
     return links[method] if links[method].kind_of?(self.class)
-    
+
     links[method] = self.class.new(@_client, self.class.build_self_link(links[method]))
   end
 
@@ -162,4 +162,19 @@ private
 
     super(method, *args, &block)
   end
+
+public
+  def respond_to?(method, include_private = false)
+    self.exec! unless @_loaded
+
+    meth = method.to_s
+
+    return true if is_embedded?(meth)
+    return true if is_link?(meth)
+    return true if meth.end_with?('=') and is_field?(meth[0...-1])
+    return true if is_field?(meth)
+
+    super
+  end
+
 end
