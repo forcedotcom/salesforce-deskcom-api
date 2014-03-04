@@ -119,12 +119,12 @@ describe DeskApi::Resource do
     end
   end
 
-  context '#type' do
+  context '#resource_type' do
     it 'returns the resources type' do
       res = DeskApi::Resource.new(subject, {
         '_links'=>{'self'=>{'href'=>'/api/v2/cases','class'=>'page'}}
       }, true)
-      res.type.should eq('page')
+      res.resource_type.should eq('page')
     end
   end
 

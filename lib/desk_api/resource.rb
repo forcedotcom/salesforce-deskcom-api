@@ -62,7 +62,7 @@ class DeskApi::Resource
     @_definition['_links']['self']['href'] = value
   end
 
-  def type
+  def resource_type
     get_self['class']
   end
 
