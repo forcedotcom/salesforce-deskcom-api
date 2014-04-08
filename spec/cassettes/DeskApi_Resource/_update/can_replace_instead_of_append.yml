@@ -1,0 +1,315 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://devel.desk.com/api/v2/customers
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - desk.com Ruby Gem v0.5.7
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      accept-ranges:
+      - bytes
+      cache-control:
+      - must-revalidate, private, max-age=0
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Tue, 08 Apr 2014 19:08:33 GMT
+      etag:
+      - '"95556562da23122030c6b905b91b2038"'
+      status:
+      - 200 OK
+      vary:
+      - X-AppVersion
+      x-appversion:
+      - '15.99'
+      x-frame-options:
+      - SAMEORIGIN
+      x-rate-limit-limit:
+      - '120'
+      x-rate-limit-remaining:
+      - '119'
+      x-rate-limit-reset:
+      - '27'
+      x-request-id:
+      - 53037f558dca9838f040791157164152
+      content-length:
+      - '36153'
+      connection:
+      - Close
+    body:
+      encoding: UTF-8
+      string: '{"total_entries":226,"page":1,"_links":{"self":{"href":"/api/v2/customers?page=1&per_page=50","class":"page"},"first":{"href":"/api/v2/customers?page=1&per_page=50","class":"page"},"last":{"href":"/api/v2/customers?page=5&per_page=50","class":"page"},"previous":null,"next":{"href":"/api/v2/customers?page=2&per_page=50","class":"page"}},"_embedded":{"entries":[{"id":34290812,"first_name":"Alex","last_name":"Bard","company":"Desk.com","title":"CEO","external_id":null,"background":"Wowing
+        customer","language":null,"locked_until":null,"created_at":"2012-06-06T14:51:30Z","updated_at":"2014-04-08T19:07:13Z","custom_fields":{"my_custom_field":null,"my_number_field":"0","my_boolean_field":false,"my_date_field":null,"my_list_field":"Option
+        1","magento_id":null},"emails":[{"type":"work","value":"support@desk.com"}],"phone_numbers":[{"type":"home","value":"(415)
+        555-1234"},{"type":"home","value":"(415) 555-1234"},{"type":"home","value":"(415)
+        555-1234"},{"type":"home","value":"(415) 555-1234"},{"type":"home","value":"(415)
+        555-1234"},{"type":"home","value":"(415) 555-1234"}],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/34290812","class":"customer"},"locked_by":null,"company":{"href":"/api/v2/companies/138963","class":"company"},"facebook_user":null,"twitter_user":{"href":"/api/v2/twitter_users/2887203","class":"twitter_user"},"cases":{"href":"/api/v2/customers/34290812/cases","class":"case","count":147}}},{"id":34292086,"first_name":"Stella","last_name":"Pavlova","company":"Morpon
+        Brothers","title":"SVP Production","external_id":null,"background":"","language":null,"locked_until":null,"created_at":"2012-06-06T15:01:44Z","updated_at":"2012-12-07T23:56:00Z","custom_fields":{"my_custom_field":null,"my_number_field":null,"my_boolean_field":null,"my_date_field":null,"my_list_field":null,"magento_id":null},"emails":[],"phone_numbers":[],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/34292086","class":"customer"},"locked_by":null,"company":{"href":"/api/v2/companies/138965","class":"company"},"facebook_user":null,"twitter_user":null,"cases":{"href":"/api/v2/customers/34292086/cases","class":"case","count":0}}},{"id":34406867,"first_name":"Mike","last_name":"Malmin","company":"Mike
+        Malmin","title":"","external_id":null,"background":"","language":null,"locked_until":null,"created_at":"2012-06-07T13:50:04Z","updated_at":"2012-12-07T23:56:00Z","custom_fields":{"my_custom_field":null,"my_number_field":null,"my_boolean_field":null,"my_date_field":null,"my_list_field":null,"magento_id":null},"emails":[],"phone_numbers":[],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/34406867","class":"customer"},"locked_by":null,"company":{"href":"/api/v2/companies/138578","class":"company"},"facebook_user":null,"twitter_user":null,"cases":{"href":"/api/v2/customers/34406867/cases","class":"case","count":0}}},{"id":34408491,"first_name":"Janice","last_name":"Bergman","company":"Data
+        Mart","title":"VP Purchasing","external_id":null,"background":"","language":null,"locked_until":null,"created_at":"2012-06-07T14:07:13Z","updated_at":"2012-12-07T23:56:00Z","custom_fields":{"my_custom_field":null,"my_number_field":null,"my_boolean_field":null,"my_date_field":null,"my_list_field":null,"magento_id":null},"emails":[],"phone_numbers":[],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/34408491","class":"customer"},"locked_by":null,"company":{"href":"/api/v2/companies/138446","class":"company"},"facebook_user":null,"twitter_user":null,"cases":{"href":"/api/v2/customers/34408491/cases","class":"case","count":0}}},{"id":36328589,"first_name":"Bob","last_name":"Hodges","company":"United
+        Partners*","title":"President and CEO","external_id":null,"background":"","language":null,"locked_until":null,"created_at":"2012-06-22T21:56:31Z","updated_at":"2012-12-07T23:56:01Z","custom_fields":{"my_custom_field":null,"my_number_field":null,"my_boolean_field":null,"my_date_field":null,"my_list_field":null,"magento_id":null},"emails":[],"phone_numbers":[],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/36328589","class":"customer"},"locked_by":null,"company":{"href":"/api/v2/companies/113131","class":"company"},"facebook_user":null,"twitter_user":null,"cases":{"href":"/api/v2/customers/36328589/cases","class":"case","count":0}}},{"id":36652658,"first_name":"Ron","last_name":"Adkins","company":"Valley
+        Supply Inc.","title":"President Sales Exec Finance Exec","external_id":null,"background":"","language":null,"locked_until":null,"created_at":"2012-06-25T21:12:05Z","updated_at":"2012-12-07T23:56:01Z","custom_fields":{"my_custom_field":null,"my_number_field":null,"my_boolean_field":null,"my_date_field":null,"my_list_field":null,"magento_id":null},"emails":[],"phone_numbers":[],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/36652658","class":"customer"},"locked_by":null,"company":{"href":"/api/v2/companies/114536","class":"company"},"facebook_user":null,"twitter_user":null,"cases":{"href":"/api/v2/customers/36652658/cases","class":"case","count":0}}},{"id":37823480,"first_name":"Thomas","last_name":"Stachl","company":"stachl.me","title":"Master
+        of Script Artistry","external_id":null,"background":"Some Background information.","language":null,"locked_until":null,"created_at":"2012-07-04T14:33:39Z","updated_at":"2014-03-16T10:00:24Z","custom_fields":{"my_custom_field":null,"my_number_field":"0","my_boolean_field":false,"my_date_field":null,"my_list_field":"Option
+        1","magento_id":null},"emails":[{"type":"home","value":"thomas@stachl.me"},{"type":"home","value":"tstachl@salesforce.com"}],"phone_numbers":[{"type":"mobile","value":"4156060761"}],"addresses":[{"type":"home","value":"600
+        William Street #526\r\nOakland, CA 94612"}],"_links":{"self":{"href":"/api/v2/customers/37823480","class":"customer"},"locked_by":null,"company":{"href":"/api/v2/companies/373760","class":"company"},"facebook_user":null,"twitter_user":null,"cases":{"href":"/api/v2/customers/37823480/cases","class":"case","count":34}}},{"id":58278628,"first_name":"Lauren","last_name":"Boyle*","company":"mailinator.com","title":"","external_id":"0033000001JLAZrAAP","background":"","language":null,"locked_until":null,"created_at":"2012-12-07T23:36:46Z","updated_at":"2013-04-13T03:47:03Z","custom_fields":{"my_custom_field":null,"my_number_field":null,"my_boolean_field":null,"my_date_field":null,"my_list_field":null,"magento_id":null},"emails":[{"type":"work","value":"lauren.boyle@mailinator.com"}],"phone_numbers":[],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/58278628","class":"customer"},"locked_by":null,"company":{"href":"/api/v2/companies/2278303","class":"company"},"facebook_user":null,"twitter_user":null,"cases":{"href":"/api/v2/customers/58278628/cases","class":"case","count":0}}},{"id":71433005,"first_name":"Sandy","last_name":"Knudson","company":"mailinator.com","title":null,"external_id":null,"background":null,"language":null,"locked_until":null,"created_at":"2013-02-28T19:28:28Z","updated_at":"2013-02-28T19:45:43Z","custom_fields":{"my_custom_field":null,"my_number_field":null,"my_boolean_field":null,"my_date_field":null,"my_list_field":null,"magento_id":null},"emails":[{"type":"work","value":"sandyknudson@mailinator.com"}],"phone_numbers":[],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/71433005","class":"customer"},"locked_by":null,"company":{"href":"/api/v2/companies/2278303","class":"company"},"facebook_user":null,"twitter_user":null,"cases":{"href":"/api/v2/customers/71433005/cases","class":"case","count":0}}},{"id":71579966,"first_name":"Brad","last_name":"Anastasio","company":"fakeemail.com","title":null,"external_id":null,"background":null,"language":null,"locked_until":null,"created_at":"2013-03-01T13:51:56Z","updated_at":"2013-03-01T13:51:56Z","custom_fields":{"my_custom_field":null,"my_number_field":null,"my_boolean_field":null,"my_date_field":null,"my_list_field":null,"magento_id":null},"emails":[{"type":"work","value":"brad.anastasio@fakeemail.com"}],"phone_numbers":[],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/71579966","class":"customer"},"locked_by":null,"company":{"href":"/api/v2/companies/4036540","class":"company"},"facebook_user":null,"twitter_user":null,"cases":{"href":"/api/v2/customers/71579966/cases","class":"case","count":0}}},{"id":75923712,"first_name":"Leena","last_name":"Cianflone","company":null,"title":null,"external_id":null,"background":null,"language":null,"locked_until":null,"created_at":"2013-03-22T23:49:45Z","updated_at":"2013-03-22T23:49:45Z","custom_fields":{"my_custom_field":null,"my_number_field":null,"my_boolean_field":null,"my_date_field":null,"my_list_field":null,"magento_id":null},"emails":[{"type":"home","value":"leenacianflone@gmail.com"}],"phone_numbers":[],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/75923712","class":"customer"},"locked_by":null,"facebook_user":null,"twitter_user":null,"cases":{"href":"/api/v2/customers/75923712/cases","class":"case","count":0}}},{"id":75923713,"first_name":"Quinton","last_name":"Swanda","company":null,"title":null,"external_id":null,"background":null,"language":null,"locked_until":null,"created_at":"2013-03-22T23:49:45Z","updated_at":"2013-03-22T23:49:45Z","custom_fields":{"my_custom_field":null,"my_number_field":null,"my_boolean_field":null,"my_date_field":null,"my_list_field":null,"magento_id":null},"emails":[{"type":"home","value":"quintonswanda@gmail.com"}],"phone_numbers":[],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/75923713","class":"customer"},"locked_by":null,"facebook_user":null,"twitter_user":null,"cases":{"href":"/api/v2/customers/75923713/cases","class":"case","count":0}}},{"id":75923714,"first_name":"Jennifer","last_name":"Hansen","company":"zendesk.com","title":null,"external_id":null,"background":null,"language":null,"locked_until":null,"created_at":"2013-03-22T23:49:46Z","updated_at":"2013-03-22T23:49:46Z","custom_fields":{"my_custom_field":null,"my_number_field":null,"my_boolean_field":null,"my_date_field":null,"my_list_field":null,"magento_id":null},"emails":[{"type":"home","value":"jennifer@zendesk.com"}],"phone_numbers":[],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/75923714","class":"customer"},"locked_by":null,"company":{"href":"/api/v2/companies/4451253","class":"company"},"facebook_user":null,"twitter_user":null,"cases":{"href":"/api/v2/customers/75923714/cases","class":"case","count":0}}},{"id":75923715,"first_name":"Hue","last_name":"Gottesman","company":null,"title":null,"external_id":null,"background":null,"language":null,"locked_until":null,"created_at":"2013-03-22T23:49:46Z","updated_at":"2013-03-22T23:49:46Z","custom_fields":{"my_custom_field":null,"my_number_field":null,"my_boolean_field":null,"my_date_field":null,"my_list_field":null,"magento_id":null},"emails":[{"type":"home","value":"huegottesman@gmail.com"}],"phone_numbers":[],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/75923715","class":"customer"},"locked_by":null,"facebook_user":null,"twitter_user":null,"cases":{"href":"/api/v2/customers/75923715/cases","class":"case","count":0}}},{"id":75923716,"first_name":"Hal","last_name":"Raxter","company":null,"title":null,"external_id":null,"background":null,"language":null,"locked_until":null,"created_at":"2013-03-22T23:49:47Z","updated_at":"2013-03-22T23:49:47Z","custom_fields":{"my_custom_field":null,"my_number_field":null,"my_boolean_field":null,"my_date_field":null,"my_list_field":null,"magento_id":null},"emails":[{"type":"home","value":"raxterhal@gmail.com"}],"phone_numbers":[],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/75923716","class":"customer"},"locked_by":null,"facebook_user":null,"twitter_user":null,"cases":{"href":"/api/v2/customers/75923716/cases","class":"case","count":0}}},{"id":75923717,"first_name":"Colmo","last_name":"","company":"zendesk.com","title":null,"external_id":null,"background":null,"language":null,"locked_until":null,"created_at":"2013-03-22T23:49:47Z","updated_at":"2013-03-22T23:49:47Z","custom_fields":{"my_custom_field":null,"my_number_field":null,"my_boolean_field":null,"my_date_field":null,"my_list_field":null,"magento_id":null},"emails":[{"type":"home","value":"colmo@zendesk.com"}],"phone_numbers":[],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/75923717","class":"customer"},"locked_by":null,"company":{"href":"/api/v2/companies/4451253","class":"company"},"facebook_user":null,"twitter_user":null,"cases":{"href":"/api/v2/customers/75923717/cases","class":"case","count":0}}},{"id":75923718,"first_name":"Brice","last_name":"Baggenstoss","company":null,"title":null,"external_id":null,"background":null,"language":null,"locked_until":null,"created_at":"2013-03-22T23:49:47Z","updated_at":"2013-03-22T23:49:47Z","custom_fields":{"my_custom_field":null,"my_number_field":null,"my_boolean_field":null,"my_date_field":null,"my_list_field":null,"magento_id":null},"emails":[{"type":"home","value":"bricebaggenstoss@gmail.com"}],"phone_numbers":[],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/75923718","class":"customer"},"locked_by":null,"facebook_user":null,"twitter_user":null,"cases":{"href":"/api/v2/customers/75923718/cases","class":"case","count":1}}},{"id":75923719,"first_name":"Support","last_name":"","company":"zendesk.com","title":null,"external_id":null,"background":null,"language":null,"locked_until":null,"created_at":"2013-03-22T23:49:47Z","updated_at":"2013-03-22T23:49:47Z","custom_fields":{"my_custom_field":null,"my_number_field":null,"my_boolean_field":null,"my_date_field":null,"my_list_field":null,"magento_id":null},"emails":[{"type":"home","value":"support@zendesk.com"}],"phone_numbers":[],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/75923719","class":"customer"},"locked_by":null,"company":{"href":"/api/v2/companies/4451253","class":"company"},"facebook_user":null,"twitter_user":null,"cases":{"href":"/api/v2/customers/75923719/cases","class":"case","count":0}}},{"id":75923720,"first_name":"Noreply","last_name":"","company":"postmaster.twitter.com","title":null,"external_id":null,"background":null,"language":null,"locked_until":null,"created_at":"2013-03-22T23:49:48Z","updated_at":"2013-03-22T23:49:48Z","custom_fields":{"my_custom_field":null,"my_number_field":null,"my_boolean_field":null,"my_date_field":null,"my_list_field":null,"magento_id":null},"emails":[{"type":"home","value":"noreply@postmaster.twitter.com"}],"phone_numbers":[],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/75923720","class":"customer"},"locked_by":null,"company":{"href":"/api/v2/companies/4451254","class":"company"},"facebook_user":null,"twitter_user":null,"cases":{"href":"/api/v2/customers/75923720/cases","class":"case","count":0}}},{"id":75923721,"first_name":"Hal","last_name":"Schellhase","company":null,"title":null,"external_id":null,"background":null,"language":null,"locked_until":null,"created_at":"2013-03-22T23:49:48Z","updated_at":"2013-03-22T23:49:48Z","custom_fields":{"my_custom_field":null,"my_number_field":null,"my_boolean_field":null,"my_date_field":null,"my_list_field":null,"magento_id":null},"emails":[{"type":"home","value":"halschellhase@gmail.com"}],"phone_numbers":[],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/75923721","class":"customer"},"locked_by":null,"facebook_user":null,"twitter_user":null,"cases":{"href":"/api/v2/customers/75923721/cases","class":"case","count":0}}},{"id":76863359,"first_name":"Test","last_name":"Tester","company":"example.com","title":"CEO","external_id":null,"background":"","language":"en","locked_until":null,"created_at":"2013-03-27T17:35:51Z","updated_at":"2013-03-27T18:04:48Z","custom_fields":{"my_custom_field":null,"my_number_field":null,"my_boolean_field":null,"my_date_field":null,"my_list_field":null,"magento_id":null},"emails":[{"type":"work","value":"tester@example.com"}],"phone_numbers":[],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/76863359","class":"customer"},"locked_by":null,"company":{"href":"/api/v2/companies/4543697","class":"company"},"facebook_user":null,"twitter_user":null,"cases":{"href":"/api/v2/customers/76863359/cases","class":"case","count":0}}},{"id":77160792,"first_name":"barr_tim","last_name":"","company":"grandhotels.com","title":null,"external_id":null,"background":null,"language":null,"locked_until":null,"created_at":"2013-03-29T00:04:09Z","updated_at":"2013-04-15T23:59:05Z","custom_fields":{"my_custom_field":null,"my_number_field":null,"my_boolean_field":null,"my_date_field":null,"my_list_field":null,"magento_id":null},"emails":[{"type":"home","value":"barr_tim@grandhotels.com"}],"phone_numbers":[],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/77160792","class":"customer"},"locked_by":null,"company":{"href":"/api/v2/companies/4574466","class":"company"},"facebook_user":null,"twitter_user":null,"cases":{"href":"/api/v2/customers/77160792/cases","class":"case","count":0}}},{"id":78914102,"first_name":"John","last_name":"","company":"example.com","title":null,"external_id":null,"background":null,"language":null,"locked_until":null,"created_at":"2013-04-06T22:12:56Z","updated_at":"2013-04-15T16:42:57Z","custom_fields":{"my_custom_field":null,"my_number_field":null,"my_boolean_field":null,"my_date_field":null,"my_list_field":null,"magento_id":null},"emails":[{"type":"home","value":"john@example.com"}],"phone_numbers":[],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/78914102","class":"customer"},"locked_by":null,"company":{"href":"/api/v2/companies/4543697","class":"company"},"facebook_user":null,"twitter_user":null,"cases":{"href":"/api/v2/customers/78914102/cases","class":"case","count":0}}},{"id":79246639,"first_name":"Stachl","last_name":"Testing
+        Page","company":null,"title":null,"external_id":null,"background":null,"language":null,"locked_until":null,"created_at":"2013-04-08T20:06:40Z","updated_at":"2013-04-08T20:06:40Z","custom_fields":{"my_custom_field":null,"my_number_field":null,"my_boolean_field":null,"my_date_field":null,"my_list_field":null,"magento_id":null},"emails":[],"phone_numbers":[],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/79246639","class":"customer"},"locked_by":null,"facebook_user":{"href":"/api/v2/facebook_users/1885425","class":"facebook_user"},"twitter_user":null,"cases":{"href":"/api/v2/customers/79246639/cases","class":"case","count":0}}},{"id":79249149,"first_name":"Thomas","last_name":"Stachl","company":null,"title":null,"external_id":null,"background":null,"language":"en_us","locked_until":null,"created_at":"2013-04-08T20:18:56Z","updated_at":"2014-03-16T09:21:39Z","custom_fields":{"my_custom_field":null,"my_number_field":null,"my_boolean_field":null,"my_date_field":null,"my_list_field":null,"magento_id":null},"emails":[],"phone_numbers":[],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/79249149","class":"customer"},"locked_by":null,"facebook_user":{"href":"/api/v2/facebook_users/1885471","class":"facebook_user"},"twitter_user":null,"cases":{"href":"/api/v2/customers/79249149/cases","class":"case","count":0}}},{"id":79858779,"first_name":"Andrew","last_name":"Frauen","company":null,"title":null,"external_id":null,"background":null,"language":"en","locked_until":null,"created_at":"2013-04-11T17:39:26Z","updated_at":"2013-04-11T17:39:26Z","custom_fields":{"my_custom_field":null,"my_number_field":null,"my_boolean_field":null,"my_date_field":null,"my_list_field":null,"magento_id":null},"emails":[{"type":"home","value":"frauen.a@gmail.com"}],"phone_numbers":[],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/79858779","class":"customer"},"locked_by":null,"facebook_user":null,"twitter_user":null,"cases":{"href":"/api/v2/customers/79858779/cases","class":"case","count":0}}},{"id":80192856,"first_name":null,"last_name":null,"company":null,"title":null,"external_id":null,"background":null,"language":null,"locked_until":null,"created_at":"2013-04-12T23:46:33Z","updated_at":"2013-04-12T23:46:33Z","custom_fields":{"my_custom_field":null,"my_number_field":null,"my_boolean_field":null,"my_date_field":null,"my_list_field":null,"magento_id":null},"emails":[],"phone_numbers":[],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/80192856","class":"customer"},"locked_by":null,"facebook_user":null,"twitter_user":null,"cases":{"href":"/api/v2/customers/80192856/cases","class":"case","count":0}}},{"id":80193061,"first_name":null,"last_name":null,"company":null,"title":null,"external_id":null,"background":null,"language":null,"locked_until":null,"created_at":"2013-04-12T23:48:05Z","updated_at":"2013-04-12T23:48:05Z","custom_fields":{"my_custom_field":null,"my_number_field":null,"my_boolean_field":null,"my_date_field":null,"my_list_field":null,"magento_id":null},"emails":[],"phone_numbers":[],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/80193061","class":"customer"},"locked_by":null,"facebook_user":null,"twitter_user":null,"cases":{"href":"/api/v2/customers/80193061/cases","class":"case","count":0}}},{"id":80212952,"first_name":null,"last_name":null,"company":null,"title":null,"external_id":null,"background":null,"language":null,"locked_until":null,"created_at":"2013-04-13T02:37:48Z","updated_at":"2013-04-13T02:37:48Z","custom_fields":{"my_custom_field":null,"my_number_field":null,"my_boolean_field":null,"my_date_field":null,"my_list_field":null,"magento_id":null},"emails":[],"phone_numbers":[],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/80212952","class":"customer"},"locked_by":null,"facebook_user":null,"twitter_user":null,"cases":{"href":"/api/v2/customers/80212952/cases","class":"case","count":0}}},{"id":80213083,"first_name":null,"last_name":null,"company":null,"title":null,"external_id":null,"background":null,"language":null,"locked_until":null,"created_at":"2013-04-13T02:39:12Z","updated_at":"2013-04-13T02:39:12Z","custom_fields":{"my_custom_field":null,"my_number_field":null,"my_boolean_field":null,"my_date_field":null,"my_list_field":null,"magento_id":null},"emails":[],"phone_numbers":[],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/80213083","class":"customer"},"locked_by":null,"facebook_user":null,"twitter_user":null,"cases":{"href":"/api/v2/customers/80213083/cases","class":"case","count":0}}},{"id":80213160,"first_name":null,"last_name":null,"company":null,"title":null,"external_id":null,"background":null,"language":null,"locked_until":null,"created_at":"2013-04-13T02:40:10Z","updated_at":"2013-04-13T02:40:10Z","custom_fields":{"my_custom_field":null,"my_number_field":null,"my_boolean_field":null,"my_date_field":null,"my_list_field":null,"magento_id":null},"emails":[],"phone_numbers":[],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/80213160","class":"customer"},"locked_by":null,"facebook_user":null,"twitter_user":null,"cases":{"href":"/api/v2/customers/80213160/cases","class":"case","count":0}}},{"id":80213349,"first_name":null,"last_name":null,"company":null,"title":null,"external_id":null,"background":null,"language":null,"locked_until":null,"created_at":"2013-04-13T02:41:53Z","updated_at":"2013-04-13T02:41:53Z","custom_fields":{"my_custom_field":null,"my_number_field":null,"my_boolean_field":null,"my_date_field":null,"my_list_field":null,"magento_id":null},"emails":[],"phone_numbers":[],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/80213349","class":"customer"},"locked_by":null,"facebook_user":null,"twitter_user":null,"cases":{"href":"/api/v2/customers/80213349/cases","class":"case","count":0}}},{"id":80213634,"first_name":null,"last_name":null,"company":null,"title":null,"external_id":null,"background":null,"language":null,"locked_until":null,"created_at":"2013-04-13T02:43:59Z","updated_at":"2013-04-13T02:43:59Z","custom_fields":{"my_custom_field":null,"my_number_field":null,"my_boolean_field":null,"my_date_field":null,"my_list_field":null,"magento_id":null},"emails":[],"phone_numbers":[],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/80213634","class":"customer"},"locked_by":null,"facebook_user":null,"twitter_user":null,"cases":{"href":"/api/v2/customers/80213634/cases","class":"case","count":0}}},{"id":80213888,"first_name":null,"last_name":null,"company":null,"title":null,"external_id":null,"background":null,"language":null,"locked_until":null,"created_at":"2013-04-13T02:45:57Z","updated_at":"2013-04-13T02:45:57Z","custom_fields":{"my_custom_field":null,"my_number_field":null,"my_boolean_field":null,"my_date_field":null,"my_list_field":null,"magento_id":null},"emails":[],"phone_numbers":[],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/80213888","class":"customer"},"locked_by":null,"facebook_user":null,"twitter_user":null,"cases":{"href":"/api/v2/customers/80213888/cases","class":"case","count":0}}},{"id":80214018,"first_name":null,"last_name":null,"company":null,"title":null,"external_id":null,"background":null,"language":null,"locked_until":null,"created_at":"2013-04-13T02:46:52Z","updated_at":"2013-04-13T02:46:52Z","custom_fields":{"my_custom_field":null,"my_number_field":null,"my_boolean_field":null,"my_date_field":null,"my_list_field":null,"magento_id":null},"emails":[],"phone_numbers":[],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/80214018","class":"customer"},"locked_by":null,"facebook_user":null,"twitter_user":null,"cases":{"href":"/api/v2/customers/80214018/cases","class":"case","count":0}}},{"id":80640812,"first_name":"John","last_name":"Smith","company":"Glorious
+        D","title":"Senior Vice President of Awesome","external_id":null,"background":"Some
+        description.","language":null,"locked_until":null,"created_at":"2013-04-15T16:58:30Z","updated_at":"2013-04-15T16:58:31Z","custom_fields":{"my_custom_field":null,"my_number_field":null,"my_boolean_field":null,"my_date_field":null,"my_list_field":null,"magento_id":null},"emails":[{"type":"home","value":"john@gd.com"}],"phone_numbers":[{"type":"home","value":"4155551235"}],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/80640812","class":"customer"},"locked_by":null,"company":{"href":"/api/v2/companies/4912151","class":"company"},"facebook_user":null,"twitter_user":null,"cases":{"href":"/api/v2/customers/80640812/cases","class":"case","count":0}}},{"id":82113673,"first_name":"Larita","last_name":"Villas","company":null,"title":null,"external_id":null,"background":"","language":null,"locked_until":null,"created_at":"2013-04-22T22:37:00Z","updated_at":"2013-04-22T22:37:00Z","custom_fields":{"my_custom_field":null,"my_number_field":null,"my_boolean_field":null,"my_date_field":null,"my_list_field":null,"magento_id":null},"emails":[{"type":"home","value":"laritavillas@gmail.com"}],"phone_numbers":[],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/82113673","class":"customer"},"locked_by":null,"facebook_user":null,"twitter_user":null,"cases":{"href":"/api/v2/customers/82113673/cases","class":"case","count":0}}},{"id":82113675,"first_name":"Nolan","last_name":"Gett","company":null,"title":null,"external_id":null,"background":null,"language":null,"locked_until":null,"created_at":"2013-04-22T22:37:01Z","updated_at":"2013-04-22T22:37:01Z","custom_fields":{"my_custom_field":null,"my_number_field":null,"my_boolean_field":null,"my_date_field":null,"my_list_field":null,"magento_id":null},"emails":[{"type":"home","value":"nolangett@gmail.com"}],"phone_numbers":[],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/82113675","class":"customer"},"locked_by":null,"facebook_user":null,"twitter_user":null,"cases":{"href":"/api/v2/customers/82113675/cases","class":"case","count":0}}},{"id":82113682,"first_name":"Moises","last_name":"Sabio","company":null,"title":null,"external_id":null,"background":null,"language":null,"locked_until":null,"created_at":"2013-04-22T22:37:02Z","updated_at":"2013-04-22T22:37:02Z","custom_fields":{"my_custom_field":null,"my_number_field":null,"my_boolean_field":null,"my_date_field":null,"my_list_field":null,"magento_id":null},"emails":[{"type":"home","value":"sabiomoises@gmail.com"}],"phone_numbers":[],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/82113682","class":"customer"},"locked_by":null,"facebook_user":null,"twitter_user":null,"cases":{"href":"/api/v2/customers/82113682/cases","class":"case","count":0}}},{"id":82113684,"first_name":"Twitter","last_name":"","company":"postmaster.twitter.com","title":null,"external_id":null,"background":"","language":null,"locked_until":null,"created_at":"2013-04-22T22:37:02Z","updated_at":"2013-04-22T22:37:02Z","custom_fields":{"my_custom_field":null,"my_number_field":null,"my_boolean_field":null,"my_date_field":null,"my_list_field":null,"magento_id":null},"emails":[{"type":"home","value":"n-tybonyfhespb=tznvy.pbz-9b29b@postmaster.twitter.com"}],"phone_numbers":[],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/82113684","class":"customer"},"locked_by":null,"company":{"href":"/api/v2/companies/4451254","class":"company"},"facebook_user":null,"twitter_user":null,"cases":{"href":"/api/v2/customers/82113684/cases","class":"case","count":0}}},{"id":82113685,"first_name":"Zendesk","last_name":"","company":"zendesk.com","title":null,"external_id":null,"background":null,"language":null,"locked_until":null,"created_at":"2013-04-22T22:37:03Z","updated_at":"2013-04-22T22:37:03Z","custom_fields":{"my_custom_field":null,"my_number_field":null,"my_boolean_field":null,"my_date_field":null,"my_list_field":null,"magento_id":null},"emails":[{"type":"home","value":"noreply@zendesk.com"}],"phone_numbers":[],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/82113685","class":"customer"},"locked_by":null,"company":{"href":"/api/v2/companies/4451253","class":"company"},"facebook_user":null,"twitter_user":null,"cases":{"href":"/api/v2/customers/82113685/cases","class":"case","count":0}}},{"id":82113689,"first_name":"Richie","last_name":"Kalter","company":null,"title":null,"external_id":null,"background":null,"language":null,"locked_until":null,"created_at":"2013-04-22T22:37:03Z","updated_at":"2013-04-22T22:37:03Z","custom_fields":{"my_custom_field":null,"my_number_field":null,"my_boolean_field":null,"my_date_field":null,"my_list_field":null,"magento_id":null},"emails":[{"type":"home","value":"richiekalter11@gmail.com"}],"phone_numbers":[],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/82113689","class":"customer"},"locked_by":null,"facebook_user":null,"twitter_user":null,"cases":{"href":"/api/v2/customers/82113689/cases","class":"case","count":0}}},{"id":82113693,"first_name":"The","last_name":"Desk.com
+        Team","company":"Desk.com","title":null,"external_id":null,"background":null,"language":null,"locked_until":null,"created_at":"2013-04-22T22:37:04Z","updated_at":"2013-04-22T22:37:04Z","custom_fields":{"my_custom_field":null,"my_number_field":null,"my_boolean_field":null,"my_date_field":null,"my_list_field":null,"magento_id":null},"emails":[{"type":"home","value":"welcome@desk.com"}],"phone_numbers":[],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/82113693","class":"customer"},"locked_by":null,"company":{"href":"/api/v2/companies/138963","class":"company"},"facebook_user":null,"twitter_user":null,"cases":{"href":"/api/v2/customers/82113693/cases","class":"case","count":0}}},{"id":82113694,"first_name":"Rupert","last_name":"Warstler","company":null,"title":null,"external_id":null,"background":null,"language":null,"locked_until":null,"created_at":"2013-04-22T22:37:04Z","updated_at":"2013-04-22T22:37:04Z","custom_fields":{"my_custom_field":null,"my_number_field":null,"my_boolean_field":null,"my_date_field":null,"my_list_field":null,"magento_id":null},"emails":[{"type":"home","value":"rupertwarstler@gmail.com"}],"phone_numbers":[],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/82113694","class":"customer"},"locked_by":null,"facebook_user":null,"twitter_user":null,"cases":{"href":"/api/v2/customers/82113694/cases","class":"case","count":0}}},{"id":82113926,"first_name":"Suzy","last_name":"Galicinao","company":null,"title":null,"external_id":null,"background":null,"language":null,"locked_until":null,"created_at":"2013-04-22T22:38:00Z","updated_at":"2013-04-22T22:38:00Z","custom_fields":{"my_custom_field":null,"my_number_field":null,"my_boolean_field":null,"my_date_field":null,"my_list_field":null,"magento_id":null},"emails":[{"type":"home","value":"suzygalicinao@gmail.com"}],"phone_numbers":[],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/82113926","class":"customer"},"locked_by":null,"facebook_user":null,"twitter_user":null,"cases":{"href":"/api/v2/customers/82113926/cases","class":"case","count":0}}},{"id":82113930,"first_name":"ashley","last_name":"lawrence","company":null,"title":null,"external_id":null,"background":null,"language":null,"locked_until":null,"created_at":"2013-04-22T22:38:01Z","updated_at":"2013-04-22T22:38:01Z","custom_fields":{"my_custom_field":null,"my_number_field":null,"my_boolean_field":null,"my_date_field":null,"my_list_field":null,"magento_id":null},"emails":[],"phone_numbers":[],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/82113930","class":"customer"},"locked_by":null,"facebook_user":null,"twitter_user":null,"cases":{"href":"/api/v2/customers/82113930/cases","class":"case","count":0}}},{"id":82113931,"first_name":"Keshia","last_name":"Hohenstein","company":null,"title":null,"external_id":null,"background":null,"language":null,"locked_until":null,"created_at":"2013-04-22T22:38:01Z","updated_at":"2013-04-22T22:38:01Z","custom_fields":{"my_custom_field":null,"my_number_field":null,"my_boolean_field":null,"my_date_field":null,"my_list_field":null,"magento_id":null},"emails":[],"phone_numbers":[],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/82113931","class":"customer"},"locked_by":null,"facebook_user":null,"twitter_user":null,"cases":{"href":"/api/v2/customers/82113931/cases","class":"case","count":0}}},{"id":82113933,"first_name":"Alex","last_name":"Hisaka","company":"Desk.com","title":null,"external_id":null,"background":null,"language":null,"locked_until":null,"created_at":"2013-04-22T22:38:01Z","updated_at":"2013-04-22T22:38:02Z","custom_fields":{"my_custom_field":null,"my_number_field":null,"my_boolean_field":null,"my_date_field":null,"my_list_field":null,"magento_id":null},"emails":[{"type":"home","value":"alex.hisaka@desk.com"}],"phone_numbers":[],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/82113933","class":"customer"},"locked_by":null,"company":{"href":"/api/v2/companies/138963","class":"company"},"facebook_user":null,"twitter_user":null,"cases":{"href":"/api/v2/customers/82113933/cases","class":"case","count":0}}},{"id":82113936,"first_name":"seethaji","last_name":"","company":null,"title":null,"external_id":null,"background":null,"language":null,"locked_until":null,"created_at":"2013-04-22T22:38:02Z","updated_at":"2013-04-22T22:38:02Z","custom_fields":{"my_custom_field":null,"my_number_field":null,"my_boolean_field":null,"my_date_field":null,"my_list_field":null,"magento_id":null},"emails":[{"type":"home","value":"seethaji@yahoo.com"}],"phone_numbers":[],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/82113936","class":"customer"},"locked_by":null,"facebook_user":null,"twitter_user":null,"cases":{"href":"/api/v2/customers/82113936/cases","class":"case","count":0}}},{"id":82113939,"first_name":"Sukhjit","last_name":"","company":"Desk.com","title":null,"external_id":null,"background":null,"language":null,"locked_until":null,"created_at":"2013-04-22T22:38:02Z","updated_at":"2014-01-16T16:53:17Z","custom_fields":{"my_custom_field":null,"my_number_field":null,"my_boolean_field":null,"my_date_field":null,"my_list_field":null,"magento_id":null},"emails":[{"type":"home","value":"sukhjit@desk.com"}],"phone_numbers":[],"addresses":[{"type":"home","value":"Some
+        Address"}],"_links":{"self":{"href":"/api/v2/customers/82113939","class":"customer"},"locked_by":null,"company":{"href":"/api/v2/companies/138963","class":"company"},"facebook_user":null,"twitter_user":null,"cases":{"href":"/api/v2/customers/82113939/cases","class":"case","count":2}}}]}}'
+    http_version: 
+  recorded_at: Tue, 08 Apr 2014 19:08:33 GMT
+- request:
+    method: patch
+    uri: https://devel.desk.com/api/v2/customers/34290812
+    body:
+      encoding: UTF-8
+      string: '{"phone_numbers_update_action":"append","phone_numbers":[{"type":"home","value":"(415)
+        555-1234"},{"type":"home","value":"(415) 555-1234"},{"type":"home","value":"(415)
+        555-1234"}]}'
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - desk.com Ruby Gem v0.5.7
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - max-age=0, private, must-revalidate
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Tue, 08 Apr 2014 19:08:34 GMT
+      etag:
+      - '"de8a1963d32081771e53ccab644ecc96"'
+      server:
+      - nginx
+      status:
+      - 200 OK
+      vary:
+      - X-AppVersion
+      x-appversion:
+      - '15.99'
+      x-frame-options:
+      - SAMEORIGIN
+      x-rack-cache:
+      - invalidate, pass
+      x-rate-limit-limit:
+      - '120'
+      x-rate-limit-remaining:
+      - '118'
+      x-rate-limit-reset:
+      - '26'
+      x-request-id:
+      - ea0b53f6b7cf94584c15867279c14b14
+      x-runtime:
+      - '1.196427'
+      x-ua-compatible:
+      - IE=Edge,chrome=1
+      content-length:
+      - '1192'
+      connection:
+      - Close
+    body:
+      encoding: UTF-8
+      string: '{"id":34290812,"first_name":"Alex","last_name":"Bard","company":"Desk.com","title":"CEO","external_id":null,"background":"Wowing
+        customer","language":null,"locked_until":null,"created_at":"2012-06-06T14:51:30Z","updated_at":"2014-04-08T19:08:33Z","custom_fields":{"my_custom_field":null,"my_number_field":"0","my_boolean_field":false,"my_date_field":null,"my_list_field":"Option
+        1","magento_id":null},"emails":[{"type":"work","value":"support@desk.com"}],"phone_numbers":[{"type":"home","value":"(415)
+        555-1234"},{"type":"home","value":"(415) 555-1234"},{"type":"home","value":"(415)
+        555-1234"},{"type":"home","value":"(415) 555-1234"},{"type":"home","value":"(415)
+        555-1234"},{"type":"home","value":"(415) 555-1234"},{"type":"home","value":"(415)
+        555-1234"},{"type":"home","value":"(415) 555-1234"},{"type":"home","value":"(415)
+        555-1234"}],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/34290812","class":"customer"},"locked_by":null,"company":{"href":"/api/v2/companies/138963","class":"company"},"facebook_user":null,"twitter_user":{"href":"/api/v2/twitter_users/2887203","class":"twitter_user"},"cases":{"href":"/api/v2/customers/34290812/cases","class":"case","count":147}}}'
+    http_version: 
+  recorded_at: Tue, 08 Apr 2014 19:08:34 GMT
+- request:
+    method: get
+    uri: https://devel.desk.com/api/v2/customers/34290812
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - desk.com Ruby Gem v0.5.7
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      accept-ranges:
+      - bytes
+      cache-control:
+      - must-revalidate, private, max-age=0
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Tue, 08 Apr 2014 19:08:34 GMT
+      etag:
+      - '"de8a1963d32081771e53ccab644ecc96"'
+      status:
+      - 200 OK
+      vary:
+      - X-AppVersion
+      x-appversion:
+      - '15.99'
+      x-frame-options:
+      - SAMEORIGIN
+      x-rate-limit-limit:
+      - '120'
+      x-rate-limit-remaining:
+      - '117'
+      x-rate-limit-reset:
+      - '26'
+      x-request-id:
+      - 36b79a45c91862c1e0af2f5f2ac3175d
+      content-length:
+      - '1192'
+      connection:
+      - Close
+    body:
+      encoding: UTF-8
+      string: '{"id":34290812,"first_name":"Alex","last_name":"Bard","company":"Desk.com","title":"CEO","external_id":null,"background":"Wowing
+        customer","language":null,"locked_until":null,"created_at":"2012-06-06T14:51:30Z","updated_at":"2014-04-08T19:08:33Z","custom_fields":{"my_custom_field":null,"my_number_field":"0","my_boolean_field":false,"my_date_field":null,"my_list_field":"Option
+        1","magento_id":null},"emails":[{"type":"work","value":"support@desk.com"}],"phone_numbers":[{"type":"home","value":"(415)
+        555-1234"},{"type":"home","value":"(415) 555-1234"},{"type":"home","value":"(415)
+        555-1234"},{"type":"home","value":"(415) 555-1234"},{"type":"home","value":"(415)
+        555-1234"},{"type":"home","value":"(415) 555-1234"},{"type":"home","value":"(415)
+        555-1234"},{"type":"home","value":"(415) 555-1234"},{"type":"home","value":"(415)
+        555-1234"}],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/34290812","class":"customer"},"locked_by":null,"company":{"href":"/api/v2/companies/138963","class":"company"},"facebook_user":null,"twitter_user":{"href":"/api/v2/twitter_users/2887203","class":"twitter_user"},"cases":{"href":"/api/v2/customers/34290812/cases","class":"case","count":147}}}'
+    http_version: 
+  recorded_at: Tue, 08 Apr 2014 19:08:34 GMT
+- request:
+    method: patch
+    uri: https://devel.desk.com/api/v2/customers/34290812
+    body:
+      encoding: UTF-8
+      string: '{"phone_numbers_update_action":"replace","phone_numbers":[{"type":"other","value":"(415)
+        555-4321"}]}'
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - desk.com Ruby Gem v0.5.7
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - max-age=0, private, must-revalidate
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Tue, 08 Apr 2014 19:08:39 GMT
+      etag:
+      - '"a7b4f3dbfab52918b6e30979f2d9c1de"'
+      server:
+      - nginx
+      status:
+      - 200 OK
+      vary:
+      - X-AppVersion
+      x-appversion:
+      - '15.99'
+      x-frame-options:
+      - SAMEORIGIN
+      x-rack-cache:
+      - invalidate, pass
+      x-rate-limit-limit:
+      - '120'
+      x-rate-limit-remaining:
+      - '116'
+      x-rate-limit-reset:
+      - '21'
+      x-request-id:
+      - a6837b264381dccdbec3e731be02522c
+      x-runtime:
+      - '4.011402'
+      x-ua-compatible:
+      - IE=Edge,chrome=1
+      content-length:
+      - '865'
+      connection:
+      - Close
+    body:
+      encoding: UTF-8
+      string: '{"id":34290812,"first_name":"Alex","last_name":"Bard","company":"Desk.com","title":"CEO","external_id":null,"background":"Wowing
+        customer","language":null,"locked_until":null,"created_at":"2012-06-06T14:51:30Z","updated_at":"2014-04-08T19:08:35Z","custom_fields":{"my_custom_field":null,"my_number_field":"0","my_boolean_field":false,"my_date_field":null,"my_list_field":"Option
+        1","magento_id":null},"emails":[{"type":"work","value":"support@desk.com"}],"phone_numbers":[{"type":"other","value":"(415)
+        555-4321"}],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/34290812","class":"customer"},"locked_by":null,"company":{"href":"/api/v2/companies/138963","class":"company"},"facebook_user":null,"twitter_user":{"href":"/api/v2/twitter_users/2887203","class":"twitter_user"},"cases":{"href":"/api/v2/customers/34290812/cases","class":"case","count":147}}}'
+    http_version: 
+  recorded_at: Tue, 08 Apr 2014 19:08:39 GMT
+- request:
+    method: get
+    uri: https://devel.desk.com/api/v2/customers/34290812
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - desk.com Ruby Gem v0.5.7
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      accept-ranges:
+      - bytes
+      cache-control:
+      - must-revalidate, private, max-age=0
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Tue, 08 Apr 2014 19:08:39 GMT
+      etag:
+      - '"a7b4f3dbfab52918b6e30979f2d9c1de"'
+      status:
+      - 200 OK
+      vary:
+      - X-AppVersion
+      x-appversion:
+      - '15.99'
+      x-frame-options:
+      - SAMEORIGIN
+      x-rate-limit-limit:
+      - '120'
+      x-rate-limit-remaining:
+      - '115'
+      x-rate-limit-reset:
+      - '21'
+      x-request-id:
+      - 271d6c5a37e5fb0e97a36d39df78ba4f
+      content-length:
+      - '865'
+      connection:
+      - Close
+    body:
+      encoding: UTF-8
+      string: '{"id":34290812,"first_name":"Alex","last_name":"Bard","company":"Desk.com","title":"CEO","external_id":null,"background":"Wowing
+        customer","language":null,"locked_until":null,"created_at":"2012-06-06T14:51:30Z","updated_at":"2014-04-08T19:08:35Z","custom_fields":{"my_custom_field":null,"my_number_field":"0","my_boolean_field":false,"my_date_field":null,"my_list_field":"Option
+        1","magento_id":null},"emails":[{"type":"work","value":"support@desk.com"}],"phone_numbers":[{"type":"other","value":"(415)
+        555-4321"}],"addresses":[],"_links":{"self":{"href":"/api/v2/customers/34290812","class":"customer"},"locked_by":null,"company":{"href":"/api/v2/companies/138963","class":"company"},"facebook_user":null,"twitter_user":{"href":"/api/v2/twitter_users/2887203","class":"twitter_user"},"cases":{"href":"/api/v2/customers/34290812/cases","class":"case","count":147}}}'
+    http_version: 
+  recorded_at: Tue, 08 Apr 2014 19:08:39 GMT
+recorded_with: VCR 2.8.0

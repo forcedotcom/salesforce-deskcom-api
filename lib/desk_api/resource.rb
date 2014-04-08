@@ -15,8 +15,9 @@ class DeskApi::Resource
   end
 
   def update(params = {})
-    params.each_pair{ |key, value| send("#{key}=", value) }
-    changes       = @_changed.clone
+    changes       = filter_update_actions params
+    params.each_pair{ |key, value| send("#{key}=", value) if respond_to?("#{key}=") }
+    changes.merge!(@_changed.clone)
     @_changed     = {}
     @_definition  = @_client.patch(href, changes).body
   end
@@ -98,6 +99,22 @@ class DeskApi::Resource
     self.href = uri.to_s
   end
 
+  def respond_to?(method, include_private = false)
+    self.exec! unless @_loaded
+    meth = method.to_s
+
+    return true if is_embedded?(meth)
+    return true if is_link?(meth)
+    return true if meth.end_with?('=') and is_field?(meth[0...-1])
+    return true if is_field?(meth)
+
+    super
+  end
+
+  def reload!
+    self.exec! true
+  end
+
 protected
 
   def clean_base_url
@@ -112,6 +129,10 @@ protected
 
 private
   attr_accessor :_client, :_loaded, :_changed, :_definition
+
+  def filter_update_actions(params = {})
+    params.select{ |key, _| key.to_s.include?('update_action') }
+  end
 
   def is_field?(method)
     @_definition.key?(method)
@@ -162,19 +183,4 @@ private
 
     super(method, *args, &block)
   end
-
-public
-  def respond_to?(method, include_private = false)
-    self.exec! unless @_loaded
-
-    meth = method.to_s
-
-    return true if is_embedded?(meth)
-    return true if is_link?(meth)
-    return true if meth.end_with?('=') and is_field?(meth[0...-1])
-    return true if is_field?(meth)
-
-    super
-  end
-
 end

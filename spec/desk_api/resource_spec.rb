@@ -170,6 +170,45 @@ describe DeskApi::Resource do
       topic.update
       subject.topics.entries.first.description.should eq('Another description update.')
     end
+
+    it 'can handle update action params', :vcr do
+      customer  = subject.customers.entries.first
+      num_count = customer.phone_numbers.count
+      phone     = { type: 'home', value: '(415) 555-1234' }
+
+      customer.update({
+        phone_numbers: [phone],
+        phone_numbers_update_action: 'append'
+      })
+
+      customer.reload!.phone_numbers.size.should eq(num_count + 1)
+
+      customer.update({
+        phone_numbers: [phone],
+        phone_numbers_update_action: 'append'
+      })
+
+      customer.reload!.phone_numbers.size.should eq(num_count + 2)
+    end
+
+    it 'can replace instead of append', :vcr do
+      customer  = subject.customers.entries.first
+      phone     = { type: 'home', value: '(415) 555-1234' }
+
+      customer.update({
+        phone_numbers: [phone, phone, phone],
+        phone_numbers_update_action: 'append'
+      })
+
+      num_count = customer.reload!.phone_numbers.size
+      customer.update({
+        phone_numbers: [{ type: 'other', value: '(415) 555-4321' }],
+        phone_numbers_update_action: 'replace'
+      })
+
+      customer.reload!.phone_numbers.size.should eq(1)
+      num_count.should_not eq(customer.phone_numbers.size)
+    end
   end
 
   context '#delete' do
