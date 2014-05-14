@@ -7,7 +7,9 @@ class DeskApi::Resource
   end
 
   def initialize(client, definition = {}, loaded = false)
-    @_client, @_definition, @_loaded, @_changed = client, definition, loaded, {}
+    @_client, @_definition, @_loaded = client, definition, loaded
+    # better default
+    @_changed,  @_embedded, @_links = {}, {}, {}
   end
 
   def create(params = {})
@@ -61,6 +63,10 @@ class DeskApi::Resource
 
   def href=(value)
     @_definition['_links']['self']['href'] = value
+  end
+
+  def to_hash
+    @_definition
   end
 
   def resource_type
@@ -128,7 +134,7 @@ protected
   end
 
 private
-  attr_accessor :_client, :_loaded, :_changed, :_definition
+  attr_accessor :_client, :_loaded, :_changed, :_embedded, :_links, :_definition
 
   def filter_update_actions(params = {})
     params.select{ |key, _| key.to_s.include?('update_action') }
@@ -151,24 +157,26 @@ private
   end
 
   def get_embedded_resource(method)
-    embedds = @_definition['_embedded']
+    return @_embedded[method] if @_embedded.key?(method)
+    @_embedded[method] = @_definition['_embedded'][method]
 
-    if embedds[method].kind_of?(Array) and not embedds[method].first.kind_of?(self.class)
-      embedds[method].map!{ |definition| self.class.new(@_client, definition, true) }
-    elsif not embedds[method].kind_of?(self.class)
-      embedds[method] = self.class.new(@_client, embedds[method], true)
+    if @_embedded[method].kind_of?(Array)
+      @_embedded[method].tap do |ary|
+        ary.map!{ |definition| self.class.new(@_client, definition, true) } unless ary.first.kind_of?(self.class)
+      end
     else
-      embedds[method]
+      @_embedded[method] = self.class.new(@_client, @_embedded[method], true)
     end
   end
 
   def get_linked_resource(method)
-    links = @_definition['_links']
+    return @_links[method] if @_links.key?(method)
+    @_links[method] = @_definition['_links'][method]
 
-    return nil if links[method].nil?
-    return links[method] if links[method].kind_of?(self.class)
-
-    links[method] = self.class.new(@_client, self.class.build_self_link(links[method]))
+    # NOTE: create method for self.class.new
+    if @_links[method] and not @_links[method].kind_of?(self.class) 
+      @_links[method] = self.class.new(@_client, self.class.build_self_link(@_links[method]))
+    end
   end
 
   def method_missing(method, *args, &block)

@@ -336,7 +336,7 @@ describe DeskApi::Resource do
     it 'saves the linked resource instead of the url', :vcr do
       first_case = subject.cases.entries.first
       first_case.customer.should be_an_instance_of(DeskApi::Resource)
-      first_case.instance_variable_get(:@_definition)['_links']['customer'].should be_an_instance_of(DeskApi::Resource)
+      first_case.instance_variable_get(:@_links)['customer'].should be_an_instance_of(DeskApi::Resource)
     end
   end
 
