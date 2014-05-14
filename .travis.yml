@@ -21,4 +21,4 @@ matrix:
     - rvm: ree
     - rvm: jruby-head
 
-bundler_args: --without development
+bundler_args: --without test

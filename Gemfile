@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-group :development, :test do |variable|
+group :test do
   # Testing infrastructure
   gem 'pry'
   gem 'awesome_print'
