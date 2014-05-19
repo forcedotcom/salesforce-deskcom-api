@@ -23,7 +23,7 @@ http_interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Mon, 19 May 2014 18:11:53 GMT
+      - Mon, 19 May 2014 18:35:28 GMT
       etag:
       - '"7b8b8bc7d9f8ad3b0420d1049d7cdb06"'
       status:
@@ -37,11 +37,11 @@ http_interactions:
       x-rate-limit-limit:
       - '180'
       x-rate-limit-remaining:
-      - '179'
+      - '178'
       x-rate-limit-reset:
-      - '7'
+      - '32'
       x-request-id:
-      - 84c5697a5e4842eca55f1748a8fee3d0
+      - 108d74d0b1d5f3e2a11238a7bea478b0
       content-length:
       - '5958'
       connection:
@@ -62,5 +62,5 @@ http_interactions:
         Topic","description":null,"position":13,"allow_questions":true,"in_support_center":null,"created_at":"2014-04-27T21:27:53Z","updated_at":"2014-04-27T21:27:53Z","_links":{"self":{"href":"/api/v2/topics/649638","class":"topic"},"articles":{"href":"/api/v2/topics/649638/articles","class":"article"},"translations":{"href":"/api/v2/topics/649638/translations","class":"topic_translation"}}},{"name":"Test
         Topic","description":null,"position":14,"allow_questions":true,"in_support_center":null,"created_at":"2014-04-27T21:30:44Z","updated_at":"2014-04-27T21:30:44Z","_links":{"self":{"href":"/api/v2/topics/649639","class":"topic"},"articles":{"href":"/api/v2/topics/649639/articles","class":"article"},"translations":{"href":"/api/v2/topics/649639/translations","class":"topic_translation"}}}]}}'
     http_version: 
-  recorded_at: Mon, 19 May 2014 18:11:53 GMT
+  recorded_at: Mon, 19 May 2014 18:35:28 GMT
 recorded_with: VCR 2.9.0
