@@ -1,4 +1,8 @@
 class DeskApi::Resource
+  # by_url is deprecated on resources
+  extend Forwardable
+  def_delegator :@_client, :by_url, :by_url
+
   class << self
     def build_self_link(link, params = {})
       link = {'href'=>link} if link.kind_of?(String)
@@ -46,10 +50,6 @@ class DeskApi::Resource
     # make sure we don't try to embed anything that's not defined
     # add it to the query
     self.tap{ |res| res.query_params = { embed: embedds.join(',') } }
-  end
-
-  def by_url(url)
-    self.class.new(@_client, self.class.build_self_link(url))
   end
 
   def get_self

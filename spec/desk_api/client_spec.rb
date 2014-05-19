@@ -66,7 +66,7 @@ describe DeskApi::Client do
               config.send("#{key}=", value)
             end
           end
-          
+
           DeskApi::Configuration.keys.each do |key|
             client.instance_variable_get(:"@#{key}").should eq(@configuration[key])
           end
@@ -134,6 +134,12 @@ describe DeskApi::Client do
       it 'deletes a resource' do
         @client.delete('/api/v2/articles/1391017').status.should eq(204)
       end
+    end
+  end
+
+  describe '#by_url', :vcr do
+    it 'finds resources by url' do
+      subject.by_url('/api/v2/articles/1295677').should be_an_instance_of(DeskApi::Resource)
     end
   end
 

@@ -34,6 +34,11 @@ class DeskApi::Client
     request(:patch, path, params)
   end
 
+  # allow lookup by url
+  def by_url(url)
+    DeskApi::Resource.new(self, DeskApi::Resource.build_self_link(url))
+  end
+
 private
   # If the method is missing create a resource
   def method_missing(method, params = {}, &block)
