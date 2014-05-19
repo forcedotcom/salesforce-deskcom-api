@@ -191,6 +191,26 @@ describe DeskApi::Resource do
       customer.reload!.phone_numbers.size.should eq(num_count + 2)
     end
 
+    it 'can handle action params', :vcr do
+      ticket    = subject.cases.entries.first
+      num_count = ticket.to_hash['labels'].count
+      labels    = ['client_spam', 'client_test']
+
+      ticket.update({
+        labels: labels,
+        label_action: 'append'
+      })
+
+      ticket.labels.reload!.total_entries.should eq(num_count + 2)
+
+      ticket.update({
+        labels: labels,
+        label_action: 'replace'
+      })
+
+      ticket.labels.reload!.total_entries.should eq(2)
+    end
+
     it 'can replace instead of append', :vcr do
       customer  = subject.customers.entries.first
       phone     = { type: 'home', value: '(415) 555-1234' }

@@ -143,7 +143,7 @@ private
   attr_accessor :_client, :_loaded, :_changed, :_embedded, :_links, :_definition
 
   def filter_update_actions(params = {})
-    params.select{ |key, _| key.to_s.include?('update_action') }
+    params.select{ |key, _| key.to_s.include?('_action') }
   end
 
   def is_field?(method)
