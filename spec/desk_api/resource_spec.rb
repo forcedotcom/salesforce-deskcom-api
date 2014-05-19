@@ -370,6 +370,46 @@ describe DeskApi::Resource do
     end
   end
 
+  context '#to_hash' do
+    it 'returns a hash for a desk resource', :vcr do
+      subject.topics.entries.first.to_hash.should eq({
+        "name" => "Updated topic name",
+        "description" => "Another description update.",
+        "position" => 1,
+        "allow_questions" => true,
+        "in_support_center" => true,
+        "created_at" => Time.parse("2013-04-22T23:46:42Z"),
+        "updated_at" => Time.parse("2014-03-06T17:59:33Z"),
+        "_links" => {
+          "self" => {
+            "href" => "/api/v2/topics/498301",
+            "class" => "topic"
+          },
+          "articles" => {
+            "href" => "/api/v2/topics/498301/articles",
+            "class" => "article"
+          },
+          "translations" => {
+            "href" => "/api/v2/topics/498301/translations",
+            "class" => "topic_translation"
+          }
+        }
+      })
+    end
+
+    it 'converts embedded resources to hashes', :vcr do
+      path = File.join(
+        RSpec.configuration.root_path,
+        'stubs',
+        'to_hash_embed.json'
+      )
+
+      subject.cases(embed: :customer).to_hash.to_json.should eq(
+        File.open(path).read
+      )
+    end
+  end
+
   describe 'prioritize links and embeds' do
     before do
       @company = subject.customers.entries.first.company

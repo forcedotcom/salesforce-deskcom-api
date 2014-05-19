@@ -66,7 +66,13 @@ class DeskApi::Resource
   end
 
   def to_hash
-    @_definition
+    self.exec! unless @_loaded
+
+    {}.tap do |hash|
+      @_definition.each do |k, v|
+        hash[k] = v
+      end
+    end
   end
 
   def resource_type
@@ -174,7 +180,7 @@ private
     @_links[method] = @_definition['_links'][method]
 
     # NOTE: create method for self.class.new
-    if @_links[method] and not @_links[method].kind_of?(self.class) 
+    if @_links[method] and not @_links[method].kind_of?(self.class)
       @_links[method] = self.class.new(@_client, self.class.build_self_link(@_links[method]))
     end
   end
