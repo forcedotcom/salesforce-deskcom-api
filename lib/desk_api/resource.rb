@@ -17,7 +17,7 @@ class DeskApi::Resource
   end
 
   def create(params = {})
-    self.class.new(@_client, @_client.post(clean_base_url, params).body, true)
+    new_resource(@_client.post(clean_base_url, params).body, true)
   end
 
   def update(params = {})
@@ -36,11 +36,11 @@ class DeskApi::Resource
     params = { q: params } if params.kind_of?(String)
     url = Addressable::URI.parse(clean_base_url + '/search')
     url.query_values = params
-    self.class.new(@_client, self.class.build_self_link(url.to_s))
+    new_resource(self.class.build_self_link(url.to_s))
   end
 
   def find(id, options = {})
-    res = self.class.new(@_client, self.class.build_self_link("#{clean_base_url}/#{id}"))
+    res = new_resource(self.class.build_self_link("#{clean_base_url}/#{id}"))
     res.embed(*(options[:embed].kind_of?(Array) ? options[:embed] : [options[:embed]])) if options[:embed]
     res.exec!
   end
@@ -155,6 +155,14 @@ class DeskApi::Resource
   end
   alias_method :load!, :reload!
 
+  def load
+    self.exec! unless @_loaded
+  end
+
+  def loaded?
+    @_loaded
+  end
+
 protected
 
   def clean_base_url
@@ -170,14 +178,6 @@ protected
   def reset!
     @_links, @_embedded, @_changed, @_loaded = {}, {}, {}, false
     self
-  end
-
-  def load
-    self.exec! unless @_loaded
-  end
-
-  def loaded?
-    @_loaded
   end
 
 private
@@ -209,10 +209,10 @@ private
 
     if @_embedded[method].kind_of?(Array)
       @_embedded[method].tap do |ary|
-        ary.map!{ |definition| self.class.new(@_client, definition, true) } unless ary.first.kind_of?(self.class)
+        ary.map!{ |definition| new_resource(definition, true) } unless ary.first.kind_of?(self.class)
       end
     else
-      @_embedded[method] = self.class.new(@_client, @_embedded[method], true)
+      @_embedded[method] = new_resource(@_embedded[method], true)
     end
   end
 
@@ -220,10 +220,13 @@ private
     return @_links[method] if @_links.key?(method)
     @_links[method] = @_definition['_links'][method]
 
-    # NOTE: create method for self.class.new
     if @_links[method] and not @_links[method].kind_of?(self.class)
-      @_links[method] = self.class.new(@_client, self.class.build_self_link(@_links[method]))
+      @_links[method] = new_resource(self.class.build_self_link(@_links[method]))
     end
+  end
+
+  def new_resource(definition, loaded=false, client=@_client)
+    self.class.new(client, definition, loaded)
   end
 
   def method_missing(method, *args, &block)

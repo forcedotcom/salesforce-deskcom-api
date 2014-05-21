@@ -516,6 +516,15 @@ describe DeskApi::Resource do
     end
   end
 
+  context '#new_resource' do
+    it 'returns a new desk resource from a hash definition' do
+      subject.
+        cases.
+        send(:new_resource, DeskApi::Resource.build_self_link('/api/v2/customers')).
+        should be_an_instance_of(DeskApi::Resource)
+    end
+  end
+
   describe 'prioritize links and embeds' do
     before do
       @company = subject.customers.entries.first.company
