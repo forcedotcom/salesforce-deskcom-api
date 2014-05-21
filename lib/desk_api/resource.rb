@@ -47,7 +47,7 @@ class DeskApi::Resource
   alias_method :by_id, :find
 
   def next!
-    self.exec! unless @_loaded
+    self.load
     next_page = @_definition['_links']['next']
 
     if next_page
@@ -93,7 +93,7 @@ class DeskApi::Resource
   end
 
   def to_hash
-    self.exec! unless @_loaded
+    self.load
 
     {}.tap do |hash|
       @_definition.each do |k, v|
@@ -139,7 +139,7 @@ class DeskApi::Resource
   end
 
   def respond_to?(method, include_private = false)
-    self.exec! unless @_loaded
+    self.load
     meth = method.to_s
 
     return true if is_embedded?(meth)
@@ -153,6 +153,7 @@ class DeskApi::Resource
   def reload!
     self.exec! true
   end
+  alias_method :load!, :reload!
 
 protected
 
@@ -169,6 +170,14 @@ protected
   def reset!
     @_links, @_embedded, @_changed, @_loaded = {}, {}, {}, false
     self
+  end
+
+  def load
+    self.exec! unless @_loaded
+  end
+
+  def loaded?
+    @_loaded
   end
 
 private
@@ -218,7 +227,7 @@ private
   end
 
   def method_missing(method, *args, &block)
-    self.exec! unless @_loaded
+    self.load
 
     meth = method.to_s
 
