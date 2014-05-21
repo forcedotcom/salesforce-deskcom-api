@@ -1,5 +1,5 @@
 require 'uri'
-require 'json'
+require 'faraday'
 require 'forwardable'
 require 'addressable/uri'
 
