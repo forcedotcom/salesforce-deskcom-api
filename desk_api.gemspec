@@ -9,8 +9,8 @@ Gem::Specification.new do |gem|
   gem.homepage          = 'http://github.com/tstachl/desk'
   gem.version           = DeskApi::VERSION
 
-  gem.authors           = ['Thomas Stachl']
-  gem.email             = 'thomas@desk.com'
+  gem.authors           = ['Thomas Stachl', 'Andrew Frauen']
+  gem.email             = 'tstachl@salesforce.com'
 
   gem.require_paths     = ['lib']
   gem.files             = `git ls-files`.split("\n")
