@@ -25,7 +25,7 @@ describe DeskApi::Request::Retry do
     end
 
     @conn.post('http://localhost/echo') rescue nil
-    times_called.should eq(4)
+    expect(times_called).to eq(4)
   end
 
   it 'retries once if we have too many requests' do
@@ -47,6 +47,6 @@ describe DeskApi::Request::Retry do
     end
 
     @conn.post('http://localhost/echo') rescue nil
-    times_called.should eq(2)
+    expect(times_called).to eq(2)
   end
 end

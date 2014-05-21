@@ -3,7 +3,7 @@ require 'spec_helper'
 describe DeskApi::Configuration do
   context '#keys' do
     it 'returns an array of configuration keys' do
-      DeskApi::Configuration.keys.should eq([
+      expect(DeskApi::Configuration.keys).to eq([
         :consumer_key,
         :consumer_secret,
         :token,
@@ -24,18 +24,18 @@ describe DeskApi::Configuration do
 
     it 'returns the endpoint if set' do
       DeskApi.endpoint = 'https://devel.desk.com'
-      DeskApi.endpoint.should eq('https://devel.desk.com')
+      expect(DeskApi.endpoint).to eq('https://devel.desk.com')
     end
 
     it 'returns the subdomain endpoint if subdomain is set' do
       DeskApi.subdomain = 'devel'
-      DeskApi.endpoint.should eq('https://devel.desk.com')
+      expect(DeskApi.endpoint).to eq('https://devel.desk.com')
     end
 
     it 'gives presidence to the endpoint' do
       DeskApi.subdomain = 'subdomain'
       DeskApi.endpoint = 'https://endpoint.desk.com'
-      DeskApi.endpoint.should eq('https://endpoint.desk.com')
+      expect(DeskApi.endpoint).to eq('https://endpoint.desk.com')
     end
   end
 
@@ -65,59 +65,67 @@ describe DeskApi::Configuration do
       end
 
       DeskApi::Configuration.keys.each do |key|
-        client.instance_variable_get(:"@#{key}").should eq(@configuration[key])
+        expect(client.instance_variable_get(:"@#{key}")).to eq(@configuration[key])
       end
     end
 
     it 'throws an exception if credentials are not set' do
       client = DeskApi::Client.new
-      lambda {
-        client.configure do |config|
-          @configuration.each do |key, value|
-            config.send("#{key}=", value)
+      expect(
+        lambda {
+          client.configure do |config|
+            @configuration.each do |key, value|
+              config.send("#{key}=", value)
+            end
+            config.username = nil
+            config.consumer_key = nil
           end
-          config.username = nil
-          config.consumer_key = nil
-        end
-      }.should raise_error(DeskApi::Error::ConfigurationError)
+        }
+      ).to raise_error(DeskApi::Error::ConfigurationError)
     end
 
     it 'throws an exception if basic auth credentials are invalid' do
       client = DeskApi::Client.new
-      lambda {
-        client.configure do |config|
-          @configuration.each do |key, value|
-            config.send("#{key}=", value)
+      expect(
+        lambda {
+          client.configure do |config|
+            @configuration.each do |key, value|
+              config.send("#{key}=", value)
+            end
+            config.username = 1
+            config.consumer_key = nil
           end
-          config.username = 1
-          config.consumer_key = nil
-        end
-      }.should raise_error(DeskApi::Error::ConfigurationError)
+        }
+      ).to raise_error(DeskApi::Error::ConfigurationError)
     end
 
     it 'throws an exception if oauth credentials are invalid' do
       client = DeskApi::Client.new
-      lambda {
-        client.configure do |config|
-          @configuration.each do |key, value|
-            config.send("#{key}=", value)
+      expect(
+        lambda {
+          client.configure do |config|
+            @configuration.each do |key, value|
+              config.send("#{key}=", value)
+            end
+            config.username = nil
+            config.consumer_key = 1
           end
-          config.username = nil
-          config.consumer_key = 1
-        end
-      }.should raise_error(DeskApi::Error::ConfigurationError)
+        }
+      ).to raise_error(DeskApi::Error::ConfigurationError)
     end
 
     it 'throws an exception if endpoint is not a valid url' do
       client = DeskApi::Client.new
-      lambda {
-        client.configure do |config|
-          @configuration.each do |key, value|
-            config.send("#{key}=", value)
+      expect(
+        lambda {
+          client.configure do |config|
+            @configuration.each do |key, value|
+              config.send("#{key}=", value)
+            end
+            config.endpoint = 'some_funky_endpoint'
           end
-          config.endpoint = 'some_funky_endpoint'
-        end
-      }.should raise_error(DeskApi::Error::ConfigurationError)
+        }
+      ).to raise_error(DeskApi::Error::ConfigurationError)
     end
   end
 
@@ -148,7 +156,7 @@ describe DeskApi::Configuration do
       client.reset!
 
       DeskApi::Configuration.keys.each do |key|
-        client.instance_variable_get(:"@#{key}").should_not eq(@configuration[key])
+        expect(client.instance_variable_get(:"@#{key}")).not_to eq(@configuration[key])
       end
     end
   end
@@ -163,13 +171,13 @@ describe DeskApi::Configuration do
     end
 
     it 'returns false if no authentication credentials are set' do
-      @client.credentials?.should be_false
+      expect(@client.credentials?).to be_false
     end
 
     it 'returns true if basic auth credentials are set' do
       @client.username = 'UN'
       @client.password = 'PW'
-      @client.credentials?.should be_true
+      expect(@client.credentials?).to be_true
     end
 
     it 'returns true if oauth credentials are set' do
@@ -177,7 +185,7 @@ describe DeskApi::Configuration do
       @client.consumer_secret = 'CS'
       @client.token = 'TOK'
       @client.token_secret = 'TOKS'
-      @client.credentials?.should be_true
+      expect(@client.credentials?).to be_true
     end
   end
 end
