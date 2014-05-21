@@ -430,6 +430,77 @@ describe DeskApi::Resource do
     end
   end
 
+  context '#next!' do
+    it 'changes @_definition to next page', :vcr do
+      page      = subject.cases.first
+      next_page = page.next
+      page.
+        next!.
+        instance_variables.
+        count { |v| page.instance_variable_get(v) != next_page.instance_variable_get(v) }.
+        should eq(0)
+    end
+
+    it 'returns nil on the last page', :vcr do
+      subject.cases.last.next!.should eq(nil)
+    end
+
+  end
+
+  context '#each_page' do
+    it 'iterates over each page', :vcr do
+      subject.cases.each_page do |page, page_number|
+        page.should be_an_instance_of(DeskApi::Resource)
+        page.resource_type.should eq('page')
+        page_number.should be_an_instance_of(Fixnum)
+      end
+    end
+
+    it 'uses a default per_page of 1000', :vcr do
+      subject.cases.each_page do |page, page_number|
+        (page.query_params['per_page'].to_i % 10).should eq(0)
+      end
+    end
+
+    it 'uses per_page from query_params if present' do
+      subject.cases.per_page(25) do |page, page_number|
+        page.query_params['per_page'].should eq(25)
+      end
+    end
+
+    it 'raises an argument error if no block is given' do
+      expect { subject.cases.each_page }.to raise_error(ArgumentError)
+    end
+  end
+
+  context '#all' do
+    it 'iterates over each resource on each page', :vcr do
+      subject.cases.all do |resource|
+        resource.should be_an_instance_of(DeskApi::Resource)
+        resource.resource_type.should eq('case')
+      end
+    end
+
+    it 'raises an argument error if no block is given' do
+      expect { subject.cases.all }.to raise_error(ArgumentError)
+    end
+  end
+
+  context '#reset!' do
+    it 'sets @_links, @_embedded, @_changed, and @_loaded to default values', :vcr do
+      ticket = subject.cases.embed(:customer).entries.first
+
+      ticket.customer
+      ticket.message
+      ticket.send(:reset!)
+
+      ticket.instance_variable_get(:@_links).should eq({})
+      ticket.instance_variable_get(:@_embedded).should eq({})
+      ticket.instance_variable_get(:@_changed).should eq({})
+      ticket.instance_variable_get(:@_loaded).should eq(false)
+    end
+  end
+
   describe 'prioritize links and embeds' do
     before do
       @company = subject.customers.entries.first.company

@@ -11,9 +11,9 @@ class DeskApi::Resource
   end
 
   def initialize(client, definition = {}, loaded = false)
+    reset!
     @_client, @_definition, @_loaded = client, definition, loaded
     # better default
-    @_changed,  @_embedded, @_links = {}, {}, {}
   end
 
   def create(params = {})
@@ -45,6 +45,33 @@ class DeskApi::Resource
     res.exec!
   end
   alias_method :by_id, :find
+
+  def next!
+    self.exec! unless @_loaded
+    next_page = @_definition['_links']['next']
+
+    if next_page
+      @_definition = self.class.build_self_link(next_page)
+      self.reset!
+    end
+
+  end
+
+  def all(&block)
+    raise ArgumentError, "Block must be given for #all" unless block_given?
+    each_page do |page|
+      page.entries.each { |resource| block.call(resource) }
+    end
+  end
+
+  def each_page
+    raise ArgumentError, "Block must be given for #each_page" unless block_given?
+    page = self.first.per_page(self.query_params['per_page'] || 1000) 
+    begin
+      yield page, page.page
+    end while page.next!
+  end
+
 
   def embed(*embedds)
     # make sure we don't try to embed anything that's not defined
@@ -136,6 +163,11 @@ protected
   def exec!(reload = false)
     return self if @_loaded and !reload
     @_definition, @_loaded = @_client.get(href).body, true
+    self
+  end
+
+  def reset!
+    @_links, @_embedded, @_changed, @_loaded = {}, {}, {}, false
     self
   end
 
