@@ -498,6 +498,24 @@ describe DeskApi::Resource do
     end
   end
 
+  context '#load' do
+    it 'loads the resource if not already loaded', :vcr do
+      tickets = subject.cases
+      tickets.instance_variable_get(:@_loaded).should eq(false)
+      tickets.send(:load)
+      tickets.instance_variable_get(:@_loaded).should eq(true)
+    end
+  end
+
+  context '#loaded?' do
+    it 'returns true if the resource is loaded', :vcr do
+      tickets = subject.cases
+      tickets.send(:loaded?).should eq(false)
+      tickets.send(:load!)
+      tickets.send(:loaded?).should eq(true)
+    end
+  end
+
   describe 'prioritize links and embeds' do
     before do
       @company = subject.customers.entries.first.company
