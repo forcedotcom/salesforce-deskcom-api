@@ -469,8 +469,12 @@ describe DeskApi::Resource do
       end
     end
 
-    it 'raises an argument error if no block is given' do
+    it 'raises ArgumentError if no block is given' do
       expect { subject.cases.each_page }.to raise_error(ArgumentError)
+    end
+
+    it 'raises NoMethodError is called on non-page resources', :vcr do
+      expect { subject.cases.entries.first.each_page { |x| x } }.to raise_error(NoMethodError)
     end
   end
 
