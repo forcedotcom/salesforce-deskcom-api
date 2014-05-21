@@ -7,7 +7,7 @@ describe DeskApi::Request::Retry do
 
     @stubs = Faraday::Adapter::Test::Stubs.new
     @conn = Faraday.new do |builder|
-      builder.request :retry, { interval: 0 }
+      builder.request :desk_retry, { interval: 0 }
       builder.adapter :test, @stubs
     end
   end

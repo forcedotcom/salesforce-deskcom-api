@@ -1,9 +1,9 @@
-require 'faraday_middleware'
-require 'faraday_middleware/version'
-require 'faraday_middleware/response/parse_dates'
-
 require 'desk_api/default'
 require 'desk_api/request/retry'
+require 'desk_api/request/oauth'
+require 'desk_api/request/encode_json'
+require 'desk_api/response/parse_dates'
+require 'desk_api/response/parse_json'
 require 'desk_api/response/raise_error'
 require 'desk_api/error/configuration_error'
 require 'desk_api/error/client_error'
@@ -38,28 +38,16 @@ module DeskApi::Configuration
 
   def middleware
     @middleware ||= Proc.new do |builder|
-      if Gem::Version.new(FaradayMiddleware::VERSION) >= Gem::Version.new('0.9.0')
-        builder.request :json
-        builder.request :basic_authentication, @username, @password if basic_auth.values.all?
-        builder.request :oauth, oauth if oauth.values.all?
-        builder.request :retry
+      builder.request :desk_encode_json
+      builder.request :basic_auth, @username, @password if basic_auth.values.all?
+      builder.request :desk_oauth, oauth if oauth.values.all?
+      builder.request :desk_retry
 
-        builder.response :dates
-        builder.response :raise_desk_error, DeskApi::Error::ClientError
-        builder.response :raise_desk_error, DeskApi::Error::ServerError
-        builder.response :json, content_type: /application\/json/
-      else
-        builder.use FaradayMiddleware::EncodeJson
-        builder.use Faraday::Request::BasicAuthentication, @username, @password if basic_auth.values.all?
-        builder.use FaradayMiddleware::OAuth, oauth if oauth.values.all?
-        builder.use DeskApi::Request::Retry
+      builder.response :desk_parse_dates
+      builder.response :desk_raise_error, DeskApi::Error::ClientError
+      builder.response :desk_raise_error, DeskApi::Error::ServerError
+      builder.response :desk_parse_json
 
-        builder.use FaradayMiddleware::ParseDates
-        builder.use DeskApi::Response::RaiseError, DeskApi::Error::ClientError
-        builder.use DeskApi::Response::RaiseError, DeskApi::Error::ServerError
-        builder.use FaradayMiddleware::ParseJson, content_type: /application\/json/
-      end
-      
       builder.adapter Faraday.default_adapter
     end
   end
