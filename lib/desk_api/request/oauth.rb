@@ -17,6 +17,4 @@ module DeskApi::Request
       SimpleOAuth::Header.new env[:method], env[:url].to_s, {}, @options
     end
   end
-
-  Faraday::Request.register_middleware :desk_oauth => OAuth
 end

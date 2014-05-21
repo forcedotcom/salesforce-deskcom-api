@@ -8,6 +8,4 @@ module DeskApi::Request
       @app.call env
     end
   end
-
-  Faraday::Request.register_middleware :desk_encode_json => EncodeJson
 end

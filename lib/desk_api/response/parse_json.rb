@@ -7,6 +7,4 @@ module DeskApi::Response
     end
 
   end
-
-  Faraday::Response.register_middleware :desk_parse_json => ParseJson
 end

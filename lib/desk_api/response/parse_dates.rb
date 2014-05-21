@@ -23,6 +23,4 @@ module DeskApi::Response
       end
     end
   end
-
-  Faraday::Response.register_middleware :desk_parse_dates => ParseDates
 end

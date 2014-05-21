@@ -1,3 +1,5 @@
+require 'faraday'
+
 require 'desk_api/default'
 require 'desk_api/request/retry'
 require 'desk_api/request/oauth'
@@ -28,6 +30,24 @@ module DeskApi::Configuration
         :endpoint,
         :connection_options
       ]
+    end
+
+    def included(base)
+      if Gem::Version.new(Faraday::VERSION) >= Gem::Version.new('0.9.0')
+        Faraday::Request.register_middleware desk_encode_json: DeskApi::Request::EncodeJson
+        Faraday::Request.register_middleware desk_oauth: DeskApi::Request::OAuth
+        Faraday::Request.register_middleware desk_retry: DeskApi::Request::Retry
+        Faraday::Response.register_middleware desk_parse_dates: DeskApi::Response::ParseDates
+        Faraday::Response.register_middleware desk_parse_json: DeskApi::Response::ParseJson
+        Faraday::Response.register_middleware desk_raise_error: DeskApi::Response::RaiseError
+      else
+        Faraday.register_middleware :request, desk_encode_json: DeskApi::Request::EncodeJson
+        Faraday.register_middleware :request, desk_oauth: DeskApi::Request::OAuth
+        Faraday.register_middleware :request, desk_retry: DeskApi::Request::Retry
+        Faraday.register_middleware :response, desk_parse_dates: DeskApi::Response::ParseDates
+        Faraday.register_middleware :response, desk_parse_json: DeskApi::Response::ParseJson
+        Faraday.register_middleware :response, desk_raise_error: DeskApi::Response::RaiseError
+      end
     end
   end
 

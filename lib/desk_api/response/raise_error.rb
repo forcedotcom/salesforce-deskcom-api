@@ -26,6 +26,4 @@ module DeskApi::Response
       super(app)
     end
   end
-
-  Faraday::Response.register_middleware :desk_raise_error => RaiseError
 end

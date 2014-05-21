@@ -1,9 +1,13 @@
-require 'faraday'
-
 module DeskApi::Request
-  class Retry < Faraday::Request::Retry
+  class Retry < Faraday::Middleware
+    def initialize(app, options = {})
+      @max = options[:max] || 3
+      @interval = options[:interval] || 10
+      super(app)
+    end
+
     def call(env)
-      retries   = @options.max
+      retries   = @max
       request_body = env[:body]
       begin
         env[:body] = request_body
@@ -15,16 +19,29 @@ module DeskApi::Request
           retry
         end
         raise
-      rescue @errmatch
+      rescue exception_matcher
         if retries > 0
           retries -= 1
-          sleep sleep_amount(retries + 1)
+          sleep @interval
           retry
         end
         raise
       end
     end
-  end
 
-  Faraday::Request.register_middleware :desk_retry => Retry
+    def exception_matcher
+      exceptions = [Errno::ETIMEDOUT, 'Timeout::Error', Faraday::Error::TimeoutError]
+      matcher = Module.new
+      (class << matcher; self; end).class_eval do
+        define_method(:===) do |error|
+          exceptions.any? do |ex|
+            if ex.is_a? Module then error.is_a? ex
+            else error.class.to_s == ex.to_s
+            end
+          end
+        end
+      end
+      matcher
+    end
+  end
 end
