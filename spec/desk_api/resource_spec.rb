@@ -7,43 +7,43 @@ describe DeskApi::Resource do
 
   context '#initialize' do
     it 'stores the client' do
-      subject.articles.instance_variable_get(:@_client).should eq(subject)
+      expect(subject.articles.instance_variable_get(:@_client)).to eq(subject)
     end
 
     it 'is not loaded initially' do
-      subject.articles.instance_variable_get(:@_loaded).should be_false
+      expect(subject.articles.instance_variable_get(:@_loaded)).to be_false
     end
 
     it 'sets up the link to self' do
-      subject.articles.href.should_not be_nil
+      expect(subject.articles.href).not_to be_nil
     end
 
     context 'additional options' do
       it 'allows for sorting options' do
         cases = subject.cases(sort_field: :updated_at, sort_direction: :asc)
-        cases.href.should eq('/api/v2/cases?sort_direction=asc&sort_field=updated_at')
+        expect(cases.href).to eq('/api/v2/cases?sort_direction=asc&sort_field=updated_at')
       end
 
       it 'allows to specify arbitrary params' do
-        subject.cases(company_id: 1).href.should eq('/api/v2/cases?company_id=1')
-        subject.cases(customer_id: 1).href.should eq('/api/v2/cases?customer_id=1')
-        subject.cases(filter_id: 1).href.should eq('/api/v2/cases?filter_id=1')
+        expect(subject.cases(company_id: 1).href).to eq('/api/v2/cases?company_id=1')
+        expect(subject.cases(customer_id: 1).href).to eq('/api/v2/cases?customer_id=1')
+        expect(subject.cases(filter_id: 1).href).to eq('/api/v2/cases?filter_id=1')
       end
 
       it 'allows to specify embeddables' do
-        subject.cases(embed: :customer).href.should eq('/api/v2/cases?embed=customer')
-        subject.cases(embed: [:customer, :assigned_user]).href.should eq('/api/v2/cases?embed=customer%2Cassigned_user')
+        expect(subject.cases(embed: :customer).href).to eq('/api/v2/cases?embed=customer')
+        expect(subject.cases(embed: [:customer, :assigned_user]).href).to eq('/api/v2/cases?embed=customer%2Cassigned_user')
       end
 
       it 'does not automatically load the resource' do
-        subject.cases(company_id: 1).instance_variable_get(:@_loaded).should be_false
+        expect(subject.cases(company_id: 1).instance_variable_get(:@_loaded)).to be_false
       end
     end
   end
 
   context '#exec!', :vcr do
     it 'loads the current resource' do
-      subject.articles.send(:exec!).instance_variable_get(:@_loaded).should be_true
+      expect(subject.articles.send(:exec!).instance_variable_get(:@_loaded)).to be_true
     end
 
     it 'can be forced to reload' do
@@ -62,7 +62,7 @@ describe DeskApi::Resource do
     end
 
     it 'raises an error if method does not exist' do
-      lambda { subject.articles.some_other_method }.should raise_error(NoMethodError)
+      expect(lambda { subject.articles.some_other_method }).to raise_error(NoMethodError)
     end
   end
 
@@ -81,23 +81,23 @@ describe DeskApi::Resource do
     end
 
     it 'returns true if method found in definition' do
-      @company.respond_to?(:name).should be_true
+      expect(@company.respond_to?(:name)).to be_true
     end
 
     it 'returns false if method does not exist' do
-      @company.respond_to?(:no_method_here).should be_false
+      expect(@company.respond_to?(:no_method_here)).to be_false
     end
   end
 
   context '#by_url', :vcr do
     it 'finds resources by url' do
-      subject.articles.by_url('/api/v2/articles/1295677').should be_an_instance_of(DeskApi::Resource)
+      expect(subject.articles.by_url('/api/v2/articles/1295677')).to be_an_instance_of(DeskApi::Resource)
     end
   end
 
   context '#get_self' do
     it 'returns the hash for self' do
-      subject.articles.get_self.should eq({
+      expect(subject.articles.get_self).to eq({
         "href" => "/api/v2/articles"
       })
     end
@@ -105,7 +105,7 @@ describe DeskApi::Resource do
 
   context '#href' do
     it 'returns the href for self' do
-      subject.articles.href.should eq('/api/v2/articles')
+      expect(subject.articles.href).to eq('/api/v2/articles')
     end
 
     it 'sets the href' do
@@ -113,9 +113,9 @@ describe DeskApi::Resource do
         '_links'=>{'self'=>{'href'=>'/api/v2/cases'}}
       }, true)
 
-      res.href.should eq('/api/v2/cases')
+      expect(res.href).to eq('/api/v2/cases')
       res.href = '/api/v2/articles'
-      res.href.should eq('/api/v2/articles')
+      expect(res.href).to eq('/api/v2/articles')
     end
   end
 
@@ -124,25 +124,27 @@ describe DeskApi::Resource do
       res = DeskApi::Resource.new(subject, {
         '_links'=>{'self'=>{'href'=>'/api/v2/cases','class'=>'page'}}
       }, true)
-      res.resource_type.should eq('page')
+      expect(res.resource_type).to eq('page')
     end
   end
 
   context '#search' do
     it 'allows searching on search enabled resources', :vcr do
-      subject.articles.search(text: 'Lorem Ipsum').total_entries.should eq(0)
+      expect(subject.articles.search(text: 'Lorem Ipsum').total_entries).to eq(0)
     end
   end
 
   context '#create' do
     it 'creates a new topic', :vcr do
-      topic = subject.topics.create({
-        name: 'My new topic'
-      }).name.should eq('My new topic')
+      expect(
+        topic = subject.topics.create({
+          name: 'My new topic'
+        }).name
+      ).to eq('My new topic')
     end
 
     it 'throws an error creating a user', :vcr do
-      lambda { subject.users.create(name: 'Some User') }.should raise_error(DeskApi::Error::MethodNotAllowed)
+      expect(lambda { subject.users.create(name: 'Some User') }).to raise_error(DeskApi::Error::MethodNotAllowed)
     end
   end
 
@@ -155,20 +157,20 @@ describe DeskApi::Resource do
         name: 'Updated topic name'
       })
 
-      topic.name.should eq('Updated topic name')
-      topic.description.should eq('Some new description')
+      expect(topic.name).to eq('Updated topic name')
+      expect(topic.description).to eq('Some new description')
     end
 
     it 'throws an error updating a user', :vcr do
       user = subject.users.entries.first
-      lambda { user.update(name: 'Some User') }.should raise_error(DeskApi::Error::MethodNotAllowed)
+      expect(lambda { user.update(name: 'Some User') }).to raise_error(DeskApi::Error::MethodNotAllowed)
     end
 
     it 'can update without a hash', :vcr do
       topic = subject.topics.entries.first
       topic.description = 'Another description update.'
       topic.update
-      subject.topics.entries.first.description.should eq('Another description update.')
+      expect(subject.topics.entries.first.description).to eq('Another description update.')
     end
 
     it 'can handle update action params', :vcr do
@@ -181,14 +183,14 @@ describe DeskApi::Resource do
         phone_numbers_update_action: 'append'
       })
 
-      customer.reload!.phone_numbers.size.should eq(num_count + 1)
+      expect(customer.reload!.phone_numbers.size).to eq(num_count + 1)
 
       customer.update({
         phone_numbers: [phone],
         phone_numbers_update_action: 'append'
       })
 
-      customer.reload!.phone_numbers.size.should eq(num_count + 2)
+      expect(customer.reload!.phone_numbers.size).to eq(num_count + 2)
     end
 
     it 'can handle action params', :vcr do
@@ -201,14 +203,14 @@ describe DeskApi::Resource do
         label_action: 'append'
       })
 
-      ticket.labels.reload!.total_entries.should eq(num_count + 2)
+      expect(ticket.labels.reload!.total_entries).to eq(num_count + 2)
 
       ticket.update({
         labels: labels,
         label_action: 'replace'
       })
 
-      ticket.labels.reload!.total_entries.should eq(2)
+      expect(ticket.labels.reload!.total_entries).to eq(2)
     end
 
     it 'can replace instead of append', :vcr do
@@ -226,35 +228,37 @@ describe DeskApi::Resource do
         phone_numbers_update_action: 'replace'
       })
 
-      customer.reload!.phone_numbers.size.should eq(1)
-      num_count.should_not eq(customer.phone_numbers.size)
+      expect(customer.reload!.phone_numbers.size).to eq(1)
+      expect(num_count).not_to eq(customer.phone_numbers.size)
     end
   end
 
   context '#delete' do
     it 'deletes a resource', :vcr do
-      subject.articles.create({
-        subject: 'My subject',
-        body: 'Some text for this new article',
-        _links: {
-          topic: subject.topics.entries.first.get_self
-        }
-      }).delete.should be_true
+      expect {
+        subject.articles.create({
+          subject: 'My subject',
+          body: 'Some text for this new article',
+          _links: {
+            topic: subject.topics.entries.first.get_self
+          }
+        }).delete
+      }.to be_true
     end
 
     it 'throws an error deleting a non deletalbe resource', :vcr do
       user = subject.users.entries.first
-      lambda { user.delete }.should raise_error(DeskApi::Error::MethodNotAllowed)
+      expect(lambda { user.delete }).to raise_error(DeskApi::Error::MethodNotAllowed)
     end
   end
 
   describe 'embeddable' do
     it 'allows to declare embedds' do
-      lambda { subject.cases.embed(:assigned_user) }.should_not raise_error
+      expect(lambda { subject.cases.embed(:assigned_user) }).not_to raise_error
     end
 
     it 'changes the url' do
-      subject.cases.embed(:assigned_user).href.should eq('/api/v2/cases?embed=assigned_user')
+      expect(subject.cases.embed(:assigned_user).href).to eq('/api/v2/cases?embed=assigned_user')
     end
 
     context 'if you use embed' do
@@ -288,9 +292,9 @@ describe DeskApi::Resource do
         end
 
         first_case = @client.cases.embed(:assigned_user).entries.first
-        first_case.assigned_user.name.should eq('Thomas Stachl')
-        first_case.assigned_user.instance_variable_get(:@_loaded).should be_true
-        times_called.should eq(1)
+        expect(first_case.assigned_user.name).to eq('Thomas Stachl')
+        expect(first_case.assigned_user.instance_variable_get(:@_loaded)).to be_true
+        expect(times_called).to eq(1)
       end
 
       it 'can be used in finder' do
@@ -303,9 +307,9 @@ describe DeskApi::Resource do
         end
 
         customer = @client.cases.find(3011, embed: :customer).customer
-        customer.first_name.should eq('Thomas')
+        expect(customer.first_name).to eq('Thomas')
         customer = @client.cases.find(3011, embed: [:customer]).customer
-        customer.first_name.should eq('Thomas')
+        expect(customer.first_name).to eq('Thomas')
       end
     end
   end
@@ -318,12 +322,12 @@ describe DeskApi::Resource do
     end
 
     it 'allows to get query params from the current resource' do
-      @page.send(:query_params_include?, 'page').should eq('2')
-      @page.send(:query_params_include?, 'per_page').should eq('50')
+      expect(@page.send(:query_params_include?, 'page')).to eq('2')
+      expect(@page.send(:query_params_include?, 'per_page')).to eq('50')
     end
 
     it 'returns nil if param not found' do
-      @page.send(:query_params_include?, 'blup').should be_nil
+      expect(@page.send(:query_params_include?, 'blup')).to be_nil
     end
   end
 
@@ -336,59 +340,59 @@ describe DeskApi::Resource do
 
     it 'sets query params on the current url' do
       @page.send(:query_params=, { page: 5, per_page: 50 })
-      @page.instance_variable_get(:@_definition)['_links']['self']['href'].should eq('/api/v2/cases?page=5&per_page=50')
+      expect(@page.instance_variable_get(:@_definition)['_links']['self']['href']).to eq('/api/v2/cases?page=5&per_page=50')
     end
   end
 
   context '#get_linked_resource' do
     it 'returns linked resources', :vcr do
-      subject.cases.entries.first.customer.should be_an_instance_of(DeskApi::Resource)
+      expect(subject.cases.entries.first.customer).to be_an_instance_of(DeskApi::Resource)
     end
 
     it 'returns nil if link is nil', :vcr do
-      subject.articles.next.should be_nil
+      expect(subject.articles.next).to be_nil
     end
 
     it 'saves the linked resource instead of the url', :vcr do
       first_case = subject.cases.entries.first
-      first_case.customer.should be_an_instance_of(DeskApi::Resource)
-      first_case.instance_variable_get(:@_links)['customer'].should be_an_instance_of(DeskApi::Resource)
+      expect(first_case.customer).to be_an_instance_of(DeskApi::Resource)
+      expect(first_case.instance_variable_get(:@_links)['customer']).to be_an_instance_of(DeskApi::Resource)
     end
   end
 
   context '#page' do
     it 'returns the current page and loads if page not defined', :vcr do
-      subject.articles.page.should eq(1)
+      expect(subject.articles.page).to eq(1)
     end
 
     it 'sets the page' do
-      subject.cases.page(5).page.should eq(5)
+      expect(subject.cases.page(5).page).to eq(5)
     end
 
     it 'sets the resource to not loaded', :vcr do
       cases = subject.cases.send(:exec!)
-      cases.page(5).instance_variable_get(:@_loaded).should be_false
+      expect(cases.page(5).instance_variable_get(:@_loaded)).to be_false
     end
 
     it 'keeps the resource as loaded', :vcr do
       cases = subject.cases.send(:exec!)
-      cases.page(1).instance_variable_get(:@_loaded).should be_true
+      expect(cases.page(1).instance_variable_get(:@_loaded)).to be_true
     end
   end
 
   context '#find' do
     it 'loads the requested resource', :vcr do
-      subject.cases.find(3065).subject.should eq('Testing the Tank again')
+      expect(subject.cases.find(3065).subject).to eq('Testing the Tank again')
     end
 
     it 'has an alias by_id', :vcr do
-      subject.cases.find(3065).subject.should eq('Testing the Tank again')
+      expect(subject.cases.find(3065).subject).to eq('Testing the Tank again')
     end
   end
 
   context '#to_hash' do
     it 'returns a hash for a desk resource', :vcr do
-      subject.topics.entries.first.to_hash.should eq({
+      expect(subject.topics.entries.first.to_hash).to eq({
         "name" => "Updated topic name",
         "description" => "Another description update.",
         "position" => 1,
@@ -420,7 +424,7 @@ describe DeskApi::Resource do
         'to_hash_embed.json'
       )
 
-      subject.cases(embed: :customer).to_hash.to_json.should eq(
+      expect(subject.cases(embed: :customer).to_hash.to_json).to eq(
         File.open(path).read
       )
     end
@@ -430,15 +434,16 @@ describe DeskApi::Resource do
     it 'changes @_definition to next page', :vcr do
       page      = subject.cases.first
       next_page = page.next
-      page.
-        next!.
-        instance_variables.
-        count { |v| page.instance_variable_get(v) != next_page.instance_variable_get(v) }.
-        should eq(0)
+      expect(
+        page.
+          next!.
+          instance_variables.
+          count { |v| page.instance_variable_get(v) != next_page.instance_variable_get(v) }
+      ).to eq(0)
     end
 
     it 'returns nil on the last page', :vcr do
-      subject.cases.last.next!.should eq(nil)
+      expect(subject.cases.last.next!).to eq(nil)
     end
 
   end
@@ -446,21 +451,21 @@ describe DeskApi::Resource do
   context '#each_page' do
     it 'iterates over each page', :vcr do
       subject.cases.each_page do |page, page_number|
-        page.should be_an_instance_of(DeskApi::Resource)
-        page.resource_type.should eq('page')
-        page_number.should be_an_instance_of(Fixnum)
+        expect(page).to be_an_instance_of(DeskApi::Resource)
+        expect(page.resource_type).to eq('page')
+        expect(page_number).to be_an_instance_of(Fixnum)
       end
     end
 
     it 'uses a default per_page of 1000', :vcr do
       subject.cases.each_page do |page, page_number|
-        (page.query_params['per_page'].to_i % 10).should eq(0)
+        expect((page.query_params['per_page'].to_i % 10)).to eq(0)
       end
     end
 
     it 'uses per_page from query_params if present' do
       subject.cases.per_page(25) do |page, page_number|
-        page.query_params['per_page'].should eq(25)
+        expect(page.query_params['per_page']).to eq(25)
       end
     end
 
@@ -472,9 +477,9 @@ describe DeskApi::Resource do
   context '#all' do
     it 'iterates over each resource on each page', :vcr do
       subject.cases.all do |resource, page_num|
-        resource.should be_an_instance_of(DeskApi::Resource)
-        resource.resource_type.should eq('case')
-        page_num.should be_an_instance_of(Fixnum)
+        expect(resource).to be_an_instance_of(DeskApi::Resource)
+        expect(resource.resource_type).to eq('case')
+        expect(page_num).to be_an_instance_of(Fixnum)
       end
     end
 
@@ -491,47 +496,50 @@ describe DeskApi::Resource do
       ticket.message
       ticket.send(:reset!)
 
-      ticket.instance_variable_get(:@_links).should eq({})
-      ticket.instance_variable_get(:@_embedded).should eq({})
-      ticket.instance_variable_get(:@_changed).should eq({})
-      ticket.instance_variable_get(:@_loaded).should eq(false)
+      expect(ticket.instance_variable_get(:@_links)).to eq({})
+      expect(ticket.instance_variable_get(:@_embedded)).to eq({})
+      expect(ticket.instance_variable_get(:@_changed)).to eq({})
+      expect(ticket.instance_variable_get(:@_loaded)).to eq(false)
     end
   end
 
   context '#load' do
     it 'loads the resource if not already loaded', :vcr do
       tickets = subject.cases
-      tickets.instance_variable_get(:@_loaded).should eq(false)
+      expect(tickets.instance_variable_get(:@_loaded)).to eq(false)
       tickets.send(:load)
-      tickets.instance_variable_get(:@_loaded).should eq(true)
+      expect(tickets.instance_variable_get(:@_loaded)).to eq(true)
     end
   end
 
   context '#loaded?' do
     it 'returns true if the resource is loaded', :vcr do
       tickets = subject.cases
-      tickets.send(:loaded?).should eq(false)
+      expect(tickets.send(:loaded?)).to eq(false)
       tickets.send(:load!)
-      tickets.send(:loaded?).should eq(true)
+      expect(tickets.send(:loaded?)).to eq(true)
     end
   end
 
   context '#new_resource' do
     it 'returns a new desk resource from a hash definition' do
-      subject.
-        cases.
-        send(:new_resource, DeskApi::Resource.build_self_link('/api/v2/customers')).
-        should be_an_instance_of(DeskApi::Resource)
+      expect(
+        subject.
+          cases.
+          send(:new_resource, DeskApi::Resource.build_self_link('/api/v2/customers'))
+      ).to be_an_instance_of(DeskApi::Resource)
     end
   end
 
   context '#request' do
     it 'sends request through a client and returns Faraday::Response', :vcr do
-      subject.cases.send(
-        :request,
-        :get,
-        '/api/v2/cases'
-      ).should be_an_instance_of(Faraday::Response)
+      expect(
+        subject.cases.send(
+          :request,
+          :get,
+          '/api/v2/cases'
+        )
+      ).to be_an_instance_of(Faraday::Response)
     end
   end
   describe 'prioritize links and embeds' do
@@ -540,11 +548,11 @@ describe DeskApi::Resource do
     end
 
     it 'returns a desk resource', :vcr do
-      @company.should be_an_instance_of(DeskApi::Resource)
+      expect(@company).to be_an_instance_of(DeskApi::Resource)
     end
 
     it 'loads the resource and returns the name', :vcr do
-      @company.name.should eq('Desk.com')
+      expect(@company.name).to eq('Desk.com')
     end
   end
 end

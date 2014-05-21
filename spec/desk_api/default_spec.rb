@@ -3,7 +3,7 @@ require 'spec_helper'
 describe DeskApi::Default do
   context '#options' do
     it 'returns a hash with mostly nil values' do
-      DeskApi::Default.options.should eq({
+      expect(DeskApi::Default.options).to eq({
         consumer_key: nil,
         consumer_secret: nil,
         token: nil,
@@ -35,7 +35,7 @@ describe DeskApi::Default do
       ENV['DESK_SUBDOMAIN'] = 'SD'
       ENV['DESK_ENDPOINT'] = 'EP'
 
-      DeskApi::Default.options.should eq({
+      expect(DeskApi::Default.options).to eq({
         consumer_key: 'CK',
         consumer_secret: 'CS',
         token: 'TOK',
