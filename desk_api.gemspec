@@ -4,13 +4,21 @@ require 'desk_api/version'
 
 Gem::Specification.new do |gem|
   gem.name              = 'desk_api'
-  gem.summary           = 'A lightweight, flexible wrapper for the desk.com REST API.'
-  gem.description       = 'This is a lightweight, flexible ruby gem to interact with the desk.com REST API. It allows to create, read and delete resources available through the API endpoints. It can be used either with OAuth or HTTP Basic Authentication.'
+  gem.summary           = 'A lightweight, flexible client for the desk.com APIv2.'
+
+  gem.description       = <<-EOF
+    This is a lightweight, flexible ruby gem to interact with the desk.com APIv2.
+    It allows to create, read and delete resources available through the API
+    endpoints. It can be used either with OAuth or HTTP Basic Authentication.
+  EOF
+
   gem.homepage          = 'http://github.com/tstachl/desk'
   gem.version           = DeskApi::VERSION
 
   gem.authors           = ['Thomas Stachl', 'Andrew Frauen']
-  gem.email             = 'tstachl@salesforce.com'
+  gem.email             = ['tstachl@salesforce.com', 'afrauen@salesforce.com']
+
+  gem.license           = 'MIT'
 
   gem.require_paths     = ['lib']
   gem.files             = `git ls-files`.split("\n")
@@ -18,7 +26,6 @@ Gem::Specification.new do |gem|
   gem.executables       = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
 
   gem.extra_rdoc_files  = ['README.md']
-  gem.rdoc_options      = ['--line-numbers', '--inline--source', '--title', 'desk.rb']
 
   gem.add_runtime_dependency('faraday', '>= 0.8.0')
   gem.add_runtime_dependency('simple_oauth', '~> 0.1')
@@ -30,4 +37,6 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency('simplecov', '~> 0.7')
   gem.add_development_dependency('coveralls', '~> 0.6')
   gem.add_development_dependency('appraisal', '~> 1.0.0')
+
+  gem.required_ruby_version = '>= 1.9.2'
 end
