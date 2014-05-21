@@ -475,9 +475,10 @@ describe DeskApi::Resource do
 
   context '#all' do
     it 'iterates over each resource on each page', :vcr do
-      subject.cases.all do |resource|
+      subject.cases.all do |resource, page_num|
         resource.should be_an_instance_of(DeskApi::Resource)
         resource.resource_type.should eq('case')
+        page_num.should be_an_instance_of(Fixnum)
       end
     end
 

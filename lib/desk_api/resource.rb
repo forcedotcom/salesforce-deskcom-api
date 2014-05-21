@@ -59,14 +59,14 @@ class DeskApi::Resource
 
   def all(&block)
     raise ArgumentError, "Block must be given for #all" unless block_given?
-    each_page do |page|
-      page.entries.each { |resource| block.call(resource) }
+    each_page do |page, page_num|
+      page.entries.each { |resource| yield resource, page_num }
     end
   end
 
   def each_page
     raise ArgumentError, "Block must be given for #each_page" unless block_given?
-    page = self.first.per_page(self.query_params['per_page'] || 1000) 
+    page = self.first.per_page(self.query_params['per_page'] || 1000).dup
     begin
       yield page, page.page
     end while page.next!
