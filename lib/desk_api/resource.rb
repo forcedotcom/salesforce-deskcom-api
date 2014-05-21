@@ -66,6 +66,8 @@ class DeskApi::Resource
 
   def each_page
     raise ArgumentError, "Block must be given for #each_page" unless block_given?
+    self.load
+    raise NoMethodError, "#each_page and #all are only available on resources which offer pagination" unless self.resource_type == 'page'
     page = self.first.per_page(self.query_params['per_page'] || 1000).dup
     begin
       yield page, page.page
