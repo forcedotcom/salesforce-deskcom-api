@@ -1,10 +1,15 @@
-require 'rake'
-
+require 'rubygems'
 begin
   require 'bundler/setup'
   Bundler::GemHelper.install_tasks
 rescue
   puts 'although not required, bundler is recommened for running the tests'
+end
+
+require 'appraisal'
+require 'rspec/core/rake_task'
+RSpec::Core::RakeTask.new do |t|
+  t.rspec_opts = ["--color", '--format doc']
 end
 
 desc 'starts a console with the spec helpers preloaded'
@@ -24,9 +29,8 @@ task :console do
   end
 end
 
-task default: :spec
-
-require 'rspec/core/rake_task'
-RSpec::Core::RakeTask.new do |t|
-  t.rspec_opts = ["--color", '--format doc']
+if !ENV["APPRAISAL_INITIALIZED"] && !ENV["TRAVIS"]
+  task default: :appraisal
+else
+  task default: :spec
 end

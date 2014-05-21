@@ -11,6 +11,10 @@ rvm:
   - rbx
   - ree
 
+gemfile:
+  - gemfiles/0.8.gemfile
+  - gemfiles/0.9.gemfile
+
 jdk:
   -
   - openjdk7

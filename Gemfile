@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gemspec
+
 group :test do
   # Testing infrastructure
   gem 'pry'
@@ -13,5 +15,3 @@ platforms :rbx do
   gem 'rubysl', '~> 2.0'
   gem 'psych'
 end
-
-gemspec
