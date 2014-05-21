@@ -229,6 +229,10 @@ private
     self.class.new(client, definition, loaded)
   end
 
+  def request(method, url, params={}, client=@_client)
+    client.send(method, url, params)
+  end
+
   def method_missing(method, *args, &block)
     self.load
 

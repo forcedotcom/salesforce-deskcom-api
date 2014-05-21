@@ -525,6 +525,15 @@ describe DeskApi::Resource do
     end
   end
 
+  context '#request' do
+    it 'sends request through a client and returns Faraday::Response', :vcr do
+      subject.cases.send(
+        :request,
+        :get,
+        '/api/v2/cases'
+      ).should be_an_instance_of(Faraday::Response)
+    end
+  end
   describe 'prioritize links and embeds' do
     before do
       @company = subject.customers.entries.first.company
