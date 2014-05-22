@@ -14,14 +14,17 @@ end
 
 desc 'starts a console with the spec helpers preloaded'
 task :console do
-  begin
-    require_relative './spec/spec_helper'
-    DeskApi.configure do |config|
-      DeskApi::CONFIG.each do |key, value|
-        config.send "#{key}=", value
-      end
+  require 'desk_api'
+  # require config if we have it
+  require './config' rescue nil
+
+  DeskApi.configure do |config|
+    DeskApi::CONFIG.each do |key, value|
+      config.send "#{key}=", value
     end
-    VCR.turn_off!
+  end if DeskApi::CONFIG
+  
+  begin
     require 'pry'
     Pry.start binding, quiet: true
   rescue LoadError

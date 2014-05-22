@@ -12,7 +12,7 @@ end
 
 require 'rspec'
 require 'vcr'
-require 'desk'
+require 'desk_api'
 
 begin
   require_relative '../config'
