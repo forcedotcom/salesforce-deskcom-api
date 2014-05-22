@@ -1,8 +1,8 @@
 # DeskApi a client for APIv2
 
-[![Build Status](https://secure.travis-ci.org/tstachl/desk.png)](http://travis-ci.org/tstachl/desk)
-[![Coverage Status](https://coveralls.io/repos/tstachl/desk/badge.png?branch=develop)](https://coveralls.io/r/tstachl/desk?branch=develop)
-[![Dependency Status](https://gemnasium.com/tstachl/desk.png)](https://gemnasium.com/tstachl/desk)
+[![Build Status](https://secure.travis-ci.org/tstachl/desk_api.png)](http://travis-ci.org/tstachl/desk_api)
+[![Coverage Status](https://coveralls.io/repos/tstachl/desk_api/badge.png?branch=develop)](https://coveralls.io/r/tstachl/desk_api?branch=develop)
+[![Dependency Status](https://gemnasium.com/tstachl/desk_api.png)](https://gemnasium.com/tstachl/desk_api)
 
 desk.com has released v2 of their REST API a few months ago and provides a lot
 more functionality. You should read up on the current progress of the
