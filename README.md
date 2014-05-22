@@ -4,23 +4,39 @@
 [![Coverage Status](https://coveralls.io/repos/tstachl/desk_api/badge.png?branch=develop)](https://coveralls.io/r/tstachl/desk_api?branch=develop)
 [![Dependency Status](https://gemnasium.com/tstachl/desk_api.png)](https://gemnasium.com/tstachl/desk_api)
 
-desk.com has released v2 of their REST API a few months ago and provides a lot
-more functionality. You should read up on the current progress of the
-[API](http://dev.desk.com/API/changelog). This library wraps all of it into an
-easy to use ruby client. We'll try to keep up with the changes of the API but
-things might still break unexpectedly.
+___
+## An Awesomely Unofficial Desk API Client
+___
 
-## Installation
+DeskApi takes the capabilities of the Desk.com API and wraps them up in a Ruby
+client so that it's easy-as-pie to get working with your support site's API.
+
+Desk publishes a changelog monthly, which you can keep up with at
+[dev.desk.com/API/changelog](http://dev.desk.com/API/changelog).
+
+We do our best to keep DeskApi, but please
+don't hesitate to open an [issue](https://github.com/tstachl/desk/issues) or send a [pull request](https://github.com/tstachl/desk/pulls) if you find a bug or would like to new functionality added.
+
+
+___
+## Getting Started
+___
+
+### Installation
+Easy!
 
 ```ruby
 gem install desk_api
 ```
+___
+### Configuration
 
-## Example
+There are two different ways to configure DeskApi to send and receive requests:
 
-The fastest way to get up and running is to use `DeskApi` directly. You can call
-the `configure` method on it to set up the connection. Once this is done you
-can start sending off requests:
+#### First Configuration Option
+
+Configure `DeskApi` itself to send/receive requests by calling the `configure` 
+method to set up your authentication credentials:
 
 ```ruby
 DeskApi.configure do |config|
@@ -43,8 +59,12 @@ DeskApi.patch '/api/v2/topics/1', name: 'Changed the Topic Name'
 DeskApi.delete '/api/v2/topics/1'
 ```
 
+#### Second Configuration Option
+
+Initialize a new `DeskApi::Client` to send/receive requests
+
 This example shows you how to initialize a new client and the four main request
-methods supported by the desk.com API (`GET`, `POST`, `PATCH` and `DELETE`).
+methods supported by the Desk.com API (`GET`, `POST`, `PATCH` and `DELETE`).
 
 ```ruby
 # basic authentication
@@ -64,170 +84,18 @@ response = client.patch '/api/v2/topics/1', name: 'Changed the Topic Name'
 response = client.delete '/api/v2/topics/1'
 ```
 
-## Working with Resources and Collections
 
-The API supports RESTful resources and so does this wrapper. These resources are
-automatically discovered, meaning you can navigate around without having to worry
-about anything. We also support two finder methods `by_url` and `find`.
+___
+## Resources
+___
 
-### Finders
+Resources are automatically discovered by the DeskApi. When requesting a
+resource from DeskAPI, the client sends the request and returns a
+`DeskApi::Resource`. If the client receives an error back from the API a
+`DeskApi::Error` is raised.
 
-The method `by_url` can be called on the client, for backwards compatability we
-haven't yet removed it from the `DeskApi::Resource` but it will be removed once
-we release v1 of this client. `by_url` will return a lazy loaded instance of the
-resource.
-
-```ruby
-first_reply = DeskApi.by_url '/api/v2/cases/1/replies/1'
-```
-
-Since the update to v0.5 of the API wrapper the `find` method can now be called
-on all `DeskApi::Resource` instances. _Gotcha:_ It will rebuild the base path
-based on the resource/collection it is called on. So if you call it on the cases
-collection `DeskApi.cases.find 1` the path will look like this:
-`/api/v2/cases/:id`.
-
-| Method                                                      | Path                        |
-| ----------------------------------------------------------- | --------------------------- |
-| `DeskApi.cases.find(1)`                                     | `/api/v2/cases/1`           |
-| `DeskApi.cases.entries.find(1)`                             | `/api/v2/cases/1`           |
-| `DeskApi.cases.search(subject: 'Test').find(1)`             | `/api/v2/cases/1`           |
-| `DeskApi.cases.search(subject: 'Test').entries.find(1)`     | `/api/v2/cases/1`           |
-| `DeskApi.cases.entries.first.replies.find(1)`               | `/api/v2/cases/1/replies/1` |
-| `DeskApi.cases.entries.first.replies.entries.first.find(1)` | `/api/v2/cases/1/replies/1` |
-
-### Pagination
-
-As mentioned above you can also navigate between resources and pages of
-collections.
-
-```ruby
-cases = DeskApi.cases
-cases.entries.each do |my_case|
-  # do something with the case
-end
-
-# now move on to the next page
-next_page = cases.next
-next_page.entries.each do |my_case|
-  # do something with the case
-end
-
-# go back to the previous page
-previous_page = next_page.previous
-
-# or go to the last page
-last_page = previous_page.last
-
-# or go to the first page
-first_page = last_page.first
-```
-
-### `all` and `each_page`
-
-As a recent addition we made it even easier to navigate through all the pages.
-
-```ruby
-DeskApi.cases.all do |current_case, current_page_number|
-  # do something with the case
-end
-
-DeskApi.cases.each_page do |current_page, current_page_number|
-  # do something with the current page
-end
-```
-
-### List params
-
-Some lists allow for additional params like [cases](http://dev.desk.com/API/cases/#list).
-This allows you to filter the cases endpoint by using a `company_id`,
-`customer_id` or `filter_id` list param.
-
-```ruby
-# fetch cases for the company with id 1
-companys_cases = DeskApi.cases(company_id: 1)
-
-# fetch cases for the customer with id 1
-customers_cases = DeskApi.cases(customer_id: 1)
-
-# fetch cases for the filter with id 1
-filters_cases = DeskApi.cases(filter_id: 1)
-```
-
-### Sorting
-
-A recent update on APIv2 now imposes a maximum page limit. This is why sorting
-got very important and now you can even sort some of the list endpoints like
-[cases](http://dev.desk.com/API/cases/#list).
-
-```ruby
-# fetch cases sorted by updated_at direction desc
-sorted_cases = DeskApi.cases(sort_field: :updated_at, sort_direction: :desc)
-```
-
-### Links
-
-Pagination is pretty obvious but the cool part about pagination or rather
-resources is the auto-linking. As soon as the resource has a link defined,
-it'll be navigatable:
-
-```ruby
-# get the customer of the first case of the first page
-customer = DeskApi.cases.entries.first.customer
-
-# who sent the first outbound reply of the first email
-user_name = DeskApi.cases.entries.select do |my_case|
-  my_case.type == 'email'
-end.first.replies.entries.select do |reply|
-  reply.direction == 'out'
-end.first.sent_by.name
-```
-
-### Lazy loading
-
-Collections and resources in general are lazily loaded, meaning if you request
-the cases `DeskApi.cases` no actual request will be set off until you actually
-request data. Meaning only necessary requests are sent which will keep the
-request count low - [desk.com rate limit](http://dev.desk.com/API/using-the-api/#rate-limits).
-
-```ruby
-DeskApi.cases.page(10).per_page(50).entries.each do |my_case|
-  # in this method chain `.entries' is the first method that actually sends a request
-end
-
-# however if you request the current page numer and the resource is not loaded
-# it'll send a request
-DeskApi.cases.page == 1
-```
-
-### Side loading
-
-APIv2 has a lot of great new features but the one I'm most excited about is side
-loading or embedding resources. You basically request one resource and tell the
-API to embed sub resources, eg. you need cases but also want to have the
-`assigned_user` - instead of requesting all cases and the `assigned_user` for
-each of those cases (30 cases = 31 API requests) you can now embed `assigned_user`
-into your cases list view (1 API request).
-
-Of course we had to bring this awesomeness into the API wrapper as soon as
-possible, so here you go:
-
-```ruby
-# fetch cases with their respective customers
-cases = DeskApi.cases.embed(:customer)
-customer = cases.first.customer
-
-# you can use this feature in finders too
-my_case = DeskApi.cases.find(1, embed: :customer)
-# OR
-my_case = DeskApi.cases.find(1, embed: [:customer, :assigned_user, :assigned_group, :message])
-
-customer = my_case.customer
-assigned_user = my_case.assigned_user
-assigned_group = my_case.assigned_group
-```
-
-### Create, Update and Delete
+___
+### Create Read Update Delete
 
 One of the most important features; we support creating, updating and deleting
 resources but not all resources can be deleted or updated or created, if that's
@@ -265,7 +133,7 @@ rescue DeskApi::Error::MethodNotAllowed => e
   # too bad
 end
 ```
-
+___
 ### Getters & Setters
 
 As you have seen in prior examples for each field on the resource we create a
@@ -293,7 +161,207 @@ rescue DeskApi::Error::MethodNotAllowed
   # too bad
 end
 ```
+___
+### Find
 
+The method `by_url` can be called on the client, for backwards compatability we
+haven't yet removed it from the `DeskApi::Resource` but it will be removed once
+we release v1 of this client. `by_url` will return a lazy loaded instance of the
+resource.
+
+```ruby
+first_reply = DeskApi.by_url '/api/v2/cases/1/replies/1'
+```
+
+Since the update to v0.5 of the API wrapper the `find` method can now be called
+on all `DeskApi::Resource` instances. _Gotcha:_ It will rebuild the base path
+based on the resource/collection it is called on. So if you call it on the cases
+collection `DeskApi.cases.find 1` the path will look like this:
+`/api/v2/cases/:id`.
+
+| Method                                                      | Path                        |
+| ----------------------------------------------------------- | --------------------------- |
+| `DeskApi.cases.find(1)`                                     | `/api/v2/cases/1`           |
+| `DeskApi.cases.entries.find(1)`                             | `/api/v2/cases/1`           |
+| `DeskApi.cases.search(subject: 'Test').find(1)`             | `/api/v2/cases/1`           |
+| `DeskApi.cases.search(subject: 'Test').entries.find(1)`     | `/api/v2/cases/1`           |
+| `DeskApi.cases.entries.first.replies.find(1)`               | `/api/v2/cases/1/replies/1` |
+| `DeskApi.cases.entries.first.replies.entries.first.find(1)` | `/api/v2/cases/1/replies/1` |
+___
+### Pagination
+
+As mentioned above you can also navigate between resources and pages of
+collections.
+
+```ruby
+cases = DeskApi.cases
+cases.entries.each do |my_case|
+  # do something with the case
+end
+
+# now move on to the next page
+next_page = cases.next
+next_page.entries.each do |my_case|
+  # do something with the case
+end
+
+# go back to the previous page
+previous_page = next_page.previous
+
+# or go to the last page
+last_page = previous_page.last
+
+# or go to the first page
+first_page = last_page.first
+```
+___
+### `all` and `each_page`
+
+As a recent addition we made it even easier to navigate through all the pages.
+
+```ruby
+DeskApi.cases.all do |current_case, current_page_number|
+  # do something with the case
+end
+
+DeskApi.cases.each_page do |current_page, current_page_number|
+  # do something with the current page
+end
+```
+
+Both methods use the max `per_page` for the API endpoint for that particular
+resource.
+___
+### List params
+
+Some lists allow for additional params like [cases](http://dev.desk.com/API/cases/#list).
+This allows you to filter the cases endpoint by using a `company_id`,
+`customer_id` or `filter_id` list param.
+
+```ruby
+# fetch cases for the company with id 1
+companys_cases = DeskApi.cases(company_id: 1)
+
+# fetch cases for the customer with id 1
+customers_cases = DeskApi.cases(customer_id: 1)
+
+# fetch cases for the filter with id 1
+filters_cases = DeskApi.cases(filter_id: 1)
+```
+___
+### Sorting
+
+There is a maximum `page` limit on some Desk.com API endpoints. As of right now
+(May 2014) the limit is 500 for all endpoints that are limited, but please
+consult the #list documentation for each resource:
+
+- [Case list](http://dev.desk.com/API/cases#list)
+- [Company Case list](http://dev.desk.com/API/companies#cases-list)
+- [Customer Case list](http://dev.desk.com/API/customers#cases-list)
+- [Filter Case list](http://dev.desk.com/API/filters#list-cases)
+- [Case search](http://dev.desk.com/API/cases#search)
+- [Customer search](http://dev.desk.com/API/customers#search)
+- [Company search](http://dev.desk.com/API/companies#search)
+- [Article search](http://dev.desk.com/API/articles#search)
+
+
+To work around page limits, you can specify `sort_field` and `sort_direction`
+
+```ruby
+# fetch cases sorted by updated_at direction desc
+sorted_cases = DeskApi.cases(sort_field: :updated_at, sort_direction: :desc)
+```
+___
+### Links
+
+Once a `DeskApi::Resource` has loaded, its [linked resources](http://dev.desk.com/API/using-the-api/#relationships) can be retrieved
+by calling the linked resource as a method of the `DeskApi::Resource`, e.g., 
+
+```ruby
+# Get a ticket
+ticket = DeskApi.cases.entries.first
+
+# Get the ticket's assigned_user from the ticket
+assigned_user = ticket.assigned_user
+
+# Get the customer from the ticket
+customer = ticket.customer
+
+# Get the customer's company from the customer.
+company = customer.company
+
+# Getting the name of the user who sent the first outbound reply on a ticket
+user_name = DeskApi.
+              cases.
+              entries.
+              select { |my_case| my_case.type == 'email' }.
+              first.
+              replies.
+              entries.select { |reply| reply.direction == 'out' }.
+              first.
+              sent_by.
+              name
+```
+___
+### Lazy loading
+
+Resources are lazy loaded. This means that requests are only sent when you
+request data from the resource. This helps a lot with flying under the Desk.com
+API [rate limit](http://dev.desk.com/API/using-the-api/#rate-limits). E.g.,
+
+```ruby
+DeskApi.cases.page(10).per_page(50).entries.each do |my_case|
+  # in this method chain, no HTTP request is fired until `.entries'
+end
+
+# however if you request the current page numer and the resource is not loaded
+# it'll send a request
+DeskApi.cases.page == 1
+```
+___
+### Embedding
+
+Some endpoints support [embedding](http://dev.desk.com/API/using-the-api/#embedding) related resources. E.g., when getting a list
+of cases from `/api/v2/cases` you can embed the customer on each case by adding
+`embed=` to the query string: `/api/v2/cases?embed=customer`
+
+The client supports this: `tickets_and_customers = DeskApi.cases.embed(:customer)`
+
+Taking advantage of `.embed` is a great way to be conscious of the rate limit
+and minimize necessary HTTP requests.
+
+
+**Not using embedded resources**
+```ruby
+tickets = DeskApi.cases.per_page(100).entries # HTTP request
+tickets.each do |ticket|
+  puts ticket.customer.first_name # HTTP request (100 iterations)
+end
+
+# Total Requests: 101
+```
+
+**Using embedded resources**
+```ruby
+tickets = DeskApi.cases.per_page(100).embed(:customer).entries # HTTP request
+tickets.each do |ticket|
+  puts ticket.customer.first_name # No HTTP Request, customer is embedded
+end
+
+# Total Requests: 1
+```
+
+**Using embedded resources in `find`**
+```ruby
+my_case = DeskApi.cases.find(1, embed: :customer)
+# OR
+my_case = DeskApi.cases.find(1, embed: [:customer, :assigned_user, :assigned_group, :message])
+
+customer = my_case.customer
+assigned_user = my_case.assigned_user
+assigned_group = my_case.assigned_group
+```
+___
 ### API Errors
 
 Sometimes the API is going to return errors, eg. Validation Error. In these
@@ -316,7 +384,9 @@ Please also have a look at all
 [desk.com API errors](http://dev.desk.com/API/using-the-api/#status-codes) and
 their respective meanings.
 
+___
 ## License
+___
 
 (The MIT License)
 
