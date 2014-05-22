@@ -5,6 +5,5 @@ module DeskApi::Response
     def on_complete(env)
       env[:body] = ::JSON.parse env[:body] unless env[:body].strip.empty?
     end
-
   end
 end

@@ -1,5 +1,7 @@
 module DeskApi::Response
   class ParseDates < Faraday::Response::Middleware
+    dependency 'time'
+    
     def on_complete(env)
       env[:body] = parse_dates env[:body]
     end
