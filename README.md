@@ -1,8 +1,10 @@
 # DeskApi a client for APIv2
 
 [![Build Status](https://secure.travis-ci.org/tstachl/desk_api.png)](http://travis-ci.org/tstachl/desk_api)
+[![Code Climate](https://codeclimate.com/github/tstachl/desk_api.png)](https://codeclimate.com/github/tstachl/desk_api)
 [![Coverage Status](https://coveralls.io/repos/tstachl/desk_api/badge.png?branch=develop)](https://coveralls.io/r/tstachl/desk_api?branch=develop)
 [![Dependency Status](https://gemnasium.com/tstachl/desk_api.png)](https://gemnasium.com/tstachl/desk_api)
+[![Gem Version](https://badge.fury.io/rb/desk_api.svg)](http://badge.fury.io/rb/desk_api)
 
 ___
 ## An Awesomely Unofficial Desk API Client
@@ -15,7 +17,9 @@ Desk publishes a changelog monthly, which you can keep up with at
 [dev.desk.com/API/changelog](http://dev.desk.com/API/changelog).
 
 We do our best to keep DeskApi, but please
-don't hesitate to open an [issue](https://github.com/tstachl/desk/issues) or send a [pull request](https://github.com/tstachl/desk/pulls) if you find a bug or would like to new functionality added.
+don't hesitate to open an [issue](https://github.com/tstachl/desk/issues) or
+send a [pull request](https://github.com/tstachl/desk/pulls) if you find a bug
+or would like to new functionality added.
 
 
 ___
@@ -35,7 +39,7 @@ There are two different ways to configure DeskApi to send and receive requests:
 
 #### First Configuration Option
 
-Configure `DeskApi` itself to send/receive requests by calling the `configure` 
+Configure `DeskApi` itself to send/receive requests by calling the `configure`
 method to set up your authentication credentials:
 
 ```ruby
@@ -274,8 +278,10 @@ sorted_cases = DeskApi.cases(sort_field: :updated_at, sort_direction: :desc)
 ___
 ### Links
 
-Once a `DeskApi::Resource` has loaded, its [linked resources](http://dev.desk.com/API/using-the-api/#relationships) can be retrieved
-by calling the linked resource as a method of the `DeskApi::Resource`, e.g., 
+Once a `DeskApi::Resource` has loaded, its
+[linked resources](http://dev.desk.com/API/using-the-api/#relationships)
+can be retrieved by calling the linked resource as a method of the
+`DeskApi::Resource`, e.g.,
 
 ```ruby
 # Get a ticket
@@ -321,9 +327,10 @@ DeskApi.cases.page == 1
 ___
 ### Embedding
 
-Some endpoints support [embedding](http://dev.desk.com/API/using-the-api/#embedding) related resources. E.g., when getting a list
-of cases from `/api/v2/cases` you can embed the customer on each case by adding
-`embed=` to the query string: `/api/v2/cases?embed=customer`
+Some endpoints support [embedding](http://dev.desk.com/API/using-the-api/#embedding)
+related resources. E.g., when getting a list of cases from `/api/v2/cases` you
+can embed the customer on each case by adding `embed=` to the query
+string: `/api/v2/cases?embed=customer`
 
 The client supports this: `tickets_and_customers = DeskApi.cases.embed(:customer)`
 
