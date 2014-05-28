@@ -22,8 +22,8 @@ module DeskApi
   module Configuration
     extend Forwardable
     attr_writer :consumer_secret, :token, :token_secret, :password
-    attr_accessor :consumer_key, :username, :endpoint, :subdomain
-    attr_accessor :connection_options, :middleware
+    attr_accessor :consumer_key, :username, :endpoint, :subdomain, \
+                  :connection_options, :middleware
     def_delegator :options, :hash
 
     class << self
@@ -185,7 +185,7 @@ module DeskApi
     # @raise [DeskApi::Error::ConfigurationError]
     %w(oauth basic_auth).each do |type|
       define_method(:"validate_#{type}!") do
-        send(type.to_sym).each_pair do |credentials, value|
+        send(type.to_sym).each_pair do |credential, value|
           next if value.nil?
 
           fail(

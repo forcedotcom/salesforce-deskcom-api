@@ -43,14 +43,10 @@ module DeskApi
     #
     # @return [DeskApi::Resource]
     def method_missing(method, *args, &block)
-      # if client.respond_to?(method)
-        client.send(method, *args, &block)
-      # else
-      #   super
-      # end
+      client.send(method, *args, &block)
     end
   end
 
-  # run setup when the module is required
-  setup
+  # immediately reset the default client
+  reset!
 end
