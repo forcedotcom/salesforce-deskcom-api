@@ -11,137 +11,199 @@ require 'desk_api/error/configuration_error'
 require 'desk_api/error/client_error'
 require 'desk_api/error/server_error'
 
-module DeskApi::Configuration
-  extend Forwardable
-  attr_writer :consumer_secret, :token, :token_secret, :password
-  attr_accessor :consumer_key, :username, :endpoint, :subdomain, :connection_options, :middleware
-  def_delegator :options, :hash
+module DeskApi
+  # {DeskApi::Configuration} allows to configure a {DeskApi::Client}.
+  # It exposes all available configuration options to the client and
+  # makes sure secrets are only readable by the client.
+  #
+  # @author    Thomas Stachl <tstachl@salesforce.com>
+  # @copyright Copyright (c) 2013-2014 Thomas Stachl
+  # @license   MIT
+  module Configuration
+    extend Forwardable
+    attr_writer :consumer_secret, :token, :token_secret, :password
+    attr_accessor :consumer_key, :username, :endpoint, :subdomain
+    attr_accessor :connection_options, :middleware
+    def_delegator :options, :hash
 
-  class << self
-    def keys
-      @keys ||= [
-        :consumer_key,
-        :consumer_secret,
-        :token,
-        :token_secret,
-        :username,
-        :password,
-        :subdomain,
-        :endpoint,
-        :connection_options
+    class << self
+      # Returns an array of possible configuration options.
+      #
+      # @return [Array]
+      def keys
+        @keys ||= [
+          :consumer_key, :consumer_secret, :token, :token_secret,
+          :username, :password,
+          :subdomain, :endpoint,
+          :connection_options
+        ]
+      end
+
+      # Allows to register middleware for Faraday v0.8 and v0.9
+      #
+      # @param type [Symbol] either :request or :response
+      # @param sym [Symbol] the symbol to register the middleware as
+      # @param cls [Symbol] the class name of the middleware
+      def register_middleware(type, sym, cls)
+        cls = DeskApi.const_get(type.capitalize).const_get(cls)
+        if Faraday.respond_to?(:register_middleware)
+          Faraday.register_middleware type, sym => cls
+        else
+          Faraday.const_get(type.capitalize).register_middleware sym => cls
+        end
+      end
+
+      # Registers the middleware when the module is included.
+      def included(_base)
+        register_middleware :request, :desk_encode_json, :EncodeJson
+        register_middleware :request, :desk_oauth, :OAuth
+        register_middleware :request, :desk_retry, :Retry
+        register_middleware :response, :desk_parse_dates, :ParseDates
+        register_middleware :response, :desk_parse_json, :ParseJson
+        register_middleware :response, :desk_raise_error, :RaiseError
+      end
+    end
+
+    # Builds the endpoint using the subdomain if the endpoint isn't set
+    #
+    # @return [String]
+    def endpoint
+      @endpoint ||= "https://#{@subdomain}.desk.com"
+    end
+
+    # Returns the middleware proc to be used by Faraday
+    #
+    # @return [Proc]
+    def middleware
+      @middleware ||= proc do |builder|
+        builder.request(:desk_encode_json)
+        builder.request(*authorize_request)
+        builder.request(:desk_retry)
+
+        builder.response(:desk_parse_dates)
+        builder.response(:desk_raise_error, DeskApi::Error::ClientError)
+        builder.response(:desk_raise_error, DeskApi::Error::ServerError)
+        builder.response(:desk_parse_json)
+
+        builder.adapter(Faraday.default_adapter)
+      end
+    end
+
+    # Allows to configure the client by yielding self.
+    #
+    # @yield [DeskApi::Client]
+    # @return [DeskApi::Client]
+    def configure
+      yield self
+      validate_credentials!
+      validate_endpoint!
+      self
+    end
+
+    # Resets the client to the default settings.
+    #
+    # @return [DeskApi::Client]
+    def reset!
+      DeskApi::Configuration.keys.each do |key|
+        send("#{key}=", DeskApi::Default.options[key])
+      end
+      self
+    end
+    alias_method :setup, :reset!
+
+    # Returns true if either all oauth values or all basic auth
+    # values are set.
+    #
+    # @return [Boolean]
+    def credentials?
+      oauth.values.all? || basic_auth.values.all?
+    end
+
+    private
+
+    # Returns a hash of current configuration options.
+    #
+    # @return [Hash]
+    def options
+      Hash[
+        DeskApi::Configuration.keys.map do |key|
+          [key, instance_variable_get(:"@#{key}")]
+        end
       ]
     end
 
-    def included(base)
-      if Gem::Version.new(Faraday::VERSION) >= Gem::Version.new('0.9.0')
-        Faraday::Request.register_middleware desk_encode_json: DeskApi::Request::EncodeJson
-        Faraday::Request.register_middleware desk_oauth: DeskApi::Request::OAuth
-        Faraday::Request.register_middleware desk_retry: DeskApi::Request::Retry
-        Faraday::Response.register_middleware desk_parse_dates: DeskApi::Response::ParseDates
-        Faraday::Response.register_middleware desk_parse_json: DeskApi::Response::ParseJson
-        Faraday::Response.register_middleware desk_raise_error: DeskApi::Response::RaiseError
+    # Returns the oauth configuration options.
+    #
+    # @return [Hash]
+    def oauth
+      {
+        consumer_key: @consumer_key,
+        consumer_secret: @consumer_secret,
+        token: @token,
+        token_secret: @token_secret
+      }
+    end
+
+    # Returns the basic auth configuration options.
+    #
+    # @return [Hash]
+    def basic_auth
+      {
+        username: @username,
+        password: @password
+      }
+    end
+
+    # Returns an array to authorize a request in the
+    # middleware proc.
+    #
+    # @return [Array]
+    def authorize_request
+      if basic_auth.values.all?
+        [:basic_auth, @username, @password]
       else
-        Faraday.register_middleware :request, desk_encode_json: DeskApi::Request::EncodeJson
-        Faraday.register_middleware :request, desk_oauth: DeskApi::Request::OAuth
-        Faraday.register_middleware :request, desk_retry: DeskApi::Request::Retry
-        Faraday.register_middleware :response, desk_parse_dates: DeskApi::Response::ParseDates
-        Faraday.register_middleware :response, desk_parse_json: DeskApi::Response::ParseJson
-        Faraday.register_middleware :response, desk_raise_error: DeskApi::Response::RaiseError
+        [:desk_oauth, oauth]
       end
     end
-  end
 
-  # if subdomain is set make sure endpoint is correct
-  def endpoint
-    @endpoint ||= "https://#{@subdomain}.desk.com"
-  end
+    # Raises an error if credentials are not set or of
+    # the wrong type.
+    #
+    # @raise [DeskApi::Error::ConfigurationError]
+    def validate_credentials!
+      fail(
+        DeskApi::Error::ConfigurationError, 'Invalid credentials: ' \
+        'Either username/password or OAuth credentials must be specified.'
+      ) unless credentials?
 
-  def middleware
-    @middleware ||= Proc.new do |builder|
-      builder.request :desk_encode_json
-      builder.request :basic_auth, @username, @password if basic_auth.values.all?
-      builder.request :desk_oauth, oauth if oauth.values.all?
-      builder.request :desk_retry
-
-      builder.response :desk_parse_dates
-      builder.response :desk_raise_error, DeskApi::Error::ClientError
-      builder.response :desk_raise_error, DeskApi::Error::ServerError
-      builder.response :desk_parse_json
-
-      builder.adapter Faraday.default_adapter
-    end
-  end
-
-  def configure
-    yield self
-    validate_credentials!
-    validate_endpoint!
-    self
-  end
-
-  def reset!
-    DeskApi::Configuration.keys.each do |key|
-      send("#{key}=", DeskApi::Default.options[key])
-    end
-    self
-  end
-  alias setup reset!
-
-  def credentials?
-    oauth.values.all? || basic_auth.values.all?
-  end
-
-private
-  # @return [Hash]
-  def options
-    Hash[DeskApi::Configuration.keys.map{|key| [key, instance_variable_get(:"@#{key}")]}]
-  end
-
-  def oauth
-    {
-      consumer_key: @consumer_key,
-      consumer_secret: @consumer_secret,
-      token: @token,
-      token_secret: @token_secret
-    }
-  end
-
-  def basic_auth
-    {
-      username: @username,
-      password: @password
-    }
-  end
-
-  def validate_credentials!
-    unless credentials?
-      raise(DeskApi::Error::ConfigurationError, "Invalid credentials: Either username/password or OAuth credentials must be specified.")
+      validate_oauth! if oauth.values.all?
+      validate_basic_auth! if basic_auth.values.all?
     end
 
-    if oauth.values.all?
-      oauth.each do |credential, value|
-        next if value.nil?
+    # Raises an error if credentials are of the wrong type.
+    #
+    # @raise [DeskApi::Error::ConfigurationError]
+    %w(oauth basic_auth).each do |type|
+      define_method(:"validate_#{type}!") do
+        send(type.to_sym).each_pair do |credentials, value|
+          next if value.nil?
 
-        unless value.is_a?(String) || value.is_a?(Symbol)
-          raise(DeskApi::Error::ConfigurationError, "Invalid #{credential} specified: #{value} must be a string or symbol.")
+          fail(
+            DeskApi::Error::ConfigurationError, "Invalid #{credential} " \
+            "specified: #{value} must be a string or symbol."
+          ) unless value.is_a?(String) || value.is_a?(Symbol)
         end
       end
     end
 
-    if basic_auth.values.all?
-      basic_auth.each do |credential, value|
-        next if value.nil?
-
-        unless value.is_a?(String) || value.is_a?(Symbol)
-          raise(DeskApi::Error::ConfigurationError, "Invalid #{credential} specified: #{value} must be a string or symbol.")
-        end
-      end
-    end
-  end
-
-  def validate_endpoint!
-    unless endpoint =~ /^#{URI::regexp}$/
-      raise(DeskApi::Error::ConfigurationError, "Invalid endpoint specified: `#{endpoint}` must be a valid url.")
+    # Raises an error if the endpoint is not a valid URL.
+    #
+    # @raises [DeskApi::Error::ConfigurationError]
+    def validate_endpoint!
+      fail(
+        DeskApi::Error::ConfigurationError,
+        "Invalid endpoint specified: `#{endpoint}` must be a valid url."
+      ) unless endpoint =~ /^#{URI.regexp}$/
     end
   end
 end
