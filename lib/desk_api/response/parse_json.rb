@@ -3,7 +3,10 @@ module DeskApi::Response
     dependency 'json'
 
     def on_complete(env)
-      env[:body] = ::JSON.parse env[:body] unless env[:body].strip.empty?
+      content_type = env[:response_headers]['content-type']
+      if content_type && content_type.include?('application/json')
+        env[:body] = ::JSON.parse env[:body] unless env[:body].strip.empty?
+      end
     end
   end
 end

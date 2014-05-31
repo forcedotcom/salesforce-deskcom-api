@@ -5,14 +5,21 @@ describe DeskApi::Response::ParseJson do
   before do
     VCR.turn_off!
 
+    @xml = <<-eos
+      <?xml version="1.0" encoding="UTF-8"?>
+      <note>
+        <to>Tove</to>
+        <from>Jani</from>
+        <heading>Reminder</heading>
+        <body>Don't forget me this weekend!</body>
+      </note>
+    eos
+    @json = File.open(File.join(RSpec.configuration.root_path, 'stubs', 'article.json')).read
+
     stubs = Faraday::Adapter::Test::Stubs.new do |stub|
-      stub.get('/echo') do
-        [
-          200,
-          { 'content-type' => 'application/json' },
-          File.open(File.join(RSpec.configuration.root_path, 'stubs', 'article.json')).read
-        ]
-      end
+      stub.get('/json') { [200, { 'content-type' => 'application/json' }, @json] }
+      stub.get('/xml') { [200, { 'content-type' => 'application/xml' }, @xml] }
+      stub.get('/utf8') { [200, { 'content-type' => 'application/json; charset=utf-8' }, @json] }
     end
 
     @conn = Faraday.new do |builder|
@@ -26,8 +33,20 @@ describe DeskApi::Response::ParseJson do
   end
 
   it 'parses the response body into a hash' do
-    body    = @conn.get('http://localhost/echo').body
-    compare = JSON.parse File.open(File.join(RSpec.configuration.root_path, 'stubs', 'article.json')).read
+    body    = @conn.get('http://localhost/json').body
+    compare = JSON.parse @json
+    expect(body).to be_instance_of(Hash)
+    expect(body).to eql(compare)
+  end
+
+  it 'looks at the content type header before parsing' do
+    body = @conn.get('http://localhost/xml').body
+    expect(body).to eql(@xml)
+  end
+
+  it 'deals with specified charsets in the content-type header' do
+    body = @conn.get('http://localhost/utf8').body
+    compare = JSON.parse @json
     expect(body).to be_instance_of(Hash)
     expect(body).to eql(compare)
   end
