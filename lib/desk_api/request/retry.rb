@@ -54,7 +54,8 @@ module DeskApi
       # @param retries [Integer] current retry count
       # @return [Integer]
       def calc(err, retries, &block)
-        if err.kind_of?(DeskApi::Error::TooManyRequests)
+        # retry only once
+        if err.kind_of?(DeskApi::Error::TooManyRequests) && retries == @max - 1
           block.call(0)
         else
           block.call(retries - 1)

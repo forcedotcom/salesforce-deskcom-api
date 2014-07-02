@@ -47,6 +47,6 @@ describe DeskApi::Request::Retry do
     end
 
     @conn.post('http://localhost/echo') rescue nil
-    expect(times_called).to eq(1)
+    expect(times_called).to eq(2)
   end
 end
