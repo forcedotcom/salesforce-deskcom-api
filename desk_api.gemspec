@@ -18,10 +18,10 @@ Gem::Specification.new do |gem|
   gem.authors           = ['Thomas Stachl', 'Andrew Frauen']
   gem.email             = ['tstachl@salesforce.com', 'afrauen@salesforce.com']
 
-  gem.license           = 'MIT'
+  gem.license           = 'BSD 3-Clause License'
 
   gem.require_paths     = ['lib']
-  gem.files             = `git ls-files -- lib/*`.split("\n") + %w(LICENSE README.md)
+  gem.files             = `git ls-files -- lib/*`.split("\n") + %w(LICENSE.txt README.md)
   gem.test_files        = `git ls-files -- spec/*`.split("\n")
   gem.executables       = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
 
