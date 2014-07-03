@@ -128,8 +128,6 @@ module DeskApi
         @_definition = self.class.build_self_link(next_page)
         self.reset!
       end
-
-      self
     end
 
     # Paginate through all the resources on a give page {DeskApi::Resource}
@@ -227,14 +225,14 @@ module DeskApi
     #
     # @param value [Integer/Nil] the value to use
     # @return [Integer/DeskApi::Resource]
-    %w(page, per_page).each do |method|
+    %w(page per_page).each do |method|
       class_eval <<-RUBY, __FILE__, __LINE__ + 1
         def #{method}(value = nil)
           unless value
-            self.exec! if self.query_params_include?(method.to_s) == nil
-            return self.query_params_include?(method.to_s).to_i
+            exec! if query_params_include?('#{method}') == nil
+            return query_params_include?('#{method}').to_i
           end
-          self.tap{ |res| res.query_params = Hash[method.to_s, value.to_s] }
+          tap{ |res| res.query_params = Hash['#{method}', value.to_s] }
         end
       RUBY
     end

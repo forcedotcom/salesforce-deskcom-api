@@ -270,7 +270,7 @@ describe DeskApi::Resource do
           client.middleware = Proc.new do |builder|
             builder.response :desk_parse_dates
             builder.response :desk_parse_json
-            
+
             builder.adapter :test, @stubs
           end
         end
@@ -535,17 +535,6 @@ describe DeskApi::Resource do
     end
   end
 
-  context '#request' do
-    it 'sends request through a client and returns Faraday::Response', :vcr do
-      expect(
-        subject.cases.send(
-          :request,
-          :get,
-          '/api/v2/cases'
-        )
-      ).to be_an_instance_of(Faraday::Response)
-    end
-  end
   describe 'prioritize links and embeds' do
     before do
       @company = subject.customers.entries.first.company
