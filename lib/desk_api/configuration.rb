@@ -35,6 +35,7 @@ require 'desk_api/request/encode_json'
 require 'desk_api/response/parse_dates'
 require 'desk_api/response/parse_json'
 require 'desk_api/response/raise_error'
+require 'desk_api/response/follow_redirects'
 require 'desk_api/error/configuration_error'
 require 'desk_api/error/client_error'
 require 'desk_api/error/server_error'
@@ -89,6 +90,7 @@ module DeskApi
         register_middleware :response, :desk_parse_dates, :ParseDates
         register_middleware :response, :desk_parse_json, :ParseJson
         register_middleware :response, :desk_raise_error, :RaiseError
+        register_middleware :response, :desk_follow_redirects, :FollowRedirects
       end
     end
 
@@ -109,6 +111,7 @@ module DeskApi
         builder.request(:desk_retry)
 
         builder.response(:desk_parse_dates)
+        builder.response(:desk_follow_redirects)
         builder.response(:desk_raise_error, DeskApi::Error::ClientError)
         builder.response(:desk_raise_error, DeskApi::Error::ServerError)
         builder.response(:desk_parse_json)
