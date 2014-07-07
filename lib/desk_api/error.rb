@@ -36,17 +36,19 @@ module DeskApi
   # @license   BSD 3-Clause License
   class Error < StandardError
     attr_reader :rate_limit
+    attr_reader :response
 
     # Initializes a new Error object
     #
     # @param err [Exception, String]
-    # @param headers [Hash]
-    # @param code [Integer]
-    # @param err_hash [Hash]
+    # @param response [Hash]
     # @return [DeskApi::Error]
-    def initialize(err = $ERROR_INFO, headers = {}, code = nil, err_hash = nil)
-      @rate_limit = DeskApi::RateLimit.new(headers)
-      @wrapped_err, @code, @errors = err, code, err_hash
+    def initialize(err = $ERROR_INFO, response = {})
+      @response    = response
+      @rate_limit  = ::DeskApi::RateLimit.new(@response[:response_headers])
+      @wrapped_err = err
+      @code        = @response[:status]
+      @errors      = error_hash(@response[:body])
       err.respond_to?(:backtrace) ? super(err.message) : super(err.to_s)
     end
 
@@ -57,14 +59,22 @@ module DeskApi
       @wrapped_err.respond_to?(:backtrace) ? @wrapped_err.backtrace : super
     end
 
+    private
+
+    # @return [Hash/Nil]
+    def error_hash(body = nil)
+      if body && body.is_a?(Hash)
+        body.key?('errors') ? body['errors'] : nil
+      end
+    end
+
     class << self
       # Create a new error from an HTTP response
       #
       # @param response [Hash]
       # @return [DeskApi::Error]
-      def from_response(response = {})
-        err_hash, error, code = parse_body(response[:body]) << response[:status]
-        new(error, response[:response_headers], code, err_hash)
+      def from_response(response)
+        new(error_message(response[:body]), response)
       end
 
       # @return [Hash]
@@ -86,9 +96,11 @@ module DeskApi
 
       private
 
-      # @return [Array]
-      def parse_body(body = {})
-        [body['errors'] || nil, body['message'] || nil]
+      # @return [String/Nil]
+      def error_message(body = nil)
+        if body && body.is_a?(Hash)
+          body.key?('message') ? body['message'] : nil
+        end
       end
     end
   end

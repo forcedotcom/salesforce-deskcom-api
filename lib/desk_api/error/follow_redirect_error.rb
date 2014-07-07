@@ -35,9 +35,7 @@ module DeskApi
     class FollowRedirectError < DeskApi::Error::ClientError
       def initialize(response)
         error   = "Redirection limit reach, last redirect to: #{response['location']}"
-        status  = response[:status]
-        headers = response[:response_headers]
-        super(error, headers, status)
+        super(error, response)
       end
     end
   end
