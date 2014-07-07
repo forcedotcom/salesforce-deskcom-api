@@ -86,7 +86,7 @@ module DeskApi
 
           # ugly hack so attachments will work
           if location.host != env[:url].host
-            env.delete(:request_headers)
+            env[:request_headers] = {}
           end
 
           env[:url]  = location
