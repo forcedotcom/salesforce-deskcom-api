@@ -65,7 +65,13 @@ module DeskApi
 
       def reset_env(env, body, response)
         env.tap do |env|
-          env[:url]  = ::URI.parse response['location']
+          location   = ::URI.parse response['location']
+
+          if location.host != env[:url].host
+            env[:request_headers].delete('Authorization')
+          end
+
+          env[:url]  = location
           env[:body] = body
           %w(status response response_headers).each{ |k| env.delete k }
         end
