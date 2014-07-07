@@ -67,8 +67,9 @@ module DeskApi
         env.tap do |env|
           location   = ::URI.parse response['location']
 
+          # ugly hack so attachments will work
           if location.host != env[:url].host
-            env[:request_headers].delete('Authorization')
+            env.delete(:request_headers)
           end
 
           env[:url]  = location
