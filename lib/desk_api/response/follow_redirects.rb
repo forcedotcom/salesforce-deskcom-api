@@ -39,15 +39,25 @@ module DeskApi
     class FollowRedirects < Faraday::Response::Middleware
       dependency 'uri'
 
+      # Status codes we need to redirect
       REDIRECT_HTTP_CODES  = Set.new [301, 302, 303, 307]
+      # Redirection limit
       MAX_REDIRECT_LIMIT   = 3
 
+      # Wrapps the call to have a limit countdown
       def call(env)
         perform env, MAX_REDIRECT_LIMIT
       end
 
       private
 
+      # Performs the call and checks and performs a redirect
+      # if the status is one in 301, 302, 303 or 307
+      #
+      # @param env [Hash]
+      # @param limit [Integer]
+      # @raise DeskApi::Error::FollowRedirectError
+      # @return [Faraday::Response]
       def perform(env, limit)
         body     = env[:body]
         response = @app.call(env)
@@ -63,6 +73,13 @@ module DeskApi
         response
       end
 
+      # Changes the environment based on the response, eg.
+      # it sets the new url, resets the body, ...
+      #
+      # @param env [Hash]
+      # @param body [String]
+      # @param response [Faraday::Response]
+      # @return [Hash]
       def reset_env(env, body, response)
         env.tap do |env|
           location   = ::URI.parse response['location']
