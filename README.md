@@ -7,7 +7,7 @@
 [![Gem Version](https://badge.fury.io/rb/desk_api.svg)](http://badge.fury.io/rb/desk_api)
 
 ___
-## An Awesomely Unofficial Desk API Client
+## An Awesomely (Un)official Desk API Client
 ___
 
 DeskApi takes the capabilities of the Desk.com API and wraps them up in a Ruby
@@ -88,6 +88,11 @@ response = client.patch '/api/v2/topics/1', name: 'Changed the Topic Name'
 response = client.delete '/api/v2/topics/1'
 ```
 
+Whatever option you choose, please make sure to **never put your credentials
+in your source code**. This makes them available to everyone with access to
+your source code, makes it harder to maintain and is just overall a bad idea.
+There are many alternatices, including configuration files, environmental
+variables, ...
 
 ___
 ## Resources
