@@ -221,7 +221,7 @@ module DeskApi
 
           fail(
             DeskApi::Error::ConfigurationError, "Invalid #{credential} " \
-            "specified: #{value} must be a string or symbol."
+            "specified: must be a string or symbol."
           ) unless value.is_a?(String) || value.is_a?(Symbol)
         end
       end
