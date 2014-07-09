@@ -79,11 +79,14 @@ module DeskApi
     # @param params [Hash] the params to update the resource
     # @return [DeskApi::Resource] the updated resource
     def update(params = {})
-      changes       = filter_update_actions params
+      changes = filter_update_actions params
+      changes.merge!(filter_links(params)) # quickfix
       params.each_pair{ |key, value| send("#{key}=", value) if respond_to?("#{key}=") }
       changes.merge!(@_changed.clone)
-      @_changed     = {}
-      @_definition  = @_client.patch(href, changes).body
+
+      reset!
+      @_definition, @_loaded = [@_client.patch(href, changes).body, true]
+
       self
     end
 
@@ -350,6 +353,14 @@ module DeskApi
     # @return [Hash]
     def filter_update_actions(params = {})
       params.select{ |key, _| key.to_s.include?('_action') }
+    end
+
+    # Filters the links
+    #
+    # @param params [Hash]
+    # @return [Hash]
+    def filter_links(params = {})
+      params.select{ |key, _| key.to_s == '_links' }
     end
 
     # Checks if the given `method` is a field on the current

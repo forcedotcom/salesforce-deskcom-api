@@ -1,0 +1,426 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://devel.desk.com/api/v2/cases/3186
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - desk.com Ruby Gem v0.6.0
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      accept-ranges:
+      - bytes
+      cache-control:
+      - must-revalidate, private, max-age=0
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Wed, 09 Jul 2014 21:42:40 GMT
+      etag:
+      - '"3b403b9148d9f982752106c400dc9880"'
+      status:
+      - 200 OK
+      vary:
+      - X-AppVersion
+      x-appversion:
+      - '15.99'
+      x-frame-options:
+      - SAMEORIGIN
+      x-rate-limit-limit:
+      - '240'
+      x-rate-limit-remaining:
+      - '239'
+      x-rate-limit-reset:
+      - '20'
+      x-request-id:
+      - 97ba5b34ec90a4a7f51251f00f9aa41c
+      content-length:
+      - '2049'
+      connection:
+      - Close
+    body:
+      encoding: UTF-8
+      string: '{"id":3186,"external_id":null,"blurb":"Soluta et odit nisi. Repellat
+        qui unde quo et. Quo laudantium ex dolor mollitia omnis molestias. Praesentium
+        quasi earum nulla.\n\nUt unde excepturi est. Recusandae qui labore id. Doloribus
+        et voluptatem qui. Asperiores ut sed totam eveniet voluptatem.","subject":"Quas
+        iste rerum eos et eius.","priority":10,"locked_until":null,"description":"Soluta
+        et odit nisi. Repellat qui unde quo et. Quo laudantium ex dolor mollitia omnis
+        molestias. Praesentium quasi earum nulla.\r\n\r\nUt unde excepturi est. Recusandae
+        qui labore id. Doloribus et voluptatem qui. Asperiores ut sed totam eveniet
+        voluptatem.\r\n\r","status":"open","type":"email","labels":[],"label_ids":[],"language":null,"active_at":"2014-07-09T21:42:15Z","changed_at":"2014-07-09T21:42:19Z","created_at":"2013-05-23T17:47:51Z","updated_at":"2014-07-09T21:42:21Z","received_at":"2013-08-02T21:38:12Z","first_opened_at":null,"opened_at":null,"first_resolved_at":null,"resolved_at":null,"custom_fields":{"my_new_custom_field":null,"my_new_number_field":null,"my_new_date_field":null,"my_new_boolean_field":null,"my_new_list_field":null,"follow_up":null,"dependent":null},"_links":{"self":{"href":"/api/v2/cases/3186","class":"case"},"message":{"href":"/api/v2/cases/3186/message","class":"email"},"customer":{"href":"/api/v2/customers/105408563","class":"customer"},"labels":{"href":"/api/v2/cases/3186/labels","class":"label"},"assigned_user":null,"assigned_group":{"href":"/api/v2/groups/171213","class":"group"},"locked_by":null,"history":{"href":"/api/v2/cases/3186/history","class":"history"},"case_links":{"href":"/api/v2/cases/3186/links","class":"case_link"},"macro_preview":{"href":"/api/v2/cases/3186/macros/preview","class":"macro_preview"},"replies":{"href":"/api/v2/cases/3186/replies","class":"reply","count":1},"draft":{"href":"/api/v2/cases/3186/replies/draft","class":"reply"},"notes":{"href":"/api/v2/cases/3186/notes","class":"note","count":1},"attachments":{"href":"/api/v2/cases/3186/attachments","class":"attachment","count":0}}}'
+    http_version: 
+  recorded_at: Wed, 09 Jul 2014 21:42:40 GMT
+- request:
+    method: patch
+    uri: https://devel.desk.com/api/v2/cases/3186
+    body:
+      encoding: UTF-8
+      string: '{"_links":{"assigned_user":{"href":"/api/v2/users/16096734","class":"user"}}}'
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - desk.com Ruby Gem v0.6.0
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - max-age=0, private, must-revalidate
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Wed, 09 Jul 2014 21:42:41 GMT
+      etag:
+      - '"a0f5c39eba014db9e75e4bd0f699eaeb"'
+      server:
+      - nginx
+      status:
+      - 200 OK
+      vary:
+      - X-AppVersion
+      x-appversion:
+      - '15.99'
+      x-frame-options:
+      - SAMEORIGIN
+      x-rack-cache:
+      - invalidate, pass
+      x-rate-limit-limit:
+      - '240'
+      x-rate-limit-remaining:
+      - '238'
+      x-rate-limit-reset:
+      - '19'
+      x-request-id:
+      - 94f6e1e4c8318ff14e7942b42e1d1b49
+      x-runtime:
+      - '0.233515'
+      x-ua-compatible:
+      - IE=Edge,chrome=1
+      transfer-encoding:
+      - chunked
+      connection:
+      - Close
+    body:
+      encoding: UTF-8
+      string: '{"id":3186,"external_id":null,"blurb":"Soluta et odit nisi. Repellat
+        qui unde quo et. Quo laudantium ex dolor mollitia omnis molestias. Praesentium
+        quasi earum nulla.\n\nUt unde excepturi est. Recusandae qui labore id. Doloribus
+        et voluptatem qui. Asperiores ut sed totam eveniet voluptatem.","subject":"Quas
+        iste rerum eos et eius.","priority":10,"locked_until":null,"description":"Soluta
+        et odit nisi. Repellat qui unde quo et. Quo laudantium ex dolor mollitia omnis
+        molestias. Praesentium quasi earum nulla.\r\n\r\nUt unde excepturi est. Recusandae
+        qui labore id. Doloribus et voluptatem qui. Asperiores ut sed totam eveniet
+        voluptatem.\r\n\r","status":"open","type":"email","labels":[],"label_ids":[],"language":null,"active_at":"2014-07-09T21:42:15Z","changed_at":"2014-07-09T21:42:41Z","created_at":"2013-05-23T17:47:51Z","updated_at":"2014-07-09T21:42:41Z","received_at":"2013-08-02T21:38:12Z","first_opened_at":null,"opened_at":null,"first_resolved_at":null,"resolved_at":null,"custom_fields":{"my_new_custom_field":null,"my_new_number_field":null,"my_new_date_field":null,"my_new_boolean_field":null,"my_new_list_field":null,"follow_up":null,"dependent":null},"_links":{"self":{"href":"/api/v2/cases/3186","class":"case"},"message":{"href":"/api/v2/cases/3186/message","class":"email"},"customer":{"href":"/api/v2/customers/105408563","class":"customer"},"labels":{"href":"/api/v2/cases/3186/labels","class":"label"},"assigned_user":{"href":"/api/v2/users/16096734","class":"user"},"assigned_group":{"href":"/api/v2/groups/171213","class":"group"},"locked_by":null,"history":{"href":"/api/v2/cases/3186/history","class":"history"},"case_links":{"href":"/api/v2/cases/3186/links","class":"case_link"},"macro_preview":{"href":"/api/v2/cases/3186/macros/preview","class":"macro_preview"},"replies":{"href":"/api/v2/cases/3186/replies","class":"reply","count":1},"draft":{"href":"/api/v2/cases/3186/replies/draft","class":"reply"},"notes":{"href":"/api/v2/cases/3186/notes","class":"note","count":1},"attachments":{"href":"/api/v2/cases/3186/attachments","class":"attachment","count":0}}}'
+    http_version: 
+  recorded_at: Wed, 09 Jul 2014 21:42:41 GMT
+- request:
+    method: get
+    uri: https://devel.desk.com/api/v2/users/16096734
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - desk.com Ruby Gem v0.6.0
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      accept-ranges:
+      - bytes
+      cache-control:
+      - must-revalidate, private, max-age=0
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Wed, 09 Jul 2014 21:42:41 GMT
+      etag:
+      - '"3c793d278a94ceebca11b4019e63f2c8"'
+      status:
+      - 200 OK
+      vary:
+      - X-AppVersion
+      x-appversion:
+      - '15.99'
+      x-frame-options:
+      - SAMEORIGIN
+      x-rate-limit-limit:
+      - '240'
+      x-rate-limit-remaining:
+      - '237'
+      x-rate-limit-reset:
+      - '19'
+      x-request-id:
+      - 21c95d1024d9662442c2f7f9d23e0c6d
+      content-length:
+      - '908'
+      connection:
+      - Close
+    body:
+      encoding: UTF-8
+      string: '{"id":16096734,"name":"Thomas Stachl","public_name":"Thomas Stachl","email":"tstachl@salesforce.com","level":"siteadmin_billing","avatar":"http://www.gravatar.com/avatar/9d1a9e1a385960d1ba80fb873128cf73?rating=PG&size=50&default=404","created_at":"2012-06-06T14:51:21Z","updated_at":"2014-07-09T21:25:45Z","current_login_at":"2014-07-09T16:25:20Z","last_login_at":"2014-06-20T20:35:58Z","_links":{"self":{"href":"/api/v2/users/16096734","class":"user"},"preferences":{"href":"/api/v2/users/16096734/preferences","class":"user_preference"},"searches":{"href":"/api/v2/users/16096734/searches","class":"search"},"groups":{"href":"/api/v2/users/16096734/groups","class":"group"},"macros":{"href":"/api/v2/users/16096734/macros","class":"macro"},"filters":{"href":"/api/v2/users/16096734/filters","class":"filter"},"integration_urls":{"href":"/api/v2/users/16096734/integration_urls","class":"integration_url"}}}'
+    http_version: 
+  recorded_at: Wed, 09 Jul 2014 21:42:41 GMT
+- request:
+    method: get
+    uri: https://devel.desk.com/api/v2/cases/3186
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - desk.com Ruby Gem v0.6.0
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      accept-ranges:
+      - bytes
+      cache-control:
+      - must-revalidate, private, max-age=0
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Wed, 09 Jul 2014 21:42:41 GMT
+      etag:
+      - '"a0f5c39eba014db9e75e4bd0f699eaeb"'
+      status:
+      - 200 OK
+      vary:
+      - X-AppVersion
+      x-appversion:
+      - '15.99'
+      x-frame-options:
+      - SAMEORIGIN
+      x-rate-limit-limit:
+      - '240'
+      x-rate-limit-remaining:
+      - '236'
+      x-rate-limit-reset:
+      - '19'
+      x-request-id:
+      - 3c9aeae6b1a9e80d80493f0c71a80022
+      content-length:
+      - '2093'
+      connection:
+      - Close
+    body:
+      encoding: UTF-8
+      string: '{"id":3186,"external_id":null,"blurb":"Soluta et odit nisi. Repellat
+        qui unde quo et. Quo laudantium ex dolor mollitia omnis molestias. Praesentium
+        quasi earum nulla.\n\nUt unde excepturi est. Recusandae qui labore id. Doloribus
+        et voluptatem qui. Asperiores ut sed totam eveniet voluptatem.","subject":"Quas
+        iste rerum eos et eius.","priority":10,"locked_until":null,"description":"Soluta
+        et odit nisi. Repellat qui unde quo et. Quo laudantium ex dolor mollitia omnis
+        molestias. Praesentium quasi earum nulla.\r\n\r\nUt unde excepturi est. Recusandae
+        qui labore id. Doloribus et voluptatem qui. Asperiores ut sed totam eveniet
+        voluptatem.\r\n\r","status":"open","type":"email","labels":[],"label_ids":[],"language":null,"active_at":"2014-07-09T21:42:15Z","changed_at":"2014-07-09T21:42:41Z","created_at":"2013-05-23T17:47:51Z","updated_at":"2014-07-09T21:42:41Z","received_at":"2013-08-02T21:38:12Z","first_opened_at":null,"opened_at":null,"first_resolved_at":null,"resolved_at":null,"custom_fields":{"my_new_custom_field":null,"my_new_number_field":null,"my_new_date_field":null,"my_new_boolean_field":null,"my_new_list_field":null,"follow_up":null,"dependent":null},"_links":{"self":{"href":"/api/v2/cases/3186","class":"case"},"message":{"href":"/api/v2/cases/3186/message","class":"email"},"customer":{"href":"/api/v2/customers/105408563","class":"customer"},"labels":{"href":"/api/v2/cases/3186/labels","class":"label"},"assigned_user":{"href":"/api/v2/users/16096734","class":"user"},"assigned_group":{"href":"/api/v2/groups/171213","class":"group"},"locked_by":null,"history":{"href":"/api/v2/cases/3186/history","class":"history"},"case_links":{"href":"/api/v2/cases/3186/links","class":"case_link"},"macro_preview":{"href":"/api/v2/cases/3186/macros/preview","class":"macro_preview"},"replies":{"href":"/api/v2/cases/3186/replies","class":"reply","count":1},"draft":{"href":"/api/v2/cases/3186/replies/draft","class":"reply"},"notes":{"href":"/api/v2/cases/3186/notes","class":"note","count":1},"attachments":{"href":"/api/v2/cases/3186/attachments","class":"attachment","count":0}}}'
+    http_version: 
+  recorded_at: Wed, 09 Jul 2014 21:42:41 GMT
+- request:
+    method: patch
+    uri: https://devel.desk.com/api/v2/cases/3186
+    body:
+      encoding: UTF-8
+      string: '{"_links":{"assigned_user":{"href":"/api/v2/users/21923785","class":"user"}}}'
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - desk.com Ruby Gem v0.6.0
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - max-age=0, private, must-revalidate
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Wed, 09 Jul 2014 21:42:42 GMT
+      etag:
+      - '"aa74aa9d7abb026437a4dd38aaa9ad50"'
+      server:
+      - nginx
+      status:
+      - 200 OK
+      vary:
+      - X-AppVersion
+      x-appversion:
+      - '15.99'
+      x-frame-options:
+      - SAMEORIGIN
+      x-rack-cache:
+      - invalidate, pass
+      x-rate-limit-limit:
+      - '240'
+      x-rate-limit-remaining:
+      - '235'
+      x-rate-limit-reset:
+      - '18'
+      x-request-id:
+      - 8878757a3f962977e47c8f83faef3ca9
+      x-runtime:
+      - '0.448406'
+      x-ua-compatible:
+      - IE=Edge,chrome=1
+      content-length:
+      - '2093'
+      connection:
+      - Close
+    body:
+      encoding: UTF-8
+      string: '{"id":3186,"external_id":null,"blurb":"Soluta et odit nisi. Repellat
+        qui unde quo et. Quo laudantium ex dolor mollitia omnis molestias. Praesentium
+        quasi earum nulla.\n\nUt unde excepturi est. Recusandae qui labore id. Doloribus
+        et voluptatem qui. Asperiores ut sed totam eveniet voluptatem.","subject":"Quas
+        iste rerum eos et eius.","priority":10,"locked_until":null,"description":"Soluta
+        et odit nisi. Repellat qui unde quo et. Quo laudantium ex dolor mollitia omnis
+        molestias. Praesentium quasi earum nulla.\r\n\r\nUt unde excepturi est. Recusandae
+        qui labore id. Doloribus et voluptatem qui. Asperiores ut sed totam eveniet
+        voluptatem.\r\n\r","status":"open","type":"email","labels":[],"label_ids":[],"language":null,"active_at":"2014-07-09T21:42:15Z","changed_at":"2014-07-09T21:42:41Z","created_at":"2013-05-23T17:47:51Z","updated_at":"2014-07-09T21:42:41Z","received_at":"2013-08-02T21:38:12Z","first_opened_at":null,"opened_at":null,"first_resolved_at":null,"resolved_at":null,"custom_fields":{"my_new_custom_field":null,"my_new_number_field":null,"my_new_date_field":null,"my_new_boolean_field":null,"my_new_list_field":null,"follow_up":null,"dependent":null},"_links":{"self":{"href":"/api/v2/cases/3186","class":"case"},"message":{"href":"/api/v2/cases/3186/message","class":"email"},"customer":{"href":"/api/v2/customers/105408563","class":"customer"},"labels":{"href":"/api/v2/cases/3186/labels","class":"label"},"assigned_user":{"href":"/api/v2/users/21923785","class":"user"},"assigned_group":{"href":"/api/v2/groups/171213","class":"group"},"locked_by":null,"history":{"href":"/api/v2/cases/3186/history","class":"history"},"case_links":{"href":"/api/v2/cases/3186/links","class":"case_link"},"macro_preview":{"href":"/api/v2/cases/3186/macros/preview","class":"macro_preview"},"replies":{"href":"/api/v2/cases/3186/replies","class":"reply","count":1},"draft":{"href":"/api/v2/cases/3186/replies/draft","class":"reply"},"notes":{"href":"/api/v2/cases/3186/notes","class":"note","count":1},"attachments":{"href":"/api/v2/cases/3186/attachments","class":"attachment","count":0}}}'
+    http_version: 
+  recorded_at: Wed, 09 Jul 2014 21:42:42 GMT
+- request:
+    method: get
+    uri: https://devel.desk.com/api/v2/users/21923785
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - desk.com Ruby Gem v0.6.0
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      accept-ranges:
+      - bytes
+      cache-control:
+      - must-revalidate, private, max-age=0
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Wed, 09 Jul 2014 21:42:42 GMT
+      etag:
+      - '"90fc836746ee0c985f06d62c0ae01f78"'
+      status:
+      - 200 OK
+      vary:
+      - X-AppVersion
+      x-appversion:
+      - '15.99'
+      x-frame-options:
+      - SAMEORIGIN
+      x-rate-limit-limit:
+      - '240'
+      x-rate-limit-remaining:
+      - '234'
+      x-rate-limit-reset:
+      - '18'
+      x-request-id:
+      - a4232b653de590ad220c0a9b96b3a8b2
+      content-length:
+      - '908'
+      connection:
+      - Close
+    body:
+      encoding: UTF-8
+      string: '{"id":21923785,"name":"Andrew Frauen","public_name":"Andrew Frauen","email":"afrauen@salesforce.com","level":"siteadmin_billing","avatar":"http://www.gravatar.com/avatar/f35ae85c094c4d8eb9f17f10f72ca752?rating=PG&size=50&default=404","created_at":"2014-04-11T20:17:16Z","updated_at":"2014-05-14T19:06:09Z","current_login_at":"2014-05-14T19:06:09Z","last_login_at":"2014-05-06T18:41:27Z","_links":{"self":{"href":"/api/v2/users/21923785","class":"user"},"preferences":{"href":"/api/v2/users/21923785/preferences","class":"user_preference"},"searches":{"href":"/api/v2/users/21923785/searches","class":"search"},"groups":{"href":"/api/v2/users/21923785/groups","class":"group"},"macros":{"href":"/api/v2/users/21923785/macros","class":"macro"},"filters":{"href":"/api/v2/users/21923785/filters","class":"filter"},"integration_urls":{"href":"/api/v2/users/21923785/integration_urls","class":"integration_url"}}}'
+    http_version: 
+  recorded_at: Wed, 09 Jul 2014 21:42:42 GMT
+- request:
+    method: get
+    uri: https://devel.desk.com/api/v2/cases/3186
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - desk.com Ruby Gem v0.6.0
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      accept-ranges:
+      - bytes
+      cache-control:
+      - must-revalidate, private, max-age=0
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Wed, 09 Jul 2014 21:42:42 GMT
+      etag:
+      - '"aa74aa9d7abb026437a4dd38aaa9ad50"'
+      status:
+      - 200 OK
+      vary:
+      - X-AppVersion
+      x-appversion:
+      - '15.99'
+      x-frame-options:
+      - SAMEORIGIN
+      x-rate-limit-limit:
+      - '240'
+      x-rate-limit-remaining:
+      - '233'
+      x-rate-limit-reset:
+      - '18'
+      x-request-id:
+      - 0d6464305bdc8b9398de2b8a9ecb8b9b
+      content-length:
+      - '2093'
+      connection:
+      - Close
+    body:
+      encoding: UTF-8
+      string: '{"id":3186,"external_id":null,"blurb":"Soluta et odit nisi. Repellat
+        qui unde quo et. Quo laudantium ex dolor mollitia omnis molestias. Praesentium
+        quasi earum nulla.\n\nUt unde excepturi est. Recusandae qui labore id. Doloribus
+        et voluptatem qui. Asperiores ut sed totam eveniet voluptatem.","subject":"Quas
+        iste rerum eos et eius.","priority":10,"locked_until":null,"description":"Soluta
+        et odit nisi. Repellat qui unde quo et. Quo laudantium ex dolor mollitia omnis
+        molestias. Praesentium quasi earum nulla.\r\n\r\nUt unde excepturi est. Recusandae
+        qui labore id. Doloribus et voluptatem qui. Asperiores ut sed totam eveniet
+        voluptatem.\r\n\r","status":"open","type":"email","labels":[],"label_ids":[],"language":null,"active_at":"2014-07-09T21:42:15Z","changed_at":"2014-07-09T21:42:41Z","created_at":"2013-05-23T17:47:51Z","updated_at":"2014-07-09T21:42:41Z","received_at":"2013-08-02T21:38:12Z","first_opened_at":null,"opened_at":null,"first_resolved_at":null,"resolved_at":null,"custom_fields":{"my_new_custom_field":null,"my_new_number_field":null,"my_new_date_field":null,"my_new_boolean_field":null,"my_new_list_field":null,"follow_up":null,"dependent":null},"_links":{"self":{"href":"/api/v2/cases/3186","class":"case"},"message":{"href":"/api/v2/cases/3186/message","class":"email"},"customer":{"href":"/api/v2/customers/105408563","class":"customer"},"labels":{"href":"/api/v2/cases/3186/labels","class":"label"},"assigned_user":{"href":"/api/v2/users/21923785","class":"user"},"assigned_group":{"href":"/api/v2/groups/171213","class":"group"},"locked_by":null,"history":{"href":"/api/v2/cases/3186/history","class":"history"},"case_links":{"href":"/api/v2/cases/3186/links","class":"case_link"},"macro_preview":{"href":"/api/v2/cases/3186/macros/preview","class":"macro_preview"},"replies":{"href":"/api/v2/cases/3186/replies","class":"reply","count":1},"draft":{"href":"/api/v2/cases/3186/replies/draft","class":"reply"},"notes":{"href":"/api/v2/cases/3186/notes","class":"note","count":1},"attachments":{"href":"/api/v2/cases/3186/attachments","class":"attachment","count":0}}}'
+    http_version: 
+  recorded_at: Wed, 09 Jul 2014 21:42:42 GMT
+recorded_with: VCR 2.9.2

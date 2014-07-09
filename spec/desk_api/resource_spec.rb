@@ -231,6 +231,26 @@ describe DeskApi::Resource do
       expect(customer.reload!.phone_numbers.size).to eq(1)
       expect(num_count).not_to eq(customer.phone_numbers.size)
     end
+
+    it 'can handle links', :vcr do
+      thomas = { "href"=>"/api/v2/users/16096734", "class"=>"user" }
+      andy   = { "href"=>"/api/v2/users/21923785", "class"=>"user" }
+      ticket = subject.cases.find(3186)
+
+      ticket.update({
+        _links: { assigned_user: thomas }
+      })
+
+      expect(ticket.assigned_user.public_name).to eq('Thomas Stachl')
+      expect(ticket.load!.assigned_user.public_name).to eq('Thomas Stachl')
+
+      ticket.update({
+        _links: { assigned_user: andy }
+      })
+
+      expect(ticket.assigned_user.public_name).to eq('Andrew Frauen')
+      expect(ticket.load!.assigned_user.public_name).to eq('Andrew Frauen')
+    end
   end
 
   context '#delete' do
