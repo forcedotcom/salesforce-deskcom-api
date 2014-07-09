@@ -34,7 +34,7 @@ describe DeskApi::Response::ParseJson do
 
   it 'parses the response body into a hash' do
     body    = @conn.get('http://localhost/json').body
-    compare = JSON.parse @json
+    compare = JSON.parse @json, symbolize_names: true
     expect(body).to be_instance_of(Hash)
     expect(body).to eql(compare)
   end
@@ -46,7 +46,7 @@ describe DeskApi::Response::ParseJson do
 
   it 'deals with specified charsets in the content-type header' do
     body = @conn.get('http://localhost/utf8').body
-    compare = JSON.parse @json
+    compare = JSON.parse @json, symbolize_names: true
     expect(body).to be_instance_of(Hash)
     expect(body).to eql(compare)
   end

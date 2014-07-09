@@ -43,7 +43,7 @@ module DeskApi
         content_type = env[:response_headers]['content-type']
         if content_type && content_type.include?('application/json') \
           && !env[:body].strip.empty?
-          env[:body] = ::JSON.parse(env[:body])
+          env[:body] = ::JSON.parse(env[:body], symbolize_names: true)
         end
       end
     end

@@ -9,7 +9,7 @@ describe DeskApi::Error do
     it 'can be created from a faraday response', :vcr do
       expect(
         lambda {
-          subject.articles.create({ subject: 'Testing', body: 'Testing' }) 
+          subject.articles.create({ subject: 'Testing', body: 'Testing' })
         }
       ).to raise_error(DeskApi::Error::UnprocessableEntity)
     end
@@ -29,7 +29,7 @@ describe DeskApi::Error do
         subject.articles.create({ subject: 'Testing', body: 'Testing' })
       rescue DeskApi::Error::UnprocessableEntity => e
         expect(e.errors).to be_an_instance_of(Hash)
-        expect(e.errors).to eq({"_links" => { "topic" => ["blank"]}})
+        expect(e.errors).to eq({ _links: { topic: ["blank"]}})
       end
     end
   end

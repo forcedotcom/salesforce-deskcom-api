@@ -64,7 +64,7 @@ module DeskApi
     # @return [Hash/Nil]
     def error_hash(body = nil)
       if body && body.is_a?(Hash)
-        body.key?('errors') ? body['errors'] : nil
+        body.key?(:errors) ? body[:errors] : nil
       end
     end
 
@@ -99,7 +99,7 @@ module DeskApi
       # @return [String/Nil]
       def error_message(body = nil)
         if body && body.is_a?(Hash)
-          body.key?('message') ? body['message'] : nil
+          body.key?(:message) ? body[:message] : nil
         end
       end
     end

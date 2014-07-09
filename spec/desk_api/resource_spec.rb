@@ -69,8 +69,8 @@ describe DeskApi::Resource do
   context '#respond_to', :vcr do
     before do
       @company = DeskApi::Resource.new(subject, {
-        '_links' => {'self'=>{'href'=>'/api/v2/cases','class'=>'page'}},
-        'name'   => 'foo'
+        _links: { self: { href: '/api/v2/cases', class: 'page' }},
+        name: 'foo'
       }, true)
     end
 
@@ -98,7 +98,7 @@ describe DeskApi::Resource do
   context '#get_self' do
     it 'returns the hash for self' do
       expect(subject.articles.get_self).to eq({
-        "href" => "/api/v2/articles"
+        href: "/api/v2/articles"
       })
     end
   end
@@ -110,7 +110,7 @@ describe DeskApi::Resource do
 
     it 'sets the href' do
       res = DeskApi::Resource.new(subject, {
-        '_links'=>{'self'=>{'href'=>'/api/v2/cases'}}
+        _links: { self: { href: '/api/v2/cases' }}
       }, true)
 
       expect(res.href).to eq('/api/v2/cases')
@@ -122,7 +122,7 @@ describe DeskApi::Resource do
   context '#resource_type' do
     it 'returns the resources type' do
       res = DeskApi::Resource.new(subject, {
-        '_links'=>{'self'=>{'href'=>'/api/v2/cases','class'=>'page'}}
+        _links: { self: { href: '/api/v2/cases', class: 'page' }}
       }, true)
       expect(res.resource_type).to eq('page')
     end
@@ -195,7 +195,7 @@ describe DeskApi::Resource do
 
     it 'can handle action params', :vcr do
       ticket    = subject.cases.entries.first
-      num_count = ticket.to_hash['labels'].count
+      num_count = ticket.to_hash[:labels].count
       labels    = ['client_spam', 'client_test']
 
       ticket.update({
@@ -317,7 +317,7 @@ describe DeskApi::Resource do
   context '#query_params' do
     before do
       @page = DeskApi::Resource.new(subject, {
-        '_links'=>{'self'=>{'href'=>'/api/v2/cases?page=2&per_page=50'}}
+        _links: { self: { href: '/api/v2/cases?page=2&per_page=50' }}
       }, true)
     end
 
@@ -334,13 +334,13 @@ describe DeskApi::Resource do
   context '#query_params=' do
     before do
       @page = DeskApi::Resource.new(subject, {
-        '_links'=>{'self'=>{'href'=>'/api/v2/cases'}}
+        _links: { self: { href: '/api/v2/cases' }}
       }, true)
     end
 
     it 'sets query params on the current url' do
-      @page.send(:query_params=, { page: 5, per_page: 50 })
-      expect(@page.instance_variable_get(:@_definition)['_links']['self']['href']).to eq('/api/v2/cases?page=5&per_page=50')
+      @page.send(:query_params=, { 'page' => 5, 'per_page' => 50 })
+      expect(@page.instance_variable_get(:@_definition)[:_links][:self][:href]).to eq('/api/v2/cases?page=5&per_page=50')
     end
   end
 
@@ -356,7 +356,7 @@ describe DeskApi::Resource do
     it 'saves the linked resource instead of the url', :vcr do
       first_case = subject.cases.entries.first
       expect(first_case.customer).to be_an_instance_of(DeskApi::Resource)
-      expect(first_case.instance_variable_get(:@_links)['customer']).to be_an_instance_of(DeskApi::Resource)
+      expect(first_case.instance_variable_get(:@_links)[:customer]).to be_an_instance_of(DeskApi::Resource)
     end
   end
 
@@ -393,25 +393,25 @@ describe DeskApi::Resource do
   context '#to_hash' do
     it 'returns a hash for a desk resource', :vcr do
       expect(subject.topics.entries.first.to_hash).to eq({
-        "name" => "Updated topic name",
-        "description" => "Another description update.",
-        "position" => 1,
-        "allow_questions" => true,
-        "in_support_center" => true,
-        "created_at" => Time.parse("2013-04-22T23:46:42Z"),
-        "updated_at" => Time.parse("2014-03-06T17:59:33Z"),
-        "_links" => {
-          "self" => {
-            "href" => "/api/v2/topics/498301",
-            "class" => "topic"
+        name: "Updated topic name",
+        description: "Another description update.",
+        position: 1,
+        allow_questions: true,
+        in_support_center: true,
+        created_at: Time.parse("2013-04-22T23:46:42Z"),
+        updated_at: Time.parse("2014-03-06T17:59:33Z"),
+        _links: {
+          self: {
+            href: "/api/v2/topics/498301",
+            class: "topic"
           },
-          "articles" => {
-            "href" => "/api/v2/topics/498301/articles",
-            "class" => "article"
+          articles: {
+            href: "/api/v2/topics/498301/articles",
+            class: "article"
           },
-          "translations" => {
-            "href" => "/api/v2/topics/498301/translations",
-            "class" => "topic_translation"
+          translations: {
+            href: "/api/v2/topics/498301/translations",
+            class: "topic_translation"
           }
         }
       })

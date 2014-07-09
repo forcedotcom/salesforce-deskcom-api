@@ -27,7 +27,7 @@ describe DeskApi::Response::ParseDates do
   end
 
   it 'parses iso 8601 strings to time' do
-    created_at = @conn.get('http://localhost/echo').body['created_at']
+    created_at = @conn.get('http://localhost/echo').body[:created_at]
     expect(created_at).to be_instance_of(Time)
     expect(created_at).to eql(Time.parse('2013-12-12T02:55:05Z'))
   end

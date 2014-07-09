@@ -79,20 +79,20 @@ describe DeskApi::Client do
     describe '#get', :vcr do
       it 'fetches resources' do
         response = subject.get('/api/v2/cases/3014')
-        expect(response.body['subject']).to eq('Testing Quick Case')
+        expect(response.body[:subject]).to eq('Testing Quick Case')
       end
     end
 
     describe '#post', :vcr do
       it 'creates a resource' do
         response = subject.post('/api/v2/topics', @topic_create_data)
-        expect(response.body['name']).to eq(@topic_create_data[:name])
+        expect(response.body[:name]).to eq(@topic_create_data[:name])
       end
     end
 
     describe '#patch', :vcr do
       it 'updates a resource' do
-        expect(subject.patch('/api/v2/topics/601117', @topic_update_data).body['name']).to eq(@topic_update_data[:name])
+        expect(subject.patch('/api/v2/topics/601117', @topic_update_data).body[:name]).to eq(@topic_update_data[:name])
       end
     end
 
@@ -113,20 +113,20 @@ describe DeskApi::Client do
     describe '#get', :vcr do
       it 'fetches resources' do
         response = @client.get('/api/v2/articles/1391017')
-        expect(response.body['subject']).to eq('Testing OAuth')
+        expect(response.body[:subject]).to eq('Testing OAuth')
       end
     end
 
     describe '#post', :vcr do
       it 'creates a resource' do
         response = @client.post('/api/v2/articles', @article_create_data)
-        expect(response.body['subject']).to eq(@article_create_data[:subject])
+        expect(response.body[:subject]).to eq(@article_create_data[:subject])
       end
     end
 
     describe '#patch', :vcr do
       it 'updates a resource' do
-        expect(@client.patch('/api/v2/articles/1391017', @article_update_data).body['subject']).to eq(@article_update_data[:subject])
+        expect(@client.patch('/api/v2/articles/1391017', @article_update_data).body[:subject]).to eq(@article_update_data[:subject])
       end
     end
 

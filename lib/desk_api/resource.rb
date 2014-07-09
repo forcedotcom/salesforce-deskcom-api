@@ -48,8 +48,8 @@ module DeskApi
       # @param link [String/Hash] the self href as string or hash
       # @return [Hash]
       def build_self_link(link, params = {})
-        link = {'href'=>link} if link.kind_of?(String)
-        {'_links'=>{'self'=>link}}
+        link = { href: link} if link.kind_of?(String)
+        { _links: { self: link }}
       end
     end
 
@@ -122,7 +122,7 @@ module DeskApi
     # @return [Desk::Resource] self
     def next!
       self.load
-      next_page = @_definition['_links']['next']
+      next_page = @_definition[:_links][:next]
 
       if next_page
         @_definition = self.class.build_self_link(next_page)
@@ -181,14 +181,14 @@ module DeskApi
     #
     # @return [Hash] self link hash
     def get_self
-      @_definition['_links']['self']
+      @_definition[:_links][:self]
     end
 
     # Returns the self link href
     #
     # @return [String] self link href
     def href
-      get_self['href']
+      get_self[:href]
     end
     alias_method :get_href, :href
 
@@ -196,7 +196,7 @@ module DeskApi
     #
     # @return [DeskApi::Resource] self
     def href=(value)
-      @_definition['_links']['self']['href'] = value
+      @_definition[:_links][:self][:href] = value
       self
     end
 
@@ -217,9 +217,8 @@ module DeskApi
     #
     # @return [String] resource type/class
     def resource_type
-      get_self['class']
+      get_self[:class]
     end
-
 
     # Get/set the page and per_page query params
     #
@@ -272,16 +271,18 @@ module DeskApi
 
     # Checks if this resource responds to a specific method
     #
-    # @param method [String/Symbol]
+    # @param method [Symbol]
     # @return [Boolean]
     def respond_to?(method)
       self.load
-      meth = method.to_s
 
-      return true if is_embedded?(meth)
-      return true if is_link?(meth)
-      return true if meth.end_with?('=') and is_field?(meth[0...-1])
-      return true if is_field?(meth)
+      if method.to_s.end_with?('=')
+        return true if is_field?(method[0...-1])
+      end
+
+      return true if is_embedded?(method)
+      return true if is_link?(method)
+      return true if is_field?(method)
 
       super
     end
@@ -367,7 +368,7 @@ module DeskApi
     # @param method [String/Symbol]
     # @return [Boolean]
     def is_link?(method)
-      @_definition.key?('_links') and @_definition['_links'].key?(method)
+      @_definition.key?(:_links) and @_definition[:_links].key?(method)
     end
 
     # Checks if the given `method` is embedded in the current
@@ -376,12 +377,12 @@ module DeskApi
     # @param method [String/Symbol]
     # @return [Boolean]
     def is_embedded?(method)
-      @_definition.key?('_embedded') and @_definition['_embedded'].key?(method)
+      @_definition.key?(:_embedded) and @_definition[:_embedded].key?(method)
     end
 
     # Returns the field value from the changed or definition hash
     #
-    # @param method [String/Symbol]
+    # @param method [Symbol]
     # @return [Mixed]
     def get_field_value(method)
       @_changed.key?(method) ? @_changed[method] : @_definition[method]
@@ -389,11 +390,11 @@ module DeskApi
 
     # Returns the embedded resource
     #
-    # @param method [String/Symbol]
+    # @param method [Symbol]
     # @return [DeskApi::Resource]
     def get_embedded_resource(method)
       return @_embedded[method] if @_embedded.key?(method)
-      @_embedded[method] = @_definition['_embedded'][method]
+      @_embedded[method] = @_definition[:_embedded][method]
 
       if @_embedded[method].kind_of?(Array)
         @_embedded[method].tap do |ary|
@@ -406,11 +407,11 @@ module DeskApi
 
     # Returns the linked resource
     #
-    # @param method [String/Symbol]
+    # @param method [Symbol]
     # @return [DeskApi::Resource]
     def get_linked_resource(method)
       return @_links[method] if @_links.key?(method)
-      @_links[method] = @_definition['_links'][method]
+      @_links[method] = @_definition[:_links][method]
 
       if @_links[method] and not @_links[method].kind_of?(self.class)
         @_links[method] = new_resource(self.class.build_self_link(@_links[method]))
@@ -436,14 +437,16 @@ module DeskApi
     def method_missing(method, *args, &block)
       self.load
 
-      meth = method.to_s
+      if method.to_s.end_with?('=')
+        method = method[0...-1].to_sym
+        return @_changed[method] = args.first if is_field?(method)
+      end
 
-      return get_embedded_resource(meth) if is_embedded?(meth)
-      return get_linked_resource(meth) if is_link?(meth)
-      return @_changed[meth[0...-1]] = args.first if meth.end_with?('=') and is_field?(meth[0...-1])
-      return get_field_value(meth) if is_field?(meth)
+      return get_embedded_resource(method) if is_embedded?(method)
+      return get_linked_resource(method) if is_link?(method)
+      return get_field_value(method) if is_field?(method)
 
-      super(method, *args, &block)
+      super
     end
   end
 end
