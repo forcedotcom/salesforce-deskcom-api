@@ -8,7 +8,6 @@ rvm:
   - jruby-19mode
   - ruby-head
   - jruby-head
-  - rbx
   - ree
 
 gemfile:
