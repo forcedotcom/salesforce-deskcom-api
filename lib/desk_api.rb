@@ -29,7 +29,6 @@
 require 'uri'
 require 'faraday'
 require 'forwardable'
-require 'addressable/uri'
 
 # {DeskApi} allows for easy interaction with Desk.com's API.
 # It is the top level namespace and delegates all missing

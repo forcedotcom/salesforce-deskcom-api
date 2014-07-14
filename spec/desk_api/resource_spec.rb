@@ -491,9 +491,12 @@ describe DeskApi::Resource do
     end
 
     it 'returns nil on the last page', :vcr do
-      expect(subject.cases.last.next!).to eq(nil)
+      expect(subject.cases.last.next!).to be_nil
     end
 
+    it 'returns nil on non-page resources', :vcr do
+      expect(subject.cases.entries.first.next!).to be_nil
+    end
   end
 
   context '#each_page' do
