@@ -1,14 +1,5 @@
 # DeskApi a client for APIv2
-
-[![Build Status](https://secure.travis-ci.org/tstachl/desk_api.png)](http://travis-ci.org/tstachl/desk_api)
-[![Code Climate](https://codeclimate.com/github/tstachl/desk_api.png)](https://codeclimate.com/github/tstachl/desk_api)
-[![Coverage Status](https://coveralls.io/repos/tstachl/desk_api/badge.png?branch=develop)](https://coveralls.io/r/tstachl/desk_api?branch=develop)
-[![Dependency Status](https://gemnasium.com/tstachl/desk_api.png)](https://gemnasium.com/tstachl/desk_api)
-[![Gem Version](https://badge.fury.io/rb/desk_api.svg)](http://badge.fury.io/rb/desk_api)
-
-___
 ## An Awesomely (Un)official Desk API Client
-___
 
 DeskApi takes the capabilities of the Desk.com API and wraps them up in a Ruby
 client so that it's easy-as-pie to get working with your support site's API.
@@ -16,28 +7,66 @@ client so that it's easy-as-pie to get working with your support site's API.
 Desk publishes a changelog monthly, which you can keep up with at
 [dev.desk.com/API/changelog](http://dev.desk.com/API/changelog).
 
-We do our best to keep DeskApi, but please
-don't hesitate to open an [issue](https://github.com/tstachl/desk/issues) or
-send a [pull request](https://github.com/tstachl/desk/pulls) if you find a bug
-or would like to new functionality added.
+We do our best to keep DeskApi, but please don't hesitate to open an
+[issue](https://github.com/forcedotcom/salesforce-deskcom-api/issues) or send a
+[pull request](https://github.com/forcedotcom/salesforce-deskcom-api/pulls)
+if you find a bug or would like to new functionality added.
 
-
-___
 ## Getting Started
-___
-
 ### Installation
+
 Easy!
 
 ```ruby
 gem install desk_api
 ```
-___
+
 ### Configuration
 
-There are two different ways to configure DeskApi to send and receive requests:
+#### Authentication Mechanism
 
-#### First Configuration Option
+The desk.com API allows you to access data using two authentication mechanisms:
+
+##### Basic Authentication
+
+- Username
+- Password
+- Subdomain or Endpoint
+
+##### OAuth 1.0a
+
+- Consumer Key
+- Consumer Secret
+- Access Token
+- Access Token Secret
+- Subdomain or Endpoint
+
+#### Trust is our #1 value
+
+Whatever option or method you choose, please make sure to **never put your
+credentials in your source code**. This makes them available to everyone
+with read access to your source, it makes your code harder to maintain and
+is just overall a bad idea. There are many alternatives, including configuration
+files, environmental variables, ...
+
+#### First Environmental Variables
+
+`DeskApi` is automatically configured if you choose to use environmental
+variables. There are 8 possible variables but you don't have to set all of them.
+Based on the authentication mechanism you prefer you'll only have to specify:
+
+```bash
+export DESK_USERNAME=thomas@example.com
+export DESK_PASSWORD=somepassword
+export DESK_CONSUMER_KEY=CONSUMER_KEY
+export DESK_CONSUMER_SECRET=CONSUMER_SECRET
+export DESK_TOKEN=TOKEN
+export DESK_TOKEN_SECRET=TOKEN_SECRET
+export DESK_SUBDOMAIN=devel
+export DESK_ENDPOINT=https://devel.desk.com
+```
+
+#### Second Configuration Option
 
 Configure `DeskApi` itself to send/receive requests by calling the `configure`
 method to set up your authentication credentials:
@@ -63,7 +92,7 @@ DeskApi.patch '/api/v2/topics/1', name: 'Changed the Topic Name'
 DeskApi.delete '/api/v2/topics/1'
 ```
 
-#### Second Configuration Option
+#### Third Configuration Option
 
 Initialize a new `DeskApi::Client` to send/receive requests
 
@@ -88,22 +117,13 @@ response = client.patch '/api/v2/topics/1', name: 'Changed the Topic Name'
 response = client.delete '/api/v2/topics/1'
 ```
 
-Whatever option you choose, please make sure to **never put your credentials
-in your source code**. This makes them available to everyone with access to
-your source code, makes it harder to maintain and is just overall a bad idea.
-There are many alternatices, including configuration files, environmental
-variables, ...
-
-___
 ## Resources
-___
 
 Resources are automatically discovered by the DeskApi. When requesting a
 resource from DeskAPI, the client sends the request and returns a
 `DeskApi::Resource`. If the client receives an error back from the API a
 `DeskApi::Error` is raised.
 
-___
 ### Create Read Update Delete
 
 One of the most important features; we support creating, updating and deleting
@@ -142,7 +162,7 @@ rescue DeskApi::Error::MethodNotAllowed => e
   # too bad
 end
 ```
-___
+
 ### Getters & Setters
 
 As you have seen in prior examples for each field on the resource we create a
@@ -170,7 +190,7 @@ rescue DeskApi::Error::MethodNotAllowed
   # too bad
 end
 ```
-___
+
 ### Find
 
 The method `by_url` can be called on the client, for backwards compatability we
@@ -196,7 +216,7 @@ collection `DeskApi.cases.find 1` the path will look like this:
 | `DeskApi.cases.search(subject: 'Test').entries.find(1)`     | `/api/v2/cases/1`           |
 | `DeskApi.cases.entries.first.replies.find(1)`               | `/api/v2/cases/1/replies/1` |
 | `DeskApi.cases.entries.first.replies.entries.first.find(1)` | `/api/v2/cases/1/replies/1` |
-___
+
 ### Pagination
 
 As mentioned above you can also navigate between resources and pages of
@@ -223,7 +243,7 @@ last_page = previous_page.last
 # or go to the first page
 first_page = last_page.first
 ```
-___
+
 ### `all` and `each_page`
 
 As a recent addition we made it even easier to navigate through all the pages.
@@ -240,7 +260,7 @@ end
 
 Both methods use the max `per_page` for the API endpoint for that particular
 resource.
-___
+
 ### List params
 
 Some lists allow for additional params like [cases](http://dev.desk.com/API/cases/#list).
@@ -257,7 +277,7 @@ customers_cases = DeskApi.cases(customer_id: 1)
 # fetch cases for the filter with id 1
 filters_cases = DeskApi.cases(filter_id: 1)
 ```
-___
+
 ### Sorting
 
 There is a maximum `page` limit on some Desk.com API endpoints. As of right now
@@ -280,7 +300,7 @@ To work around page limits, you can specify `sort_field` and `sort_direction`
 # fetch cases sorted by updated_at direction desc
 sorted_cases = DeskApi.cases(sort_field: :updated_at, sort_direction: :desc)
 ```
-___
+
 ### Links
 
 Once a `DeskApi::Resource` has loaded, its
@@ -313,7 +333,7 @@ user_name = DeskApi.
               sent_by.
               name
 ```
-___
+
 ### Lazy loading
 
 Resources are lazy loaded. This means that requests are only sent when you
@@ -329,7 +349,7 @@ end
 # it'll send a request
 DeskApi.cases.page == 1
 ```
-___
+
 ### Embedding
 
 Some endpoints support [embedding](http://dev.desk.com/API/using-the-api/#embedding)
@@ -373,7 +393,7 @@ customer = my_case.customer
 assigned_user = my_case.assigned_user
 assigned_group = my_case.assigned_group
 ```
-___
+
 ### API Errors
 
 Sometimes the API is going to return errors, eg. Validation Error. In these
@@ -396,9 +416,7 @@ Please also have a look at all
 [desk.com API errors](http://dev.desk.com/API/using-the-api/#status-codes) and
 their respective meanings.
 
-___
 ## License
-___
 
 Copyright (c) 2013-2014, Salesforce.com, Inc.
 All rights reserved.
