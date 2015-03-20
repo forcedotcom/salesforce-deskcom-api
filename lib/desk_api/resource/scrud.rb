@@ -56,6 +56,7 @@ module DeskApi
       def update(params = {})
         changes = filter_update_actions params
         changes.merge!(filter_links(params)) # quickfix
+        changes.merge!(filter_suppress_rules(params)) # another quickfix -- this is getting gross
         params.each_pair{ |key, value| send("#{key}=", value) if respond_to?("#{key}=") }
         changes.merge!(@_changed.clone)
 
@@ -130,6 +131,14 @@ module DeskApi
       # @return [Hash]
       def filter_links(params = {})
         params.select{ |key, _| key.to_s == '_links' }
+      end
+
+      # Filters the suppress_rules param
+      #
+      # @param params [Hash]
+      # @return [Hash]
+      def filter_suppress_rules(params = {})
+        params.select{ |key, _| key.to_s == 'suppress_rules' }
       end
     end
   end

@@ -241,6 +241,35 @@ describe DeskApi::Resource do
       expect(ticket.labels.reload!.total_entries).to eq(2)
     end
 
+    it 'can handle suppress_rules param' do
+      # This test requires a Case Updated rule which always sets case status
+      # to open and stops processing if case labels contains
+      # 'suppress_rules_test'
+      #
+      # The case is updated to add the suppress_rules label,
+      # the rule will append 'test_failed' if it is run
+
+      VCR.turn_off! ignore_cassettes: true
+
+      ticket = subject.cases.entries.first
+      labels = ticket.to_hash['labels']
+
+      ticket.update({
+        labels: ['suppress_rules_test'],
+        label_action: 'append',
+        suppress_rules: true
+      })
+
+      expect(ticket.labels.reload!.entries.map(&:name).include?('test_failed')).to be false
+
+      ticket.update({
+        labels: labels,
+        label_action: 'replace'
+      })
+
+      VCR.turn_on!
+    end
+
     it 'can replace instead of append', :vcr do
       customer  = subject.customers.entries.first
       phone     = { type: 'home', value: '(415) 555-1234' }
