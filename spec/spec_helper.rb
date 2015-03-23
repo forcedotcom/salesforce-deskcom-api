@@ -42,6 +42,16 @@ require 'rspec'
 require 'vcr'
 require 'desk_api'
 
+# reset environmental variables for tests
+ENV['DESK_USERNAME'] = nil
+ENV['DESK_PASSWORD'] = nil
+ENV['DESK_ENDPOINT'] = nil
+ENV['DESK_CONSUMER_KEY'] = nil
+ENV['DESK_CONSUMER_SECRET'] = nil
+ENV['DESK_TOKEN'] = nil
+ENV['DESK_TOKEN_SECRET'] = nil
+ENV['DESK_SUBDOMAIN'] = nil
+
 begin
   require_relative '../config'
 rescue LoadError
