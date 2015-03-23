@@ -27,11 +27,9 @@
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 require 'simplecov'
-require 'coveralls'
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
-  SimpleCov::Formatter::HTMLFormatter,
-  Coveralls::SimpleCov::Formatter
+  SimpleCov::Formatter::HTMLFormatter
 ]
 SimpleCov.start do
   add_filter '/spec/'
@@ -41,6 +39,16 @@ end
 require 'rspec'
 require 'vcr'
 require 'desk_api'
+
+# reset environmental variables for tests
+ENV['DESK_USERNAME'] = nil
+ENV['DESK_PASSWORD'] = nil
+ENV['DESK_ENDPOINT'] = nil
+ENV['DESK_CONSUMER_KEY'] = nil
+ENV['DESK_CONSUMER_SECRET'] = nil
+ENV['DESK_TOKEN'] = nil
+ENV['DESK_TOKEN_SECRET'] = nil
+ENV['DESK_SUBDOMAIN'] = nil
 
 begin
   require_relative '../config'
