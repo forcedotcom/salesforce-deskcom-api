@@ -26,6 +26,11 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+require 'addressable/uri'
+require 'desk_api/resource/scrud'
+require 'desk_api/resource/pagination'
+require 'desk_api/resource/query_params'
+
 module DeskApi
   # {DeskApi::Resource} holds most of the magic of this wrapper. Basically
   # everything that comes back from Desk.com's API is a Resource, it keeps
@@ -42,14 +47,18 @@ module DeskApi
     extend Forwardable
     def_delegator :@_client, :by_url, :by_url
 
+    include DeskApi::Resource::SCRUD
+    include DeskApi::Resource::QueryParams
+    include DeskApi::Resource::Pagination
+
     class << self
       # Returns a {DeskApi::Resource} definition with a self link
       #
       # @param link [String/Hash] the self href as string or hash
       # @return [Hash]
       def build_self_link(link, params = {})
-        link = {'href'=>link} if link.kind_of?(String)
-        {'_links'=>{'self'=>link}}
+        link = { 'href' => link } if link.kind_of?(String)
+        { '_links' => { 'self' => link } }
       end
     end
 
@@ -64,120 +73,17 @@ module DeskApi
       @_client, @_definition, @_loaded = client, definition, loaded
     end
 
-    # This method will POST to the Desk.com API and create a
-    # new resource
-    #
-    # @param params [Hash] the params to create the resource
-    # @return [DeskApi::Resource] the newly created resource
-    def create(params = {})
-      new_resource(@_client.post(clean_base_url, params).body, true)
-    end
-
-    # Use this method to update a {DeskApi::Resource}, it'll
-    # PATCH changes to the Desk.com API
-    #
-    # @param params [Hash] the params to update the resource
-    # @return [DeskApi::Resource] the updated resource
-    def update(params = {})
-      changes = filter_update_actions params
-      changes.merge!(filter_links(params)) # quickfix
-      params.each_pair{ |key, value| send("#{key}=", value) if respond_to?("#{key}=") }
-      changes.merge!(@_changed.clone)
-
-      reset!
-      @_definition, @_loaded = [@_client.patch(href, changes).body, true]
-
-      self
-    end
-
-    # Deletes the {DeskApi::Resource}.
-    #
-    # @return [Boolean] has the resource been deleted?
-    def delete
-      @_client.delete(href).status === 204
-    end
-
-    # Using this method allows you to hit the search endpoint
-    #
-    # @param params [Hash] the search params
-    # @return [DeskApi::Resource] the search page resource
-    def search(params = {})
-      params = { q: params } if params.kind_of?(String)
-      url = Addressable::URI.parse(clean_base_url + '/search')
-      url.query_values = params
-      new_resource(self.class.build_self_link(url.to_s))
-    end
-
-    # Returns a {DeskApi::Resource} based on the given id
-    #
-    # @param id [String/Integer] the id of the resource
-    # @param options [Hash] additional options (currently only embed is supported)
-    # @return [DeskApi::Resource] the requested resource
-    def find(id, options = {})
-      res = new_resource(self.class.build_self_link("#{clean_base_url}/#{id}"))
-      res.embed(*(options[:embed].kind_of?(Array) ? options[:embed] : [options[:embed]])) if options[:embed]
-      res.exec!
-    end
-    alias_method :by_id, :find
-
     # Change self to the next page
     #
     # @return [Desk::Resource] self
     def next!
-      self.load
+      load
       next_page = @_definition['_links']['next']
 
       if next_page
-        @_definition = self.class.build_self_link(next_page)
+        @_definition = DeskApi::Resource.build_self_link(next_page)
         self.reset!
       end
-    end
-
-    # Paginate through all the resources on a give page {DeskApi::Resource}
-    #
-    # @raise [NoMethodError] if self is not a page resource
-    # @raise [ArgumentError] if no block is given
-    # @yield [DeskApi::Resource] the current resource
-    # @yield [Integer] the current page number
-    def all
-      raise ArgumentError, "Block must be given for #all" unless block_given?
-      each_page do |page, page_num|
-        page.entries.each { |resource| yield resource, page_num }
-      end
-    end
-
-    # Paginate through each page on a give page {DeskApi::Resource}
-    #
-    # @raise [NoMethodError] if self is not a page resource
-    # @raise [ArgumentError] if no block is given
-    # @yield [DeskApi::Resource] the current page resource
-    # @yield [Integer] the current page number
-    def each_page
-      raise ArgumentError, "Block must be given for #each_page" unless block_given?
-
-      begin
-        page = self.first.per_page(self.query_params['per_page'] || 1000).dup
-      rescue NoMethodError => err
-        raise NoMethodError, "#each_page and #all are only available on resources which offer pagination"
-      end
-
-      begin
-        yield page, page.page
-      end while page.next!
-    end
-
-    # Allows you to embed/sideload resources
-    #
-    # @example embed customers with their cases
-    #   my_cases = client.cases.embed(:customers)
-    # @example embed assigned_user and assigned_group
-    #   my_cases = client.cases.embed(:assigned_user, :assigned_group)
-    # @param embedds [Symbol/String] whatever you want to embed
-    # @return [Desk::Resource] self
-    def embed(*embedds)
-      # make sure we don't try to embed anything that's not defined
-      # add it to the query
-      self.tap{ |res| res.query_params = { embed: embedds.join(',') } }
     end
 
     # Returns the self link hash
@@ -207,7 +113,7 @@ module DeskApi
     #
     # @return [Hash] definition hash
     def to_hash
-      self.load
+      load
 
       {}.tap do |hash|
         @_definition.each do |k, v|
@@ -223,62 +129,12 @@ module DeskApi
       get_self['class']
     end
 
-
-    # Get/set the page and per_page query params
-    #
-    # @param value [Integer/Nil] the value to use
-    # @return [Integer/DeskApi::Resource]
-    %w(page per_page).each do |method|
-      class_eval <<-RUBY, __FILE__, __LINE__ + 1
-        def #{method}(value = nil)
-          unless value
-            exec! if query_params_include?('#{method}') == nil
-            return query_params_include?('#{method}').to_i
-          end
-          tap{ |res| res.query_params = Hash['#{method}', value.to_s] }
-        end
-      RUBY
-    end
-
-    # Converts the current self href query params to a hash
-    #
-    # @return [Hash] current self href query params
-    def query_params
-      Addressable::URI.parse(href).query_values || {}
-    end
-
-    # Checks if the specified param is included
-    #
-    # @param param [String] the param to check for
-    # @return [Boolean]
-    def query_params_include?(param)
-      query_params.include?(param) ? query_params[param] : nil
-    end
-
-    # Sets the query params based on the provided hash
-    #
-    # @param params [Hash] the query params
-    # @return [String] the generated href
-    def query_params=(params = {})
-      return href if params.empty?
-
-      params.keys.each{ |key| params[key] = params[key].join(',') if params[key].is_a?(Array) }
-
-      uri = Addressable::URI.parse(href)
-      params = (uri.query_values || {}).merge(params)
-
-      @_loaded = false unless params == uri.query_values
-
-      uri.query_values = params
-      self.href = uri.to_s
-    end
-
     # Checks if this resource responds to a specific method
     #
     # @param method [String/Symbol]
     # @return [Boolean]
     def respond_to?(method)
-      self.load
+      load
       meth = method.to_s
 
       return true if is_embedded?(meth)
@@ -308,20 +164,7 @@ module DeskApi
     #
     # @return [Boolean]
     def loaded?
-      @_loaded
-    end
-
-    protected
-
-    # Returns a clean base url
-    #
-    # @example removes the search if called from a search resource
-    #   '/api/v2/cases/search' => '/api/v2/cases'
-    # @example removes the id if your on a specific resource
-    #   '/api/v2/cases/1' => '/api/v2/cases'
-    # @return [String] the clean base url
-    def clean_base_url
-      Addressable::URI.parse(href).path.gsub(/\/(search|\d+)$/, '')
+      !!@_loaded
     end
 
     # Executes the request to the Desk.com API if the resource
@@ -330,7 +173,7 @@ module DeskApi
     # @param reload [Boolean] should reload the resource
     # @return [DeskApi::Resource] self
     def exec!(reload = false)
-      return self if @_loaded and !reload
+      return self if loaded? and !reload
       @_definition, @_loaded = @_client.get(href).body, true
       self
     end
@@ -345,23 +188,6 @@ module DeskApi
 
     private
     attr_accessor :_client, :_loaded, :_changed, :_embedded, :_links, :_definition
-
-    # Filters update actions from the params
-    #
-    # @see http://dev.desk.com/API/customers/#update
-    # @param params [Hash]
-    # @return [Hash]
-    def filter_update_actions(params = {})
-      params.select{ |key, _| key.to_s.include?('_action') }
-    end
-
-    # Filters the links
-    #
-    # @param params [Hash]
-    # @return [Hash]
-    def filter_links(params = {})
-      params.select{ |key, _| key.to_s == '_links' }
-    end
 
     # Checks if the given `method` is a field on the current
     # resource definition
@@ -445,7 +271,7 @@ module DeskApi
     # @param block [Proc]
     # @return [Mixed]
     def method_missing(method, *args, &block)
-      self.load
+      load
 
       meth = method.to_s
 

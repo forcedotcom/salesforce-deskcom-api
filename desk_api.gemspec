@@ -12,7 +12,7 @@ Gem::Specification.new do |gem|
     endpoints. It can be used either with OAuth or HTTP Basic Authentication.
   EOF
 
-  gem.homepage          = 'http://github.com/tstachl/desk_api'
+  gem.homepage          = 'http://github.com/forcedotcom/salesforce-deskcom-api'
   gem.version           = DeskApi::VERSION
 
   gem.authors           = ['Thomas Stachl', 'Andrew Frauen']

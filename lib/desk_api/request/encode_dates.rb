@@ -26,36 +26,48 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-require 'spec_helper'
-require 'desk_api/request/encode_json'
+module DeskApi
+  module Request
+    # {DeskApi::Request::EncodeJson} is the Faraday middleware
+    # that dumps a json string from whatever is specified in
+    # the request body. It also sets the "Content-Type" header.
+    #
+    # @author    Thomas Stachl <tstachl@salesforce.com>
+    # @copyright Copyright (c) 2013-2014 Salesforce.com
+    # @license   BSD 3-Clause License
+    class EncodeDates < Faraday::Middleware
+      # Changes the request before it gets sent
+      #
+      # @param env [Hash] the request hash
+      def call(env)
+        if env[:body] && !env[:body].to_s.empty?
+          env[:body] = encode_dates(env[:body])
+        end
+        @app.call env
+      end
 
-describe DeskApi::Request::EncodeJson do
-  before(:all) do
-    VCR.turn_off!
+      private
 
-    @stubs = Faraday::Adapter::Test::Stubs.new
-    @conn = Faraday.new do |builder|
-      builder.request :desk_encode_json
-      builder.adapter :test, @stubs
+      # Encodes all {Date}, {DateTime} and {Time} values
+      # to iso8601
+      #
+      # @param value [Mixed] the current body
+      def encode_dates(value)
+        case value
+        when Hash
+          value.each_pair do |key, element|
+            value[key] = encode_dates element
+          end
+        when Array
+          value.each_with_index do |element, index|
+            value[index] = encode_dates element
+          end
+        when DateTime, Date, Time
+          value.to_time.utc.iso8601
+        else
+          value
+        end
+      end
     end
-  end
-
-  after(:all) do
-    VCR.turn_on!
-  end
-
-  it 'sets the content type header' do
-    @stubs.post('/echo') do |env|
-      expect(env[:request_headers]).to have_key('Content-Type')
-      expect(env[:request_headers]['Content-Type']).to eql('application/json')
-    end
-    @conn.post('http://localhost/echo', test: 'test')
-  end
-
-  it 'encodes the body into json' do
-    @stubs.post('/echo') do |env|
-      expect(!!JSON.parse(env[:body])).to be_true
-    end
-    @conn.post('http://localhost/echo', test: 'test')
   end
 end

@@ -27,14 +27,15 @@
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 require 'spec_helper'
-require 'desk_api/request/encode_json'
+require 'desk_api/request/encode_dates'
 
-describe DeskApi::Request::EncodeJson do
+describe DeskApi::Request::EncodeDates do
   before(:all) do
     VCR.turn_off!
 
     @stubs = Faraday::Adapter::Test::Stubs.new
     @conn = Faraday.new do |builder|
+      builder.request :desk_encode_dates
       builder.request :desk_encode_json
       builder.adapter :test, @stubs
     end
@@ -44,18 +45,20 @@ describe DeskApi::Request::EncodeJson do
     VCR.turn_on!
   end
 
-  it 'sets the content type header' do
+  it 'encodes the date, datetime and time to iso8601' do
     @stubs.post('/echo') do |env|
-      expect(env[:request_headers]).to have_key('Content-Type')
-      expect(env[:request_headers]['Content-Type']).to eql('application/json')
+      body = JSON.parse(env[:body], symbolize_names: true)
+      expect(body[:date]).to eq('2001-02-03T08:00:00Z')
+      expect(body[:datetime]).to eq('2001-02-03T00:00:00Z')
+      expect(body[:time]).to eq('2001-02-03T08:00:00Z')
     end
-    @conn.post('http://localhost/echo', test: 'test')
-  end
 
-  it 'encodes the body into json' do
-    @stubs.post('/echo') do |env|
-      expect(!!JSON.parse(env[:body])).to be_true
-    end
-    @conn.post('http://localhost/echo', test: 'test')
+    date = Date.new(2001, 2, 3)
+
+    @conn.post('http://localhost/echo', {
+      date: date,
+      datetime: date.to_datetime,
+      time: date.to_time
+    })
   end
 end
