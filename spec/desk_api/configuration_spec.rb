@@ -199,13 +199,13 @@ describe DeskApi::Configuration do
     end
 
     it 'returns false if no authentication credentials are set' do
-      expect(@client.credentials?).to be_false
+      expect(@client.credentials?).to eq(false)
     end
 
     it 'returns true if basic auth credentials are set' do
       @client.username = 'UN'
       @client.password = 'PW'
-      expect(@client.credentials?).to be_true
+      expect(@client.credentials?).to eq(true)
     end
 
     it 'returns true if oauth credentials are set' do
@@ -213,7 +213,7 @@ describe DeskApi::Configuration do
       @client.consumer_secret = 'CS'
       @client.token = 'TOK'
       @client.token_secret = 'TOKS'
-      expect(@client.credentials?).to be_true
+      expect(@client.credentials?).to eq(true)
     end
   end
 end

@@ -39,11 +39,11 @@ describe DeskApi::Resource do
     end
 
     it 'is not loaded initially' do
-      expect(subject.articles.instance_variable_get(:@_loaded)).to be_false
+      expect(subject.articles.instance_variable_get(:@_loaded)).to eq(false)
     end
 
     it 'sets up the link to self' do
-      expect(subject.articles.href).not_to be_nil
+      expect(subject.articles.href).not_to eq(nil)
     end
 
     context 'additional options' do
@@ -64,14 +64,14 @@ describe DeskApi::Resource do
       end
 
       it 'does not automatically load the resource' do
-        expect(subject.cases(company_id: 1).instance_variable_get(:@_loaded)).to be_false
+        expect(subject.cases(company_id: 1).instance_variable_get(:@_loaded)).to eq(false)
       end
     end
   end
 
   context '#exec!', :vcr do
     it 'loads the current resource' do
-      expect(subject.articles.send(:exec!).instance_variable_get(:@_loaded)).to be_true
+      expect(subject.articles.send(:exec!).instance_variable_get(:@_loaded)).to eq(true)
     end
 
     it 'can be forced to reload' do
@@ -109,11 +109,11 @@ describe DeskApi::Resource do
     end
 
     it 'returns true if method found in definition' do
-      expect(@company.respond_to?(:name)).to be_true
+      expect(@company.respond_to?(:name)).to eq(true)
     end
 
     it 'returns false if method does not exist' do
-      expect(@company.respond_to?(:no_method_here)).to be_false
+      expect(@company.respond_to?(:no_method_here)).to eq(false)
     end
   end
 
@@ -283,7 +283,7 @@ describe DeskApi::Resource do
 
   context '#delete' do
     it 'deletes a resource', :vcr do
-      expect {
+      expect(
         subject.articles.create({
           subject: 'My subject',
           body: 'Some text for this new article',
@@ -291,7 +291,7 @@ describe DeskApi::Resource do
             topic: subject.topics.entries.first.get_self
           }
         }).delete
-      }.to be_true
+      ).to eq(true)
     end
 
     it 'throws an error deleting a non deletalbe resource', :vcr do
@@ -341,7 +341,7 @@ describe DeskApi::Resource do
 
         first_case = @client.cases.embed(:assigned_user).entries.first
         expect(first_case.assigned_user.name).to eq('Thomas Stachl')
-        expect(first_case.assigned_user.instance_variable_get(:@_loaded)).to be_true
+        expect(first_case.assigned_user.instance_variable_get(:@_loaded)).to eq(true)
         expect(times_called).to eq(1)
       end
 
@@ -375,7 +375,7 @@ describe DeskApi::Resource do
     end
 
     it 'returns nil if param not found' do
-      expect(@page.send(:query_params_include?, 'blup')).to be_nil
+      expect(@page.send(:query_params_include?, 'blup')).to eq(nil)
     end
   end
 
@@ -398,7 +398,7 @@ describe DeskApi::Resource do
     end
 
     it 'returns nil if link is nil', :vcr do
-      expect(subject.articles.next).to be_nil
+      expect(subject.articles.next).to eq(nil)
     end
 
     it 'saves the linked resource instead of the url', :vcr do
@@ -419,12 +419,12 @@ describe DeskApi::Resource do
 
     it 'sets the resource to not loaded', :vcr do
       cases = subject.cases.send(:exec!)
-      expect(cases.page(5).instance_variable_get(:@_loaded)).to be_false
+      expect(cases.page(5).instance_variable_get(:@_loaded)).to eq(false)
     end
 
     it 'keeps the resource as loaded', :vcr do
       cases = subject.cases.send(:exec!)
-      expect(cases.page(1).instance_variable_get(:@_loaded)).to be_true
+      expect(cases.page(1).instance_variable_get(:@_loaded)).to eq(true)
     end
   end
 

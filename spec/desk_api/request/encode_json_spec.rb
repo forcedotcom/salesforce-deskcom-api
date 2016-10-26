@@ -54,7 +54,7 @@ describe DeskApi::Request::EncodeJson do
 
   it 'encodes the body into json' do
     @stubs.post('/echo') do |env|
-      expect(!!JSON.parse(env[:body])).to be_true
+      expect(!!JSON.parse(env[:body])).to eq(true)
     end
     @conn.post('http://localhost/echo', test: 'test')
   end
