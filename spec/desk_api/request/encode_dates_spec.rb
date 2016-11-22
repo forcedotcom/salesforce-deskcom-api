@@ -33,8 +33,9 @@ describe DeskApi::Request::EncodeDates do
   before(:all) do
     VCR.turn_off!
 
+    @time  = Time.now
     @stubs = Faraday::Adapter::Test::Stubs.new
-    @conn = Faraday.new do |builder|
+    @conn  = Faraday.new do |builder|
       builder.request :desk_encode_dates
       builder.request :desk_encode_json
       builder.adapter :test, @stubs
@@ -48,17 +49,15 @@ describe DeskApi::Request::EncodeDates do
   it 'encodes the date, datetime and time to iso8601' do
     @stubs.post('/echo') do |env|
       body = JSON.parse(env[:body], symbolize_names: true)
-      expect(body[:date]).to eq('2001-02-03T08:00:00Z')
-      expect(body[:datetime]).to eq('2001-02-03T00:00:00Z')
-      expect(body[:time]).to eq('2001-02-03T08:00:00Z')
+      expect(body[:date]).to eq(@time.to_date.to_time.utc.iso8601)
+      expect(body[:datetime]).to eq(@time.utc.iso8601)
+      expect(body[:time]).to eq(@time.utc.iso8601)
     end
 
-    date = Date.new(2001, 2, 3)
-
     @conn.post('http://localhost/echo', {
-      date: date,
-      datetime: date.to_datetime,
-      time: date.to_time
+      date: @time.to_date,
+      datetime: @time.to_datetime,
+      time: @time
     })
   end
 end
