@@ -1,4 +1,4 @@
-# Copyright (c) 2013-2014, Salesforce.com, Inc.
+# Copyright (c) 2013-2016, Salesforce.com, Inc.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without modification,
@@ -71,7 +71,7 @@ module DeskApi
           yield page, page.page
         end while page.next!
       end
-      
+
     end
   end
 end
