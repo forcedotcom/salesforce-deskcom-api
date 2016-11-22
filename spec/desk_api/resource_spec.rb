@@ -329,98 +329,6 @@ describe DeskApi::Resource do
     end
   end
 
-  describe 'embeddable' do
-    it 'allows to declare embedds' do
-      expect(lambda { subject.cases.embed(:assigned_user) }).not_to raise_error
-    end
-
-    it 'changes the url' do
-      expect(subject.cases.embed(:assigned_user).href).to eq('/api/v2/cases?embed=assigned_user')
-    end
-
-    context 'if you use embed' do
-      before do
-        VCR.turn_off! ignore_cassettes: true
-
-        @stubs  ||= Faraday::Adapter::Test::Stubs.new
-        @client ||= DeskApi::Client.new(DeskApi::CONFIG).tap do |client|
-          client.middleware = Proc.new do |builder|
-            builder.response :desk_parse_dates
-            builder.response :desk_parse_json
-
-            builder.adapter :test, @stubs
-          end
-        end
-      end
-
-      after do
-        VCR.turn_on!
-      end
-
-      it 'does not load the resource again' do
-        times_called = 0
-        @stubs.get('/api/v2/cases?embed=assigned_user') do
-          times_called += 1
-          [
-            200,
-            { 'content-type' => 'application/json' },
-            File.open(File.join(RSpec.configuration.root_path, 'stubs', 'cases_embed_assigned_user.json')).read
-          ]
-        end
-
-        first_case = @client.cases.embed(:assigned_user).entries.first
-        expect(first_case.assigned_user.name).to eq('Thomas Stachl')
-        expect(first_case.assigned_user.instance_variable_get(:@_loaded)).to eq(true)
-        expect(times_called).to eq(1)
-      end
-
-      it 'can be used in finder' do
-        @stubs.get('/api/v2/cases/3011?embed=customer') do
-          [
-            200,
-            { 'content-type' => 'application/json' },
-            File.open(File.join(RSpec.configuration.root_path, 'stubs', 'case_embed_customer.json')).read
-          ]
-        end
-
-        customer = @client.cases.find(3011, embed: :customer).customer
-        expect(customer.first_name).to eq('Thomas')
-        customer = @client.cases.find(3011, embed: [:customer]).customer
-        expect(customer.first_name).to eq('Thomas')
-      end
-    end
-  end
-
-  context '#query_params' do
-    before do
-      @page = DeskApi::Resource.new(subject, {
-        '_links'=>{'self'=>{'href'=>'/api/v2/cases?page=2&per_page=50'}}
-      }, true)
-    end
-
-    it 'allows to get query params from the current resource' do
-      expect(@page.send(:query_params_include?, 'page')).to eq('2')
-      expect(@page.send(:query_params_include?, 'per_page')).to eq('50')
-    end
-
-    it 'returns nil if param not found' do
-      expect(@page.send(:query_params_include?, 'blup')).to eq(nil)
-    end
-  end
-
-  context '#query_params=' do
-    before do
-      @page = DeskApi::Resource.new(subject, {
-        '_links'=>{'self'=>{'href'=>'/api/v2/cases'}}
-      }, true)
-    end
-
-    it 'sets query params on the current url' do
-      @page.send(:query_params=, { page: 5, per_page: 50 })
-      expect(@page.instance_variable_get(:@_definition)['_links']['self']['href']).to eq('/api/v2/cases?page=5&per_page=50')
-    end
-  end
-
   context '#get_linked_resource' do
     it 'returns linked resources', :vcr do
       expect(subject.cases.entries.first.customer).to be_an_instance_of(DeskApi::Resource)
@@ -434,26 +342,6 @@ describe DeskApi::Resource do
       first_case = subject.cases.entries.first
       expect(first_case.customer).to be_an_instance_of(DeskApi::Resource)
       expect(first_case.instance_variable_get(:@_links)['customer']).to be_an_instance_of(DeskApi::Resource)
-    end
-  end
-
-  context '#page' do
-    it 'returns the current page and loads if page not defined', :vcr do
-      expect(subject.articles.page).to eq(1)
-    end
-
-    it 'sets the page' do
-      expect(subject.cases.page(5).page).to eq(5)
-    end
-
-    it 'sets the resource to not loaded', :vcr do
-      cases = subject.cases.send(:exec!)
-      expect(cases.page(5).instance_variable_get(:@_loaded)).to eq(false)
-    end
-
-    it 'keeps the resource as loaded', :vcr do
-      cases = subject.cases.send(:exec!)
-      expect(cases.page(1).instance_variable_get(:@_loaded)).to eq(true)
     end
   end
 

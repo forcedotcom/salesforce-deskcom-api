@@ -1,0 +1,1207 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://devel.desk.com/api/v2/articles
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - desk.com Ruby Gem v0.6.2
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - must-revalidate, private, max-age=0
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Tue, 22 Nov 2016 23:21:08 GMT
+      etag:
+      - W/"38d7713aeec7a1f4bb22ca44b2e427c6"
+      server:
+      - nginx
+      status:
+      - 200 OK
+      vary:
+      - Accept-Encoding, X-AppVersion
+      x-appversion:
+      - '15.3259'
+      x-frame-options:
+      - SAMEORIGIN
+      x-rack-cache:
+      - miss
+      x-rate-limit-limit:
+      - '1000'
+      x-rate-limit-remaining:
+      - '999'
+      x-rate-limit-reset:
+      - '52'
+      x-request-id:
+      - 15a2f717129cf7ca792953963ad6c049
+      x-runtime:
+      - '0.436422'
+      x-ua-compatible:
+      - IE=Edge,chrome=1
+      content-length:
+      - '13008'
+      connection:
+      - Close
+    body:
+      encoding: ASCII-8BIT
+      string: '{"total_entries":48,"page":1,"_links":{"self":{"href":"/api/v2/articles?page=1&per_page=50","class":"page"},"first":{"href":"/api/v2/articles?page=1&per_page=50","class":"page"},"last":{"href":"/api/v2/articles?page=1&per_page=50","class":"page"},"previous":null,"next":null},"_embedded":{"entries":[{"id":1295677,"locale":null,"subject":"Testing","body":"<table><tr><td>Testing</td></tr></table>","body_email":"Testing","body_email_auto":true,"body_chat":"Testing","body_chat_auto":true,"body_web_callback":"<table><tr><td>Testing</td></tr></table>","body_web_callback_auto":true,"body_twitter":"Testing","body_twitter_auto":true,"body_qna":"Testing","body_qna_auto":true,"body_phone":"Testing","body_phone_auto":true,"body_facebook":"Testing","body_facebook_auto":true,"rating":0,"rating_count":0,"rating_score":0,"keywords":"","position":1,"quickcode":null,"publish_at":"2013-09-11T19:13:21Z","updated_at":"2013-09-11T19:13:21Z","created_at":"2013-09-11T19:11:48Z","in_support_center":false,"internal_notes":"","public_url":"http://devel.desk.com/customer/portal/articles/1295677-testing","_links":{"self":{"href":"/api/v2/articles/1295677","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/1295677/translations","class":"article_translation"},"attachments":{"href":"/api/v2/articles/1295677/attachments","class":"attachment","count":0},"created_by":{"href":"/api/v2/users/16096734","class":"user"},"updated_by":{"href":"/api/v2/users/16096734","class":"user"}}},{"id":1348945,"locale":null,"subject":"Testing","body":"<img
+        alt=\"\" src=\"/customer/portal/attachments/209748\" style=\"width: 1440px;
+        height: 900px;\" />","body_email":"","body_email_auto":true,"body_chat":"","body_chat_auto":true,"body_web_callback":"<img
+        alt=\"\" src=\"/customer/portal/attachments/209748\" style=\"width: 1440px;
+        height: 900px;\" />","body_web_callback_auto":true,"body_twitter":"","body_twitter_auto":true,"body_qna":"","body_qna_auto":true,"body_phone":"","body_phone_auto":true,"body_facebook":"","body_facebook_auto":true,"rating":89,"rating_count":9,"rating_score":8,"keywords":"new
+        keyword","position":2,"quickcode":null,"publish_at":"2015-07-01T23:24:09Z","updated_at":"2015-07-01T23:24:09Z","created_at":"2013-10-28T22:59:19Z","in_support_center":true,"internal_notes":"","public_url":"http://devel.desk.com/customer/portal/articles/1348945-testing","_links":{"self":{"href":"/api/v2/articles/1348945","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/1348945/translations","class":"article_translation"},"attachments":{"href":"/api/v2/articles/1348945/attachments","class":"attachment","count":0},"created_by":{"href":"/api/v2/users/16096734","class":"user"},"updated_by":{"href":"/api/v2/users/16096734","class":"user"}}},{"id":1391016,"locale":null,"subject":"Testing
+        OAuth","body":"OAuth testing","body_email":"OAuth testing","body_email_auto":true,"body_chat":"OAuth
+        testing","body_chat_auto":true,"body_web_callback":"OAuth testing","body_web_callback_auto":true,"body_twitter":"OAuth
+        testing","body_twitter_auto":true,"body_qna":"OAuth testing","body_qna_auto":true,"body_phone":"OAuth
+        testing","body_phone_auto":true,"body_facebook":"OAuth testing","body_facebook_auto":true,"rating":0,"rating_count":0,"rating_score":0,"keywords":null,"position":3,"quickcode":null,"publish_at":null,"updated_at":"2013-12-12T02:52:01Z","created_at":"2013-12-12T02:52:01Z","in_support_center":null,"internal_notes":null,"public_url":"http://devel.desk.com/customer/portal/articles/1391016-testing-oauth","_links":{"self":{"href":"/api/v2/articles/1391016","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/1391016/translations","class":"article_translation"},"attachments":{"href":"/api/v2/articles/1391016/attachments","class":"attachment","count":0},"created_by":{"href":"/api/v2/users/16096734","class":"user"},"updated_by":{"href":"/api/v2/users/16096734","class":"user"}}},{"id":2044257,"locale":null,"subject":"Cities
+        In California Conserved A Lot Of Water In May","body":"<p>Felicia Marcus of
+        the State Water Board said, \"We need all Californians to step up \u2014 and
+        keep it up \u2014 as if we don''t know when it will rain and snow again, because
+        we don''t.\"</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=419252967\">&raquo;
+        E-Mail This</a></p>","body_email":"Felicia Marcus of the State Water Board
+        said, \"We need all Californians to step up \u2014 and keep it up \u2014 as
+        if we don''t know when it will rain and snow again, because we don''t.\"\n\n\u00bb
+        E-Mail This (http://www.npr.org/templates/email/emailAFriend.php?storyId=419252967)","body_email_auto":true,"body_chat":"Felicia
+        Marcus of the State Water Board said, \"We need all Californians to step up
+        \u2014 and keep it up \u2014 as if we don''t know when it will rain and snow
+        again, because we don''t.\"\u00bb E-Mail This http://devel.desk.com/customer/portal/articles/2044257-cities-in-california-conserved-a-lot-of-water-in-may","body_chat_auto":true,"body_web_callback":"<p>Felicia
+        Marcus of the State Water Board said, \"We need all Californians to step up
+        \u2014 and keep it up \u2014 as if we don''t know when it will rain and snow
+        again, because we don''t.\"</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=419252967\">&raquo;
+        E-Mail This</a></p>","body_web_callback_auto":true,"body_twitter":"Felicia
+        Marcus of the State Water Board said, \"We need all Californians to step up
+        \u2014 and keep it up \u2014 as if we do... http://devel.desk.com/customer/portal/articles/2044257-cities-in-california-conserved-a-lot-of-water-in-may","body_twitter_auto":true,"body_qna":"Felicia
+        Marcus of the State Water Board said, \"We need all Californians to step up
+        \u2014 and keep it up \u2014 as if we don''t know when it will rain and snow
+        again, because we don''t.\"\n\n\u00bb E-Mail This","body_qna_auto":true,"body_phone":"Felicia
+        Marcus of the State Water Board said, \"We need all Californians to step up
+        \u2014 and keep it up \u2014 as if we don''t know when it will rain and snow
+        again, because we don''t.\"\n\n\u00bb E-Mail This","body_phone_auto":true,"body_facebook":"Felicia
+        Marcus of the State Water Board said, \"We need all Californians to step up
+        \u2014 and keep it up \u2014 as if we don''t know when it will rain and snow
+        again, because we don''t.\"\n\n\u00bb E-Mail This","body_facebook_auto":true,"rating":0,"rating_count":0,"rating_score":0,"keywords":null,"position":4,"quickcode":null,"publish_at":"2015-07-01T23:18:01Z","updated_at":"2015-07-01T23:18:01Z","created_at":"2015-07-01T23:18:01Z","in_support_center":true,"internal_notes":null,"public_url":"http://devel.desk.com/customer/portal/articles/2044257-cities-in-california-conserved-a-lot-of-water-in-may","_links":{"self":{"href":"/api/v2/articles/2044257","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/2044257/translations","class":"article_translation"},"attachments":{"href":"/api/v2/articles/2044257/attachments","class":"attachment","count":0},"created_by":{"href":"/api/v2/users/16096734","class":"user"},"updated_by":{"href":"/api/v2/users/16096734","class":"user"}}},{"id":2044258,"locale":null,"subject":"A
+        Dose Of Culinary Medicine Sends Med Students To The Kitchen","body":"<p>Aspiring
+        doctors at the University of Chicago are learning how to teach patients about
+        healthy eating. Nutrition advocates say this kind of training is critical
+        to fighting obesity and diabetes.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=419167750\">&raquo;
+        E-Mail This</a></p>","body_email":"Aspiring doctors at the University of Chicago
+        are learning how to teach patients about healthy eating. Nutrition advocates
+        say this kind of training is critical to fighting obesity and diabetes.\n\n\u00bb
+        E-Mail This (http://www.npr.org/templates/email/emailAFriend.php?storyId=419167750)","body_email_auto":true,"body_chat":"Aspiring
+        doctors at the University of Chicago are learning how to teach patients about
+        healthy eating. Nutrition advocates say this kind of training is critical
+        to fighting obesity and diabetes.\u00bb E-Mail This http://devel.desk.com/customer/portal/articles/2044258-a-dose-of-culinary-medicine-sends-med-students-to-the-kitchen","body_chat_auto":true,"body_web_callback":"<p>Aspiring
+        doctors at the University of Chicago are learning how to teach patients about
+        healthy eating. Nutrition advocates say this kind of training is critical
+        to fighting obesity and diabetes.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=419167750\">&raquo;
+        E-Mail This</a></p>","body_web_callback_auto":true,"body_twitter":"Aspiring
+        doctors at the University of Chicago are learning how to teach patients about
+        healthy eating. Nutrition ... http://devel.desk.com/customer/portal/articles/2044258-a-dose-of-culinary-medicine-sends-med-students-to-the-kitchen","body_twitter_auto":true,"body_qna":"Aspiring
+        doctors at the University of Chicago are learning how to teach patients about
+        healthy eating. Nutrition advocates say this kind of training is critical
+        to fighting obesity and diabetes.\n\n\u00bb E-Mail This","body_qna_auto":true,"body_phone":"Aspiring
+        doctors at the University of Chicago are learning how to teach patients about
+        healthy eating. Nutrition advocates say this kind of training is critical
+        to fighting obesity and diabetes.\n\n\u00bb E-Mail This","body_phone_auto":true,"body_facebook":"Aspiring
+        doctors at the University of Chicago are learning how to teach patients about
+        healthy eating. Nutrition advocates say this kind of training is critical
+        to fighting obesity and diabetes.\n\n\u00bb E-Mail This","body_facebook_auto":true,"rating":0,"rating_count":0,"rating_score":0,"keywords":null,"position":5,"quickcode":null,"publish_at":"2015-07-01T23:18:01Z","updated_at":"2015-07-01T23:18:01Z","created_at":"2015-07-01T23:18:01Z","in_support_center":true,"internal_notes":null,"public_url":"http://devel.desk.com/customer/portal/articles/2044258-a-dose-of-culinary-medicine-sends-med-students-to-the-kitchen","_links":{"self":{"href":"/api/v2/articles/2044258","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/2044258/translations","class":"article_translation"},"attachments":{"href":"/api/v2/articles/2044258/attachments","class":"attachment","count":0},"created_by":{"href":"/api/v2/users/16096734","class":"user"},"updated_by":{"href":"/api/v2/users/16096734","class":"user"}}},{"id":2044259,"locale":null,"subject":"Senators
+        Call For VA To Explain Why It Couldn''t Find Mustard-Gassed Veterans","body":"<p>A
+        dozen senators have also called on the Veterans Administration to say why
+        some of the WWII-era troops who were found by an NPR Investigation were denied
+        benefits.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=419255992\">&raquo;
+        E-Mail This</a></p>","body_email":"A dozen senators have also called on the
+        Veterans Administration to say why some of the WWII-era troops who were found
+        by an NPR Investigation were denied benefits.\n\n\u00bb E-Mail This (http://www.npr.org/templates/email/emailAFriend.php?storyId=419255992)","body_email_auto":true,"body_chat":"A
+        dozen senators have also called on the Veterans Administration to say why
+        some of the WWII-era troops who were found by an NPR Investigation were denied
+        benefits.\u00bb E-Mail This http://devel.desk.com/customer/portal/articles/2044259-senators-call-for-va-to-explain-why-it-couldn-t-find-mustard-gassed-veterans","body_chat_auto":true,"body_web_callback":"<p>A
+        dozen senators have also called on the Veterans Administration to say why
+        some of the WWII-era troops who were found by an NPR Investigation were denied
+        benefits.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=419255992\">&raquo;
+        E-Mail This</a></p>","body_web_callback_auto":true,"body_twitter":"A dozen
+        senators have also called on the Veterans Administration to say why some of
+        the WWII-era troops who were ... http://devel.desk.com/customer/portal/articles/2044259-senators-call-for-va-to-explain-why-it-couldn-t-find-mustard-gassed-veterans","body_twitter_auto":true,"body_qna":"A
+        dozen senators have also called on the Veterans Administration to say why
+        some of the WWII-era troops who were found by an NPR Investigation were denied
+        benefits.\n\n\u00bb E-Mail This","body_qna_auto":true,"body_phone":"A dozen
+        senators have also called on the Veterans Administration to say why some of
+        the WWII-era troops who were found by an NPR Investigation were denied benefits.\n\n\u00bb
+        E-Mail This","body_phone_auto":true,"body_facebook":"A dozen senators have
+        also called on the Veterans Administration to say why some of the WWII-era
+        troops who were found by an NPR Investigation were denied benefits.\n\n\u00bb
+        E-Mail This","body_facebook_auto":true,"rating":0,"rating_count":0,"rating_score":0,"keywords":null,"position":6,"quickcode":null,"publish_at":"2015-07-01T23:18:01Z","updated_at":"2015-07-01T23:18:01Z","created_at":"2015-07-01T23:18:01Z","in_support_center":true,"internal_notes":null,"public_url":"http://devel.desk.com/customer/portal/articles/2044259-senators-call-for-va-to-explain-why-it-couldn-t-find-mustard-gassed-veterans","_links":{"self":{"href":"/api/v2/articles/2044259","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/2044259/translations","class":"article_translation"},"attachments":{"href":"/api/v2/articles/2044259/attachments","class":"attachment","count":0},"created_by":{"href":"/api/v2/users/16096734","class":"user"},"updated_by":{"href":"/api/v2/users/16096734","class":"user"}}},{"id":2044260,"locale":null,"subject":"Justice
+        Department Investigating Airlines For Possible Price Collusion","body":"<p>The
+        department says it is looking into \"possible unlawful coordination\" by several
+        major carriers. American and United have confirmed that they are among the
+        airlines under scrutiny.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=419245511\">&raquo;
+        E-Mail This</a></p>","body_email":"The department says it is looking into
+        \"possible unlawful coordination\" by several major carriers. American and
+        United have confirmed that they are among the airlines under scrutiny.\n\n\u00bb
+        E-Mail This (http://www.npr.org/templates/email/emailAFriend.php?storyId=419245511)","body_email_auto":true,"body_chat":"The
+        department says it is looking into \"possible unlawful coordination\" by several
+        major carriers. American and United have confirmed that they are among the
+        airlines under scrutiny.\u00bb E-Mail This http://devel.desk.com/customer/portal/articles/2044260-justice-department-investigating-airlines-for-possible-price-collusion","body_chat_auto":true,"body_web_callback":"<p>The
+        department says it is looking into \"possible unlawful coordination\" by several
+        major carriers. American and United have confirmed that they are among the
+        airlines under scrutiny.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=419245511\">&raquo;
+        E-Mail This</a></p>","body_web_callback_auto":true,"body_twitter":"The department
+        says it is looking into \"possible unlawful coordination\" by several major
+        carriers. American and U... http://devel.desk.com/customer/portal/articles/2044260-justice-department-investigating-airlines-for-possible-price-collusion","body_twitter_auto":true,"body_qna":"The
+        department says it is looking into \"possible unlawful coordination\" by several
+        major carriers. American and United have confirmed that they are among the
+        airlines under scrutiny.\n\n\u00bb E-Mail This","body_qna_auto":true,"body_phone":"The
+        department says it is looking into \"possible unlawful coordination\" by several
+        major carriers. American and United have confirmed that they are among the
+        airlines under scrutiny.\n\n\u00bb E-Mail This","body_phone_auto":true,"body_facebook":"The
+        department says it is looking into \"possible unlawful coordination\" by several
+        major carriers. American and United have confirmed that they are among the
+        airlines under scrutiny.\n\n\u00bb E-Mail This","body_facebook_auto":true,"rating":0,"rating_count":0,"rating_score":0,"keywords":null,"position":7,"quickcode":null,"publish_at":"2015-07-01T23:18:02Z","updated_at":"2015-07-01T23:18:02Z","created_at":"2015-07-01T23:18:02Z","in_support_center":true,"internal_notes":null,"public_url":"http://devel.desk.com/customer/portal/articles/2044260-justice-department-investigating-airlines-for-possible-price-collusion","_links":{"self":{"href":"/api/v2/articles/2044260","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/2044260/translations","class":"article_translation"},"attachments":{"href":"/api/v2/articles/2044260/attachments","class":"attachment","count":0},"created_by":{"href":"/api/v2/users/16096734","class":"user"},"updated_by":{"href":"/api/v2/users/16096734","class":"user"}}},{"id":2044261,"locale":null,"subject":"Nationwide
+        Crime Spike Has Law Enforcement Retooling Their Approach","body":"<p>Violent
+        crime has ticked up in certain metro areas. Police are scrambling to hold
+        the line while at the same time trying not to appear overzealous.</p><p><a
+        href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=418555852\">&raquo;
+        E-Mail This</a></p>","body_email":"Violent crime has ticked up in certain
+        metro areas. Police are scrambling to hold the line while at the same time
+        trying not to appear overzealous.\n\n\u00bb E-Mail This (http://www.npr.org/templates/email/emailAFriend.php?storyId=418555852)","body_email_auto":true,"body_chat":"Violent
+        crime has ticked up in certain metro areas. Police are scrambling to hold
+        the line while at the same time trying not to appear overzealous.\u00bb E-Mail
+        This http://devel.desk.com/customer/portal/articles/2044261-nationwide-crime-spike-has-law-enforcement-retooling-their-approach","body_chat_auto":true,"body_web_callback":"<p>Violent
+        crime has ticked up in certain metro areas. Police are scrambling to hold
+        the line while at the same time trying not to appear overzealous.</p><p><a
+        href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=418555852\">&raquo;
+        E-Mail This</a></p>","body_web_callback_auto":true,"body_twitter":"Violent
+        crime has ticked up in certain metro areas. Police are scrambling to hold
+        the line while at the same time... http://devel.desk.com/customer/portal/articles/2044261-nationwide-crime-spike-has-law-enforcement-retooling-their-approach","body_twitter_auto":true,"body_qna":"Violent
+        crime has ticked up in certain metro areas. Police are scrambling to hold
+        the line while at the same time trying not to appear overzealous.\n\n\u00bb
+        E-Mail This","body_qna_auto":true,"body_phone":"Violent crime has ticked up
+        in certain metro areas. Police are scrambling to hold the line while at the
+        same time trying not to appear overzealous.\n\n\u00bb E-Mail This","body_phone_auto":true,"body_facebook":"Violent
+        crime has ticked up in certain metro areas. Police are scrambling to hold
+        the line while at the same time trying not to appear overzealous.\n\n\u00bb
+        E-Mail This","body_facebook_auto":true,"rating":0,"rating_count":0,"rating_score":0,"keywords":null,"position":8,"quickcode":null,"publish_at":"2015-07-01T23:18:02Z","updated_at":"2015-07-01T23:18:02Z","created_at":"2015-07-01T23:18:02Z","in_support_center":true,"internal_notes":null,"public_url":"http://devel.desk.com/customer/portal/articles/2044261-nationwide-crime-spike-has-law-enforcement-retooling-their-approach","_links":{"self":{"href":"/api/v2/articles/2044261","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/2044261/translations","class":"article_translation"},"attachments":{"href":"/api/v2/articles/2044261/attachments","class":"attachment","count":0},"created_by":{"href":"/api/v2/users/16096734","class":"user"},"updated_by":{"href":"/api/v2/users/16096734","class":"user"}}},{"id":2044262,"locale":null,"subject":"Who''s
+        Behind A String Of Bombings In Ukraine''s Black Sea ''Pearl''?","body":"<p>Local
+        journalists and volunteers in Odessa are working to make sense of dozens of
+        recent bombings \u2014 and prevent future attacks. They say that Russians
+        have infiltrated the security services.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=418905297\">&raquo;
+        E-Mail This</a></p>","body_email":"Local journalists and volunteers in Odessa
+        are working to make sense of dozens of recent bombings \u2014 and prevent
+        future attacks. They say that Russians have infiltrated the security services.\n\n\u00bb
+        E-Mail This (http://www.npr.org/templates/email/emailAFriend.php?storyId=418905297)","body_email_auto":true,"body_chat":"Local
+        journalists and volunteers in Odessa are working to make sense of dozens of
+        recent bombings \u2014 and prevent future attacks. They say that Russians
+        have infiltrated the security services.\u00bb E-Mail This http://devel.desk.com/customer/portal/articles/2044262-who-s-behind-a-string-of-bombings-in-ukraine-s-black-sea-pearl-","body_chat_auto":true,"body_web_callback":"<p>Local
+        journalists and volunteers in Odessa are working to make sense of dozens of
+        recent bombings \u2014 and prevent future attacks. They say that Russians
+        have infiltrated the security services.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=418905297\">&raquo;
+        E-Mail This</a></p>","body_web_callback_auto":true,"body_twitter":"Local journalists
+        and volunteers in Odessa are working to make sense of dozens of recent bombings
+        \u2014 and prevent f... http://devel.desk.com/customer/portal/articles/2044262-who-s-behind-a-string-of-bombings-in-ukraine-s-black-sea-pearl-","body_twitter_auto":true,"body_qna":"Local
+        journalists and volunteers in Odessa are working to make sense of dozens of
+        recent bombings \u2014 and prevent future attacks. They say that Russians
+        have infiltrated the security services.\n\n\u00bb E-Mail This","body_qna_auto":true,"body_phone":"Local
+        journalists and volunteers in Odessa are working to make sense of dozens of
+        recent bombings \u2014 and prevent future attacks. They say that Russians
+        have infiltrated the security services.\n\n\u00bb E-Mail This","body_phone_auto":true,"body_facebook":"Local
+        journalists and volunteers in Odessa are working to make sense of dozens of
+        recent bombings \u2014 and prevent future attacks. They say that Russians
+        have infiltrated the security services.\n\n\u00bb E-Mail This","body_facebook_auto":true,"rating":0,"rating_count":0,"rating_score":0,"keywords":null,"position":9,"quickcode":null,"publish_at":"2015-07-01T23:18:02Z","updated_at":"2015-07-01T23:18:02Z","created_at":"2015-07-01T23:18:02Z","in_support_center":true,"internal_notes":null,"public_url":"http://devel.desk.com/customer/portal/articles/2044262-who-s-behind-a-string-of-bombings-in-ukraine-s-black-sea-pearl-","_links":{"self":{"href":"/api/v2/articles/2044262","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/2044262/translations","class":"article_translation"},"attachments":{"href":"/api/v2/articles/2044262/attachments","class":"attachment","count":0},"created_by":{"href":"/api/v2/users/16096734","class":"user"},"updated_by":{"href":"/api/v2/users/16096734","class":"user"}}},{"id":2044263,"locale":null,"subject":"Militants
+        Stage Series Of Deadly Attacks In Egypt''s Sinai Peninsula","body":"<p>The
+        early morning attacks on checkpoints were later claimed by the Sinai affiliate
+        of the self-described Islamic State.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=419238444\">&raquo;
+        E-Mail This</a></p>","body_email":"The early morning attacks on checkpoints
+        were later claimed by the Sinai affiliate of the self-described Islamic State.\n\n\u00bb
+        E-Mail This (http://www.npr.org/templates/email/emailAFriend.php?storyId=419238444)","body_email_auto":true,"body_chat":"The
+        early morning attacks on checkpoints were later claimed by the Sinai affiliate
+        of the self-described Islamic State.\u00bb E-Mail This","body_chat_auto":true,"body_web_callback":"<p>The
+        early morning attacks on checkpoints were later claimed by the Sinai affiliate
+        of the self-described Islamic State.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=419238444\">&raquo;
+        E-Mail This</a></p>","body_web_callback_auto":true,"body_twitter":"The early
+        morning attacks on checkpoints were later claimed by the Sinai affiliate of
+        the self-described Islamic State.  \u00bb E-Mail This","body_twitter_auto":true,"body_qna":"The
+        early morning attacks on checkpoints were later claimed by the Sinai affiliate
+        of the self-described Islamic State.\n\n\u00bb E-Mail This","body_qna_auto":true,"body_phone":"The
+        early morning attacks on checkpoints were later claimed by the Sinai affiliate
+        of the self-described Islamic State.\n\n\u00bb E-Mail This","body_phone_auto":true,"body_facebook":"The
+        early morning attacks on checkpoints were later claimed by the Sinai affiliate
+        of the self-described Islamic State.\n\n\u00bb E-Mail This","body_facebook_auto":true,"rating":0,"rating_count":0,"rating_score":0,"keywords":null,"position":10,"quickcode":null,"publish_at":"2015-07-01T23:18:02Z","updated_at":"2015-07-01T23:18:02Z","created_at":"2015-07-01T23:18:02Z","in_support_center":true,"internal_notes":null,"public_url":"http://devel.desk.com/customer/portal/articles/2044263-militants-stage-series-of-deadly-attacks-in-egypt-s-sinai-peninsula","_links":{"self":{"href":"/api/v2/articles/2044263","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/2044263/translations","class":"article_translation"},"attachments":{"href":"/api/v2/articles/2044263/attachments","class":"attachment","count":0},"created_by":{"href":"/api/v2/users/16096734","class":"user"},"updated_by":{"href":"/api/v2/users/16096734","class":"user"}}},{"id":2044264,"locale":null,"subject":"Industry
+        Payments To Doctors Are Ingrained, Federal Data Show","body":"<p>The latest
+        data on payments from drug and device companies to doctors show that many
+        doctors received payments on 100 or more days last year. Some received payments
+        on more days than they didn''t.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=419206613\">&raquo;
+        E-Mail This</a></p>","body_email":"The latest data on payments from drug and
+        device companies to doctors show that many doctors received payments on 100
+        or more days last year. Some received payments on more days than they didn''t.\n\n\u00bb
+        E-Mail This (http://www.npr.org/templates/email/emailAFriend.php?storyId=419206613)","body_email_auto":true,"body_chat":"The
+        latest data on payments from drug and device companies to doctors show that
+        many doctors received payments on 100 or more days last year. Some received
+        payments on more days than they didn''t.\u00bb E-Mail This http://devel.desk.com/customer/portal/articles/2044264-industry-payments-to-doctors-are-ingrained-federal-data-show","body_chat_auto":true,"body_web_callback":"<p>The
+        latest data on payments from drug and device companies to doctors show that
+        many doctors received payments on 100 or more days last year. Some received
+        payments on more days than they didn''t.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=419206613\">&raquo;
+        E-Mail This</a></p>","body_web_callback_auto":true,"body_twitter":"The latest
+        data on payments from drug and device companies to doctors show that many
+        doctors received payments on... http://devel.desk.com/customer/portal/articles/2044264-industry-payments-to-doctors-are-ingrained-federal-data-show","body_twitter_auto":true,"body_qna":"The
+        latest data on payments from drug and device companies to doctors show that
+        many doctors received payments on 100 or more days last year. Some received
+        payments on more days than they didn''t.\n\n\u00bb E-Mail This","body_qna_auto":true,"body_phone":"The
+        latest data on payments from drug and device companies to doctors show that
+        many doctors received payments on 100 or more days last year. Some received
+        payments on more days than they didn''t.\n\n\u00bb E-Mail This","body_phone_auto":true,"body_facebook":"The
+        latest data on payments from drug and device companies to doctors show that
+        many doctors received payments on 100 or more days last year. Some received
+        payments on more days than they didn''t.\n\n\u00bb E-Mail This","body_facebook_auto":true,"rating":0,"rating_count":0,"rating_score":0,"keywords":null,"position":11,"quickcode":null,"publish_at":"2015-07-01T23:18:03Z","updated_at":"2015-07-01T23:18:03Z","created_at":"2015-07-01T23:18:02Z","in_support_center":true,"internal_notes":null,"public_url":"http://devel.desk.com/customer/portal/articles/2044264-industry-payments-to-doctors-are-ingrained-federal-data-show","_links":{"self":{"href":"/api/v2/articles/2044264","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/2044264/translations","class":"article_translation"},"attachments":{"href":"/api/v2/articles/2044264/attachments","class":"attachment","count":0},"created_by":{"href":"/api/v2/users/16096734","class":"user"},"updated_by":{"href":"/api/v2/users/16096734","class":"user"}}},{"id":2044265,"locale":null,"subject":"How
+        Your Brain Remembers Where You Parked The Car","body":"<p>When people saw
+        photos that linked a famous person with a famous place, it changed the behavior
+        of certain neurons in their brains. And it changed their memories, too.</p><p><a
+        href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=419165395\">&raquo;
+        E-Mail This</a></p>","body_email":"When people saw photos that linked a famous
+        person with a famous place, it changed the behavior of certain neurons in
+        their brains. And it changed their memories, too.\n\n\u00bb E-Mail This (http://www.npr.org/templates/email/emailAFriend.php?storyId=419165395)","body_email_auto":true,"body_chat":"When
+        people saw photos that linked a famous person with a famous place, it changed
+        the behavior of certain neurons in their brains. And it changed their memories,
+        too.\u00bb E-Mail This http://devel.desk.com/customer/portal/articles/2044265-how-your-brain-remembers-where-you-parked-the-car","body_chat_auto":true,"body_web_callback":"<p>When
+        people saw photos that linked a famous person with a famous place, it changed
+        the behavior of certain neurons in their brains. And it changed their memories,
+        too.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=419165395\">&raquo;
+        E-Mail This</a></p>","body_web_callback_auto":true,"body_twitter":"When people
+        saw photos that linked a famous person with a famous place, it changed the
+        behavior of certain neuron... http://devel.desk.com/customer/portal/articles/2044265-how-your-brain-remembers-where-you-parked-the-car","body_twitter_auto":true,"body_qna":"When
+        people saw photos that linked a famous person with a famous place, it changed
+        the behavior of certain neurons in their brains. And it changed their memories,
+        too.\n\n\u00bb E-Mail This","body_qna_auto":true,"body_phone":"When people
+        saw photos that linked a famous person with a famous place, it changed the
+        behavior of certain neurons in their brains. And it changed their memories,
+        too.\n\n\u00bb E-Mail This","body_phone_auto":true,"body_facebook":"When people
+        saw photos that linked a famous person with a famous place, it changed the
+        behavior of certain neurons in their brains. And it changed their memories,
+        too.\n\n\u00bb E-Mail This","body_facebook_auto":true,"rating":0,"rating_count":0,"rating_score":0,"keywords":null,"position":12,"quickcode":null,"publish_at":"2015-07-01T23:18:03Z","updated_at":"2015-07-01T23:18:03Z","created_at":"2015-07-01T23:18:03Z","in_support_center":true,"internal_notes":null,"public_url":"http://devel.desk.com/customer/portal/articles/2044265-how-your-brain-remembers-where-you-parked-the-car","_links":{"self":{"href":"/api/v2/articles/2044265","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/2044265/translations","class":"article_translation"},"attachments":{"href":"/api/v2/articles/2044265/attachments","class":"attachment","count":0},"created_by":{"href":"/api/v2/users/16096734","class":"user"},"updated_by":{"href":"/api/v2/users/16096734","class":"user"}}},{"id":2044266,"locale":null,"subject":"Recreational
+        Marijuana Is Now Legal In Oregon","body":"<p>While the state permits people
+        to possess and grow small amounts of recreational pot, they still can''t buy
+        or sell it.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=419208482\">&raquo;
+        E-Mail This</a></p>","body_email":"While the state permits people to possess
+        and grow small amounts of recreational pot, they still can''t buy or sell
+        it.\n\n\u00bb E-Mail This (http://www.npr.org/templates/email/emailAFriend.php?storyId=419208482)","body_email_auto":true,"body_chat":"While
+        the state permits people to possess and grow small amounts of recreational
+        pot, they still can''t buy or sell it.\u00bb E-Mail This","body_chat_auto":true,"body_web_callback":"<p>While
+        the state permits people to possess and grow small amounts of recreational
+        pot, they still can''t buy or sell it.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=419208482\">&raquo;
+        E-Mail This</a></p>","body_web_callback_auto":true,"body_twitter":"While the
+        state permits people to possess and grow small amounts of recreational pot,
+        they still can''t buy or sell it.  \u00bb E-Mail This","body_twitter_auto":true,"body_qna":"While
+        the state permits people to possess and grow small amounts of recreational
+        pot, they still can''t buy or sell it.\n\n\u00bb E-Mail This","body_qna_auto":true,"body_phone":"While
+        the state permits people to possess and grow small amounts of recreational
+        pot, they still can''t buy or sell it.\n\n\u00bb E-Mail This","body_phone_auto":true,"body_facebook":"While
+        the state permits people to possess and grow small amounts of recreational
+        pot, they still can''t buy or sell it.\n\n\u00bb E-Mail This","body_facebook_auto":true,"rating":0,"rating_count":0,"rating_score":0,"keywords":null,"position":13,"quickcode":null,"publish_at":"2015-07-01T23:18:03Z","updated_at":"2015-07-01T23:18:03Z","created_at":"2015-07-01T23:18:03Z","in_support_center":true,"internal_notes":null,"public_url":"http://devel.desk.com/customer/portal/articles/2044266-recreational-marijuana-is-now-legal-in-oregon","_links":{"self":{"href":"/api/v2/articles/2044266","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/2044266/translations","class":"article_translation"},"attachments":{"href":"/api/v2/articles/2044266/attachments","class":"attachment","count":0},"created_by":{"href":"/api/v2/users/16096734","class":"user"},"updated_by":{"href":"/api/v2/users/16096734","class":"user"}}},{"id":2044267,"locale":null,"subject":"20
+        Years Ago, Mount Zion AME Was Set On Fire. Last Night, It Burned Again","body":"<p>In
+        1996, Bill Clinton spoke at the reopening ceremony of this historically black
+        church. On Tuesday, Mount Zion became the latest in a wave of fires at black
+        churches since the Charleston shooting.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=419168251\">&raquo;
+        E-Mail This</a></p>","body_email":"In 1996, Bill Clinton spoke at the reopening
+        ceremony of this historically black church. On Tuesday, Mount Zion became
+        the latest in a wave of fires at black churches since the Charleston shooting.\n\n\u00bb
+        E-Mail This (http://www.npr.org/templates/email/emailAFriend.php?storyId=419168251)","body_email_auto":true,"body_chat":"In
+        1996, Bill Clinton spoke at the reopening ceremony of this historically black
+        church. On Tuesday, Mount Zion became the latest in a wave of fires at black
+        churches since the Charleston shooting.\u00bb E-Mail This http://devel.desk.com/customer/portal/articles/2044267-20-years-ago-mount-zion-ame-was-set-on-fire-last-night-it-burned-again","body_chat_auto":true,"body_web_callback":"<p>In
+        1996, Bill Clinton spoke at the reopening ceremony of this historically black
+        church. On Tuesday, Mount Zion became the latest in a wave of fires at black
+        churches since the Charleston shooting.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=419168251\">&raquo;
+        E-Mail This</a></p>","body_web_callback_auto":true,"body_twitter":"In 1996,
+        Bill Clinton spoke at the reopening ceremony of this historically black church.
+        On Tuesday, Mount Zion b... http://devel.desk.com/customer/portal/articles/2044267-20-years-ago-mount-zion-ame-was-set-on-fire-last-night-it-burned-again","body_twitter_auto":true,"body_qna":"In
+        1996, Bill Clinton spoke at the reopening ceremony of this historically black
+        church. On Tuesday, Mount Zion became the latest in a wave of fires at black
+        churches since the Charleston shooting.\n\n\u00bb E-Mail This","body_qna_auto":true,"body_phone":"In
+        1996, Bill Clinton spoke at the reopening ceremony of this historically black
+        church. On Tuesday, Mount Zion became the latest in a wave of fires at black
+        churches since the Charleston shooting.\n\n\u00bb E-Mail This","body_phone_auto":true,"body_facebook":"In
+        1996, Bill Clinton spoke at the reopening ceremony of this historically black
+        church. On Tuesday, Mount Zion became the latest in a wave of fires at black
+        churches since the Charleston shooting.\n\n\u00bb E-Mail This","body_facebook_auto":true,"rating":0,"rating_count":0,"rating_score":0,"keywords":null,"position":14,"quickcode":null,"publish_at":"2015-07-01T23:18:03Z","updated_at":"2015-07-01T23:18:03Z","created_at":"2015-07-01T23:18:03Z","in_support_center":true,"internal_notes":null,"public_url":"http://devel.desk.com/customer/portal/articles/2044267-20-years-ago-mount-zion-ame-was-set-on-fire-last-night-it-burned-again","_links":{"self":{"href":"/api/v2/articles/2044267","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/2044267/translations","class":"article_translation"},"attachments":{"href":"/api/v2/articles/2044267/attachments","class":"attachment","count":0},"created_by":{"href":"/api/v2/users/16096734","class":"user"},"updated_by":{"href":"/api/v2/users/16096734","class":"user"}}},{"id":2044268,"locale":null,"subject":"Somebody
+        Is Cutting Internet Cables In California","body":"<p>There have been at least
+        11 attacks in the San Francisco Bay Area in the past year, according to the
+        FBI. The most recent occurred Tuesday and disrupted service as far north as
+        Seattle.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=419159678\">&raquo;
+        E-Mail This</a></p>","body_email":"There have been at least 11 attacks in
+        the San Francisco Bay Area in the past year, according to the FBI. The most
+        recent occurred Tuesday and disrupted service as far north as Seattle.\n\n\u00bb
+        E-Mail This (http://www.npr.org/templates/email/emailAFriend.php?storyId=419159678)","body_email_auto":true,"body_chat":"There
+        have been at least 11 attacks in the San Francisco Bay Area in the past year,
+        according to the FBI. The most recent occurred Tuesday and disrupted service
+        as far north as Seattle.\u00bb E-Mail This http://devel.desk.com/customer/portal/articles/2044268-somebody-is-cutting-internet-cables-in-california","body_chat_auto":true,"body_web_callback":"<p>There
+        have been at least 11 attacks in the San Francisco Bay Area in the past year,
+        according to the FBI. The most recent occurred Tuesday and disrupted service
+        as far north as Seattle.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=419159678\">&raquo;
+        E-Mail This</a></p>","body_web_callback_auto":true,"body_twitter":"There have
+        been at least 11 attacks in the San Francisco Bay Area in the past year, according
+        to the FBI. The mos... http://devel.desk.com/customer/portal/articles/2044268-somebody-is-cutting-internet-cables-in-california","body_twitter_auto":true,"body_qna":"There
+        have been at least 11 attacks in the San Francisco Bay Area in the past year,
+        according to the FBI. The most recent occurred Tuesday and disrupted service
+        as far north as Seattle.\n\n\u00bb E-Mail This","body_qna_auto":true,"body_phone":"There
+        have been at least 11 attacks in the San Francisco Bay Area in the past year,
+        according to the FBI. The most recent occurred Tuesday and disrupted service
+        as far north as Seattle.\n\n\u00bb E-Mail This","body_phone_auto":true,"body_facebook":"There
+        have been at least 11 attacks in the San Francisco Bay Area in the past year,
+        according to the FBI. The most recent occurred Tuesday and disrupted service
+        as far north as Seattle.\n\n\u00bb E-Mail This","body_facebook_auto":true,"rating":0,"rating_count":0,"rating_score":0,"keywords":null,"position":15,"quickcode":null,"publish_at":"2015-07-01T23:18:03Z","updated_at":"2015-07-01T23:18:03Z","created_at":"2015-07-01T23:18:03Z","in_support_center":true,"internal_notes":null,"public_url":"http://devel.desk.com/customer/portal/articles/2044268-somebody-is-cutting-internet-cables-in-california","_links":{"self":{"href":"/api/v2/articles/2044268","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/2044268/translations","class":"article_translation"},"attachments":{"href":"/api/v2/articles/2044268/attachments","class":"attachment","count":0},"created_by":{"href":"/api/v2/users/16096734","class":"user"},"updated_by":{"href":"/api/v2/users/16096734","class":"user"}}},{"id":2044269,"locale":null,"subject":"13
+        Emails That Stood Out From The Latest Clinton Document Dump","body":"<p>The
+        thousands of new emails don''t reveal a \"smoking gun\" from the Democratic
+        presidential candidate''s time at State, but do give insight into her daily
+        activities \u2014 and some funny daily struggles.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=419162524\">&raquo;
+        E-Mail This</a></p>","body_email":"The thousands of new emails don''t reveal
+        a \"smoking gun\" from the Democratic presidential candidate''s time at State,
+        but do give insight into her daily activities \u2014 and some funny daily
+        struggles.\n\n\u00bb E-Mail This (http://www.npr.org/templates/email/emailAFriend.php?storyId=419162524)","body_email_auto":true,"body_chat":"The
+        thousands of new emails don''t reveal a \"smoking gun\" from the Democratic
+        presidential candidate''s time at State, but do give insight into her daily
+        activities \u2014 and some funny daily struggles.\u00bb E-Mail This http://devel.desk.com/customer/portal/articles/2044269-13-emails-that-stood-out-from-the-latest-clinton-document-dump","body_chat_auto":true,"body_web_callback":"<p>The
+        thousands of new emails don''t reveal a \"smoking gun\" from the Democratic
+        presidential candidate''s time at State, but do give insight into her daily
+        activities \u2014 and some funny daily struggles.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=419162524\">&raquo;
+        E-Mail This</a></p>","body_web_callback_auto":true,"body_twitter":"The thousands
+        of new emails don''t reveal a \"smoking gun\" from the Democratic presidential
+        candidate''s time at Sta... http://devel.desk.com/customer/portal/articles/2044269-13-emails-that-stood-out-from-the-latest-clinton-document-dump","body_twitter_auto":true,"body_qna":"The
+        thousands of new emails don''t reveal a \"smoking gun\" from the Democratic
+        presidential candidate''s time at State, but do give insight into her daily
+        activities \u2014 and some funny daily struggles.\n\n\u00bb E-Mail This","body_qna_auto":true,"body_phone":"The
+        thousands of new emails don''t reveal a \"smoking gun\" from the Democratic
+        presidential candidate''s time at State, but do give insight into her daily
+        activities \u2014 and some funny daily struggles.\n\n\u00bb E-Mail This","body_phone_auto":true,"body_facebook":"The
+        thousands of new emails don''t reveal a \"smoking gun\" from the Democratic
+        presidential candidate''s time at State, but do give insight into her daily
+        activities \u2014 and some funny daily struggles.\n\n\u00bb E-Mail This","body_facebook_auto":true,"rating":0,"rating_count":0,"rating_score":0,"keywords":null,"position":16,"quickcode":null,"publish_at":"2015-07-01T23:18:04Z","updated_at":"2015-07-01T23:18:04Z","created_at":"2015-07-01T23:18:04Z","in_support_center":true,"internal_notes":null,"public_url":"http://devel.desk.com/customer/portal/articles/2044269-13-emails-that-stood-out-from-the-latest-clinton-document-dump","_links":{"self":{"href":"/api/v2/articles/2044269","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/2044269/translations","class":"article_translation"},"attachments":{"href":"/api/v2/articles/2044269/attachments","class":"attachment","count":0},"created_by":{"href":"/api/v2/users/16096734","class":"user"},"updated_by":{"href":"/api/v2/users/16096734","class":"user"}}},{"id":2044270,"locale":null,"subject":"The
+        Scallop Scoop: Survey Forecasts A Banner Year In Atlantic","body":"<p>Federal
+        fisheries researchers says their survey found about 10 billion scallops in
+        waters off Delaware and southern New Jersey. They''re predicting a boom for
+        the nation''s most valuable fishery.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=419151510\">&raquo;
+        E-Mail This</a></p>","body_email":"Federal fisheries researchers says their
+        survey found about 10 billion scallops in waters off Delaware and southern
+        New Jersey. They''re predicting a boom for the nation''s most valuable fishery.\n\n\u00bb
+        E-Mail This (http://www.npr.org/templates/email/emailAFriend.php?storyId=419151510)","body_email_auto":true,"body_chat":"Federal
+        fisheries researchers says their survey found about 10 billion scallops in
+        waters off Delaware and southern New Jersey. They''re predicting a boom for
+        the nation''s most valuable fishery.\u00bb E-Mail This http://devel.desk.com/customer/portal/articles/2044270-the-scallop-scoop-survey-forecasts-a-banner-year-in-atlantic","body_chat_auto":true,"body_web_callback":"<p>Federal
+        fisheries researchers says their survey found about 10 billion scallops in
+        waters off Delaware and southern New Jersey. They''re predicting a boom for
+        the nation''s most valuable fishery.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=419151510\">&raquo;
+        E-Mail This</a></p>","body_web_callback_auto":true,"body_twitter":"Federal
+        fisheries researchers says their survey found about 10 billion scallops in
+        waters off Delaware and southe... http://devel.desk.com/customer/portal/articles/2044270-the-scallop-scoop-survey-forecasts-a-banner-year-in-atlantic","body_twitter_auto":true,"body_qna":"Federal
+        fisheries researchers says their survey found about 10 billion scallops in
+        waters off Delaware and southern New Jersey. They''re predicting a boom for
+        the nation''s most valuable fishery.\n\n\u00bb E-Mail This","body_qna_auto":true,"body_phone":"Federal
+        fisheries researchers says their survey found about 10 billion scallops in
+        waters off Delaware and southern New Jersey. They''re predicting a boom for
+        the nation''s most valuable fishery.\n\n\u00bb E-Mail This","body_phone_auto":true,"body_facebook":"Federal
+        fisheries researchers says their survey found about 10 billion scallops in
+        waters off Delaware and southern New Jersey. They''re predicting a boom for
+        the nation''s most valuable fishery.\n\n\u00bb E-Mail This","body_facebook_auto":true,"rating":0,"rating_count":0,"rating_score":0,"keywords":null,"position":17,"quickcode":null,"publish_at":"2015-07-01T23:18:04Z","updated_at":"2015-07-01T23:18:04Z","created_at":"2015-07-01T23:18:04Z","in_support_center":true,"internal_notes":null,"public_url":"http://devel.desk.com/customer/portal/articles/2044270-the-scallop-scoop-survey-forecasts-a-banner-year-in-atlantic","_links":{"self":{"href":"/api/v2/articles/2044270","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/2044270/translations","class":"article_translation"},"attachments":{"href":"/api/v2/articles/2044270/attachments","class":"attachment","count":0},"created_by":{"href":"/api/v2/users/16096734","class":"user"},"updated_by":{"href":"/api/v2/users/16096734","class":"user"}}},{"id":2044271,"locale":null,"subject":"Antipsychotics
+        Too Often Prescribed For Aggression In Children","body":"<p>Drugs intended
+        to treat psychosis are also used to treat behavioral problems in children
+        with ADHD. Less risky behavioral treatments and medications should be the
+        first choice, researchers say.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=418935734\">&raquo;
+        E-Mail This</a></p>","body_email":"Drugs intended to treat psychosis are also
+        used to treat behavioral problems in children with ADHD. Less risky behavioral
+        treatments and medications should be the first choice, researchers say.\n\n\u00bb
+        E-Mail This (http://www.npr.org/templates/email/emailAFriend.php?storyId=418935734)","body_email_auto":true,"body_chat":"Drugs
+        intended to treat psychosis are also used to treat behavioral problems in
+        children with ADHD. Less risky behavioral treatments and medications should
+        be the first choice, researchers say.\u00bb E-Mail This http://devel.desk.com/customer/portal/articles/2044271-antipsychotics-too-often-prescribed-for-aggression-in-children","body_chat_auto":true,"body_web_callback":"<p>Drugs
+        intended to treat psychosis are also used to treat behavioral problems in
+        children with ADHD. Less risky behavioral treatments and medications should
+        be the first choice, researchers say.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=418935734\">&raquo;
+        E-Mail This</a></p>","body_web_callback_auto":true,"body_twitter":"Drugs intended
+        to treat psychosis are also used to treat behavioral problems in children
+        with ADHD. Less risky be... http://devel.desk.com/customer/portal/articles/2044271-antipsychotics-too-often-prescribed-for-aggression-in-children","body_twitter_auto":true,"body_qna":"Drugs
+        intended to treat psychosis are also used to treat behavioral problems in
+        children with ADHD. Less risky behavioral treatments and medications should
+        be the first choice, researchers say.\n\n\u00bb E-Mail This","body_qna_auto":true,"body_phone":"Drugs
+        intended to treat psychosis are also used to treat behavioral problems in
+        children with ADHD. Less risky behavioral treatments and medications should
+        be the first choice, researchers say.\n\n\u00bb E-Mail This","body_phone_auto":true,"body_facebook":"Drugs
+        intended to treat psychosis are also used to treat behavioral problems in
+        children with ADHD. Less risky behavioral treatments and medications should
+        be the first choice, researchers say.\n\n\u00bb E-Mail This","body_facebook_auto":true,"rating":0,"rating_count":0,"rating_score":0,"keywords":null,"position":18,"quickcode":null,"publish_at":"2015-07-01T23:18:04Z","updated_at":"2015-07-01T23:18:04Z","created_at":"2015-07-01T23:18:04Z","in_support_center":true,"internal_notes":null,"public_url":"http://devel.desk.com/customer/portal/articles/2044271-antipsychotics-too-often-prescribed-for-aggression-in-children","_links":{"self":{"href":"/api/v2/articles/2044271","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/2044271/translations","class":"article_translation"},"attachments":{"href":"/api/v2/articles/2044271/attachments","class":"attachment","count":0},"created_by":{"href":"/api/v2/users/16096734","class":"user"},"updated_by":{"href":"/api/v2/users/16096734","class":"user"}}},{"id":2044272,"locale":null,"subject":"As
+        The NBA''s Free Agency Period Begins, LeBron James Has All The Power","body":"<p>NPR''s
+        Rachel Martin talks to sportswriter Bob Ryan about the start of NBA free agency
+        Wednesday, and the man with the most power in the NBA \u2014 LeBron James.</p><p><a
+        href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=419240790\">&raquo;
+        E-Mail This</a></p>","body_email":"NPR''s Rachel Martin talks to sportswriter
+        Bob Ryan about the start of NBA free agency Wednesday, and the man with the
+        most power in the NBA \u2014 LeBron James.\n\n\u00bb E-Mail This (http://www.npr.org/templates/email/emailAFriend.php?storyId=419240790)","body_email_auto":true,"body_chat":"NPR''s
+        Rachel Martin talks to sportswriter Bob Ryan about the start of NBA free agency
+        Wednesday, and the man with the most power in the NBA \u2014 LeBron James.\u00bb
+        E-Mail This http://devel.desk.com/customer/portal/articles/2044272-as-the-nba-s-free-agency-period-begins-lebron-james-has-all-the-power","body_chat_auto":true,"body_web_callback":"<p>NPR''s
+        Rachel Martin talks to sportswriter Bob Ryan about the start of NBA free agency
+        Wednesday, and the man with the most power in the NBA \u2014 LeBron James.</p><p><a
+        href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=419240790\">&raquo;
+        E-Mail This</a></p>","body_web_callback_auto":true,"body_twitter":"NPR''s
+        Rachel Martin talks to sportswriter Bob Ryan about the start of NBA free agency
+        Wednesday, and the man with... http://devel.desk.com/customer/portal/articles/2044272-as-the-nba-s-free-agency-period-begins-lebron-james-has-all-the-power","body_twitter_auto":true,"body_qna":"NPR''s
+        Rachel Martin talks to sportswriter Bob Ryan about the start of NBA free agency
+        Wednesday, and the man with the most power in the NBA \u2014 LeBron James.\n\n\u00bb
+        E-Mail This","body_qna_auto":true,"body_phone":"NPR''s Rachel Martin talks
+        to sportswriter Bob Ryan about the start of NBA free agency Wednesday, and
+        the man with the most power in the NBA \u2014 LeBron James.\n\n\u00bb E-Mail
+        This","body_phone_auto":true,"body_facebook":"NPR''s Rachel Martin talks to
+        sportswriter Bob Ryan about the start of NBA free agency Wednesday, and the
+        man with the most power in the NBA \u2014 LeBron James.\n\n\u00bb E-Mail This","body_facebook_auto":true,"rating":0,"rating_count":0,"rating_score":0,"keywords":null,"position":19,"quickcode":null,"publish_at":"2015-07-01T23:18:39Z","updated_at":"2015-07-01T23:18:39Z","created_at":"2015-07-01T23:18:39Z","in_support_center":true,"internal_notes":null,"public_url":"http://devel.desk.com/customer/portal/articles/2044272-as-the-nba-s-free-agency-period-begins-lebron-james-has-all-the-power","_links":{"self":{"href":"/api/v2/articles/2044272","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/2044272/translations","class":"article_translation"},"attachments":{"href":"/api/v2/articles/2044272/attachments","class":"attachment","count":0},"created_by":{"href":"/api/v2/users/16096734","class":"user"},"updated_by":{"href":"/api/v2/users/16096734","class":"user"}}},{"id":2044273,"locale":null,"subject":"Justice
+        Department Investigates Possible Collusion In U.S. Airline Industry","body":"<p>NPR''s
+        Robert Siegel talks with Sen. Richard Blumenthal, who asked the Justice Department
+        to investigate possible collusion in the U.S. airline industry to keep ticket
+        prices high.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=419240811\">&raquo;
+        E-Mail This</a></p>","body_email":"NPR''s Robert Siegel talks with Sen. Richard
+        Blumenthal, who asked the Justice Department to investigate possible collusion
+        in the U.S. airline industry to keep ticket prices high.\n\n\u00bb E-Mail
+        This (http://www.npr.org/templates/email/emailAFriend.php?storyId=419240811)","body_email_auto":true,"body_chat":"NPR''s
+        Robert Siegel talks with Sen. Richard Blumenthal, who asked the Justice Department
+        to investigate possible collusion in the U.S. airline industry to keep ticket
+        prices high.\u00bb E-Mail This http://devel.desk.com/customer/portal/articles/2044273-justice-department-investigates-possible-collusion-in-u-s-airline-industry","body_chat_auto":true,"body_web_callback":"<p>NPR''s
+        Robert Siegel talks with Sen. Richard Blumenthal, who asked the Justice Department
+        to investigate possible collusion in the U.S. airline industry to keep ticket
+        prices high.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=419240811\">&raquo;
+        E-Mail This</a></p>","body_web_callback_auto":true,"body_twitter":"NPR''s
+        Robert Siegel talks with Sen. Richard Blumenthal, who asked the Justice Department
+        to investigate possible ... http://devel.desk.com/customer/portal/articles/2044273-justice-department-investigates-possible-collusion-in-u-s-airline-industry","body_twitter_auto":true,"body_qna":"NPR''s
+        Robert Siegel talks with Sen. Richard Blumenthal, who asked the Justice Department
+        to investigate possible collusion in the U.S. airline industry to keep ticket
+        prices high.\n\n\u00bb E-Mail This","body_qna_auto":true,"body_phone":"NPR''s
+        Robert Siegel talks with Sen. Richard Blumenthal, who asked the Justice Department
+        to investigate possible collusion in the U.S. airline industry to keep ticket
+        prices high.\n\n\u00bb E-Mail This","body_phone_auto":true,"body_facebook":"NPR''s
+        Robert Siegel talks with Sen. Richard Blumenthal, who asked the Justice Department
+        to investigate possible collusion in the U.S. airline industry to keep ticket
+        prices high.\n\n\u00bb E-Mail This","body_facebook_auto":true,"rating":0,"rating_count":0,"rating_score":0,"keywords":null,"position":20,"quickcode":null,"publish_at":"2015-07-01T23:18:39Z","updated_at":"2015-07-01T23:18:39Z","created_at":"2015-07-01T23:18:39Z","in_support_center":true,"internal_notes":null,"public_url":"http://devel.desk.com/customer/portal/articles/2044273-justice-department-investigates-possible-collusion-in-u-s-airline-industry","_links":{"self":{"href":"/api/v2/articles/2044273","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/2044273/translations","class":"article_translation"},"attachments":{"href":"/api/v2/articles/2044273/attachments","class":"attachment","count":0},"created_by":{"href":"/api/v2/users/16096734","class":"user"},"updated_by":{"href":"/api/v2/users/16096734","class":"user"}}},{"id":2044274,"locale":null,"subject":"The
+        Economics Of Airline Baggage Check; To Pay Or Not To Pay","body":"<p>NPR''s
+        Robert Siegel interviews Rick Seaney, CEO of Farecompare.com, about the economics
+        of luggage fees for airlines. JetBlue started to charge fees for the first
+        checked bag on Wednesday.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=419218276\">&raquo;
+        E-Mail This</a></p>","body_email":"NPR''s Robert Siegel interviews Rick Seaney,
+        CEO of Farecompare.com, about the economics of luggage fees for airlines.
+        JetBlue started to charge fees for the first checked bag on Wednesday.\n\n\u00bb
+        E-Mail This (http://www.npr.org/templates/email/emailAFriend.php?storyId=419218276)","body_email_auto":true,"body_chat":"NPR''s
+        Robert Siegel interviews Rick Seaney, CEO of Farecompare.com, about the economics
+        of luggage fees for airlines. JetBlue started to charge fees for the first
+        checked bag on Wednesday.\u00bb E-Mail This http://devel.desk.com/customer/portal/articles/2044274-the-economics-of-airline-baggage-check-to-pay-or-not-to-pay","body_chat_auto":true,"body_web_callback":"<p>NPR''s
+        Robert Siegel interviews Rick Seaney, CEO of Farecompare.com, about the economics
+        of luggage fees for airlines. JetBlue started to charge fees for the first
+        checked bag on Wednesday.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=419218276\">&raquo;
+        E-Mail This</a></p>","body_web_callback_auto":true,"body_twitter":"NPR''s
+        Robert Siegel interviews Rick Seaney, CEO of Farecompare.com, about the economics
+        of luggage fees for airli... http://devel.desk.com/customer/portal/articles/2044274-the-economics-of-airline-baggage-check-to-pay-or-not-to-pay","body_twitter_auto":true,"body_qna":"NPR''s
+        Robert Siegel interviews Rick Seaney, CEO of Farecompare.com, about the economics
+        of luggage fees for airlines. JetBlue started to charge fees for the first
+        checked bag on Wednesday.\n\n\u00bb E-Mail This","body_qna_auto":true,"body_phone":"NPR''s
+        Robert Siegel interviews Rick Seaney, CEO of Farecompare.com, about the economics
+        of luggage fees for airlines. JetBlue started to charge fees for the first
+        checked bag on Wednesday.\n\n\u00bb E-Mail This","body_phone_auto":true,"body_facebook":"NPR''s
+        Robert Siegel interviews Rick Seaney, CEO of Farecompare.com, about the economics
+        of luggage fees for airlines. JetBlue started to charge fees for the first
+        checked bag on Wednesday.\n\n\u00bb E-Mail This","body_facebook_auto":true,"rating":0,"rating_count":0,"rating_score":0,"keywords":null,"position":21,"quickcode":null,"publish_at":"2015-07-01T23:18:39Z","updated_at":"2015-07-01T23:18:39Z","created_at":"2015-07-01T23:18:39Z","in_support_center":true,"internal_notes":null,"public_url":"http://devel.desk.com/customer/portal/articles/2044274-the-economics-of-airline-baggage-check-to-pay-or-not-to-pay","_links":{"self":{"href":"/api/v2/articles/2044274","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/2044274/translations","class":"article_translation"},"attachments":{"href":"/api/v2/articles/2044274/attachments","class":"attachment","count":0},"created_by":{"href":"/api/v2/users/16096734","class":"user"},"updated_by":{"href":"/api/v2/users/16096734","class":"user"}}},{"id":2044275,"locale":null,"subject":"Justice
+        Department Investigating Airlines For Possible Price Collusion","body":"<p>The
+        department says it is looking into \"possible unlawful coordination\" by several
+        major carriers. American and United have confirmed that they are among the
+        airlines under scrutiny.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=419245511\">&raquo;
+        E-Mail This</a></p>","body_email":"The department says it is looking into
+        \"possible unlawful coordination\" by several major carriers. American and
+        United have confirmed that they are among the airlines under scrutiny.\n\n\u00bb
+        E-Mail This (http://www.npr.org/templates/email/emailAFriend.php?storyId=419245511)","body_email_auto":true,"body_chat":"The
+        department says it is looking into \"possible unlawful coordination\" by several
+        major carriers. American and United have confirmed that they are among the
+        airlines under scrutiny.\u00bb E-Mail This http://devel.desk.com/customer/portal/articles/2044275-justice-department-investigating-airlines-for-possible-price-collusion","body_chat_auto":true,"body_web_callback":"<p>The
+        department says it is looking into \"possible unlawful coordination\" by several
+        major carriers. American and United have confirmed that they are among the
+        airlines under scrutiny.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=419245511\">&raquo;
+        E-Mail This</a></p>","body_web_callback_auto":true,"body_twitter":"The department
+        says it is looking into \"possible unlawful coordination\" by several major
+        carriers. American and U... http://devel.desk.com/customer/portal/articles/2044275-justice-department-investigating-airlines-for-possible-price-collusion","body_twitter_auto":true,"body_qna":"The
+        department says it is looking into \"possible unlawful coordination\" by several
+        major carriers. American and United have confirmed that they are among the
+        airlines under scrutiny.\n\n\u00bb E-Mail This","body_qna_auto":true,"body_phone":"The
+        department says it is looking into \"possible unlawful coordination\" by several
+        major carriers. American and United have confirmed that they are among the
+        airlines under scrutiny.\n\n\u00bb E-Mail This","body_phone_auto":true,"body_facebook":"The
+        department says it is looking into \"possible unlawful coordination\" by several
+        major carriers. American and United have confirmed that they are among the
+        airlines under scrutiny.\n\n\u00bb E-Mail This","body_facebook_auto":true,"rating":0,"rating_count":0,"rating_score":0,"keywords":null,"position":22,"quickcode":null,"publish_at":"2015-07-01T23:18:40Z","updated_at":"2015-07-01T23:18:40Z","created_at":"2015-07-01T23:18:40Z","in_support_center":true,"internal_notes":null,"public_url":"http://devel.desk.com/customer/portal/articles/2044275-justice-department-investigating-airlines-for-possible-price-collusion","_links":{"self":{"href":"/api/v2/articles/2044275","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/2044275/translations","class":"article_translation"},"attachments":{"href":"/api/v2/articles/2044275/attachments","class":"attachment","count":0},"created_by":{"href":"/api/v2/users/16096734","class":"user"},"updated_by":{"href":"/api/v2/users/16096734","class":"user"}}},{"id":2044276,"locale":null,"subject":"Frontier
+        Airlines Exit Leaves Delaware Without Commercial Flights","body":"<p>Frontier
+        Airlines is saying goodbye to New Castle Airport in Wilmington, Del. That
+        makes the second-smallest state the only one in the country without access
+        to commercial passenger flights.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=419240773\">&raquo;
+        E-Mail This</a></p>","body_email":"Frontier Airlines is saying goodbye to
+        New Castle Airport in Wilmington, Del. That makes the second-smallest state
+        the only one in the country without access to commercial passenger flights.\n\n\u00bb
+        E-Mail This (http://www.npr.org/templates/email/emailAFriend.php?storyId=419240773)","body_email_auto":true,"body_chat":"Frontier
+        Airlines is saying goodbye to New Castle Airport in Wilmington, Del. That
+        makes the second-smallest state the only one in the country without access
+        to commercial passenger flights.\u00bb E-Mail This http://devel.desk.com/customer/portal/articles/2044276-frontier-airlines-exit-leaves-delaware-without-commercial-flights","body_chat_auto":true,"body_web_callback":"<p>Frontier
+        Airlines is saying goodbye to New Castle Airport in Wilmington, Del. That
+        makes the second-smallest state the only one in the country without access
+        to commercial passenger flights.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=419240773\">&raquo;
+        E-Mail This</a></p>","body_web_callback_auto":true,"body_twitter":"Frontier
+        Airlines is saying goodbye to New Castle Airport in Wilmington, Del. That
+        makes the second-smallest stat... http://devel.desk.com/customer/portal/articles/2044276-frontier-airlines-exit-leaves-delaware-without-commercial-flights","body_twitter_auto":true,"body_qna":"Frontier
+        Airlines is saying goodbye to New Castle Airport in Wilmington, Del. That
+        makes the second-smallest state the only one in the country without access
+        to commercial passenger flights.\n\n\u00bb E-Mail This","body_qna_auto":true,"body_phone":"Frontier
+        Airlines is saying goodbye to New Castle Airport in Wilmington, Del. That
+        makes the second-smallest state the only one in the country without access
+        to commercial passenger flights.\n\n\u00bb E-Mail This","body_phone_auto":true,"body_facebook":"Frontier
+        Airlines is saying goodbye to New Castle Airport in Wilmington, Del. That
+        makes the second-smallest state the only one in the country without access
+        to commercial passenger flights.\n\n\u00bb E-Mail This","body_facebook_auto":true,"rating":0,"rating_count":0,"rating_score":0,"keywords":null,"position":23,"quickcode":null,"publish_at":"2015-07-01T23:18:40Z","updated_at":"2015-07-01T23:18:40Z","created_at":"2015-07-01T23:18:40Z","in_support_center":true,"internal_notes":null,"public_url":"http://devel.desk.com/customer/portal/articles/2044276-frontier-airlines-exit-leaves-delaware-without-commercial-flights","_links":{"self":{"href":"/api/v2/articles/2044276","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/2044276/translations","class":"article_translation"},"attachments":{"href":"/api/v2/articles/2044276/attachments","class":"attachment","count":0},"created_by":{"href":"/api/v2/users/16096734","class":"user"},"updated_by":{"href":"/api/v2/users/16096734","class":"user"}}},{"id":2044277,"locale":null,"subject":"Industry
+        Payments To Doctors Are Ingrained, Federal Data Show","body":"<p>The latest
+        data on payments from drug and device companies to doctors show that many
+        doctors received payments on 100 or more days last year. Some received payments
+        on more days than they didn''t.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=419206613\">&raquo;
+        E-Mail This</a></p>","body_email":"The latest data on payments from drug and
+        device companies to doctors show that many doctors received payments on 100
+        or more days last year. Some received payments on more days than they didn''t.\n\n\u00bb
+        E-Mail This (http://www.npr.org/templates/email/emailAFriend.php?storyId=419206613)","body_email_auto":true,"body_chat":"The
+        latest data on payments from drug and device companies to doctors show that
+        many doctors received payments on 100 or more days last year. Some received
+        payments on more days than they didn''t.\u00bb E-Mail This http://devel.desk.com/customer/portal/articles/2044277-industry-payments-to-doctors-are-ingrained-federal-data-show","body_chat_auto":true,"body_web_callback":"<p>The
+        latest data on payments from drug and device companies to doctors show that
+        many doctors received payments on 100 or more days last year. Some received
+        payments on more days than they didn''t.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=419206613\">&raquo;
+        E-Mail This</a></p>","body_web_callback_auto":true,"body_twitter":"The latest
+        data on payments from drug and device companies to doctors show that many
+        doctors received payments on... http://devel.desk.com/customer/portal/articles/2044277-industry-payments-to-doctors-are-ingrained-federal-data-show","body_twitter_auto":true,"body_qna":"The
+        latest data on payments from drug and device companies to doctors show that
+        many doctors received payments on 100 or more days last year. Some received
+        payments on more days than they didn''t.\n\n\u00bb E-Mail This","body_qna_auto":true,"body_phone":"The
+        latest data on payments from drug and device companies to doctors show that
+        many doctors received payments on 100 or more days last year. Some received
+        payments on more days than they didn''t.\n\n\u00bb E-Mail This","body_phone_auto":true,"body_facebook":"The
+        latest data on payments from drug and device companies to doctors show that
+        many doctors received payments on 100 or more days last year. Some received
+        payments on more days than they didn''t.\n\n\u00bb E-Mail This","body_facebook_auto":true,"rating":0,"rating_count":0,"rating_score":0,"keywords":null,"position":24,"quickcode":null,"publish_at":"2015-07-01T23:18:40Z","updated_at":"2015-07-01T23:18:40Z","created_at":"2015-07-01T23:18:40Z","in_support_center":true,"internal_notes":null,"public_url":"http://devel.desk.com/customer/portal/articles/2044277-industry-payments-to-doctors-are-ingrained-federal-data-show","_links":{"self":{"href":"/api/v2/articles/2044277","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/2044277/translations","class":"article_translation"},"attachments":{"href":"/api/v2/articles/2044277/attachments","class":"attachment","count":0},"created_by":{"href":"/api/v2/users/16096734","class":"user"},"updated_by":{"href":"/api/v2/users/16096734","class":"user"}}},{"id":2044278,"locale":null,"subject":"Toyota''s
+        Top Female Executive Resigns After Arrest","body":"<p>Julie Hamp was accused
+        of importing the prescription painkiller oxycodone in violation of the country''s
+        narcotics laws. She was arrested June 18 but has not been charged.</p><p><a
+        href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=419101492\">&raquo;
+        E-Mail This</a></p>","body_email":"Julie Hamp was accused of importing the
+        prescription painkiller oxycodone in violation of the country''s narcotics
+        laws. She was arrested June 18 but has not been charged.\n\n\u00bb E-Mail
+        This (http://www.npr.org/templates/email/emailAFriend.php?storyId=419101492)","body_email_auto":true,"body_chat":"Julie
+        Hamp was accused of importing the prescription painkiller oxycodone in violation
+        of the country''s narcotics laws. She was arrested June 18 but has not been
+        charged.\u00bb E-Mail This http://devel.desk.com/customer/portal/articles/2044278-toyota-s-top-female-executive-resigns-after-arrest","body_chat_auto":true,"body_web_callback":"<p>Julie
+        Hamp was accused of importing the prescription painkiller oxycodone in violation
+        of the country''s narcotics laws. She was arrested June 18 but has not been
+        charged.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=419101492\">&raquo;
+        E-Mail This</a></p>","body_web_callback_auto":true,"body_twitter":"Julie Hamp
+        was accused of importing the prescription painkiller oxycodone in violation
+        of the country''s narcotics... http://devel.desk.com/customer/portal/articles/2044278-toyota-s-top-female-executive-resigns-after-arrest","body_twitter_auto":true,"body_qna":"Julie
+        Hamp was accused of importing the prescription painkiller oxycodone in violation
+        of the country''s narcotics laws. She was arrested June 18 but has not been
+        charged.\n\n\u00bb E-Mail This","body_qna_auto":true,"body_phone":"Julie Hamp
+        was accused of importing the prescription painkiller oxycodone in violation
+        of the country''s narcotics laws. She was arrested June 18 but has not been
+        charged.\n\n\u00bb E-Mail This","body_phone_auto":true,"body_facebook":"Julie
+        Hamp was accused of importing the prescription painkiller oxycodone in violation
+        of the country''s narcotics laws. She was arrested June 18 but has not been
+        charged.\n\n\u00bb E-Mail This","body_facebook_auto":true,"rating":0,"rating_count":0,"rating_score":0,"keywords":null,"position":25,"quickcode":null,"publish_at":"2015-07-01T23:18:41Z","updated_at":"2015-07-01T23:18:41Z","created_at":"2015-07-01T23:18:41Z","in_support_center":true,"internal_notes":null,"public_url":"http://devel.desk.com/customer/portal/articles/2044278-toyota-s-top-female-executive-resigns-after-arrest","_links":{"self":{"href":"/api/v2/articles/2044278","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/2044278/translations","class":"article_translation"},"attachments":{"href":"/api/v2/articles/2044278/attachments","class":"attachment","count":0},"created_by":{"href":"/api/v2/users/16096734","class":"user"},"updated_by":{"href":"/api/v2/users/16096734","class":"user"}}},{"id":2044279,"locale":null,"subject":"Greek
+        Leader Reiterates Call For ''No'' Vote In Referendum","body":"<p>Prime Minister
+        Alexis Tsipras insisted a rejection of creditors'' proposals for a bailout
+        did not mean Greece would leave the eurozone. Greece officially missed a loan
+        payment to the IMF.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=419098840\">&raquo;
+        E-Mail This</a></p>","body_email":"Prime Minister Alexis Tsipras insisted
+        a rejection of creditors'' proposals for a bailout did not mean Greece would
+        leave the eurozone. Greece officially missed a loan payment to the IMF.\n\n\u00bb
+        E-Mail This (http://www.npr.org/templates/email/emailAFriend.php?storyId=419098840)","body_email_auto":true,"body_chat":"Prime
+        Minister Alexis Tsipras insisted a rejection of creditors'' proposals for
+        a bailout did not mean Greece would leave the eurozone. Greece officially
+        missed a loan payment to the IMF.\u00bb E-Mail This http://devel.desk.com/customer/portal/articles/2044279-greek-leader-reiterates-call-for-no-vote-in-referendum","body_chat_auto":true,"body_web_callback":"<p>Prime
+        Minister Alexis Tsipras insisted a rejection of creditors'' proposals for
+        a bailout did not mean Greece would leave the eurozone. Greece officially
+        missed a loan payment to the IMF.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=419098840\">&raquo;
+        E-Mail This</a></p>","body_web_callback_auto":true,"body_twitter":"Prime Minister
+        Alexis Tsipras insisted a rejection of creditors'' proposals for a bailout
+        did not mean Greece woul... http://devel.desk.com/customer/portal/articles/2044279-greek-leader-reiterates-call-for-no-vote-in-referendum","body_twitter_auto":true,"body_qna":"Prime
+        Minister Alexis Tsipras insisted a rejection of creditors'' proposals for
+        a bailout did not mean Greece would leave the eurozone. Greece officially
+        missed a loan payment to the IMF.\n\n\u00bb E-Mail This","body_qna_auto":true,"body_phone":"Prime
+        Minister Alexis Tsipras insisted a rejection of creditors'' proposals for
+        a bailout did not mean Greece would leave the eurozone. Greece officially
+        missed a loan payment to the IMF.\n\n\u00bb E-Mail This","body_phone_auto":true,"body_facebook":"Prime
+        Minister Alexis Tsipras insisted a rejection of creditors'' proposals for
+        a bailout did not mean Greece would leave the eurozone. Greece officially
+        missed a loan payment to the IMF.\n\n\u00bb E-Mail This","body_facebook_auto":true,"rating":0,"rating_count":0,"rating_score":0,"keywords":null,"position":26,"quickcode":null,"publish_at":"2015-07-01T23:18:41Z","updated_at":"2015-07-01T23:18:41Z","created_at":"2015-07-01T23:18:41Z","in_support_center":true,"internal_notes":null,"public_url":"http://devel.desk.com/customer/portal/articles/2044279-greek-leader-reiterates-call-for-no-vote-in-referendum","_links":{"self":{"href":"/api/v2/articles/2044279","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/2044279/translations","class":"article_translation"},"attachments":{"href":"/api/v2/articles/2044279/attachments","class":"attachment","count":0},"created_by":{"href":"/api/v2/users/16096734","class":"user"},"updated_by":{"href":"/api/v2/users/16096734","class":"user"}}},{"id":2044280,"locale":null,"subject":"After
+        Supreme Court Decision, What''s Next For Gay Rights Groups?","body":"<p>Advocates
+        concede it may be more challenging to rally public support and dollars for
+        causes that may be less obvious or visceral than marriage.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=418838989\">&raquo;
+        E-Mail This</a></p>","body_email":"Advocates concede it may be more challenging
+        to rally public support and dollars for causes that may be less obvious or
+        visceral than marriage.\n\n\u00bb E-Mail This (http://www.npr.org/templates/email/emailAFriend.php?storyId=418838989)","body_email_auto":true,"body_chat":"Advocates
+        concede it may be more challenging to rally public support and dollars for
+        causes that may be less obvious or visceral than marriage.\u00bb E-Mail This
+        http://devel.desk.com/customer/portal/articles/2044280-after-supreme-court-decision-what-s-next-for-gay-rights-groups-","body_chat_auto":true,"body_web_callback":"<p>Advocates
+        concede it may be more challenging to rally public support and dollars for
+        causes that may be less obvious or visceral than marriage.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=418838989\">&raquo;
+        E-Mail This</a></p>","body_web_callback_auto":true,"body_twitter":"Advocates
+        concede it may be more challenging to rally public support and dollars for
+        causes that may be less obvi... http://devel.desk.com/customer/portal/articles/2044280-after-supreme-court-decision-what-s-next-for-gay-rights-groups-","body_twitter_auto":true,"body_qna":"Advocates
+        concede it may be more challenging to rally public support and dollars for
+        causes that may be less obvious or visceral than marriage.\n\n\u00bb E-Mail
+        This","body_qna_auto":true,"body_phone":"Advocates concede it may be more
+        challenging to rally public support and dollars for causes that may be less
+        obvious or visceral than marriage.\n\n\u00bb E-Mail This","body_phone_auto":true,"body_facebook":"Advocates
+        concede it may be more challenging to rally public support and dollars for
+        causes that may be less obvious or visceral than marriage.\n\n\u00bb E-Mail
+        This","body_facebook_auto":true,"rating":0,"rating_count":0,"rating_score":0,"keywords":null,"position":27,"quickcode":null,"publish_at":"2015-07-01T23:18:41Z","updated_at":"2015-07-01T23:18:41Z","created_at":"2015-07-01T23:18:41Z","in_support_center":true,"internal_notes":null,"public_url":"http://devel.desk.com/customer/portal/articles/2044280-after-supreme-court-decision-what-s-next-for-gay-rights-groups-","_links":{"self":{"href":"/api/v2/articles/2044280","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/2044280/translations","class":"article_translation"},"attachments":{"href":"/api/v2/articles/2044280/attachments","class":"attachment","count":0},"created_by":{"href":"/api/v2/users/16096734","class":"user"},"updated_by":{"href":"/api/v2/users/16096734","class":"user"}}},{"id":2044281,"locale":null,"subject":"As
+        Panama''s Economy Booms, So Do Concerns Over Debt And The Environment","body":"<p>Panama''s
+        economy, while cooling in recent years, is still growing at astonishing rates
+        compared to its neighbors. But environmental damage and huge government debt
+        are part of the package.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=418964649\">&raquo;
+        E-Mail This</a></p>","body_email":"Panama''s economy, while cooling in recent
+        years, is still growing at astonishing rates compared to its neighbors. But
+        environmental damage and huge government debt are part of the package.\n\n\u00bb
+        E-Mail This (http://www.npr.org/templates/email/emailAFriend.php?storyId=418964649)","body_email_auto":true,"body_chat":"Panama''s
+        economy, while cooling in recent years, is still growing at astonishing rates
+        compared to its neighbors. But environmental damage and huge government debt
+        are part of the package.\u00bb E-Mail This http://devel.desk.com/customer/portal/articles/2044281-as-panama-s-economy-booms-so-do-concerns-over-debt-and-the-environment","body_chat_auto":true,"body_web_callback":"<p>Panama''s
+        economy, while cooling in recent years, is still growing at astonishing rates
+        compared to its neighbors. But environmental damage and huge government debt
+        are part of the package.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=418964649\">&raquo;
+        E-Mail This</a></p>","body_web_callback_auto":true,"body_twitter":"Panama''s
+        economy, while cooling in recent years, is still growing at astonishing rates
+        compared to its neighbors.... http://devel.desk.com/customer/portal/articles/2044281-as-panama-s-economy-booms-so-do-concerns-over-debt-and-the-environment","body_twitter_auto":true,"body_qna":"Panama''s
+        economy, while cooling in recent years, is still growing at astonishing rates
+        compared to its neighbors. But environmental damage and huge government debt
+        are part of the package.\n\n\u00bb E-Mail This","body_qna_auto":true,"body_phone":"Panama''s
+        economy, while cooling in recent years, is still growing at astonishing rates
+        compared to its neighbors. But environmental damage and huge government debt
+        are part of the package.\n\n\u00bb E-Mail This","body_phone_auto":true,"body_facebook":"Panama''s
+        economy, while cooling in recent years, is still growing at astonishing rates
+        compared to its neighbors. But environmental damage and huge government debt
+        are part of the package.\n\n\u00bb E-Mail This","body_facebook_auto":true,"rating":0,"rating_count":0,"rating_score":0,"keywords":null,"position":28,"quickcode":null,"publish_at":"2015-07-01T23:18:42Z","updated_at":"2015-07-01T23:18:42Z","created_at":"2015-07-01T23:18:41Z","in_support_center":true,"internal_notes":null,"public_url":"http://devel.desk.com/customer/portal/articles/2044281-as-panama-s-economy-booms-so-do-concerns-over-debt-and-the-environment","_links":{"self":{"href":"/api/v2/articles/2044281","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/2044281/translations","class":"article_translation"},"attachments":{"href":"/api/v2/articles/2044281/attachments","class":"attachment","count":0},"created_by":{"href":"/api/v2/users/16096734","class":"user"},"updated_by":{"href":"/api/v2/users/16096734","class":"user"}}},{"id":2044282,"locale":null,"subject":"Martha
+        Stewart''s Company Sold For A Fraction Of Its Previous Worth","body":"<p>At
+        its height, Martha Stewart Living Omnimedia was worth $2 billion. Her company
+        is being sold to Sequential Brands Group for $353 million. Linda Wertheimer
+        talks to brand analyst Liz Dunn.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=419076199\">&raquo;
+        E-Mail This</a></p>","body_email":"At its height, Martha Stewart Living Omnimedia
+        was worth $2 billion. Her company is being sold to Sequential Brands Group
+        for $353 million. Linda Wertheimer talks to brand analyst Liz Dunn.\n\n\u00bb
+        E-Mail This (http://www.npr.org/templates/email/emailAFriend.php?storyId=419076199)","body_email_auto":true,"body_chat":"At
+        its height, Martha Stewart Living Omnimedia was worth $2 billion. Her company
+        is being sold to Sequential Brands Group for $353 million. Linda Wertheimer
+        talks to brand analyst Liz Dunn.\u00bb E-Mail This http://devel.desk.com/customer/portal/articles/2044282-martha-stewart-s-company-sold-for-a-fraction-of-its-previous-worth","body_chat_auto":true,"body_web_callback":"<p>At
+        its height, Martha Stewart Living Omnimedia was worth $2 billion. Her company
+        is being sold to Sequential Brands Group for $353 million. Linda Wertheimer
+        talks to brand analyst Liz Dunn.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=419076199\">&raquo;
+        E-Mail This</a></p>","body_web_callback_auto":true,"body_twitter":"At its
+        height, Martha Stewart Living Omnimedia was worth $2 billion. Her company
+        is being sold to Sequential Bran... http://devel.desk.com/customer/portal/articles/2044282-martha-stewart-s-company-sold-for-a-fraction-of-its-previous-worth","body_twitter_auto":true,"body_qna":"At
+        its height, Martha Stewart Living Omnimedia was worth $2 billion. Her company
+        is being sold to Sequential Brands Group for $353 million. Linda Wertheimer
+        talks to brand analyst Liz Dunn.\n\n\u00bb E-Mail This","body_qna_auto":true,"body_phone":"At
+        its height, Martha Stewart Living Omnimedia was worth $2 billion. Her company
+        is being sold to Sequential Brands Group for $353 million. Linda Wertheimer
+        talks to brand analyst Liz Dunn.\n\n\u00bb E-Mail This","body_phone_auto":true,"body_facebook":"At
+        its height, Martha Stewart Living Omnimedia was worth $2 billion. Her company
+        is being sold to Sequential Brands Group for $353 million. Linda Wertheimer
+        talks to brand analyst Liz Dunn.\n\n\u00bb E-Mail This","body_facebook_auto":true,"rating":0,"rating_count":0,"rating_score":0,"keywords":null,"position":29,"quickcode":null,"publish_at":"2015-07-01T23:18:42Z","updated_at":"2015-07-01T23:18:42Z","created_at":"2015-07-01T23:18:42Z","in_support_center":true,"internal_notes":null,"public_url":"http://devel.desk.com/customer/portal/articles/2044282-martha-stewart-s-company-sold-for-a-fraction-of-its-previous-worth","_links":{"self":{"href":"/api/v2/articles/2044282","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/2044282/translations","class":"article_translation"},"attachments":{"href":"/api/v2/articles/2044282/attachments","class":"attachment","count":0},"created_by":{"href":"/api/v2/users/16096734","class":"user"},"updated_by":{"href":"/api/v2/users/16096734","class":"user"}}},{"id":2044283,"locale":null,"subject":"Online
+        Fund Started To Raise Money For Greece''s Debt","body":"<p>Thom Feeney of
+        London says he was fed up with the showdowns between Greece and its creditors.
+        He started a campaign called Greek Bailout Fund to raise 1.6 billion euros
+        to help pay Greece''s debt.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=419076136\">&raquo;
+        E-Mail This</a></p>","body_email":"Thom Feeney of London says he was fed up
+        with the showdowns between Greece and its creditors. He started a campaign
+        called Greek Bailout Fund to raise 1.6 billion euros to help pay Greece''s
+        debt.\n\n\u00bb E-Mail This (http://www.npr.org/templates/email/emailAFriend.php?storyId=419076136)","body_email_auto":true,"body_chat":"Thom
+        Feeney of London says he was fed up with the showdowns between Greece and
+        its creditors. He started a campaign called Greek Bailout Fund to raise 1.6
+        billion euros to help pay Greece''s debt.\u00bb E-Mail This http://devel.desk.com/customer/portal/articles/2044283-online-fund-started-to-raise-money-for-greece-s-debt","body_chat_auto":true,"body_web_callback":"<p>Thom
+        Feeney of London says he was fed up with the showdowns between Greece and
+        its creditors. He started a campaign called Greek Bailout Fund to raise 1.6
+        billion euros to help pay Greece''s debt.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=419076136\">&raquo;
+        E-Mail This</a></p>","body_web_callback_auto":true,"body_twitter":"Thom Feeney
+        of London says he was fed up with the showdowns between Greece and its creditors.
+        He started a campai... http://devel.desk.com/customer/portal/articles/2044283-online-fund-started-to-raise-money-for-greece-s-debt","body_twitter_auto":true,"body_qna":"Thom
+        Feeney of London says he was fed up with the showdowns between Greece and
+        its creditors. He started a campaign called Greek Bailout Fund to raise 1.6
+        billion euros to help pay Greece''s debt.\n\n\u00bb E-Mail This","body_qna_auto":true,"body_phone":"Thom
+        Feeney of London says he was fed up with the showdowns between Greece and
+        its creditors. He started a campaign called Greek Bailout Fund to raise 1.6
+        billion euros to help pay Greece''s debt.\n\n\u00bb E-Mail This","body_phone_auto":true,"body_facebook":"Thom
+        Feeney of London says he was fed up with the showdowns between Greece and
+        its creditors. He started a campaign called Greek Bailout Fund to raise 1.6
+        billion euros to help pay Greece''s debt.\n\n\u00bb E-Mail This","body_facebook_auto":true,"rating":0,"rating_count":0,"rating_score":0,"keywords":null,"position":30,"quickcode":null,"publish_at":"2015-07-01T23:18:43Z","updated_at":"2015-07-01T23:18:43Z","created_at":"2015-07-01T23:18:42Z","in_support_center":true,"internal_notes":null,"public_url":"http://devel.desk.com/customer/portal/articles/2044283-online-fund-started-to-raise-money-for-greece-s-debt","_links":{"self":{"href":"/api/v2/articles/2044283","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/2044283/translations","class":"article_translation"},"attachments":{"href":"/api/v2/articles/2044283/attachments","class":"attachment","count":0},"created_by":{"href":"/api/v2/users/16096734","class":"user"},"updated_by":{"href":"/api/v2/users/16096734","class":"user"}}},{"id":2044284,"locale":null,"subject":"Historic
+        Vote May Determine Whether Greece Remains In The Eurozone","body":"<p>Greek
+        voters on Sunday face a referendum on further austerity measures in exchange
+        for bailouts. But the unstated question is whether Greece should give up the
+        euro.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=419047707\">&raquo;
+        E-Mail This</a></p>","body_email":"Greek voters on Sunday face a referendum
+        on further austerity measures in exchange for bailouts. But the unstated question
+        is whether Greece should give up the euro.\n\n\u00bb E-Mail This (http://www.npr.org/templates/email/emailAFriend.php?storyId=419047707)","body_email_auto":true,"body_chat":"Greek
+        voters on Sunday face a referendum on further austerity measures in exchange
+        for bailouts. But the unstated question is whether Greece should give up the
+        euro.\u00bb E-Mail This http://devel.desk.com/customer/portal/articles/2044284-historic-vote-may-determine-whether-greece-remains-in-the-eurozone","body_chat_auto":true,"body_web_callback":"<p>Greek
+        voters on Sunday face a referendum on further austerity measures in exchange
+        for bailouts. But the unstated question is whether Greece should give up the
+        euro.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=419047707\">&raquo;
+        E-Mail This</a></p>","body_web_callback_auto":true,"body_twitter":"Greek voters
+        on Sunday face a referendum on further austerity measures in exchange for
+        bailouts. But the unstated... http://devel.desk.com/customer/portal/articles/2044284-historic-vote-may-determine-whether-greece-remains-in-the-eurozone","body_twitter_auto":true,"body_qna":"Greek
+        voters on Sunday face a referendum on further austerity measures in exchange
+        for bailouts. But the unstated question is whether Greece should give up the
+        euro.\n\n\u00bb E-Mail This","body_qna_auto":true,"body_phone":"Greek voters
+        on Sunday face a referendum on further austerity measures in exchange for
+        bailouts. But the unstated question is whether Greece should give up the euro.\n\n\u00bb
+        E-Mail This","body_phone_auto":true,"body_facebook":"Greek voters on Sunday
+        face a referendum on further austerity measures in exchange for bailouts.
+        But the unstated question is whether Greece should give up the euro.\n\n\u00bb
+        E-Mail This","body_facebook_auto":true,"rating":0,"rating_count":0,"rating_score":0,"keywords":null,"position":31,"quickcode":null,"publish_at":"2015-07-01T23:18:43Z","updated_at":"2015-07-01T23:18:43Z","created_at":"2015-07-01T23:18:43Z","in_support_center":true,"internal_notes":null,"public_url":"http://devel.desk.com/customer/portal/articles/2044284-historic-vote-may-determine-whether-greece-remains-in-the-eurozone","_links":{"self":{"href":"/api/v2/articles/2044284","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/2044284/translations","class":"article_translation"},"attachments":{"href":"/api/v2/articles/2044284/attachments","class":"attachment","count":0},"created_by":{"href":"/api/v2/users/16096734","class":"user"},"updated_by":{"href":"/api/v2/users/16096734","class":"user"}}},{"id":2044285,"locale":null,"subject":"Donald
+        Trump Sues Univision For $500 Million","body":"<p>In the suit, Trump claims
+        Univision is attempting to suppress his freedom of speech by dropping coverage
+        of the Miss Universe Pageant, which Trump co-owns.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=418990895\">&raquo;
+        E-Mail This</a></p>","body_email":"In the suit, Trump claims Univision is
+        attempting to suppress his freedom of speech by dropping coverage of the Miss
+        Universe Pageant, which Trump co-owns.\n\n\u00bb E-Mail This (http://www.npr.org/templates/email/emailAFriend.php?storyId=418990895)","body_email_auto":true,"body_chat":"In
+        the suit, Trump claims Univision is attempting to suppress his freedom of
+        speech by dropping coverage of the Miss Universe Pageant, which Trump co-owns.\u00bb
+        E-Mail This http://devel.desk.com/customer/portal/articles/2044285-donald-trump-sues-univision-for-500-million","body_chat_auto":true,"body_web_callback":"<p>In
+        the suit, Trump claims Univision is attempting to suppress his freedom of
+        speech by dropping coverage of the Miss Universe Pageant, which Trump co-owns.</p><p><a
+        href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=418990895\">&raquo;
+        E-Mail This</a></p>","body_web_callback_auto":true,"body_twitter":"In the
+        suit, Trump claims Univision is attempting to suppress his freedom of speech
+        by dropping coverage of the M... http://devel.desk.com/customer/portal/articles/2044285-donald-trump-sues-univision-for-500-million","body_twitter_auto":true,"body_qna":"In
+        the suit, Trump claims Univision is attempting to suppress his freedom of
+        speech by dropping coverage of the Miss Universe Pageant, which Trump co-owns.\n\n\u00bb
+        E-Mail This","body_qna_auto":true,"body_phone":"In the suit, Trump claims
+        Univision is attempting to suppress his freedom of speech by dropping coverage
+        of the Miss Universe Pageant, which Trump co-owns.\n\n\u00bb E-Mail This","body_phone_auto":true,"body_facebook":"In
+        the suit, Trump claims Univision is attempting to suppress his freedom of
+        speech by dropping coverage of the Miss Universe Pageant, which Trump co-owns.\n\n\u00bb
+        E-Mail This","body_facebook_auto":true,"rating":0,"rating_count":0,"rating_score":0,"keywords":null,"position":32,"quickcode":null,"publish_at":"2015-07-01T23:18:43Z","updated_at":"2015-07-01T23:18:43Z","created_at":"2015-07-01T23:18:43Z","in_support_center":true,"internal_notes":null,"public_url":"http://devel.desk.com/customer/portal/articles/2044285-donald-trump-sues-univision-for-500-million","_links":{"self":{"href":"/api/v2/articles/2044285","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/2044285/translations","class":"article_translation"},"attachments":{"href":"/api/v2/articles/2044285/attachments","class":"attachment","count":0},"created_by":{"href":"/api/v2/users/16096734","class":"user"},"updated_by":{"href":"/api/v2/users/16096734","class":"user"}}},{"id":2044286,"locale":null,"subject":"Communities
+        Get A Lift As Local Food Sales Surge To $11 Billion A Year","body":"<p>The
+        U.S. Department of Agriculture says local food is growing quickly from a niche
+        market into something that''s generating significant income for communities
+        across the country.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=418835394\">&raquo;
+        E-Mail This</a></p>","body_email":"The U.S. Department of Agriculture says
+        local food is growing quickly from a niche market into something that''s generating
+        significant income for communities across the country.\n\n\u00bb E-Mail This
+        (http://www.npr.org/templates/email/emailAFriend.php?storyId=418835394)","body_email_auto":true,"body_chat":"The
+        U.S. Department of Agriculture says local food is growing quickly from a niche
+        market into something that''s generating significant income for communities
+        across the country.\u00bb E-Mail This http://devel.desk.com/customer/portal/articles/2044286-communities-get-a-lift-as-local-food-sales-surge-to-11-billion-a-year","body_chat_auto":true,"body_web_callback":"<p>The
+        U.S. Department of Agriculture says local food is growing quickly from a niche
+        market into something that''s generating significant income for communities
+        across the country.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=418835394\">&raquo;
+        E-Mail This</a></p>","body_web_callback_auto":true,"body_twitter":"The U.S.
+        Department of Agriculture says local food is growing quickly from a niche
+        market into something that''s g... http://devel.desk.com/customer/portal/articles/2044286-communities-get-a-lift-as-local-food-sales-surge-to-11-billion-a-year","body_twitter_auto":true,"body_qna":"The
+        U.S. Department of Agriculture says local food is growing quickly from a niche
+        market into something that''s generating significant income for communities
+        across the country.\n\n\u00bb E-Mail This","body_qna_auto":true,"body_phone":"The
+        U.S. Department of Agriculture says local food is growing quickly from a niche
+        market into something that''s generating significant income for communities
+        across the country.\n\n\u00bb E-Mail This","body_phone_auto":true,"body_facebook":"The
+        U.S. Department of Agriculture says local food is growing quickly from a niche
+        market into something that''s generating significant income for communities
+        across the country.\n\n\u00bb E-Mail This","body_facebook_auto":true,"rating":0,"rating_count":0,"rating_score":0,"keywords":null,"position":33,"quickcode":null,"publish_at":"2015-07-01T23:18:43Z","updated_at":"2015-07-01T23:18:43Z","created_at":"2015-07-01T23:18:43Z","in_support_center":true,"internal_notes":null,"public_url":"http://devel.desk.com/customer/portal/articles/2044286-communities-get-a-lift-as-local-food-sales-surge-to-11-billion-a-year","_links":{"self":{"href":"/api/v2/articles/2044286","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/2044286/translations","class":"article_translation"},"attachments":{"href":"/api/v2/articles/2044286/attachments","class":"attachment","count":0},"created_by":{"href":"/api/v2/users/16096734","class":"user"},"updated_by":{"href":"/api/v2/users/16096734","class":"user"}}},{"id":2044287,"locale":null,"subject":"How
+        Your Brain Remembers Where You Parked The Car","body":"<p>When people saw
+        photos that linked a famous person with a famous place, it changed the behavior
+        of certain neurons in their brains. And it changed their memories, too.</p><p><a
+        href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=419165395\">&raquo;
+        E-Mail This</a></p>","body_email":"When people saw photos that linked a famous
+        person with a famous place, it changed the behavior of certain neurons in
+        their brains. And it changed their memories, too.\n\n\u00bb E-Mail This (http://www.npr.org/templates/email/emailAFriend.php?storyId=419165395)","body_email_auto":true,"body_chat":"When
+        people saw photos that linked a famous person with a famous place, it changed
+        the behavior of certain neurons in their brains. And it changed their memories,
+        too.\u00bb E-Mail This http://devel.desk.com/customer/portal/articles/2044287-how-your-brain-remembers-where-you-parked-the-car","body_chat_auto":true,"body_web_callback":"<p>When
+        people saw photos that linked a famous person with a famous place, it changed
+        the behavior of certain neurons in their brains. And it changed their memories,
+        too.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=419165395\">&raquo;
+        E-Mail This</a></p>","body_web_callback_auto":true,"body_twitter":"When people
+        saw photos that linked a famous person with a famous place, it changed the
+        behavior of certain neuron... http://devel.desk.com/customer/portal/articles/2044287-how-your-brain-remembers-where-you-parked-the-car","body_twitter_auto":true,"body_qna":"When
+        people saw photos that linked a famous person with a famous place, it changed
+        the behavior of certain neurons in their brains. And it changed their memories,
+        too.\n\n\u00bb E-Mail This","body_qna_auto":true,"body_phone":"When people
+        saw photos that linked a famous person with a famous place, it changed the
+        behavior of certain neurons in their brains. And it changed their memories,
+        too.\n\n\u00bb E-Mail This","body_phone_auto":true,"body_facebook":"When people
+        saw photos that linked a famous person with a famous place, it changed the
+        behavior of certain neurons in their brains. And it changed their memories,
+        too.\n\n\u00bb E-Mail This","body_facebook_auto":true,"rating":0,"rating_count":0,"rating_score":0,"keywords":null,"position":34,"quickcode":null,"publish_at":"2015-07-01T23:18:52Z","updated_at":"2015-07-01T23:18:52Z","created_at":"2015-07-01T23:18:52Z","in_support_center":true,"internal_notes":null,"public_url":"http://devel.desk.com/customer/portal/articles/2044287-how-your-brain-remembers-where-you-parked-the-car","_links":{"self":{"href":"/api/v2/articles/2044287","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/2044287/translations","class":"article_translation"},"attachments":{"href":"/api/v2/articles/2044287/attachments","class":"attachment","count":0},"created_by":{"href":"/api/v2/users/16096734","class":"user"},"updated_by":{"href":"/api/v2/users/16096734","class":"user"}}},{"id":2044288,"locale":null,"subject":"The
+        Scallop Scoop: Survey Forecasts A Banner Year In Atlantic","body":"<p>Federal
+        fisheries researchers says their survey found about 10 billion scallops in
+        waters off Delaware and southern New Jersey. They''re predicting a boom for
+        the nation''s most valuable fishery.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=419151510\">&raquo;
+        E-Mail This</a></p>","body_email":"Federal fisheries researchers says their
+        survey found about 10 billion scallops in waters off Delaware and southern
+        New Jersey. They''re predicting a boom for the nation''s most valuable fishery.\n\n\u00bb
+        E-Mail This (http://www.npr.org/templates/email/emailAFriend.php?storyId=419151510)","body_email_auto":true,"body_chat":"Federal
+        fisheries researchers says their survey found about 10 billion scallops in
+        waters off Delaware and southern New Jersey. They''re predicting a boom for
+        the nation''s most valuable fishery.\u00bb E-Mail This http://devel.desk.com/customer/portal/articles/2044288-the-scallop-scoop-survey-forecasts-a-banner-year-in-atlantic","body_chat_auto":true,"body_web_callback":"<p>Federal
+        fisheries researchers says their survey found about 10 billion scallops in
+        waters off Delaware and southern New Jersey. They''re predicting a boom for
+        the nation''s most valuable fishery.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=419151510\">&raquo;
+        E-Mail This</a></p>","body_web_callback_auto":true,"body_twitter":"Federal
+        fisheries researchers says their survey found about 10 billion scallops in
+        waters off Delaware and southe... http://devel.desk.com/customer/portal/articles/2044288-the-scallop-scoop-survey-forecasts-a-banner-year-in-atlantic","body_twitter_auto":true,"body_qna":"Federal
+        fisheries researchers says their survey found about 10 billion scallops in
+        waters off Delaware and southern New Jersey. They''re predicting a boom for
+        the nation''s most valuable fishery.\n\n\u00bb E-Mail This","body_qna_auto":true,"body_phone":"Federal
+        fisheries researchers says their survey found about 10 billion scallops in
+        waters off Delaware and southern New Jersey. They''re predicting a boom for
+        the nation''s most valuable fishery.\n\n\u00bb E-Mail This","body_phone_auto":true,"body_facebook":"Federal
+        fisheries researchers says their survey found about 10 billion scallops in
+        waters off Delaware and southern New Jersey. They''re predicting a boom for
+        the nation''s most valuable fishery.\n\n\u00bb E-Mail This","body_facebook_auto":true,"rating":0,"rating_count":0,"rating_score":0,"keywords":null,"position":35,"quickcode":null,"publish_at":"2015-07-01T23:18:53Z","updated_at":"2015-07-01T23:18:53Z","created_at":"2015-07-01T23:18:53Z","in_support_center":true,"internal_notes":null,"public_url":"http://devel.desk.com/customer/portal/articles/2044288-the-scallop-scoop-survey-forecasts-a-banner-year-in-atlantic","_links":{"self":{"href":"/api/v2/articles/2044288","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/2044288/translations","class":"article_translation"},"attachments":{"href":"/api/v2/articles/2044288/attachments","class":"attachment","count":0},"created_by":{"href":"/api/v2/users/16096734","class":"user"},"updated_by":{"href":"/api/v2/users/16096734","class":"user"}}},{"id":2044289,"locale":null,"subject":"Benefits
+        Of Sports To A Child''s Mind And Heart All Part Of The Game","body":"<p>In
+        NPR''s most recent poll, a majority of American adults say they played sports
+        in their youth. Many say they encourage their kids to play, too, and see health
+        benefits as well as lifelong lessons.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=418899249\">&raquo;
+        E-Mail This</a></p>","body_email":"In NPR''s most recent poll, a majority
+        of American adults say they played sports in their youth. Many say they encourage
+        their kids to play, too, and see health benefits as well as lifelong lessons.\n\n\u00bb
+        E-Mail This (http://www.npr.org/templates/email/emailAFriend.php?storyId=418899249)","body_email_auto":true,"body_chat":"In
+        NPR''s most recent poll, a majority of American adults say they played sports
+        in their youth. Many say they encourage their kids to play, too, and see health
+        benefits as well as lifelong lessons.\u00bb E-Mail This http://devel.desk.com/customer/portal/articles/2044289-benefits-of-sports-to-a-child-s-mind-and-heart-all-part-of-the-game","body_chat_auto":true,"body_web_callback":"<p>In
+        NPR''s most recent poll, a majority of American adults say they played sports
+        in their youth. Many say they encourage their kids to play, too, and see health
+        benefits as well as lifelong lessons.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=418899249\">&raquo;
+        E-Mail This</a></p>","body_web_callback_auto":true,"body_twitter":"In NPR''s
+        most recent poll, a majority of American adults say they played sports in
+        their youth. Many say they enc... http://devel.desk.com/customer/portal/articles/2044289-benefits-of-sports-to-a-child-s-mind-and-heart-all-part-of-the-game","body_twitter_auto":true,"body_qna":"In
+        NPR''s most recent poll, a majority of American adults say they played sports
+        in their youth. Many say they encourage their kids to play, too, and see health
+        benefits as well as lifelong lessons.\n\n\u00bb E-Mail This","body_qna_auto":true,"body_phone":"In
+        NPR''s most recent poll, a majority of American adults say they played sports
+        in their youth. Many say they encourage their kids to play, too, and see health
+        benefits as well as lifelong lessons.\n\n\u00bb E-Mail This","body_phone_auto":true,"body_facebook":"In
+        NPR''s most recent poll, a majority of American adults say they played sports
+        in their youth. Many say they encourage their kids to play, too, and see health
+        benefits as well as lifelong lessons.\n\n\u00bb E-Mail This","body_facebook_auto":true,"rating":0,"rating_count":0,"rating_score":0,"keywords":null,"position":36,"quickcode":null,"publish_at":"2015-07-01T23:18:53Z","updated_at":"2015-07-01T23:18:53Z","created_at":"2015-07-01T23:18:53Z","in_support_center":true,"internal_notes":null,"public_url":"http://devel.desk.com/customer/portal/articles/2044289-benefits-of-sports-to-a-child-s-mind-and-heart-all-part-of-the-game","_links":{"self":{"href":"/api/v2/articles/2044289","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/2044289/translations","class":"article_translation"},"attachments":{"href":"/api/v2/articles/2044289/attachments","class":"attachment","count":0},"created_by":{"href":"/api/v2/users/16096734","class":"user"},"updated_by":{"href":"/api/v2/users/16096734","class":"user"}}},{"id":2044290,"locale":null,"subject":"To
+        Keep Up With Earth''s Rotation, Clocks Will Tick An Extra Second Tonight","body":"<p>There
+        is an extra \"leap\" second in Tuesday''s clock. The second is designed to
+        keep the clocks in synch with earth''s rotation, but some people would like
+        to take it away.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=418924569\">&raquo;
+        E-Mail This</a></p>","body_email":"There is an extra \"leap\" second in Tuesday''s
+        clock. The second is designed to keep the clocks in synch with earth''s rotation,
+        but some people would like to take it away.\n\n\u00bb E-Mail This (http://www.npr.org/templates/email/emailAFriend.php?storyId=418924569)","body_email_auto":true,"body_chat":"There
+        is an extra \"leap\" second in Tuesday''s clock. The second is designed to
+        keep the clocks in synch with earth''s rotation, but some people would like
+        to take it away.\u00bb E-Mail This http://devel.desk.com/customer/portal/articles/2044290-to-keep-up-with-earth-s-rotation-clocks-will-tick-an-extra-second-tonight","body_chat_auto":true,"body_web_callback":"<p>There
+        is an extra \"leap\" second in Tuesday''s clock. The second is designed to
+        keep the clocks in synch with earth''s rotation, but some people would like
+        to take it away.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=418924569\">&raquo;
+        E-Mail This</a></p>","body_web_callback_auto":true,"body_twitter":"There is
+        an extra \"leap\" second in Tuesday''s clock. The second is designed to keep
+        the clocks in synch with earth... http://devel.desk.com/customer/portal/articles/2044290-to-keep-up-with-earth-s-rotation-clocks-will-tick-an-extra-second-tonight","body_twitter_auto":true,"body_qna":"There
+        is an extra \"leap\" second in Tuesday''s clock. The second is designed to
+        keep the clocks in synch with earth''s rotation, but some people would like
+        to take it away.\n\n\u00bb E-Mail This","body_qna_auto":true,"body_phone":"There
+        is an extra \"leap\" second in Tuesday''s clock. The second is designed to
+        keep the clocks in synch with earth''s rotation, but some people would like
+        to take it away.\n\n\u00bb E-Mail This","body_phone_auto":true,"body_facebook":"There
+        is an extra \"leap\" second in Tuesday''s clock. The second is designed to
+        keep the clocks in synch with earth''s rotation, but some people would like
+        to take it away.\n\n\u00bb E-Mail This","body_facebook_auto":true,"rating":0,"rating_count":0,"rating_score":0,"keywords":null,"position":37,"quickcode":null,"publish_at":"2015-07-01T23:18:54Z","updated_at":"2015-07-01T23:18:54Z","created_at":"2015-07-01T23:18:53Z","in_support_center":true,"internal_notes":null,"public_url":"http://devel.desk.com/customer/portal/articles/2044290-to-keep-up-with-earth-s-rotation-clocks-will-tick-an-extra-second-tonight","_links":{"self":{"href":"/api/v2/articles/2044290","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/2044290/translations","class":"article_translation"},"attachments":{"href":"/api/v2/articles/2044290/attachments","class":"attachment","count":0},"created_by":{"href":"/api/v2/users/16096734","class":"user"},"updated_by":{"href":"/api/v2/users/16096734","class":"user"}}},{"id":2044291,"locale":null,"subject":"Flood
+        Maps Can Get Much Sharper With A Little Supercomputing Oomph","body":"<p>Entrepreneurs
+        are turning to Oak Ridge National Lab''s supercomputer to make all sorts of
+        things, including maps that are much more accurate in predicting how a neighborhood
+        will fare in a flood.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=418643595\">&raquo;
+        E-Mail This</a></p>","body_email":"Entrepreneurs are turning to Oak Ridge
+        National Lab''s supercomputer to make all sorts of things, including maps
+        that are much more accurate in predicting how a neighborhood will fare in
+        a flood.\n\n\u00bb E-Mail This (http://www.npr.org/templates/email/emailAFriend.php?storyId=418643595)","body_email_auto":true,"body_chat":"Entrepreneurs
+        are turning to Oak Ridge National Lab''s supercomputer to make all sorts of
+        things, including maps that are much more accurate in predicting how a neighborhood
+        will fare in a flood.\u00bb E-Mail This http://devel.desk.com/customer/portal/articles/2044291-flood-maps-can-get-much-sharper-with-a-little-supercomputing-oomph","body_chat_auto":true,"body_web_callback":"<p>Entrepreneurs
+        are turning to Oak Ridge National Lab''s supercomputer to make all sorts of
+        things, including maps that are much more accurate in predicting how a neighborhood
+        will fare in a flood.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=418643595\">&raquo;
+        E-Mail This</a></p>","body_web_callback_auto":true,"body_twitter":"Entrepreneurs
+        are turning to Oak Ridge National Lab''s supercomputer to make all sorts of
+        things, including maps t... http://devel.desk.com/customer/portal/articles/2044291-flood-maps-can-get-much-sharper-with-a-little-supercomputing-oomph","body_twitter_auto":true,"body_qna":"Entrepreneurs
+        are turning to Oak Ridge National Lab''s supercomputer to make all sorts of
+        things, including maps that are much more accurate in predicting how a neighborhood
+        will fare in a flood.\n\n\u00bb E-Mail This","body_qna_auto":true,"body_phone":"Entrepreneurs
+        are turning to Oak Ridge National Lab''s supercomputer to make all sorts of
+        things, including maps that are much more accurate in predicting how a neighborhood
+        will fare in a flood.\n\n\u00bb E-Mail This","body_phone_auto":true,"body_facebook":"Entrepreneurs
+        are turning to Oak Ridge National Lab''s supercomputer to make all sorts of
+        things, including maps that are much more accurate in predicting how a neighborhood
+        will fare in a flood.\n\n\u00bb E-Mail This","body_facebook_auto":true,"rating":0,"rating_count":0,"rating_score":0,"keywords":null,"position":38,"quickcode":null,"publish_at":"2015-07-01T23:18:54Z","updated_at":"2015-07-01T23:18:54Z","created_at":"2015-07-01T23:18:54Z","in_support_center":true,"internal_notes":null,"public_url":"http://devel.desk.com/customer/portal/articles/2044291-flood-maps-can-get-much-sharper-with-a-little-supercomputing-oomph","_links":{"self":{"href":"/api/v2/articles/2044291","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/2044291/translations","class":"article_translation"},"attachments":{"href":"/api/v2/articles/2044291/attachments","class":"attachment","count":0},"created_by":{"href":"/api/v2/users/16096734","class":"user"},"updated_by":{"href":"/api/v2/users/16096734","class":"user"}}},{"id":2044292,"locale":null,"subject":"Venus
+        And Jupiter Set For A Close Encounter Tuesday Night","body":"<p>NASA says
+        the two bright planets will be \"a jaw-dropping one-third of a degree apart\"
+        around sunset. It''s the closest they''ll come in their current 24-year cycle.</p><p><a
+        href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=418915225\">&raquo;
+        E-Mail This</a></p>","body_email":"NASA says the two bright planets will be
+        \"a jaw-dropping one-third of a degree apart\" around sunset. It''s the closest
+        they''ll come in their current 24-year cycle.\n\n\u00bb E-Mail This (http://www.npr.org/templates/email/emailAFriend.php?storyId=418915225)","body_email_auto":true,"body_chat":"NASA
+        says the two bright planets will be \"a jaw-dropping one-third of a degree
+        apart\" around sunset. It''s the closest they''ll come in their current 24-year
+        cycle.\u00bb E-Mail This http://devel.desk.com/customer/portal/articles/2044292-venus-and-jupiter-set-for-a-close-encounter-tuesday-night","body_chat_auto":true,"body_web_callback":"<p>NASA
+        says the two bright planets will be \"a jaw-dropping one-third of a degree
+        apart\" around sunset. It''s the closest they''ll come in their current 24-year
+        cycle.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=418915225\">&raquo;
+        E-Mail This</a></p>","body_web_callback_auto":true,"body_twitter":"NASA says
+        the two bright planets will be \"a jaw-dropping one-third of a degree apart\"
+        around sunset. It''s the clo... http://devel.desk.com/customer/portal/articles/2044292-venus-and-jupiter-set-for-a-close-encounter-tuesday-night","body_twitter_auto":true,"body_qna":"NASA
+        says the two bright planets will be \"a jaw-dropping one-third of a degree
+        apart\" around sunset. It''s the closest they''ll come in their current 24-year
+        cycle.\n\n\u00bb E-Mail This","body_qna_auto":true,"body_phone":"NASA says
+        the two bright planets will be \"a jaw-dropping one-third of a degree apart\"
+        around sunset. It''s the closest they''ll come in their current 24-year cycle.\n\n\u00bb
+        E-Mail This","body_phone_auto":true,"body_facebook":"NASA says the two bright
+        planets will be \"a jaw-dropping one-third of a degree apart\" around sunset.
+        It''s the closest they''ll come in their current 24-year cycle.\n\n\u00bb
+        E-Mail This","body_facebook_auto":true,"rating":0,"rating_count":0,"rating_score":0,"keywords":null,"position":39,"quickcode":null,"publish_at":"2015-07-01T23:18:54Z","updated_at":"2015-07-01T23:18:54Z","created_at":"2015-07-01T23:18:54Z","in_support_center":true,"internal_notes":null,"public_url":"http://devel.desk.com/customer/portal/articles/2044292-venus-and-jupiter-set-for-a-close-encounter-tuesday-night","_links":{"self":{"href":"/api/v2/articles/2044292","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/2044292/translations","class":"article_translation"},"attachments":{"href":"/api/v2/articles/2044292/attachments","class":"attachment","count":0},"created_by":{"href":"/api/v2/users/16096734","class":"user"},"updated_by":{"href":"/api/v2/users/16096734","class":"user"}}},{"id":2044293,"locale":null,"subject":"11:59:60
+        \u2014 Look For An Extra Tick Of The Clock Tonight","body":"<p>\"Leap seconds\"
+        are added from time to time to keep atomic clocks in sync with a time standard
+        tied to the rotation of the Earth. This will be the 26th time it''s been done.</p><p><a
+        href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=418594948\">&raquo;
+        E-Mail This</a></p>","body_email":"\"Leap seconds\" are added from time to
+        time to keep atomic clocks in sync with a time standard tied to the rotation
+        of the Earth. This will be the 26th time it''s been done.\n\n\u00bb E-Mail
+        This (http://www.npr.org/templates/email/emailAFriend.php?storyId=418594948)","body_email_auto":true,"body_chat":"\"Leap
+        seconds\" are added from time to time to keep atomic clocks in sync with a
+        time standard tied to the rotation of the Earth. This will be the 26th time
+        it''s been done.\u00bb E-Mail This http://devel.desk.com/customer/portal/articles/2044293-11-59-60-%E2%80%94-look-for-an-extra-tick-of-the-clock-tonight","body_chat_auto":true,"body_web_callback":"<p>\"Leap
+        seconds\" are added from time to time to keep atomic clocks in sync with a
+        time standard tied to the rotation of the Earth. This will be the 26th time
+        it''s been done.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=418594948\">&raquo;
+        E-Mail This</a></p>","body_web_callback_auto":true,"body_twitter":"\"Leap
+        seconds\" are added from time to time to keep atomic clocks in sync with a
+        time standard tied to the rotatio... http://devel.desk.com/customer/portal/articles/2044293-11-59-60-%E2%80%94-look-for-an-extra-tick-of-the-clock-tonight","body_twitter_auto":true,"body_qna":"\"Leap
+        seconds\" are added from time to time to keep atomic clocks in sync with a
+        time standard tied to the rotation of the Earth. This will be the 26th time
+        it''s been done.\n\n\u00bb E-Mail This","body_qna_auto":true,"body_phone":"\"Leap
+        seconds\" are added from time to time to keep atomic clocks in sync with a
+        time standard tied to the rotation of the Earth. This will be the 26th time
+        it''s been done.\n\n\u00bb E-Mail This","body_phone_auto":true,"body_facebook":"\"Leap
+        seconds\" are added from time to time to keep atomic clocks in sync with a
+        time standard tied to the rotation of the Earth. This will be the 26th time
+        it''s been done.\n\n\u00bb E-Mail This","body_facebook_auto":true,"rating":0,"rating_count":0,"rating_score":0,"keywords":null,"position":40,"quickcode":null,"publish_at":"2015-07-01T23:18:55Z","updated_at":"2015-07-01T23:18:55Z","created_at":"2015-07-01T23:18:54Z","in_support_center":true,"internal_notes":null,"public_url":"http://devel.desk.com/customer/portal/articles/2044293-11-59-60-%E2%80%94-look-for-an-extra-tick-of-the-clock-tonight","_links":{"self":{"href":"/api/v2/articles/2044293","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/2044293/translations","class":"article_translation"},"attachments":{"href":"/api/v2/articles/2044293/attachments","class":"attachment","count":0},"created_by":{"href":"/api/v2/users/16096734","class":"user"},"updated_by":{"href":"/api/v2/users/16096734","class":"user"}}},{"id":2044294,"locale":null,"subject":"Branding
+        Teen Drivers As Newbies Doesn''t Prevent Crashes","body":"<p>Graduated driver''s
+        licenses that impose restrictions like no driving at night have reduced crashes
+        and deaths. But it looks like putting a learner sticker on teens'' license
+        plates doesn''t help.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=418596404\">&raquo;
+        E-Mail This</a></p>","body_email":"Graduated driver''s licenses that impose
+        restrictions like no driving at night have reduced crashes and deaths. But
+        it looks like putting a learner sticker on teens'' license plates doesn''t
+        help.\n\n\u00bb E-Mail This (http://www.npr.org/templates/email/emailAFriend.php?storyId=418596404)","body_email_auto":true,"body_chat":"Graduated
+        driver''s licenses that impose restrictions like no driving at night have
+        reduced crashes and deaths. But it looks like putting a learner sticker on
+        teens'' license plates doesn''t help.\u00bb E-Mail This http://devel.desk.com/customer/portal/articles/2044294-branding-teen-drivers-as-newbies-doesn-t-prevent-crashes","body_chat_auto":true,"body_web_callback":"<p>Graduated
+        driver''s licenses that impose restrictions like no driving at night have
+        reduced crashes and deaths. But it looks like putting a learner sticker on
+        teens'' license plates doesn''t help.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=418596404\">&raquo;
+        E-Mail This</a></p>","body_web_callback_auto":true,"body_twitter":"Graduated
+        driver''s licenses that impose restrictions like no driving at night have
+        reduced crashes and deaths. Bu... http://devel.desk.com/customer/portal/articles/2044294-branding-teen-drivers-as-newbies-doesn-t-prevent-crashes","body_twitter_auto":true,"body_qna":"Graduated
+        driver''s licenses that impose restrictions like no driving at night have
+        reduced crashes and deaths. But it looks like putting a learner sticker on
+        teens'' license plates doesn''t help.\n\n\u00bb E-Mail This","body_qna_auto":true,"body_phone":"Graduated
+        driver''s licenses that impose restrictions like no driving at night have
+        reduced crashes and deaths. But it looks like putting a learner sticker on
+        teens'' license plates doesn''t help.\n\n\u00bb E-Mail This","body_phone_auto":true,"body_facebook":"Graduated
+        driver''s licenses that impose restrictions like no driving at night have
+        reduced crashes and deaths. But it looks like putting a learner sticker on
+        teens'' license plates doesn''t help.\n\n\u00bb E-Mail This","body_facebook_auto":true,"rating":0,"rating_count":0,"rating_score":0,"keywords":null,"position":41,"quickcode":null,"publish_at":"2015-07-01T23:18:55Z","updated_at":"2015-07-01T23:18:55Z","created_at":"2015-07-01T23:18:55Z","in_support_center":true,"internal_notes":null,"public_url":"http://devel.desk.com/customer/portal/articles/2044294-branding-teen-drivers-as-newbies-doesn-t-prevent-crashes","_links":{"self":{"href":"/api/v2/articles/2044294","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/2044294/translations","class":"article_translation"},"attachments":{"href":"/api/v2/articles/2044294/attachments","class":"attachment","count":0},"created_by":{"href":"/api/v2/users/16096734","class":"user"},"updated_by":{"href":"/api/v2/users/16096734","class":"user"}}},{"id":2044295,"locale":null,"subject":"U.N.
+        Holds Climate Talks In New York Ahead Of Paris Meeting","body":"<p>The United
+        Nations is having a high-level climate meeting ahead of the end-of-year meeting
+        in Paris that will hopefully result in a major new agreement to rein in greenhouse
+        gases.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=418641168\">&raquo;
+        E-Mail This</a></p>","body_email":"The United Nations is having a high-level
+        climate meeting ahead of the end-of-year meeting in Paris that will hopefully
+        result in a major new agreement to rein in greenhouse gases.\n\n\u00bb E-Mail
+        This (http://www.npr.org/templates/email/emailAFriend.php?storyId=418641168)","body_email_auto":true,"body_chat":"The
+        United Nations is having a high-level climate meeting ahead of the end-of-year
+        meeting in Paris that will hopefully result in a major new agreement to rein
+        in greenhouse gases.\u00bb E-Mail This http://devel.desk.com/customer/portal/articles/2044295-u-n-holds-climate-talks-in-new-york-ahead-of-paris-meeting","body_chat_auto":true,"body_web_callback":"<p>The
+        United Nations is having a high-level climate meeting ahead of the end-of-year
+        meeting in Paris that will hopefully result in a major new agreement to rein
+        in greenhouse gases.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=418641168\">&raquo;
+        E-Mail This</a></p>","body_web_callback_auto":true,"body_twitter":"The United
+        Nations is having a high-level climate meeting ahead of the end-of-year meeting
+        in Paris that will hop... http://devel.desk.com/customer/portal/articles/2044295-u-n-holds-climate-talks-in-new-york-ahead-of-paris-meeting","body_twitter_auto":true,"body_qna":"The
+        United Nations is having a high-level climate meeting ahead of the end-of-year
+        meeting in Paris that will hopefully result in a major new agreement to rein
+        in greenhouse gases.\n\n\u00bb E-Mail This","body_qna_auto":true,"body_phone":"The
+        United Nations is having a high-level climate meeting ahead of the end-of-year
+        meeting in Paris that will hopefully result in a major new agreement to rein
+        in greenhouse gases.\n\n\u00bb E-Mail This","body_phone_auto":true,"body_facebook":"The
+        United Nations is having a high-level climate meeting ahead of the end-of-year
+        meeting in Paris that will hopefully result in a major new agreement to rein
+        in greenhouse gases.\n\n\u00bb E-Mail This","body_facebook_auto":true,"rating":0,"rating_count":0,"rating_score":0,"keywords":null,"position":42,"quickcode":null,"publish_at":"2015-07-01T23:18:56Z","updated_at":"2015-07-01T23:18:56Z","created_at":"2015-07-01T23:18:55Z","in_support_center":true,"internal_notes":null,"public_url":"http://devel.desk.com/customer/portal/articles/2044295-u-n-holds-climate-talks-in-new-york-ahead-of-paris-meeting","_links":{"self":{"href":"/api/v2/articles/2044295","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/2044295/translations","class":"article_translation"},"attachments":{"href":"/api/v2/articles/2044295/attachments","class":"attachment","count":0},"created_by":{"href":"/api/v2/users/16096734","class":"user"},"updated_by":{"href":"/api/v2/users/16096734","class":"user"}}},{"id":2044296,"locale":null,"subject":"Supreme
+        Court Rules In Industry''s Favor. What''s EPA''s Next Move?","body":"<p>Monday''s
+        decision from the high court technically only applies to the Clean Air Act''s
+        standards on mercury emissions from power plants. But it could affect future
+        EPA regulations, legal experts say.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=418581616\">&raquo;
+        E-Mail This</a></p>","body_email":"Monday''s decision from the high court
+        technically only applies to the Clean Air Act''s standards on mercury emissions
+        from power plants. But it could affect future EPA regulations, legal experts
+        say.\n\n\u00bb E-Mail This (http://www.npr.org/templates/email/emailAFriend.php?storyId=418581616)","body_email_auto":true,"body_chat":"Monday''s
+        decision from the high court technically only applies to the Clean Air Act''s
+        standards on mercury emissions from power plants. But it could affect future
+        EPA regulations, legal experts say.\u00bb E-Mail This http://devel.desk.com/customer/portal/articles/2044296-supreme-court-rules-in-industry-s-favor-what-s-epa-s-next-move-","body_chat_auto":true,"body_web_callback":"<p>Monday''s
+        decision from the high court technically only applies to the Clean Air Act''s
+        standards on mercury emissions from power plants. But it could affect future
+        EPA regulations, legal experts say.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=418581616\">&raquo;
+        E-Mail This</a></p>","body_web_callback_auto":true,"body_twitter":"Monday''s
+        decision from the high court technically only applies to the Clean Air Act''s
+        standards on mercury emissi... http://devel.desk.com/customer/portal/articles/2044296-supreme-court-rules-in-industry-s-favor-what-s-epa-s-next-move-","body_twitter_auto":true,"body_qna":"Monday''s
+        decision from the high court technically only applies to the Clean Air Act''s
+        standards on mercury emissions from power plants. But it could affect future
+        EPA regulations, legal experts say.\n\n\u00bb E-Mail This","body_qna_auto":true,"body_phone":"Monday''s
+        decision from the high court technically only applies to the Clean Air Act''s
+        standards on mercury emissions from power plants. But it could affect future
+        EPA regulations, legal experts say.\n\n\u00bb E-Mail This","body_phone_auto":true,"body_facebook":"Monday''s
+        decision from the high court technically only applies to the Clean Air Act''s
+        standards on mercury emissions from power plants. But it could affect future
+        EPA regulations, legal experts say.\n\n\u00bb E-Mail This","body_facebook_auto":true,"rating":0,"rating_count":0,"rating_score":0,"keywords":null,"position":43,"quickcode":null,"publish_at":"2015-07-01T23:18:56Z","updated_at":"2015-07-01T23:18:56Z","created_at":"2015-07-01T23:18:56Z","in_support_center":true,"internal_notes":null,"public_url":"http://devel.desk.com/customer/portal/articles/2044296-supreme-court-rules-in-industry-s-favor-what-s-epa-s-next-move-","_links":{"self":{"href":"/api/v2/articles/2044296","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/2044296/translations","class":"article_translation"},"attachments":{"href":"/api/v2/articles/2044296/attachments","class":"attachment","count":0},"created_by":{"href":"/api/v2/users/16096734","class":"user"},"updated_by":{"href":"/api/v2/users/16096734","class":"user"}}},{"id":2044297,"locale":null,"subject":"Why
+        You Should Thank A Caterpillar For Your Mustard And Wasabi","body":"<p>Eons
+        ago, cabbage butterfly larvae and the plants they eat began an evolutionary
+        arms race. The result: \"mustard oil bombs\" that give the plants, and condiments
+        we make from them, distinctive flavors.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=418518152\">&raquo;
+        E-Mail This</a></p>","body_email":"Eons ago, cabbage butterfly larvae and
+        the plants they eat began an evolutionary arms race. The result: \"mustard
+        oil bombs\" that give the plants, and condiments we make from them, distinctive
+        flavors.\n\n\u00bb E-Mail This (http://www.npr.org/templates/email/emailAFriend.php?storyId=418518152)","body_email_auto":true,"body_chat":"Eons
+        ago, cabbage butterfly larvae and the plants they eat began an evolutionary
+        arms race. The result: \"mustard oil bombs\" that give the plants, and condiments
+        we make from them, distinctive flavors.\u00bb E-Mail This http://devel.desk.com/customer/portal/articles/2044297-why-you-should-thank-a-caterpillar-for-your-mustard-and-wasabi","body_chat_auto":true,"body_web_callback":"<p>Eons
+        ago, cabbage butterfly larvae and the plants they eat began an evolutionary
+        arms race. The result: \"mustard oil bombs\" that give the plants, and condiments
+        we make from them, distinctive flavors.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=418518152\">&raquo;
+        E-Mail This</a></p>","body_web_callback_auto":true,"body_twitter":"Eons ago,
+        cabbage butterfly larvae and the plants they eat began an evolutionary arms
+        race. The result: \"mustard ... http://devel.desk.com/customer/portal/articles/2044297-why-you-should-thank-a-caterpillar-for-your-mustard-and-wasabi","body_twitter_auto":true,"body_qna":"Eons
+        ago, cabbage butterfly larvae and the plants they eat began an evolutionary
+        arms race. The result: \"mustard oil bombs\" that give the plants, and condiments
+        we make from them, distinctive flavors.\n\n\u00bb E-Mail This","body_qna_auto":true,"body_phone":"Eons
+        ago, cabbage butterfly larvae and the plants they eat began an evolutionary
+        arms race. The result: \"mustard oil bombs\" that give the plants, and condiments
+        we make from them, distinctive flavors.\n\n\u00bb E-Mail This","body_phone_auto":true,"body_facebook":"Eons
+        ago, cabbage butterfly larvae and the plants they eat began an evolutionary
+        arms race. The result: \"mustard oil bombs\" that give the plants, and condiments
+        we make from them, distinctive flavors.\n\n\u00bb E-Mail This","body_facebook_auto":true,"rating":0,"rating_count":0,"rating_score":0,"keywords":null,"position":44,"quickcode":null,"publish_at":"2015-07-01T23:18:56Z","updated_at":"2015-07-01T23:18:56Z","created_at":"2015-07-01T23:18:56Z","in_support_center":true,"internal_notes":null,"public_url":"http://devel.desk.com/customer/portal/articles/2044297-why-you-should-thank-a-caterpillar-for-your-mustard-and-wasabi","_links":{"self":{"href":"/api/v2/articles/2044297","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/2044297/translations","class":"article_translation"},"attachments":{"href":"/api/v2/articles/2044297/attachments","class":"attachment","count":0},"created_by":{"href":"/api/v2/users/16096734","class":"user"},"updated_by":{"href":"/api/v2/users/16096734","class":"user"}}},{"id":2044298,"locale":null,"subject":"Medical
+        School Hopefuls Grapple With Overhauled Entrance Exam","body":"<p>The results
+        are coming in for the first medical school candidates who took a revamped
+        exam that includes a wider range of subjects, including psychology and sociology.</p><p><a
+        href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=417421252\">&raquo;
+        E-Mail This</a></p>","body_email":"The results are coming in for the first
+        medical school candidates who took a revamped exam that includes a wider range
+        of subjects, including psychology and sociology.\n\n\u00bb E-Mail This (http://www.npr.org/templates/email/emailAFriend.php?storyId=417421252)","body_email_auto":true,"body_chat":"The
+        results are coming in for the first medical school candidates who took a revamped
+        exam that includes a wider range of subjects, including psychology and sociology.\u00bb
+        E-Mail This http://devel.desk.com/customer/portal/articles/2044298-medical-school-hopefuls-grapple-with-overhauled-entrance-exam","body_chat_auto":true,"body_web_callback":"<p>The
+        results are coming in for the first medical school candidates who took a revamped
+        exam that includes a wider range of subjects, including psychology and sociology.</p><p><a
+        href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=417421252\">&raquo;
+        E-Mail This</a></p>","body_web_callback_auto":true,"body_twitter":"The results
+        are coming in for the first medical school candidates who took a revamped
+        exam that includes a wider ... http://devel.desk.com/customer/portal/articles/2044298-medical-school-hopefuls-grapple-with-overhauled-entrance-exam","body_twitter_auto":true,"body_qna":"The
+        results are coming in for the first medical school candidates who took a revamped
+        exam that includes a wider range of subjects, including psychology and sociology.\n\n\u00bb
+        E-Mail This","body_qna_auto":true,"body_phone":"The results are coming in
+        for the first medical school candidates who took a revamped exam that includes
+        a wider range of subjects, including psychology and sociology.\n\n\u00bb E-Mail
+        This","body_phone_auto":true,"body_facebook":"The results are coming in for
+        the first medical school candidates who took a revamped exam that includes
+        a wider range of subjects, including psychology and sociology.\n\n\u00bb E-Mail
+        This","body_facebook_auto":true,"rating":0,"rating_count":0,"rating_score":0,"keywords":null,"position":45,"quickcode":null,"publish_at":"2015-07-01T23:18:57Z","updated_at":"2015-07-01T23:18:57Z","created_at":"2015-07-01T23:18:57Z","in_support_center":true,"internal_notes":null,"public_url":"http://devel.desk.com/customer/portal/articles/2044298-medical-school-hopefuls-grapple-with-overhauled-entrance-exam","_links":{"self":{"href":"/api/v2/articles/2044298","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/2044298/translations","class":"article_translation"},"attachments":{"href":"/api/v2/articles/2044298/attachments","class":"attachment","count":0},"created_by":{"href":"/api/v2/users/16096734","class":"user"},"updated_by":{"href":"/api/v2/users/16096734","class":"user"}}},{"id":2044299,"locale":null,"subject":"Curb
+        Your Appetite: Save Bread For The End Of The Meal","body":"<p>A hot bread
+        basket is a tasty way to start off dinner. But all those carbs before the
+        main fare can amp up appetite and spike blood sugar. Saving the carbs for
+        the end of the meal can help avert that.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=417500957\">&raquo;
+        E-Mail This</a></p>","body_email":"A hot bread basket is a tasty way to start
+        off dinner. But all those carbs before the main fare can amp up appetite and
+        spike blood sugar. Saving the carbs for the end of the meal can help avert
+        that.\n\n\u00bb E-Mail This (http://www.npr.org/templates/email/emailAFriend.php?storyId=417500957)","body_email_auto":true,"body_chat":"A
+        hot bread basket is a tasty way to start off dinner. But all those carbs before
+        the main fare can amp up appetite and spike blood sugar. Saving the carbs
+        for the end of the meal can help avert that.\u00bb E-Mail This http://devel.desk.com/customer/portal/articles/2044299-curb-your-appetite-save-bread-for-the-end-of-the-meal","body_chat_auto":true,"body_web_callback":"<p>A
+        hot bread basket is a tasty way to start off dinner. But all those carbs before
+        the main fare can amp up appetite and spike blood sugar. Saving the carbs
+        for the end of the meal can help avert that.</p><p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=417500957\">&raquo;
+        E-Mail This</a></p>","body_web_callback_auto":true,"body_twitter":"A hot bread
+        basket is a tasty way to start off dinner. But all those carbs before the
+        main fare can amp up appeti... http://devel.desk.com/customer/portal/articles/2044299-curb-your-appetite-save-bread-for-the-end-of-the-meal","body_twitter_auto":true,"body_qna":"A
+        hot bread basket is a tasty way to start off dinner. But all those carbs before
+        the main fare can amp up appetite and spike blood sugar. Saving the carbs
+        for the end of the meal can help avert that.\n\n\u00bb E-Mail This","body_qna_auto":true,"body_phone":"A
+        hot bread basket is a tasty way to start off dinner. But all those carbs before
+        the main fare can amp up appetite and spike blood sugar. Saving the carbs
+        for the end of the meal can help avert that.\n\n\u00bb E-Mail This","body_phone_auto":true,"body_facebook":"A
+        hot bread basket is a tasty way to start off dinner. But all those carbs before
+        the main fare can amp up appetite and spike blood sugar. Saving the carbs
+        for the end of the meal can help avert that.\n\n\u00bb E-Mail This","body_facebook_auto":true,"rating":0,"rating_count":0,"rating_score":0,"keywords":null,"position":46,"quickcode":null,"publish_at":"2015-07-01T23:18:57Z","updated_at":"2015-07-01T23:18:57Z","created_at":"2015-07-01T23:18:57Z","in_support_center":true,"internal_notes":null,"public_url":"http://devel.desk.com/customer/portal/articles/2044299-curb-your-appetite-save-bread-for-the-end-of-the-meal","_links":{"self":{"href":"/api/v2/articles/2044299","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/2044299/translations","class":"article_translation"},"attachments":{"href":"/api/v2/articles/2044299/attachments","class":"attachment","count":0},"created_by":{"href":"/api/v2/users/16096734","class":"user"},"updated_by":{"href":"/api/v2/users/16096734","class":"user"}}},{"id":2044300,"locale":null,"subject":"Supreme
+        Court Blocks Obama Administration Plan On Power Plant Emissions","body":"<p>In
+        a 5-4 ruling, the court says the Environmental Protection Agency should have
+        taken into account the costs of complying with regulation. Testing stuff.</p>\r\n\r\n<p><a
+        href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=418557691\">&raquo;
+        E-Mail This</a></p>\r\n","body_email":"In a 5-4 ruling, the court says the
+        Environmental Protection Agency should have taken into account the costs of
+        complying with regulation. Testing stuff.\n\n\u00bb E-Mail This (http://www.npr.org/templates/email/emailAFriend.php?storyId=418557691)","body_email_auto":true,"body_chat":"In
+        a 5-4 ruling, the court says the Environmental Protection Agency should have
+        taken into account the costs of complying with regulation. Testing stuff.\u00bb
+        E-Mail This http://devel.desk.com/customer/portal/articles/2044300-supreme-court-blocks-obama-administration-plan-on-power-plant-emissions","body_chat_auto":true,"body_web_callback":"<p>In
+        a 5-4 ruling, the court says the Environmental Protection Agency should have
+        taken into account the costs of complying with regulation. Testing stuff.</p>\r\n\r\n<p><a
+        href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=418557691\">&raquo;
+        E-Mail This</a></p>\r\n","body_web_callback_auto":true,"body_twitter":"In
+        a 5-4 ruling, the court says the Environmental Protection Agency should have
+        taken into account the costs of c... http://devel.desk.com/customer/portal/articles/2044300-supreme-court-blocks-obama-administration-plan-on-power-plant-emissions","body_twitter_auto":true,"body_qna":"In
+        a 5-4 ruling, the court says the Environmental Protection Agency should have
+        taken into account the costs of complying with regulation. Testing stuff.\n\n\u00bb
+        E-Mail This","body_qna_auto":true,"body_phone":"In a 5-4 ruling, the court
+        says the Environmental Protection Agency should have taken into account the
+        costs of complying with regulation. Testing stuff.\n\n\u00bb E-Mail This","body_phone_auto":true,"body_facebook":"In
+        a 5-4 ruling, the court says the Environmental Protection Agency should have
+        taken into account the costs of complying with regulation. Testing stuff.\n\n\u00bb
+        E-Mail This","body_facebook_auto":true,"rating":0,"rating_count":0,"rating_score":0,"keywords":"","position":47,"quickcode":null,"publish_at":null,"updated_at":"2016-01-27T19:33:47Z","created_at":"2015-07-01T23:18:57Z","in_support_center":true,"internal_notes":"","public_url":"http://devel.desk.com/customer/portal/articles/2044300-supreme-court-blocks-obama-administration-plan-on-power-plant-emissions","_links":{"self":{"href":"/api/v2/articles/2044300","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/2044300/translations","class":"article_translation"},"attachments":{"href":"/api/v2/articles/2044300/attachments","class":"attachment","count":0},"created_by":{"href":"/api/v2/users/16096734","class":"user"},"updated_by":{"href":"/api/v2/users/16096734","class":"user"}}},{"id":2044301,"locale":null,"subject":"SpaceX
+        Rocket Breaks Up On Liftoff","body":"<p>In Florida, an unmanned supply rocket
+        blasted off for the International Space Station, but something went wrong.
+        The loss of the rocket, which was also carrying experiments, is a setback
+        for NASA.</p>\r\n\r\n<p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=418490309\">&raquo;
+        E-Mail This</a></p>\r\n","body_email":"In Florida, an unmanned supply rocket
+        blasted off for the International Space Station, but something went wrong.
+        The loss of the rocket, which was also carrying experiments, is a setback
+        for NASA.\n\n\u00bb E-Mail This (http://www.npr.org/templates/email/emailAFriend.php?storyId=418490309)","body_email_auto":true,"body_chat":"In
+        Florida, an unmanned supply rocket blasted off for the International Space
+        Station, but something went wrong. The loss of the rocket, which was also
+        carrying experiments, is a setback for NASA.\u00bb E-Mail This http://devel.desk.com/customer/portal/articles/2044301-spacex-rocket-breaks-up-on-liftoff","body_chat_auto":true,"body_web_callback":"<p>In
+        Florida, an unmanned supply rocket blasted off for the International Space
+        Station, but something went wrong. The loss of the rocket, which was also
+        carrying experiments, is a setback for NASA.</p>\r\n\r\n<p><a href=\"http://www.npr.org/templates/email/emailAFriend.php?storyId=418490309\">&raquo;
+        E-Mail This</a></p>\r\n","body_web_callback_auto":true,"body_twitter":"In
+        Florida, an unmanned supply rocket blasted off for the International Space
+        Station, but something went wrong. ... http://devel.desk.com/customer/portal/articles/2044301-spacex-rocket-breaks-up-on-liftoff","body_twitter_auto":true,"body_qna":"In
+        Florida, an unmanned supply rocket blasted off for the International Space
+        Station, but something went wrong. The loss of the rocket, which was also
+        carrying experiments, is a setback for NASA.\n\n\u00bb E-Mail This","body_qna_auto":true,"body_phone":"In
+        Florida, an unmanned supply rocket blasted off for the International Space
+        Station, but something went wrong. The loss of the rocket, which was also
+        carrying experiments, is a setback for NASA.\n\n\u00bb E-Mail This","body_phone_auto":true,"body_facebook":"In
+        Florida, an unmanned supply rocket blasted off for the International Space
+        Station, but something went wrong. The loss of the rocket, which was also
+        carrying experiments, is a setback for NASA.\n\n\u00bb E-Mail This","body_facebook_auto":true,"rating":100,"rating_count":4,"rating_score":4,"keywords":"","position":48,"quickcode":null,"publish_at":"2015-07-01T23:25:49Z","updated_at":"2015-07-01T23:25:49Z","created_at":"2015-07-01T23:18:58Z","in_support_center":true,"internal_notes":"","public_url":"http://devel.desk.com/customer/portal/articles/2044301-spacex-rocket-breaks-up-on-liftoff","_links":{"self":{"href":"/api/v2/articles/2044301","class":"article"},"topic":{"href":"/api/v2/topics/498301","class":"topic"},"translations":{"href":"/api/v2/articles/2044301/translations","class":"article_translation"},"attachments":{"href":"/api/v2/articles/2044301/attachments","class":"attachment","count":0},"created_by":{"href":"/api/v2/users/16096734","class":"user"},"updated_by":{"href":"/api/v2/users/16096734","class":"user"}}}]}}'
+    http_version: 
+  recorded_at: Tue, 22 Nov 2016 23:21:08 GMT
+recorded_with: VCR 3.0.3

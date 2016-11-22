@@ -28,7 +28,7 @@
 
 require 'spec_helper'
 
-describe DeskApi::Resource do
+describe DeskApi::Resource::Pagination do
   subject { @client ||= DeskApi::Client.new DeskApi::CONFIG }
 
   context '#all' do
