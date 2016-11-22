@@ -3,7 +3,7 @@
 source "https://rubygems.org"
 
 gem "faraday", "~> 0.8.0"
-gem "desk_api", :path => "../"
+gemspec :path => "../"
 
 group :test do
   gem "pry"
@@ -15,5 +15,3 @@ end
 group :development do
   gem "yard", "~> 0.8.7.4"
 end
-
-gemspec :path => "../"
