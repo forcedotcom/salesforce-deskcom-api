@@ -528,50 +528,6 @@ describe DeskApi::Resource do
     end
   end
 
-  context '#each_page' do
-    it 'iterates over each page', :vcr do
-      subject.cases.each_page do |page, page_number|
-        expect(page).to be_an_instance_of(DeskApi::Resource)
-        expect(page.resource_type).to eq('page')
-        expect(page_number).to be_an_instance_of(Fixnum)
-      end
-    end
-
-    it 'uses a default per_page of 1000', :vcr do
-      subject.cases.each_page do |page, page_number|
-        expect((page.query_params['per_page'].to_i % 10)).to eq(0)
-      end
-    end
-
-    it 'uses per_page from query_params if present' do
-      subject.cases.per_page(25) do |page, page_number|
-        expect(page.query_params['per_page']).to eq(25)
-      end
-    end
-
-    it 'raises ArgumentError if no block is given' do
-      expect { subject.cases.each_page }.to raise_error(ArgumentError)
-    end
-
-    it 'raises NoMethodError is called on non-page resources', :vcr do
-      expect { subject.cases.entries.first.each_page { |x| x } }.to raise_error(NoMethodError)
-    end
-  end
-
-  context '#all' do
-    it 'iterates over each resource on each page', :vcr do
-      subject.cases.all do |resource, page_num|
-        expect(resource).to be_an_instance_of(DeskApi::Resource)
-        expect(resource.resource_type).to eq('case')
-        expect(page_num).to be_an_instance_of(Fixnum)
-      end
-    end
-
-    it 'raises an argument error if no block is given' do
-      expect { subject.cases.all }.to raise_error(ArgumentError)
-    end
-  end
-
   context '#reset!' do
     it 'sets @_links, @_embedded, @_changed, and @_loaded to default values', :vcr do
       ticket = subject.cases.embed(:customer).entries.first
