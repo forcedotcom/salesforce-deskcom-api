@@ -183,14 +183,40 @@ describe DeskApi::Client do
   end
 
   describe '#request' do
-    it 'catches Faraday errors' do
-      allow(subject).to receive(:connection).and_raise(Faraday::Error::ClientError.new('Oops'))
-      expect(lambda { subject.send(:request, :get, '/path') }).to raise_error(DeskApi::Error::ClientError)
+    context 'Faraday::Error::ClientError' do
+      before do
+        allow(subject).to receive(:connection).and_raise(Faraday::Error::ClientError.new('Oops'))
+      end
+
+      it 'catches the error' do
+        expect(lambda { subject.send(:request, :get, '/path') }).to raise_error(DeskApi::Error::ClientError)
+      end
+
+      it 'wraps the original error' do
+        begin
+          subject.send(:request, :get, '/path')
+        rescue DeskApi::Error::ClientError => err
+          expect(err.instance_variable_get(:@wrapped_err)).to be_an_instance_of(Faraday::Error::ClientError)
+        end
+      end
     end
 
-    it 'catches JSON::ParserError errors' do
-      allow(subject).to receive(:connection).and_raise(JSON::ParserError.new('unexpected token'))
-      expect(lambda { subject.send(:request, :get, '/path') }).to raise_error(DeskApi::Error::ParserError)
+    context 'JSON::ParserError' do
+      before do
+        allow(subject).to receive(:connection).and_raise(JSON::ParserError.new('unexpected token'))
+      end
+
+      it 'catches the error' do
+        expect(lambda { subject.send(:request, :get, '/path') }).to raise_error(DeskApi::Error::ParserError)
+      end
+
+      it 'wraps the original error' do
+        begin
+          subject.send(:request, :get, '/path')
+        rescue DeskApi::Error::ParserError => err
+          expect(err.instance_variable_get(:@wrapped_err)).to be_an_instance_of(JSON::ParserError)
+        end
+      end
     end
   end
 end

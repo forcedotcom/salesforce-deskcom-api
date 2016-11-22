@@ -103,10 +103,10 @@ module DeskApi
     # @raises [DeskApi::Error::ParserError]
     def request(method, path, params = {}, &block)
       connection.send(method, path, params, &block)
-    rescue Faraday::Error::ClientError
-      raise DeskApi::Error::ClientError
-    rescue JSON::ParserError
-      raise DeskApi::Error::ParserError
+    rescue Faraday::Error::ClientError => err
+      raise DeskApi::Error::ClientError.new(err)
+    rescue JSON::ParserError => err
+      raise DeskApi::Error::ParserError.new(err)
     end
 
     # Builds and/or returns the Faraday client.
