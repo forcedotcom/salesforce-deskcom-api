@@ -23,6 +23,7 @@ jdk:
 matrix:
   allow_failures:
     - rvm: 1.9.2
+    - rvm: 1.9.3
     - rvm: ruby-head
     - rvm: rbx
     - rvm: ree
