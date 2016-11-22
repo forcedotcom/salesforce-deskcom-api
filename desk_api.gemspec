@@ -28,7 +28,7 @@ Gem::Specification.new do |gem|
   gem.extra_rdoc_files  = ['README.md']
 
   gem.add_runtime_dependency('faraday', '>= 0.8', '< 1.0')
-  gem.add_runtime_dependency('simple_oauth', '>= 0.1', '< 0.3')
+  gem.add_runtime_dependency('simple_oauth', '>= 0.1', '<= 0.3')
   gem.add_runtime_dependency('addressable', '>= 2.3', '< 2.4')
 
   gem.add_development_dependency('rake', '>= 10.1', '< 10.4')
