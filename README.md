@@ -1,10 +1,10 @@
-# DeskApi a client for APIv2
-## An Awesomely (Un)official Desk API Client
+# DeskApi a client for API v2
+## An official Desk API Client
 
 DeskApi takes the capabilities of the Desk.com API and wraps them up in a Ruby
 client so that it's easy-as-pie to get working with your support site's API.
 
-Desk publishes a changelog monthly, which you can keep up with at
+Desk.com publishes a change log monthly, which you can keep up with at
 [dev.desk.com/API/changelog](http://dev.desk.com/API/changelog).
 
 We do our best to keep DeskApi, but please don't hesitate to open an
@@ -25,7 +25,7 @@ gem install desk_api
 
 #### Authentication Mechanism
 
-The desk.com API allows you to access data using two authentication mechanisms:
+The Desk.com API allows you to access data using two authentication mechanisms:
 
 ##### Basic Authentication
 
@@ -185,7 +185,7 @@ updated_customer = customer.update title: 'Master of the Universe'
 # users are not updatable
 begin
   user = DeskApi.users.first
-  user.update name: 'Not updateable'
+  user.update name: 'Not updatable'
 rescue DeskApi::Error::MethodNotAllowed
   # too bad
 end
@@ -193,7 +193,7 @@ end
 
 ### Find
 
-The method `by_url` can be called on the client, for backwards compatability we
+The method `by_url` can be called on the client, for backwards compatibility we
 haven't yet removed it from the `DeskApi::Resource` but it will be removed once
 we release v1 of this client. `by_url` will return a lazy loaded instance of the
 resource.
@@ -345,7 +345,7 @@ DeskApi.cases.page(10).per_page(50).entries.each do |my_case|
   # in this method chain, no HTTP request is fired until `.entries'
 end
 
-# however if you request the current page numer and the resource is not loaded
+# however if you request the current page number and the resource is not loaded
 # it'll send a request
 DeskApi.cases.page == 1
 ```
@@ -418,7 +418,7 @@ their respective meanings.
 
 ## License
 
-Copyright (c) 2013-2014, Salesforce.com, Inc.
+Copyright (c) 2013-2016, Salesforce.com, Inc.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,

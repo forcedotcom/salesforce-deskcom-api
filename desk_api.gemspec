@@ -38,5 +38,5 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency('coveralls', '>= 0.6', '< 0.9')
   gem.add_development_dependency('appraisal', '>= 1.0.0', '< 2.2')
 
-  gem.required_ruby_version = '>= 1.9.2'
+  gem.required_ruby_version = '>= 2.0.0'
 end

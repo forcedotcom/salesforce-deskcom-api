@@ -1,4 +1,4 @@
-# Copyright (c) 2013-2014, Salesforce.com, Inc.
+# Copyright (c) 2013-2016, Salesforce.com, Inc.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without modification,
@@ -27,5 +27,5 @@
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 module DeskApi
-  VERSION = '0.6.1'
+  VERSION = '0.6.2'
 end
