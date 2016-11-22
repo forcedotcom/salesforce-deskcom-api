@@ -5,6 +5,8 @@ rvm:
   - 1.9.3
   - 2.0.0
   - 2.1.0
+  - 2.2.0
+  - 2.3.0
   - jruby-19mode
   - ruby-head
   - jruby-head
@@ -22,8 +24,6 @@ jdk:
 
 matrix:
   allow_failures:
-    - rvm: 1.9.2
-    - rvm: 1.9.3
     - rvm: ruby-head
     - rvm: rbx
     - rvm: ree
@@ -76,6 +76,22 @@ matrix:
     - rvm: 2.1.0
       jdk: oraclejdk7
     - rvm: 2.1.0
+      jdk: openjdk6
+
+    # remove 2.2.0 from jdk matrix
+    - rvm: 2.2.0
+      jdk: openjdk7
+    - rvm: 2.2.0
+      jdk: oraclejdk7
+    - rvm: 2.2.0
+      jdk: openjdk6
+
+    # remove 2.3.0 from jdk matrix
+    - rvm: 2.3.0
+      jdk: openjdk7
+    - rvm: 2.3.0
+      jdk: oraclejdk7
+    - rvm: 2.3.0
       jdk: openjdk6
 
     # remove ruby-head from jdk matrix
