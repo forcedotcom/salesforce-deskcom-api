@@ -76,7 +76,7 @@ describe DeskApi::Resource do
 
     it 'can be forced to reload' do
       subject.articles.instance_variable_set(:@_loaded, true)
-      subject.should_receive(:get).and_call_original
+      expect(subject).to receive(:get).and_call_original
       subject.articles.send(:exec!, true)
     end
   end
@@ -85,7 +85,7 @@ describe DeskApi::Resource do
     it 'loads the resource to find a suitable method' do
       articles = subject.articles
       articles.instance_variable_set(:@_loaded, false)
-      articles.should_receive(:exec!).and_call_original
+      expect(articles).to receive(:exec!).and_call_original
       articles.entries
     end
 
@@ -104,7 +104,7 @@ describe DeskApi::Resource do
 
     it 'loads the resource to find a suitable method' do
       @company.instance_variable_set(:@_loaded, false)
-      @company.should_receive(:exec!)
+      expect(@company).to receive(:exec!)
       @company.respond_to?(:name)
     end
 
