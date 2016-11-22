@@ -1,4 +1,4 @@
-# Copyright (c) 2013-2016, Salesforce.com, Inc.
+# Copyright (c) 2013-2014, Salesforce.com, Inc.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without modification,
@@ -26,54 +26,39 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-require 'uri'
-require 'faraday'
-require 'forwardable'
+require 'spec_helper'
+require 'desk_api/request/encode_dates'
 
-# {DeskApi} allows for easy interaction with Desk.com's API.
-# It is the top level namespace and delegates all missing
-# methods to an automatically created client. This allows
-# you to use {DeskApi} as a client which is not recommended
-# if you have to connect to multiple Desk.com sites.
-#
-# @author    Thomas Stachl <tstachl@salesforce.com>
-# @copyright Copyright (c) 2013-2014 Salesforce.com
-# @license   BSD 3-Clause License
-#
-# @example configure the {DeskApi} client
-#   DeskApi.configure |config|
-#     config.username = 'user@example.com'
-#     config.password = 'mysecretpassword'
-#     config.endpoint = 'https://example.desk.com'
-#   end
-#
-# @example use {DeskApi} to send requests
-#   my_cases = DeskApi.cases # GET '/api/v2/cases'
-module DeskApi
-  require 'desk_api/version'
-  require 'desk_api/configuration'
-  require 'desk_api/client'
+describe DeskApi::Request::EncodeDates do
+  before(:all) do
+    VCR.turn_off!
 
-  class << self
-    include DeskApi::Configuration
-
-    # Returns the default {DeskApi::Client}
-    #
-    # @param options [Hash] optional configuration options
-    # @return [DeskApi::Client]
-    def client
-      return @client if defined?(:@client) && @client.hash == options.hash
-      @client = DeskApi::Client.new(options)
-    end
-
-    # Delegates missing methods to the default {DeskApi::Client}
-    #
-    # @return [DeskApi::Resource]
-    def method_missing(method, *args, &block)
-      client.send(method, *args, &block)
+    @stubs = Faraday::Adapter::Test::Stubs.new
+    @conn = Faraday.new do |builder|
+      builder.request :desk_encode_dates
+      builder.request :desk_encode_json
+      builder.adapter :test, @stubs
     end
   end
 
-  # immediately reset the default client
-  reset!
+  after(:all) do
+    VCR.turn_on!
+  end
+
+  it 'encodes the date, datetime and time to iso8601' do
+    @stubs.post('/echo') do |env|
+      body = JSON.parse(env[:body], symbolize_names: true)
+      expect(body[:date]).to eq('2001-02-03T08:00:00Z')
+      expect(body[:datetime]).to eq('2001-02-03T00:00:00Z')
+      expect(body[:time]).to eq('2001-02-03T08:00:00Z')
+    end
+
+    date = Date.new(2001, 2, 3)
+
+    @conn.post('http://localhost/echo', {
+      date: date,
+      datetime: date.to_datetime,
+      time: date.to_time
+    })
+  end
 end

@@ -32,6 +32,7 @@ require 'desk_api/default'
 require 'desk_api/request/retry'
 require 'desk_api/request/oauth'
 require 'desk_api/request/encode_json'
+require 'desk_api/request/encode_dates'
 require 'desk_api/response/parse_dates'
 require 'desk_api/response/parse_json'
 require 'desk_api/response/raise_error'
@@ -84,6 +85,7 @@ module DeskApi
 
       # Registers the middleware when the module is included.
       def included(_base)
+        register_middleware :request, :desk_encode_dates, :EncodeDates
         register_middleware :request, :desk_encode_json, :EncodeJson
         register_middleware :request, :desk_oauth, :OAuth
         register_middleware :request, :desk_retry, :Retry
@@ -106,6 +108,7 @@ module DeskApi
     # @return [Proc]
     def middleware
       @middleware ||= proc do |builder|
+        builder.request(:desk_encode_dates)
         builder.request(:desk_encode_json)
         builder.request(*authorize_request)
         builder.request(:desk_retry)

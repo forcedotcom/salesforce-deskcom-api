@@ -30,7 +30,7 @@ require 'spec_helper'
 require 'desk_api/request/encode_json'
 
 describe DeskApi::Request::EncodeJson do
-  before do
+  before(:all) do
     VCR.turn_off!
 
     @stubs = Faraday::Adapter::Test::Stubs.new
@@ -40,7 +40,7 @@ describe DeskApi::Request::EncodeJson do
     end
   end
 
-  after do
+  after(:all) do
     VCR.turn_on!
   end
 

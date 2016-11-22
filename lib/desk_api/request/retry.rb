@@ -45,7 +45,8 @@ module DeskApi
             Errno::ETIMEDOUT,
             'Timeout::Error',
             Faraday::Error::TimeoutError,
-            DeskApi::Error::TooManyRequests
+            DeskApi::Error::TooManyRequests,
+            DeskApi::Error::BadRequest
           ]
         end
       end
