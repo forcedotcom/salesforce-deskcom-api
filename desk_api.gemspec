@@ -28,15 +28,15 @@ Gem::Specification.new do |gem|
   gem.extra_rdoc_files  = ['README.md']
 
   gem.add_runtime_dependency('faraday', '>= 0.8', '< 1.0')
-  gem.add_runtime_dependency('simple_oauth', '>= 0.1', '<= 0.3')
-  gem.add_runtime_dependency('addressable', '>= 2.3', '< 2.4')
+  gem.add_runtime_dependency('simple_oauth', '>= 0.1', '< 0.4')
+  gem.add_runtime_dependency('addressable', '>= 2.3', '< 2.6')
 
-  gem.add_development_dependency('rake', '>= 10.1', '< 10.4')
-  gem.add_development_dependency('rspec', '>= 2.6', '< 2.15')
-  gem.add_development_dependency('vcr', '>= 2.0', '< 3')
-  gem.add_development_dependency('simplecov', '>= 0.7', '< 0.9')
-  gem.add_development_dependency('coveralls', '>= 0.6', '< 0.8')
-  gem.add_development_dependency('appraisal', '>= 1.0.0', '< 1.1')
+  gem.add_development_dependency('rake', '>= 10.1', '< 11.4')
+  gem.add_development_dependency('rspec', '>= 2.6', '< 3.6')
+  gem.add_development_dependency('vcr', '>= 2.0', '< 3.1')
+  gem.add_development_dependency('simplecov', '>= 0.7', '< 0.13')
+  gem.add_development_dependency('coveralls', '>= 0.6', '< 0.9')
+  gem.add_development_dependency('appraisal', '>= 1.0.0', '< 2.2')
 
   gem.required_ruby_version = '>= 1.9.2'
 end
