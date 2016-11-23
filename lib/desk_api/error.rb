@@ -32,7 +32,7 @@ module DeskApi
   # {DeskApi::Error} is the base error for all {DeskApi} errors.
   #
   # @author    Thomas Stachl <tstachl@salesforce.com>
-  # @copyright Copyright (c) 2013-2014 Salesforce.com
+  # @copyright Copyright (c) 2013-2016 Salesforce.com
   # @license   BSD 3-Clause License
   class Error < StandardError
     attr_reader :rate_limit

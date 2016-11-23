@@ -37,7 +37,7 @@ require 'forwardable'
 # if you have to connect to multiple Desk.com sites.
 #
 # @author    Thomas Stachl <tstachl@salesforce.com>
-# @copyright Copyright (c) 2013-2014 Salesforce.com
+# @copyright Copyright (c) 2013-2016 Salesforce.com
 # @license   BSD 3-Clause License
 #
 # @example configure the {DeskApi} client

@@ -47,7 +47,7 @@ module DeskApi
     # raises errors that happen during the API request
     #
     # @author    Thomas Stachl <tstachl@salesforce.com>
-    # @copyright Copyright (c) 2013-2014 Salesforce.com
+    # @copyright Copyright (c) 2013-2016 Salesforce.com
     # @license   BSD 3-Clause License
     class RaiseError < Faraday::Response::Middleware
       # Checks the status code and raises the error if there

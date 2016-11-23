@@ -31,7 +31,7 @@ module DeskApi
   # {DeskApi::Client}.
   #
   # @author    Thomas Stachl <tstachl@salesforce.com>
-  # @copyright Copyright (c) 2013-2014 Salesforce.com
+  # @copyright Copyright (c) 2013-2016 Salesforce.com
   # @license   BSD 3-Clause License
   module Default
     CONNECTION_OPTIONS = {

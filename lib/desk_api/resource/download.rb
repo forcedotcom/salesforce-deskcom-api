@@ -32,7 +32,7 @@ module DeskApi
     # like `#download`
     #
     # @author    Thomas Stachl <tstachl@salesforce.com>
-    # @copyright Copyright (c) 2013-2014 Salesforce.com
+    # @copyright Copyright (c) 2013-2016 Salesforce.com
     # @license   BSD 3-Clause License
     #
     # @example download an attachment {DeskApi::Resource}
@@ -46,7 +46,7 @@ module DeskApi
         unless resource_type == 'attachment'
           raise NoMethodError, "#download is only available on attachment resources"
         end
-        
+
         Tempfile.new(file_name).tap do |f|
           f.write(@_client.get(url).body)
           f.rewind
