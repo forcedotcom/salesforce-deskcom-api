@@ -1,0 +1,238 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://devel.desk.com/api/v2/cases/3065
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - desk.com Ruby Gem v0.6.2
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Tue, 22 Nov 2016 23:58:37 GMT
+      server:
+      - nginx
+      vary:
+      - Accept-Encoding
+      x-api-version:
+      - 3a076ef1b5f7538a46d7d7d46986a40109f3ba96
+      x-rate-limit-limit:
+      - '1000'
+      x-rate-limit-remaining:
+      - '999'
+      x-rate-limit-reset:
+      - '23'
+      content-length:
+      - '613'
+      connection:
+      - Close
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":3065,"blurb":null,"changed_at":"2015-02-14T06:13:03Z","created_at":"2013-05-13T18:13:39Z","custom_fields":{"market":null,"sfdc_case_id":null,"application_stage":null},"description":null,"external_id":null,"first_opened_at":null,"first_resolved_at":"2015-01-26T18:24:09Z","label_ids":[],"labels":[],"language":null,"locked_until":null,"opened_at":"2015-01-26T18:24:29Z","priority":5,"received_at":null,"resolved_at":"2015-01-26T18:24:09Z","status":"open","subject":"Testing
+        the Tank again","type":"email","updated_at":"2016-11-22T23:36:49Z","active_at":"2016-11-22T23:36:49Z","active_attachments_count":1,"active_notes_count":0,"has_pending_interactions":false,"has_failed_interactions":false,"route_status":"active","_links":{"labels":{"class":"label","href":"/api/v2/cases/3065/labels"},"assigned_group":null,"macro_preview":{"class":"macro_preview","href":"/api/v2/cases/3065/macros/preview"},"locked_by":{"class":"user","href":"/api/v2/users/16096734"},"case_links":{"class":"case_link","count":0,"href":"/api/v2/cases/3065/links"},"attachments":{"class":"attachment","count":1,"href":"/api/v2/cases/3065/attachments"},"history":{"class":"history","href":"/api/v2/cases/3065/history"},"feedbacks":null,"customer":{"class":"customer","href":"/api/v2/customers/86101780"},"replies":{"class":"reply","count":0,"href":"/api/v2/cases/3065/replies"},"draft":{"class":"reply","href":"/api/v2/cases/3065/replies/draft"},"notes":{"class":"note","count":0,"href":"/api/v2/cases/3065/notes"},"assigned_user":null,"self":{"class":"case","href":"/api/v2/cases/3065"},"message":{"class":"email","href":"/api/v2/cases/3065/message"}}}'
+    http_version: 
+  recorded_at: Tue, 22 Nov 2016 23:58:37 GMT
+- request:
+    method: get
+    uri: https://devel.desk.com/api/v2/cases/3065/attachments
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - desk.com Ruby Gem v0.6.2
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Tue, 22 Nov 2016 23:58:37 GMT
+      server:
+      - nginx
+      vary:
+      - Accept-Encoding
+      x-api-version:
+      - 3a076ef1b5f7538a46d7d7d46986a40109f3ba96
+      x-rate-limit-limit:
+      - '1000'
+      x-rate-limit-remaining:
+      - '998'
+      x-rate-limit-reset:
+      - '23'
+      content-length:
+      - '337'
+      connection:
+      - Close
+    body:
+      encoding: ASCII-8BIT
+      string: '{"page":1,"total_entries":1,"_links":{"self":{"class":"page","href":"/api/v2/cases/3065/attachments?page=1&per_page=50"},"first":{"class":"page","href":"/api/v2/cases/3065/attachments?page=1&per_page=50"},"last":{"class":"page","href":"/api/v2/cases/3065/attachments?page=1&per_page=50"},"next":null,"previous":null},"_embedded":{"entries":[{"id":253309685,"file_name":"file.jpg","content_type":"image/jpeg","size":2040,"url":"https://devel.desk.com/api/v2/cases/3065/attachments/253309685/url","erased_at":null,"created_at":"2016-11-22T23:38:10Z","updated_at":"2016-11-22T23:38:10Z","_links":{"self":{"class":"attachment","href":"/api/v2/cases/3065/attachments/253309685"},"case":{"class":"case","href":"/api/v2/cases/3065"},"uploaded_by":{"class":"user","href":"/api/v2/users/16096734"}}}]}}'
+    http_version: 
+  recorded_at: Tue, 22 Nov 2016 23:58:37 GMT
+- request:
+    method: get
+    uri: https://devel.desk.com/api/v2/cases/3065/attachments/253309685/url
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - desk.com Ruby Gem v0.6.2
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 302
+      message: 
+    headers:
+      cache-control:
+      - no-cache, private
+      content-type:
+      - text/html; charset=utf-8
+      date:
+      - Tue, 22 Nov 2016 23:58:37 GMT
+      location:
+      - https://assistly-production.s3.amazonaws.com/75027/ticket_attachments/253309685/file_original.jpg?AWSAccessKeyId=AKIAJNSFWOZ6ZS23BMKQ&Expires=1479859237&Signature=sYbtKHD1fuiSR4PlaUTbb%2BEW4iM%3D&response-content-disposition=filename%3D%22file.jpg%22&response-content-type=image%2Fjpeg
+      server:
+      - nginx
+      status:
+      - 302 Found
+      vary:
+      - X-AppVersion
+      x-appversion:
+      - '15.3261'
+      x-frame-options:
+      - SAMEORIGIN
+      x-rack-cache:
+      - miss
+      x-rate-limit-limit:
+      - '1000'
+      x-rate-limit-remaining:
+      - '999'
+      x-rate-limit-reset:
+      - '23'
+      x-request-id:
+      - 9581c8f470c043a15107702504b6d39c
+      x-runtime:
+      - '0.469083'
+      x-ua-compatible:
+      - IE=Edge,chrome=1
+      content-length:
+      - '367'
+      connection:
+      - Close
+    body:
+      encoding: UTF-8
+      string: <html><body>You are being <a href="https://assistly-production.s3.amazonaws.com/75027/ticket_attachments/253309685/file_original.jpg?AWSAccessKeyId=AKIAJNSFWOZ6ZS23BMKQ&amp;Expires=1479859237&amp;Signature=sYbtKHD1fuiSR4PlaUTbb%2BEW4iM%3D&amp;response-content-disposition=filename%3D%22file.jpg%22&amp;response-content-type=image%2Fjpeg">redirected</a>.</body></html>
+    http_version: 
+  recorded_at: Tue, 22 Nov 2016 23:58:37 GMT
+- request:
+    method: get
+    uri: https://assistly-production.s3.amazonaws.com/75027/ticket_attachments/253309685/file_original.jpg?AWSAccessKeyId=AKIAJNSFWOZ6ZS23BMKQ&Expires=1479859237&Signature=sYbtKHD1fuiSR4PlaUTbb%2BEW4iM%3D&response-content-disposition=filename%3D%22file.jpg%22&response-content-type=image%2Fjpeg
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      x-amz-id-2:
+      - UYTZFkBPfNkShiB2POdgbjDsIcJ+3eZ15MzljTVbCK9ezAtAidmUkGyr18jwdBGf
+      x-amz-request-id:
+      - 9ACD761D6C728543
+      date:
+      - Tue, 22 Nov 2016 23:58:39 GMT
+      x-amz-replication-status:
+      - COMPLETED
+      last-modified:
+      - Tue, 22 Nov 2016 23:38:12 GMT
+      etag:
+      - '"96c100add63da11b6b1250338423c944"'
+      x-amz-version-id:
+      - hxQumLtdhMxitQNDZCbFj_XLoWUhln7J
+      content-disposition:
+      - filename="file.jpg"
+      accept-ranges:
+      - bytes
+      content-type:
+      - image/jpeg
+      content-length:
+      - '2040'
+      server:
+      - AmazonS3
+      connection:
+      - close
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        /9j/2wCEAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQ
+        DQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRQBAwQEBQQFCQUFCRQNCw0UFBQU
+        FBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQU
+        FP/AABEIADwAPAMBIgACEQEDEQH/xAGiAAABBQEBAQEBAQAAAAAAAAAAAQID
+        BAUGBwgJCgsQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQy
+        gZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElK
+        U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Sl
+        pqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz
+        9PX29/j5+gEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoLEQACAQIEBAME
+        BwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEK
+        FiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlq
+        c3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrC
+        w8TFxsfIycrS09TV1tfY2dri4+Tl5ufo6ery8/T19vf4+fr/2gAMAwEAAhED
+        EQA/AKU3hczv9z9KF8GjHMf6V7RZ+Ed6glP0q0/hDYOEr9T+trY+Clc8Hn8G
+        gA/J+lY154RAJ+T9K+grrwwFByuK57UPDI5+XFdEMSc7kfP1/wCERzhP0rmN
+        S8KYB+T9K9u1OSwh1tNJIuGvHwcraymJchiAZQuwE7TwTniqOo+FywPyfpXb
+        TxCfUHOULXPnTUvDxjJwtYr6ftYgg17rrHhE4b5K4268MlZiNldsZRkdEK9z
+        9MLLw4qr93FTzeH8D7mRX5x6B+2V8atOnMv/AAkdlqEbFG2XunWkYIKAj7u0
+        9NvQ/jzzPF/wUD+LEFnqNvP/AGTO95LJIlybVlktgybAkWGA2qRuGQTu6kji
+        vy9TqX3PdeXzsffOpaVDGwR1zIwyI1GWIyATgc4BIyegzzXDX9qdWcxwQlYi
+        ofd2xtJHzDhgfl4U44b5j0rxXwx+1l4ut/DemDU/h4uvvsj8y/OsLH9pZVX9
+        6Y1hOGLIrZYsQc4wDx0CfthWFtKZ9b+HniWylmU7EsRDdIRzj596epzxxiuh
+        YicdLHDLAS3RkeJdFksfixp0fl6w0ReKJ7lLlUswWguDho9wLP8ALnIXACr0
+        6H0uTwossIby+eQcA9Rwf1r5/wBS/aP8J638WbPXr3TvEuleVc24SweNmVol
+        iuUd2iVtpbM0fPJAU4PJz7lpn7S/wqeVreXxH9kJJx9rs54s9wfmjHbHX296
+        2hi5R6MnEYKpJRstkZOseDAytiP9K4e98Ff6Q37v9K9h8K/EHw/40OooNRsI
+        5E1B7Wzj89Q1xGACjKCcnOT09Ks3uiW/2huBXdTzPl3PPlg6kHZnxPH4W+G+
+        s+HQ2j38CahHEXMsl0Ap4HBUn5CfmCjPYjOcEeXa9pcWjiaHfHcPvQJIgJ4w
+        SRkj3XI9x06HyG11CW3Vl2M0cq5AbI79Rg/h+JrRfWBLcxwyxRWoCpEsiqQo
+        H95gOTx36/Wvmktdz7+E5Ri1LU+ztC1rwrZ+HdOF3rdtBcrbI0kT30ac4HGC
+        OPxqee68Pa1v+wXsN+sWA/2e7SXZnPBCg46Hrzx9a+QbPTnuZEW3vrabfx8j
+        k4+oxnse1dD8PfGGp+Eby4tbCyi1Rbog3ETbh5YTdzvHC9T2NdOktUzy6lGU
+        VeMj1HVbO2sPG8VysRmt4WjJEjg7j8w3cAYA3ZAx6/g7ZFBeS3FuZ5JZc5eW
+        RcZznP3evHeuaufEWpXmtKq6eoU/NwGbIwTn8gauz68sixjckaOSobzNoJ74
+        65/Crikm+eS+8ynKq0rLYg1DZp3mt58xeQ7mCSgBm5yTxjPNW7L4k+IIrZEj
+        uJ441GFCzvyPXr/LisW3lttSuGCzG4Cn5/KlDhe+Dg8fSpbl4UlKgzKBwACK
+        9JQpuKtZmHPNOz3PLLPWrSRn3CJYEVkbhV3b92AqkrgDOMjgfSmRavpl3ctJ
+        NYx+XIFVH8shjjAyVBwenUY781wnnuMpuJUdjVi0mJBJAO0DAPbJx/WvmeTz
+        Po+c7fT9H0aa+s5ftbCEuhaMZXzQW+ZcnoACOeOh68E9Nb61p+iQxafYzXUW
+        52ZjECrGQg7FU98jGCQeRnnArya2kJuYeAAJEGMcHnvXVg+Tcx3Ay0sU2Iiz
+        EiPayAYGcd++elYVaTlvJkrU7PSNdjFynnBnW5RkWEgHcFUh5d23nOGUY7gj
+        tgmqalLd+ddx/bJnU+XLJNKxbph9uDgHr17c8ZxWIR9i1H7RHnKx7ljY5QZy
+        vTv0B5759TW/H4Zs9S1OeCfeVf7zKQGJLhSc464Y/wCQK43GMXfoaJNqyOXt
+        tRttPiM8BKMql2ETNhsAnB7EZAycnueaZd+MJInRmTesqCRCG3HafXA4Psef
+        r1Nq/hS73W5GxIbiNFKE8/dySDkZJGenJpvhzw1baja3Mk0twGS4eMbJNowM
+        dhXTGu4LmuzCVNN6o//Z
+    http_version: 
+  recorded_at: Tue, 22 Nov 2016 23:58:38 GMT
+recorded_with: VCR 3.0.3

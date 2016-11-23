@@ -30,6 +30,7 @@ require 'addressable/uri'
 require 'desk_api/resource/scrud'
 require 'desk_api/resource/pagination'
 require 'desk_api/resource/query_params'
+require 'desk_api/resource/download'
 
 module DeskApi
   # {DeskApi::Resource} holds most of the magic of this wrapper. Basically
@@ -50,6 +51,7 @@ module DeskApi
     include DeskApi::Resource::SCRUD
     include DeskApi::Resource::QueryParams
     include DeskApi::Resource::Pagination
+    include DeskApi::Resource::Download
 
     class << self
       # Returns a {DeskApi::Resource} definition with a self link

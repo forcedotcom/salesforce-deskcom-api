@@ -1,0 +1,47 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://devel.desk.com/api/v2/cases/3065
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - desk.com Ruby Gem v0.6.2
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Tue, 22 Nov 2016 23:47:22 GMT
+      server:
+      - nginx
+      vary:
+      - Accept-Encoding
+      x-api-version:
+      - 3a076ef1b5f7538a46d7d7d46986a40109f3ba96
+      x-rate-limit-limit:
+      - '1000'
+      x-rate-limit-remaining:
+      - '999'
+      x-rate-limit-reset:
+      - '38'
+      content-length:
+      - '613'
+      connection:
+      - Close
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":3065,"blurb":null,"changed_at":"2015-02-14T06:13:03Z","created_at":"2013-05-13T18:13:39Z","custom_fields":{"market":null,"sfdc_case_id":null,"application_stage":null},"description":null,"external_id":null,"first_opened_at":null,"first_resolved_at":"2015-01-26T18:24:09Z","label_ids":[],"labels":[],"language":null,"locked_until":null,"opened_at":"2015-01-26T18:24:29Z","priority":5,"received_at":null,"resolved_at":"2015-01-26T18:24:09Z","status":"open","subject":"Testing
+        the Tank again","type":"email","updated_at":"2016-11-22T23:36:49Z","active_at":"2016-11-22T23:36:49Z","active_attachments_count":1,"active_notes_count":0,"has_pending_interactions":false,"has_failed_interactions":false,"route_status":"active","_links":{"labels":{"class":"label","href":"/api/v2/cases/3065/labels"},"assigned_group":null,"macro_preview":{"class":"macro_preview","href":"/api/v2/cases/3065/macros/preview"},"locked_by":{"class":"user","href":"/api/v2/users/16096734"},"case_links":{"class":"case_link","count":0,"href":"/api/v2/cases/3065/links"},"attachments":{"class":"attachment","count":1,"href":"/api/v2/cases/3065/attachments"},"history":{"class":"history","href":"/api/v2/cases/3065/history"},"feedbacks":null,"customer":{"class":"customer","href":"/api/v2/customers/86101780"},"replies":{"class":"reply","count":0,"href":"/api/v2/cases/3065/replies"},"draft":{"class":"reply","href":"/api/v2/cases/3065/replies/draft"},"notes":{"class":"note","count":0,"href":"/api/v2/cases/3065/notes"},"assigned_user":null,"self":{"class":"case","href":"/api/v2/cases/3065"},"message":{"class":"email","href":"/api/v2/cases/3065/message"}}}'
+    http_version: 
+  recorded_at: Tue, 22 Nov 2016 23:47:22 GMT
+recorded_with: VCR 3.0.3
