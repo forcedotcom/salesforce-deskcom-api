@@ -394,6 +394,24 @@ assigned_user = my_case.assigned_user
 assigned_group = my_case.assigned_group
 ```
 
+### Downloading Attachments
+
+Attachment resources can be downloaded directly, a `Tempfile` is returned that can either be read or moved to the final location.
+
+```ruby
+ticket     = DeskApi.cases.find(123)
+attachment = ticket.attachments.entries.first
+file       = attachment.download
+
+# Read the file
+content    = file.read
+
+# Save the file
+File.open('/path/to/my/storage', 'w') do |f|
+  f.write(content)
+end
+```
+
 ### API Errors
 
 Sometimes the API is going to return errors, eg. Validation Error. In these
