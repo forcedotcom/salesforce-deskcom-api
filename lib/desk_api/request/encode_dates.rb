@@ -1,4 +1,4 @@
-# Copyright (c) 2013-2016, Salesforce.com, Inc.
+# Copyright (c) 2013-2017, Salesforce.com, Inc.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without modification,
@@ -33,7 +33,7 @@ module DeskApi
     # the request body. It also sets the "Content-Type" header.
     #
     # @author    Thomas Stachl <tstachl@salesforce.com>
-    # @copyright Copyright (c) 2013-2016 Salesforce.com
+    # @copyright Copyright (c) 2013-2017 Salesforce.com
     # @license   BSD 3-Clause License
     class EncodeDates < Faraday::Middleware
       # Changes the request before it gets sent

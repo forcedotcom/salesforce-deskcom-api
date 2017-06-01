@@ -1,4 +1,4 @@
-# Copyright (c) 2013-2016, Salesforce.com, Inc.
+# Copyright (c) 2013-2017, Salesforce.com, Inc.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without modification,
@@ -36,7 +36,7 @@ module DeskApi
   # the configuration module.
   #
   # @author    Thomas Stachl <tstachl@salesforce.com>
-  # @copyright Copyright (c) 2013-2016 Salesforce.com
+  # @copyright Copyright (c) 2013-2017 Salesforce.com
   # @license   BSD 3-Clause License
   class Client
     include DeskApi::Configuration
