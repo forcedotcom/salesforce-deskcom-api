@@ -1,4 +1,4 @@
-# Copyright (c) 2013-2017, Salesforce.com, Inc.
+# Copyright (c) 2013-2018, Salesforce.com, Inc.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without modification,
@@ -31,7 +31,7 @@ module DeskApi
   # {DeskApi::Client}.
   #
   # @author    Thomas Stachl <tstachl@salesforce.com>
-  # @copyright Copyright (c) 2013-2017 Salesforce.com
+  # @copyright Copyright (c) 2013-2018 Salesforce.com
   # @license   BSD 3-Clause License
   module Default
     CONNECTION_OPTIONS = {

@@ -1,4 +1,4 @@
-# Copyright (c) 2013-2017, Salesforce.com, Inc.
+# Copyright (c) 2013-2018, Salesforce.com, Inc.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without modification,
@@ -33,7 +33,7 @@ module DeskApi
     # desk.com's rate limiting which are retried only once.
     #
     # @author    Thomas Stachl <tstachl@salesforce.com>
-    # @copyright Copyright (c) 2013-2017 Salesforce.com
+    # @copyright Copyright (c) 2013-2018 Salesforce.com
     # @license   BSD 3-Clause License
     class Retry < Faraday::Middleware
       class << self
